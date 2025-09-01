@@ -52,11 +52,24 @@ def parse_dataframe_from_output(stdout: str) -> Optional[pd.DataFrame]:
             line = line.strip()
             if not line or '===' in line:
                 continue
+            # Skip the "Results saved to:" line
+            if 'Results saved to:' in line or '.csv' in line:
+                continue
             if 'method' in line and 'num_clusters' in line:  # Header line
                 header_found = True
                 df_lines.append(line)
             elif header_found and line:
-                df_lines.append(line)
+                # Validate that this line contains valid numeric data
+                parts = line.split()
+                if len(parts) >= 5:  # Should have at least method, num_clusters, pca_dim, alpha, top1_acc
+                    try:
+                        # Check if top1_acc (4th column) is a valid number
+                        float(parts[4])
+                        # If we get here, it's a valid numeric row
+                        df_lines.append(line)
+                    except (ValueError, IndexError):
+                        # Skip this line if it doesn't contain valid numeric data
+                        continue
         
         if len(df_lines) < 2:  # Need at least header + 1 data row
             return None
@@ -64,6 +77,13 @@ def parse_dataframe_from_output(stdout: str) -> Optional[pd.DataFrame]:
         # Create DataFrame from the parsed lines
         df_text = '\n'.join(df_lines)
         df = pd.read_csv(io.StringIO(df_text), sep=r'\s+', engine='python')
+        
+        # Additional validation: ensure numeric columns are actually numeric
+        if 'top1_acc' in df.columns:
+            df['top1_acc'] = pd.to_numeric(df['top1_acc'], errors='coerce')
+        if 'top5_acc' in df.columns:
+            df['top5_acc'] = pd.to_numeric(df['top5_acc'], errors='coerce')
+        
         return df
         
     except Exception as e:
