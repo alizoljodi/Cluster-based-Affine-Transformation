@@ -190,7 +190,6 @@ class GetDcFpLayerInpOut:
         optimizer = optim.Adam([para_input], lr=self.bn_lr)
         scheduler = optim.lr_scheduler.ReduceLROnPlateau(optimizer,
                                                         min_lr=1e-5,
-                                                        verbose=False,
                                                         patience=100)
         iters=500
         for iter in range(iters):

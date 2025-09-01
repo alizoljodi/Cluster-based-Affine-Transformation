@@ -7,6 +7,9 @@ import random
 import time
 import hubconf  # noqa: F401
 import copy
+import pandas as pd
+from CAT.get_logits import get_logits
+from CAT.cat import CAT
 from quant import (
     block_reconstruction,
     layer_reconstruction,
@@ -179,6 +182,14 @@ if __name__ == '__main__':
     parser.add_argument('--T', default=4.0, type=float, help='temperature coefficient for KL divergence')
     parser.add_argument('--bn_lr', default=1e-3, type=float, help='learning rate for DC')
     parser.add_argument('--lamb_c', default=0.02, type=float, help='hyper-parameter for DC')
+
+    # CAT evaluation parameters (accept single or multiple values)
+    parser.add_argument('--alpha', default=[0.4], type=float, nargs='+',
+                        help='alpha blending value(s) for CAT evaluation')
+    parser.add_argument('--num_clusters', default=[64], type=int, nargs='+',
+                        help='number of clusters value(s) for CAT LUT building')
+    parser.add_argument('--pca_dim', default=[-1], type=int, nargs='+',
+                        help='PCA dimension(s); use -1 to disable PCA')
     args = parser.parse_args()
 
     seed_all(args.seed)
@@ -249,5 +260,101 @@ if __name__ == '__main__':
     recon_model(qnn, fp_model)
 
     qnn.set_quant_state(weight_quant=True, act_quant=True)
-    print('Full quantization (W{}A{}) accuracy: {}'.format(args.n_bits_w, args.n_bits_a,
-                                                           validate_model(test_loader, qnn)))
+    baseline_acc = validate_model(test_loader, qnn)
+    print('Full quantization (W{}A{}) accuracy: {}'.format(args.n_bits_w, args.n_bits_a, baseline_acc))
+
+    # Extract logits from quantized and full-precision models using a seeded random subset of training data
+    extractor = get_logits(q_model=qnn, fp_model=fp_model, dataloader=train_loader, device=device,
+                           num_samples=args.num_samples, seed=args.seed)
+    print('[Main] Extracting logits from models...')
+    all_q, all_fp = extractor()
+    print(f"[Main] Logits extracted. all_q shape: {tuple(all_q.shape)}, all_fp shape: {tuple(all_fp.shape)}")
+
+    # Build and evaluate CAT cluster-affine corrections across provided configs
+    cat = CAT()
+    alphas = args.alpha if isinstance(args.alpha, list) else [args.alpha]
+    cluster_list = args.num_clusters if isinstance(args.num_clusters, list) else [args.num_clusters]
+    pca_dims = args.pca_dim if isinstance(args.pca_dim, list) else [args.pca_dim]
+
+    # DataFrame to collect all results
+    results = []
+    
+    # Add baseline result (no restoration)
+    results.append({
+        'method': 'no_restoration',
+        'num_clusters': None,
+        'pca_dim': None,
+        'alpha': None,
+        'top1_acc': baseline_acc,
+        'top5_acc': None,  # baseline doesn't report top5
+        'seed': args.seed,
+        'arch': args.arch,
+        'w_bits': args.n_bits_w,
+        'a_bits': args.n_bits_a
+    })
+
+    for num_clusters in cluster_list:
+        for pca_dim in pca_dims:
+            pca_opt = None if (pca_dim is None or int(pca_dim) < 0) else int(pca_dim)
+            print(f"[Main] Building CAT with num_clusters={num_clusters}, pca_dim={pca_opt}")
+            cluster_model, gamma_dict, beta_dict, pca = cat.build_cluster_affine(
+                all_q, all_fp, num_clusters=int(num_clusters), pca_dim=pca_opt
+            )
+            for alpha in alphas:
+                print(f"[Main] Evaluating CAT with alpha={alpha}")
+                top1_acc, top5_acc, _, _, _, _ = cat.evaluate_cluster_affine_with_alpha(
+                    q_model=qnn,
+                    fp_model=fp_model,
+                    cluster_model=cluster_model,
+                    gamma_dict=gamma_dict,
+                    beta_dict=beta_dict,
+                    dataloader=test_loader,
+                    device=device,
+                    pca=pca,
+                    alpha=float(alpha),
+                    plot=False,
+                )
+                
+                # Store result (restoration)
+                results.append({
+                    'method': 'restoration',
+                    'num_clusters': int(num_clusters),
+                    'pca_dim': pca_opt,
+                    'alpha': float(alpha),
+                    'top1_acc': top1_acc,
+                    'top5_acc': top5_acc,
+                    'seed': args.seed,
+                    'arch': args.arch,
+                    'w_bits': args.n_bits_w,
+                    'a_bits': args.n_bits_a
+                })
+
+    # Create DataFrame and print results
+    df = pd.DataFrame(results)
+    print("\n" + "="*80)
+    print("FINAL RESULTS DATAFRAME:")
+    print("="*80)
+    print(df.to_string(index=False))
+    
+    # Save DataFrame to disk
+    import datetime
+    timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
+    filename = f"results_{args.arch}_W{args.n_bits_w}A{args.n_bits_a}_seed{args.seed}_{timestamp}.csv"
+    df.to_csv(filename, index=False)
+    print(f"\n[Main] Results saved to: {filename}")
+    
+    # Print summary statistics
+    print("\n" + "="*80)
+    print("SUMMARY STATISTICS:")
+    print("="*80)
+    
+    # Group by method and configuration, compute stats
+    if len(df) > 1:
+        grouped = df.groupby(['method', 'num_clusters', 'pca_dim', 'alpha'])
+        stats = grouped.agg({
+            'top1_acc': ['mean', 'std', 'count'],
+            'top5_acc': ['mean', 'std', 'count']
+        }).round(4)
+        print(stats)
+    
+    print("\n" + "="*80)
