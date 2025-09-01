@@ -157,6 +157,8 @@ def analyze_results(dataframes: List[Optional[pd.DataFrame]], seeds: List[int]) 
     grouped = combined_df.groupby(['method', 'num_clusters', 'pca_dim', 'alpha'])
     
     results_summary = []
+    baseline_stats = None
+    
     for name, group in grouped:
         method, num_clusters, pca_dim, alpha = name
         
@@ -174,7 +176,7 @@ def analyze_results(dataframes: List[Optional[pd.DataFrame]], seeds: List[int]) 
         else:
             top5_mean = top5_std = top5_count = None
         
-        results_summary.append({
+        result_entry = {
             'method': method,
             'num_clusters': num_clusters,
             'pca_dim': pca_dim,
@@ -185,11 +187,30 @@ def analyze_results(dataframes: List[Optional[pd.DataFrame]], seeds: List[int]) 
             'top5_mean': top5_mean,
             'top5_std': top5_std,
             'top5_count': top5_count
-        })
+        }
+        
+        # Store baseline stats separately
+        if method == 'no_restoration':
+            baseline_stats = result_entry
+        
+        results_summary.append(result_entry)
     
-    # Print summary table
+    # Print baseline statistics first
+    if baseline_stats:
+        print("\n" + "-" * 50)
+        print("BASELINE (NO RESTORATION) STATISTICS:")
+        print("-" * 50)
+        print(f"Top-1 Accuracy: {baseline_stats['top1_mean']:.2f} ± {baseline_stats['top1_std']:.2f} (n={baseline_stats['top1_count']})")
+        if baseline_stats['top5_mean'] is not None:
+            print(f"Top-5 Accuracy: {baseline_stats['top5_mean']:.2f} ± {baseline_stats['top5_std']:.2f} (n={baseline_stats['top5_count']})")
+        else:
+            print("Top-5 Accuracy: N/A")
+        print("-" * 50)
+    
+    # Print summary table for all configurations
     summary_df = pd.DataFrame(results_summary)
     
+    print("\nALL CONFIGURATIONS:")
     print("Configuration\t\t\t\t\tTop-1 Acc\t\tTop-5 Acc")
     print("-" * 100)
     
