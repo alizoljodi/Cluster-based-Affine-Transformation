@@ -145,7 +145,7 @@ def run_one_seed(
     print(f"  {cmd}")
     
     start_time = time.time()
-    proc = subprocess.run(cmd, shell=True, capture_output=True, text=True)
+    proc = os.system(cmd)
     end_time = time.time()
     execution_time = end_time - start_time
     
