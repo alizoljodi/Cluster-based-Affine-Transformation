@@ -99,11 +99,21 @@ def run_one_seed(
     a_bits: int,
     seed: int,
     extra_sleep: float,
+    alpha: List[float],
+    num_clusters: List[int],
+    pca_dim: List[int],
 ) -> Tuple[Optional[pd.DataFrame], int, str]:
     weight, T, lamb_c = arch_hparams(exp_name)
+    
+    # Convert lists to space-separated strings for command line
+    alpha_str = ' '.join(map(str, alpha))
+    clusters_str = ' '.join(map(str, num_clusters))
+    pca_str = ' '.join(map(str, pca_dim))
+    
     cmd = (
         f"python main_imagenet.py --data_path {data_path} --arch {arch} "
-        f"--n_bits_w {w_bits} --n_bits_a {a_bits} --weight {weight} --T {T} --lamb_c {lamb_c} --seed {seed}"
+        f"--n_bits_w {w_bits} --n_bits_a {a_bits} --weight {weight} --T {T} --lamb_c {lamb_c} --seed {seed} "
+        f"--alpha {alpha_str} --num_clusters {clusters_str} --pca_dim {pca_str}"
     )
     print(f"[seed={seed}] Running: {cmd}")
     proc = subprocess.run(cmd, shell=True, capture_output=True, text=True)
@@ -215,6 +225,15 @@ if __name__ == "__main__":
     parser.add_argument("--num_seeds", type=int, default=10)
     parser.add_argument("--start_seed", type=int, default=0)
     parser.add_argument("--sleep", type=float, default=0.5, help="seconds to sleep between runs")
+    
+    # CAT configuration parameters
+    parser.add_argument("--alpha", type=float, nargs='+', default=[0.4], 
+                        help="Alpha blending values for CAT evaluation")
+    parser.add_argument("--num_clusters", type=int, nargs='+', default=[64], 
+                        help="Number of clusters for CAT LUT building")
+    parser.add_argument("--pca_dim", type=int, nargs='+', default=[-1], 
+                        help="PCA dimensions; use -1 to disable PCA")
+    
     args = parser.parse_args()
 
     seeds = list(range(args.start_seed, args.start_seed + args.num_seeds))
@@ -229,6 +248,9 @@ if __name__ == "__main__":
             a_bits=args.a_bits,
             seed=seed,
             extra_sleep=args.sleep,
+            alpha=args.alpha,
+            num_clusters=args.num_clusters,
+            pca_dim=args.pca_dim,
         )
         dataframes.append(df)
 
