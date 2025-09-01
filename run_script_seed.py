@@ -6,7 +6,7 @@ import statistics
 import pandas as pd
 import io
 from typing import Optional, Tuple, List
-
+import os 
 
 ARCH_CHOICES = ['resnet18', 'resnet50', 'mobilenetv2', 'regnetx_600m', 'regnetx_3200m', 'mnasnet']
 
