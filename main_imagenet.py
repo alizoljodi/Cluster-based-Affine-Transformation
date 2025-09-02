@@ -261,6 +261,7 @@ if __name__ == '__main__':
         
         # Prepare model with PFQ wrappers
         replaced_layers = pfq_calibrator.prepare()
+        print(f"PFQ: Replaced {len(replaced_layers)} layers with PFQ wrappers")
         
         # Create calibration dataloader for PFQ
         from torch.utils.data import DataLoader, TensorDataset
@@ -290,6 +291,8 @@ if __name__ == '__main__':
         # Replace the original model with PFQ-calibrated model
         qnn = pfq_model
         print("PFQ: Calibration completed successfully!")
+        print("PFQ: Model structure after calibration:")
+        print(qnn)
         print("="*80)
 
     # Kwargs for weight rounding calibration

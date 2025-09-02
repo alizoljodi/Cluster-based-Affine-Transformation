@@ -16,6 +16,13 @@ class QuantizedLinearWrapper(nn.Module):
     def forward(self, x, use_act_quant=None, use_weight_quant=None):
         if use_act_quant is None: use_act_quant = self.use_act_quant
         if use_weight_quant is None: use_weight_quant = self.use_weight_quant
+        
+        # Ensure quantizers are in training mode for proper initialization
+        if use_act_quant:
+            self.lsq_act.train()
+        if use_weight_quant:
+            self.ada_w.train()
+        
         x_q = self.lsq_act(x) if use_act_quant else x
         w = self.ada_w(self.linear.weight) if use_weight_quant else self.linear.weight
         return F.linear(x_q, w, self.linear.bias)
@@ -36,6 +43,13 @@ class QuantizedConv2dWrapper(nn.Module):
     def forward(self, x, use_act_quant=None, use_weight_quant=None):
         if use_act_quant is None: use_act_quant = self.use_act_quant
         if use_weight_quant is None: use_weight_quant = self.use_weight_quant
+        
+        # Ensure quantizers are in training mode for proper initialization
+        if use_act_quant:
+            self.lsq_act.train()
+        if use_weight_quant:
+            self.ada_w.train()
+        
         x_q = self.lsq_act(x) if use_act_quant else x
         w = self.ada_w(self.conv.weight) if use_weight_quant else self.conv.weight
         return F.conv2d(x_q, w, self.conv.bias, stride=self.conv.stride, padding=self.conv.padding,
