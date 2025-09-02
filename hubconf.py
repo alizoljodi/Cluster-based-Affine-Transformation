@@ -17,12 +17,6 @@ model_path = {
     'reg600m': '/home/tmp/regnet_600m.pth.tar',
     'reg3200m': '/home/tmp/regnet_3200m.pth.tar',
     'mnasnet': '/home/tmp/mnasnet.pth.tar',
-    'vit_small': '/home/tmp/vit_small_imagenet.pth.tar',
-    'vit_base': '/home/tmp/vit_base_imagenet.pth.tar',
-    'swin_small': '/home/tmp/swin_small_imagenet.pth.tar',
-    'swin_base': '/home/tmp/swin_base_imagenet.pth.tar',
-    'deit_small': '/home/tmp/deit_small_imagenet.pth.tar',
-    'deit_tiny': '/home/tmp/deit_tiny_imagenet.pth.tar',
 }
 
 
@@ -81,54 +75,90 @@ def mnasnet(pretrained=False, **kwargs):
 
 
 def vit_small(pretrained=False, **kwargs):
-    # Call the model, load pretrained weights
-    model = _vit_small(**kwargs)
     if pretrained:
-        checkpoint = torch.load(model_path['vit_small'], map_location='cpu')
-        model.load_state_dict(checkpoint)
+        try:
+            # Try to load from timm
+            import timm
+            model = timm.create_model('vit_small_patch16_224', pretrained=True)
+        except ImportError:
+            print("Warning: timm not available, using local implementation")
+            model = _vit_small(**kwargs)
+    else:
+        # Use local implementation
+        model = _vit_small(**kwargs)
     return model
 
 
 def vit_base(pretrained=False, **kwargs):
-    # Call the model, load pretrained weights
-    model = _vit_base(**kwargs)
     if pretrained:
-        checkpoint = torch.load(model_path['vit_base'], map_location='cpu')
-        model.load_state_dict(checkpoint)
+        try:
+            # Try to load from timm
+            import timm
+            model = timm.create_model('vit_base_patch16_224', pretrained=True)
+        except ImportError:
+            print("Warning: timm not available, using local implementation")
+            model = _vit_base(**kwargs)
+    else:
+        # Use local implementation
+        model = _vit_base(**kwargs)
     return model
 
 
 def swin_small(pretrained=False, **kwargs):
-    # Call the model, load pretrained weights
-    model = _swin_small(**kwargs)
     if pretrained:
-        checkpoint = torch.load(model_path['swin_small'], map_location='cpu')
-        model.load_state_dict(checkpoint)
+        try:
+            # Try to load from timm
+            import timm
+            model = timm.create_model('swin_small_patch4_window7_224', pretrained=True)
+        except ImportError:
+            print("Warning: timm not available, using local implementation")
+            model = _swin_small(**kwargs)
+    else:
+        # Use local implementation
+        model = _swin_small(**kwargs)
     return model
 
 
 def swin_base(pretrained=False, **kwargs):
-    # Call the model, load pretrained weights
-    model = _swin_base(**kwargs)
     if pretrained:
-        checkpoint = torch.load(model_path['swin_base'], map_location='cpu')
-        model.load_state_dict(checkpoint)
+        try:
+            # Try to load from timm
+            import timm
+            model = timm.create_model('swin_base_patch4_window7_224', pretrained=True)
+        except ImportError:
+            print("Warning: timm not available, using local implementation")
+            model = _swin_base(**kwargs)
+    else:
+        # Use local implementation
+        model = _swin_base(**kwargs)
     return model
 
 
 def deit_small(pretrained=False, **kwargs):
-    # Call the model, load pretrained weights
-    model = _deit_small(**kwargs)
     if pretrained:
-        checkpoint = torch.load(model_path['deit_small'], map_location='cpu')
-        model.load_state_dict(checkpoint)
+        try:
+            # Try to load from timm
+            import timm
+            model = timm.create_model('deit_small_patch16_224', pretrained=True)
+        except ImportError:
+            print("Warning: timm not available, using local implementation")
+            model = _deit_small(**kwargs)
+    else:
+        # Use local implementation
+        model = _deit_small(**kwargs)
     return model
 
 
 def deit_tiny(pretrained=False, **kwargs):
-    # Call the model, load pretrained weights
-    model = _deit_tiny(**kwargs)
     if pretrained:
-        checkpoint = torch.load(model_path['deit_tiny'], map_location='cpu')
-        model.load_state_dict(checkpoint)
+        try:
+            # Try to load from timm
+            import timm
+            model = timm.create_model('deit_tiny_patch16_224', pretrained=True)
+        except ImportError:
+            print("Warning: timm not available, using local implementation")
+            model = _deit_tiny(**kwargs)
+    else:
+        # Use local implementation
+        model = _deit_tiny(**kwargs)
     return model
