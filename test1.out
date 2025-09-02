@@ -1,4 +1,4 @@
-Starting ResNet18 W2A2 experiment at Tue Sep  2 10:01:37 AM CEST 2025
+Starting ResNet18 W2A2 experiment at Tue Sep  2 10:33:15 AM CEST 2025
 ==> Using Pytorch Dataset
 Setting the first and the last layer to 8-bit
 the quantized model is below!
@@ -199,42 +199,42 @@ QuantModel(
 )
 /home/alz07xz/project/Cluster-based-Affine-Transformation/quant/quant_layer.py:141: UserWarning: _aminmax is deprecated as of PyTorch 1.11 and will be removed in a future release. Use aminmax instead. This warning will only appear once per process. (Triggered internally at /pytorch/aten/src/ATen/native/TensorCompare.cpp:814.)
   x_min, x_max = torch._aminmax(y, 1)
-Test: [  0/782]	Time  1.726 ( 1.726)	Acc@1   0.00 (  0.00)	Acc@5   0.00 (  0.00)
-Test: [100/782]	Time  0.304 ( 0.363)	Acc@1   0.00 (  0.00)	Acc@5   0.00 (  0.00)
-Test: [200/782]	Time  0.018 ( 0.360)	Acc@1   0.00 (  0.00)	Acc@5   0.00 (  0.05)
-Test: [300/782]	Time  0.018 ( 0.350)	Acc@1   0.00 (  0.01)	Acc@5   0.00 (  0.06)
-Test: [400/782]	Time  0.018 ( 0.346)	Acc@1   0.00 (  0.10)	Acc@5   0.00 (  0.39)
-Test: [500/782]	Time  2.227 ( 0.370)	Acc@1   0.00 (  0.12)	Acc@5   0.00 (  0.45)
-Test: [600/782]	Time  0.018 ( 0.361)	Acc@1   0.00 (  0.10)	Acc@5   0.00 (  0.41)
-Test: [700/782]	Time  0.019 ( 0.348)	Acc@1   0.00 (  0.11)	Acc@5   0.00 (  0.49)
+Test: [  0/782]	Time  1.561 ( 1.561)	Acc@1   0.00 (  0.00)	Acc@5   0.00 (  0.00)
+Test: [100/782]	Time  0.018 ( 0.253)	Acc@1   0.00 (  0.00)	Acc@5   0.00 (  0.00)
+Test: [200/782]	Time  0.018 ( 0.271)	Acc@1   0.00 (  0.00)	Acc@5   0.00 (  0.05)
+Test: [300/782]	Time  0.018 ( 0.276)	Acc@1   0.00 (  0.01)	Acc@5   0.00 (  0.06)
+Test: [400/782]	Time  0.018 ( 0.277)	Acc@1   0.00 (  0.10)	Acc@5   0.00 (  0.39)
+Test: [500/782]	Time  0.055 ( 0.268)	Acc@1   0.00 (  0.12)	Acc@5   0.00 (  0.45)
+Test: [600/782]	Time  0.019 ( 0.257)	Acc@1   0.00 (  0.10)	Acc@5   0.00 (  0.41)
+Test: [700/782]	Time  0.018 ( 0.252)	Acc@1   0.00 (  0.11)	Acc@5   0.00 (  0.49)
  * Acc@1 0.104 Acc@5 0.500
 Full quantization (W2A2) accuracy: 0.10399999469518661
 [Main] Extracting logits from models...
-[get_logits] Sampling 1024/1281167 examples from dataset (seed=0).
-[get_logits] Using subset DataLoader: batches=16, batch_size=64.
+[get_logits] Sampling 10/1281167 examples from dataset (seed=0).
+[get_logits] Using subset DataLoader: batches=1, batch_size=64.
 [get_logits] Processed batch 0...
-[get_logits] Extraction complete. Shapes -> all_q: (1024, 1000), all_fp: (1024, 1000)
-[Main] Logits extracted. all_q shape: (1024, 1000), all_fp shape: (1024, 1000)
+[get_logits] Extraction complete. Shapes -> all_q: (10, 1000), all_fp: (10, 1000)
+[Main] Logits extracted. all_q shape: (10, 1000), all_fp shape: (10, 1000)
 [Main] Building CAT with num_clusters=1, pca_dim=1
 [CAT] Building cluster-affine model: num_clusters=1, pca_dim=1.
 [CAT] Applying PCA before clustering...
 [CAT] PCA complete. Reduced dim: 1
 [CAT] KMeans complete. Cluster sizes:
-  - Cluster 0: 1024 samples
+  - Cluster 0: 10 samples
 [CAT] Fitted per-cluster affine parameters (gamma, beta).
 [Main] Evaluating CAT with alpha=0.4
 [CAT] Evaluating with alpha=0.4, plot=False.
-[Alpha=0.40] Top-1 Accuracy: 0.10%
-[Alpha=0.40] Top-5 Accuracy: 0.49%
+[Alpha=0.40] Top-1 Accuracy: 0.12%
+[Alpha=0.40] Top-5 Accuracy: 0.50%
 
 ================================================================================
 FINAL RESULTS DATAFRAME:
 ================================================================================
         method  num_clusters  pca_dim  alpha                        top1_acc  top5_acc  seed     arch  w_bits  a_bits
 no_restoration           NaN      NaN    NaN tensor(0.1040, device='cuda:0')       NaN     0 resnet18       2       2
-   restoration           1.0      1.0    0.4                           0.104      0.49     0 resnet18       2       2
+   restoration           1.0      1.0    0.4                            0.12     0.502     0 resnet18       2       2
 
-[Main] Results saved to: results_resnet18_W2A2_seed0_20250902_100839.csv
+[Main] Results saved to: results_resnet18_W2A2_seed0_20250902_103859.csv
 
 ================================================================================
 SUMMARY STATISTICS:
@@ -242,7 +242,7 @@ SUMMARY STATISTICS:
                                        top1_acc           top5_acc          
                                            mean std count     mean std count
 method      num_clusters pca_dim alpha                                      
-restoration 1.0          1.0     0.4      0.104 NaN     1     0.49 NaN     1
+restoration 1.0          1.0     0.4       0.12 NaN     1    0.502 NaN     1
 
 ================================================================================
 ==> Using Pytorch Dataset
@@ -445,42 +445,42 @@ QuantModel(
 )
 /home/alz07xz/project/Cluster-based-Affine-Transformation/quant/quant_layer.py:141: UserWarning: _aminmax is deprecated as of PyTorch 1.11 and will be removed in a future release. Use aminmax instead. This warning will only appear once per process. (Triggered internally at /pytorch/aten/src/ATen/native/TensorCompare.cpp:814.)
   x_min, x_max = torch._aminmax(y, 1)
-Test: [  0/782]	Time  3.201 ( 3.201)	Acc@1   0.00 (  0.00)	Acc@5   0.00 (  0.00)
-Test: [100/782]	Time  0.018 ( 0.288)	Acc@1   0.00 (  0.00)	Acc@5   0.00 (  0.00)
-Test: [200/782]	Time  0.287 ( 0.287)	Acc@1   0.00 (  0.00)	Acc@5   0.00 (  0.05)
-Test: [300/782]	Time  0.018 ( 0.336)	Acc@1   0.00 (  0.01)	Acc@5   0.00 (  0.06)
-Test: [400/782]	Time  0.018 ( 0.348)	Acc@1   0.00 (  0.10)	Acc@5   0.00 (  0.39)
-Test: [500/782]	Time  0.018 ( 0.365)	Acc@1   0.00 (  0.12)	Acc@5   0.00 (  0.45)
-Test: [600/782]	Time  2.264 ( 0.379)	Acc@1   0.00 (  0.10)	Acc@5   0.00 (  0.41)
-Test: [700/782]	Time  0.018 ( 0.362)	Acc@1   0.00 (  0.11)	Acc@5   0.00 (  0.49)
+Test: [  0/782]	Time  1.624 ( 1.624)	Acc@1   0.00 (  0.00)	Acc@5   0.00 (  0.00)
+Test: [100/782]	Time  0.019 ( 0.274)	Acc@1   0.00 (  0.00)	Acc@5   0.00 (  0.00)
+Test: [200/782]	Time  0.018 ( 0.260)	Acc@1   0.00 (  0.00)	Acc@5   0.00 (  0.05)
+Test: [300/782]	Time  0.244 ( 0.255)	Acc@1   0.00 (  0.01)	Acc@5   0.00 (  0.06)
+Test: [400/782]	Time  0.018 ( 0.254)	Acc@1   0.00 (  0.10)	Acc@5   0.00 (  0.39)
+Test: [500/782]	Time  0.808 ( 0.254)	Acc@1   0.00 (  0.12)	Acc@5   0.00 (  0.45)
+Test: [600/782]	Time  1.115 ( 0.253)	Acc@1   0.00 (  0.10)	Acc@5   0.00 (  0.41)
+Test: [700/782]	Time  0.018 ( 0.252)	Acc@1   0.00 (  0.11)	Acc@5   0.00 (  0.49)
  * Acc@1 0.104 Acc@5 0.500
 Full quantization (W2A2) accuracy: 0.10399999469518661
 [Main] Extracting logits from models...
-[get_logits] Sampling 1024/1281167 examples from dataset (seed=1).
-[get_logits] Using subset DataLoader: batches=16, batch_size=64.
+[get_logits] Sampling 10/1281167 examples from dataset (seed=1).
+[get_logits] Using subset DataLoader: batches=1, batch_size=64.
 [get_logits] Processed batch 0...
-[get_logits] Extraction complete. Shapes -> all_q: (1024, 1000), all_fp: (1024, 1000)
-[Main] Logits extracted. all_q shape: (1024, 1000), all_fp shape: (1024, 1000)
+[get_logits] Extraction complete. Shapes -> all_q: (10, 1000), all_fp: (10, 1000)
+[Main] Logits extracted. all_q shape: (10, 1000), all_fp shape: (10, 1000)
 [Main] Building CAT with num_clusters=1, pca_dim=1
 [CAT] Building cluster-affine model: num_clusters=1, pca_dim=1.
 [CAT] Applying PCA before clustering...
 [CAT] PCA complete. Reduced dim: 1
 [CAT] KMeans complete. Cluster sizes:
-  - Cluster 0: 1024 samples
+  - Cluster 0: 10 samples
 [CAT] Fitted per-cluster affine parameters (gamma, beta).
 [Main] Evaluating CAT with alpha=0.4
 [CAT] Evaluating with alpha=0.4, plot=False.
 [Alpha=0.40] Top-1 Accuracy: 0.11%
-[Alpha=0.40] Top-5 Accuracy: 0.49%
+[Alpha=0.40] Top-5 Accuracy: 0.51%
 
 ================================================================================
 FINAL RESULTS DATAFRAME:
 ================================================================================
         method  num_clusters  pca_dim  alpha                        top1_acc  top5_acc  seed     arch  w_bits  a_bits
 no_restoration           NaN      NaN    NaN tensor(0.1040, device='cuda:0')       NaN     1 resnet18       2       2
-   restoration           1.0      1.0    0.4                           0.108      0.49     1 resnet18       2       2
+   restoration           1.0      1.0    0.4                           0.114     0.514     1 resnet18       2       2
 
-[Main] Results saved to: results_resnet18_W2A2_seed1_20250902_101539.csv
+[Main] Results saved to: results_resnet18_W2A2_seed1_20250902_104443.csv
 
 ================================================================================
 SUMMARY STATISTICS:
@@ -488,7 +488,7 @@ SUMMARY STATISTICS:
                                        top1_acc           top5_acc          
                                            mean std count     mean std count
 method      num_clusters pca_dim alpha                                      
-restoration 1.0          1.0     0.4      0.108 NaN     1     0.49 NaN     1
+restoration 1.0          1.0     0.4      0.114 NaN     1    0.514 NaN     1
 
 ================================================================================
 ==> Using Pytorch Dataset
@@ -691,42 +691,42 @@ QuantModel(
 )
 /home/alz07xz/project/Cluster-based-Affine-Transformation/quant/quant_layer.py:141: UserWarning: _aminmax is deprecated as of PyTorch 1.11 and will be removed in a future release. Use aminmax instead. This warning will only appear once per process. (Triggered internally at /pytorch/aten/src/ATen/native/TensorCompare.cpp:814.)
   x_min, x_max = torch._aminmax(y, 1)
-Test: [  0/782]	Time  1.835 ( 1.835)	Acc@1   0.00 (  0.00)	Acc@5   0.00 (  0.00)
-Test: [100/782]	Time  0.019 ( 0.320)	Acc@1   0.00 (  0.00)	Acc@5   0.00 (  0.00)
-Test: [200/782]	Time  0.018 ( 0.292)	Acc@1   0.00 (  0.00)	Acc@5   0.00 (  0.05)
-Test: [300/782]	Time  0.018 ( 0.307)	Acc@1   0.00 (  0.01)	Acc@5   0.00 (  0.06)
-Test: [400/782]	Time  0.018 ( 0.301)	Acc@1   0.00 (  0.10)	Acc@5   0.00 (  0.39)
-Test: [500/782]	Time  0.616 ( 0.292)	Acc@1   0.00 (  0.12)	Acc@5   0.00 (  0.45)
-Test: [600/782]	Time  0.018 ( 0.294)	Acc@1   0.00 (  0.10)	Acc@5   0.00 (  0.41)
-Test: [700/782]	Time  0.184 ( 0.285)	Acc@1   0.00 (  0.11)	Acc@5   0.00 (  0.49)
+Test: [  0/782]	Time  1.807 ( 1.807)	Acc@1   0.00 (  0.00)	Acc@5   0.00 (  0.00)
+Test: [100/782]	Time  0.827 ( 0.297)	Acc@1   0.00 (  0.00)	Acc@5   0.00 (  0.00)
+Test: [200/782]	Time  0.018 ( 0.291)	Acc@1   0.00 (  0.00)	Acc@5   0.00 (  0.05)
+Test: [300/782]	Time  0.860 ( 0.282)	Acc@1   0.00 (  0.01)	Acc@5   0.00 (  0.06)
+Test: [400/782]	Time  0.019 ( 0.276)	Acc@1   0.00 (  0.10)	Acc@5   0.00 (  0.39)
+Test: [500/782]	Time  0.574 ( 0.275)	Acc@1   0.00 (  0.12)	Acc@5   0.00 (  0.45)
+Test: [600/782]	Time  0.018 ( 0.262)	Acc@1   0.00 (  0.10)	Acc@5   0.00 (  0.41)
+Test: [700/782]	Time  0.592 ( 0.255)	Acc@1   0.00 (  0.11)	Acc@5   0.00 (  0.49)
  * Acc@1 0.104 Acc@5 0.500
 Full quantization (W2A2) accuracy: 0.10399999469518661
 [Main] Extracting logits from models...
-[get_logits] Sampling 1024/1281167 examples from dataset (seed=2).
-[get_logits] Using subset DataLoader: batches=16, batch_size=64.
+[get_logits] Sampling 10/1281167 examples from dataset (seed=2).
+[get_logits] Using subset DataLoader: batches=1, batch_size=64.
 [get_logits] Processed batch 0...
-[get_logits] Extraction complete. Shapes -> all_q: (1024, 1000), all_fp: (1024, 1000)
-[Main] Logits extracted. all_q shape: (1024, 1000), all_fp shape: (1024, 1000)
+[get_logits] Extraction complete. Shapes -> all_q: (10, 1000), all_fp: (10, 1000)
+[Main] Logits extracted. all_q shape: (10, 1000), all_fp shape: (10, 1000)
 [Main] Building CAT with num_clusters=1, pca_dim=1
 [CAT] Building cluster-affine model: num_clusters=1, pca_dim=1.
 [CAT] Applying PCA before clustering...
 [CAT] PCA complete. Reduced dim: 1
 [CAT] KMeans complete. Cluster sizes:
-  - Cluster 0: 1024 samples
+  - Cluster 0: 10 samples
 [CAT] Fitted per-cluster affine parameters (gamma, beta).
 [Main] Evaluating CAT with alpha=0.4
 [CAT] Evaluating with alpha=0.4, plot=False.
-[Alpha=0.40] Top-1 Accuracy: 0.11%
-[Alpha=0.40] Top-5 Accuracy: 0.48%
+[Alpha=0.40] Top-1 Accuracy: 0.12%
+[Alpha=0.40] Top-5 Accuracy: 0.50%
 
 ================================================================================
 FINAL RESULTS DATAFRAME:
 ================================================================================
         method  num_clusters  pca_dim  alpha                        top1_acc  top5_acc  seed     arch  w_bits  a_bits
 no_restoration           NaN      NaN    NaN tensor(0.1040, device='cuda:0')       NaN     2 resnet18       2       2
-   restoration           1.0      1.0    0.4                           0.106     0.484     2 resnet18       2       2
+   restoration           1.0      1.0    0.4                           0.118       0.5     2 resnet18       2       2
 
-[Main] Results saved to: results_resnet18_W2A2_seed2_20250902_102202.csv
+[Main] Results saved to: results_resnet18_W2A2_seed2_20250902_105019.csv
 
 ================================================================================
 SUMMARY STATISTICS:
@@ -734,7 +734,7 @@ SUMMARY STATISTICS:
                                        top1_acc           top5_acc          
                                            mean std count     mean std count
 method      num_clusters pca_dim alpha                                      
-restoration 1.0          1.0     0.4      0.106 NaN     1    0.484 NaN     1
+restoration 1.0          1.0     0.4      0.118 NaN     1      0.5 NaN     1
 
 ================================================================================
 ==> Using Pytorch Dataset
@@ -937,32 +937,32 @@ QuantModel(
 )
 /home/alz07xz/project/Cluster-based-Affine-Transformation/quant/quant_layer.py:141: UserWarning: _aminmax is deprecated as of PyTorch 1.11 and will be removed in a future release. Use aminmax instead. This warning will only appear once per process. (Triggered internally at /pytorch/aten/src/ATen/native/TensorCompare.cpp:814.)
   x_min, x_max = torch._aminmax(y, 1)
-Test: [  0/782]	Time  2.015 ( 2.015)	Acc@1   0.00 (  0.00)	Acc@5   0.00 (  0.00)
-Test: [100/782]	Time  0.018 ( 0.382)	Acc@1   0.00 (  0.00)	Acc@5   0.00 (  0.00)
-Test: [200/782]	Time  0.018 ( 0.351)	Acc@1   0.00 (  0.00)	Acc@5   0.00 (  0.05)
-Test: [300/782]	Time  0.223 ( 0.337)	Acc@1   0.00 (  0.01)	Acc@5   0.00 (  0.06)
-Test: [400/782]	Time  0.020 ( 0.311)	Acc@1   0.00 (  0.10)	Acc@5   0.00 (  0.39)
-Test: [500/782]	Time  0.018 ( 0.305)	Acc@1   0.00 (  0.12)	Acc@5   0.00 (  0.45)
-Test: [600/782]	Time  0.019 ( 0.303)	Acc@1   0.00 (  0.10)	Acc@5   0.00 (  0.41)
-Test: [700/782]	Time  0.018 ( 0.316)	Acc@1   0.00 (  0.11)	Acc@5   0.00 (  0.49)
+Test: [  0/782]	Time  4.962 ( 4.962)	Acc@1   0.00 (  0.00)	Acc@5   0.00 (  0.00)
+Test: [100/782]	Time  1.982 ( 0.644)	Acc@1   0.00 (  0.00)	Acc@5   0.00 (  0.00)
+Test: [200/782]	Time  0.582 ( 0.563)	Acc@1   0.00 (  0.00)	Acc@5   0.00 (  0.05)
+Test: [300/782]	Time  0.911 ( 0.494)	Acc@1   0.00 (  0.01)	Acc@5   0.00 (  0.06)
+Test: [400/782]	Time  0.019 ( 0.494)	Acc@1   0.00 (  0.10)	Acc@5   0.00 (  0.39)
+Test: [500/782]	Time  0.018 ( 0.488)	Acc@1   0.00 (  0.12)	Acc@5   0.00 (  0.45)
+Test: [600/782]	Time  0.018 ( 0.499)	Acc@1   0.00 (  0.10)	Acc@5   0.00 (  0.41)
+Test: [700/782]	Time  0.018 ( 0.487)	Acc@1   0.00 (  0.11)	Acc@5   0.00 (  0.49)
  * Acc@1 0.104 Acc@5 0.500
 Full quantization (W2A2) accuracy: 0.10399999469518661
 [Main] Extracting logits from models...
-[get_logits] Sampling 1024/1281167 examples from dataset (seed=3).
-[get_logits] Using subset DataLoader: batches=16, batch_size=64.
+[get_logits] Sampling 10/1281167 examples from dataset (seed=3).
+[get_logits] Using subset DataLoader: batches=1, batch_size=64.
 [get_logits] Processed batch 0...
-[get_logits] Extraction complete. Shapes -> all_q: (1024, 1000), all_fp: (1024, 1000)
-[Main] Logits extracted. all_q shape: (1024, 1000), all_fp shape: (1024, 1000)
+[get_logits] Extraction complete. Shapes -> all_q: (10, 1000), all_fp: (10, 1000)
+[Main] Logits extracted. all_q shape: (10, 1000), all_fp shape: (10, 1000)
 [Main] Building CAT with num_clusters=1, pca_dim=1
 [CAT] Building cluster-affine model: num_clusters=1, pca_dim=1.
 [CAT] Applying PCA before clustering...
 [CAT] PCA complete. Reduced dim: 1
 [CAT] KMeans complete. Cluster sizes:
-  - Cluster 0: 1024 samples
+  - Cluster 0: 10 samples
 [CAT] Fitted per-cluster affine parameters (gamma, beta).
 [Main] Evaluating CAT with alpha=0.4
 [CAT] Evaluating with alpha=0.4, plot=False.
-[Alpha=0.40] Top-1 Accuracy: 0.11%
+[Alpha=0.40] Top-1 Accuracy: 0.09%
 [Alpha=0.40] Top-5 Accuracy: 0.49%
 
 ================================================================================
@@ -970,9 +970,9 @@ FINAL RESULTS DATAFRAME:
 ================================================================================
         method  num_clusters  pca_dim  alpha                        top1_acc  top5_acc  seed     arch  w_bits  a_bits
 no_restoration           NaN      NaN    NaN tensor(0.1040, device='cuda:0')       NaN     3 resnet18       2       2
-   restoration           1.0      1.0    0.4                           0.108     0.488     3 resnet18       2       2
+   restoration           1.0      1.0    0.4                           0.092     0.492     3 resnet18       2       2
 
-[Main] Results saved to: results_resnet18_W2A2_seed3_20250902_102839.csv
+[Main] Results saved to: results_resnet18_W2A2_seed3_20250902_105932.csv
 
 ================================================================================
 SUMMARY STATISTICS:
@@ -980,7 +980,7 @@ SUMMARY STATISTICS:
                                        top1_acc           top5_acc          
                                            mean std count     mean std count
 method      num_clusters pca_dim alpha                                      
-restoration 1.0          1.0     0.4      0.108 NaN     1    0.488 NaN     1
+restoration 1.0          1.0     0.4      0.092 NaN     1    0.492 NaN     1
 
 ================================================================================
 ==> Using Pytorch Dataset
@@ -1183,4 +1183,1654 @@ QuantModel(
 )
 /home/alz07xz/project/Cluster-based-Affine-Transformation/quant/quant_layer.py:141: UserWarning: _aminmax is deprecated as of PyTorch 1.11 and will be removed in a future release. Use aminmax instead. This warning will only appear once per process. (Triggered internally at /pytorch/aten/src/ATen/native/TensorCompare.cpp:814.)
   x_min, x_max = torch._aminmax(y, 1)
-slurmstepd-jnfat06: error: *** JOB 1607050 ON jnfat06 CANCELLED AT 2025-09-02T10:32:36 ***
+Test: [  0/782]	Time  3.284 ( 3.284)	Acc@1   0.00 (  0.00)	Acc@5   0.00 (  0.00)
+Test: [100/782]	Time  0.719 ( 0.584)	Acc@1   0.00 (  0.00)	Acc@5   0.00 (  0.00)
+Test: [200/782]	Time  0.018 ( 0.505)	Acc@1   0.00 (  0.00)	Acc@5   0.00 (  0.05)
+Test: [300/782]	Time  0.784 ( 0.489)	Acc@1   0.00 (  0.01)	Acc@5   0.00 (  0.06)
+Test: [400/782]	Time  0.018 ( 0.445)	Acc@1   0.00 (  0.10)	Acc@5   0.00 (  0.39)
+Test: [500/782]	Time  0.018 ( 0.439)	Acc@1   0.00 (  0.12)	Acc@5   0.00 (  0.45)
+Test: [600/782]	Time  0.019 ( 0.447)	Acc@1   0.00 (  0.10)	Acc@5   0.00 (  0.41)
+Test: [700/782]	Time  0.018 ( 0.439)	Acc@1   0.00 (  0.11)	Acc@5   0.00 (  0.49)
+ * Acc@1 0.104 Acc@5 0.500
+Full quantization (W2A2) accuracy: 0.10399999469518661
+[Main] Extracting logits from models...
+[get_logits] Sampling 10/1281167 examples from dataset (seed=4).
+[get_logits] Using subset DataLoader: batches=1, batch_size=64.
+[get_logits] Processed batch 0...
+[get_logits] Extraction complete. Shapes -> all_q: (10, 1000), all_fp: (10, 1000)
+[Main] Logits extracted. all_q shape: (10, 1000), all_fp shape: (10, 1000)
+[Main] Building CAT with num_clusters=1, pca_dim=1
+[CAT] Building cluster-affine model: num_clusters=1, pca_dim=1.
+[CAT] Applying PCA before clustering...
+[CAT] PCA complete. Reduced dim: 1
+[CAT] KMeans complete. Cluster sizes:
+  - Cluster 0: 10 samples
+[CAT] Fitted per-cluster affine parameters (gamma, beta).
+[Main] Evaluating CAT with alpha=0.4
+[CAT] Evaluating with alpha=0.4, plot=False.
+[Alpha=0.40] Top-1 Accuracy: 0.10%
+[Alpha=0.40] Top-5 Accuracy: 0.48%
+
+================================================================================
+FINAL RESULTS DATAFRAME:
+================================================================================
+        method  num_clusters  pca_dim  alpha                        top1_acc  top5_acc  seed     arch  w_bits  a_bits
+no_restoration           NaN      NaN    NaN tensor(0.1040, device='cuda:0')       NaN     4 resnet18       2       2
+   restoration           1.0      1.0    0.4                           0.096     0.478     4 resnet18       2       2
+
+[Main] Results saved to: results_resnet18_W2A2_seed4_20250902_110839.csv
+
+================================================================================
+SUMMARY STATISTICS:
+================================================================================
+                                       top1_acc           top5_acc          
+                                           mean std count     mean std count
+method      num_clusters pca_dim alpha                                      
+restoration 1.0          1.0     0.4      0.096 NaN     1    0.478 NaN     1
+
+================================================================================
+==> Using Pytorch Dataset
+Setting the first and the last layer to 8-bit
+the quantized model is below!
+QuantModel(
+  (model): ResNet(
+    (conv1): QuantModule(
+      wbit=8, abit=2, disable_act_quant=False
+      (weight_quantizer): UniformAffineQuantizer(bit=8, is_training=False, inited=True)
+      (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+      (norm_function): StraightThrough()
+      (activation_function): ReLU(inplace=True)
+    )
+    (bn1): StraightThrough()
+    (relu): StraightThrough()
+    (maxpool): MaxPool2d(kernel_size=3, stride=2, padding=1, dilation=1, ceil_mode=False)
+    (layer1): Sequential(
+      (0): QuantBasicBlock(
+        (conv1): QuantModule(
+          wbit=2, abit=2, disable_act_quant=False
+          (weight_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): ReLU(inplace=True)
+        )
+        (conv2): QuantModule(
+          wbit=2, abit=2, disable_act_quant=True
+          (weight_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): StraightThrough()
+        )
+        (activation_function): ReLU(inplace=True)
+        (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+      )
+      (1): QuantBasicBlock(
+        (conv1): QuantModule(
+          wbit=2, abit=2, disable_act_quant=False
+          (weight_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): ReLU(inplace=True)
+        )
+        (conv2): QuantModule(
+          wbit=2, abit=2, disable_act_quant=True
+          (weight_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): StraightThrough()
+        )
+        (activation_function): ReLU(inplace=True)
+        (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+      )
+    )
+    (layer2): Sequential(
+      (0): QuantBasicBlock(
+        (conv1): QuantModule(
+          wbit=2, abit=2, disable_act_quant=False
+          (weight_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): ReLU(inplace=True)
+        )
+        (conv2): QuantModule(
+          wbit=2, abit=2, disable_act_quant=True
+          (weight_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): StraightThrough()
+        )
+        (downsample): QuantModule(
+          wbit=2, abit=2, disable_act_quant=True
+          (weight_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): StraightThrough()
+        )
+        (activation_function): ReLU(inplace=True)
+        (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+      )
+      (1): QuantBasicBlock(
+        (conv1): QuantModule(
+          wbit=2, abit=2, disable_act_quant=False
+          (weight_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): ReLU(inplace=True)
+        )
+        (conv2): QuantModule(
+          wbit=2, abit=2, disable_act_quant=True
+          (weight_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): StraightThrough()
+        )
+        (activation_function): ReLU(inplace=True)
+        (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+      )
+    )
+    (layer3): Sequential(
+      (0): QuantBasicBlock(
+        (conv1): QuantModule(
+          wbit=2, abit=2, disable_act_quant=False
+          (weight_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): ReLU(inplace=True)
+        )
+        (conv2): QuantModule(
+          wbit=2, abit=2, disable_act_quant=True
+          (weight_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): StraightThrough()
+        )
+        (downsample): QuantModule(
+          wbit=2, abit=2, disable_act_quant=True
+          (weight_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): StraightThrough()
+        )
+        (activation_function): ReLU(inplace=True)
+        (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+      )
+      (1): QuantBasicBlock(
+        (conv1): QuantModule(
+          wbit=2, abit=2, disable_act_quant=False
+          (weight_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): ReLU(inplace=True)
+        )
+        (conv2): QuantModule(
+          wbit=2, abit=2, disable_act_quant=True
+          (weight_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): StraightThrough()
+        )
+        (activation_function): ReLU(inplace=True)
+        (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+      )
+    )
+    (layer4): Sequential(
+      (0): QuantBasicBlock(
+        (conv1): QuantModule(
+          wbit=2, abit=2, disable_act_quant=False
+          (weight_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): ReLU(inplace=True)
+        )
+        (conv2): QuantModule(
+          wbit=2, abit=2, disable_act_quant=True
+          (weight_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): StraightThrough()
+        )
+        (downsample): QuantModule(
+          wbit=2, abit=2, disable_act_quant=True
+          (weight_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): StraightThrough()
+        )
+        (activation_function): ReLU(inplace=True)
+        (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+      )
+      (1): QuantBasicBlock(
+        (conv1): QuantModule(
+          wbit=2, abit=2, disable_act_quant=False
+          (weight_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): ReLU(inplace=True)
+        )
+        (conv2): QuantModule(
+          wbit=2, abit=2, disable_act_quant=True
+          (weight_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): StraightThrough()
+        )
+        (activation_function): ReLU(inplace=True)
+        (act_quantizer): UniformAffineQuantizer(bit=8, is_training=False, inited=True)
+      )
+    )
+    (avgpool): AdaptiveAvgPool2d(output_size=(1, 1))
+    (fc): QuantModule(
+      wbit=8, abit=2, disable_act_quant=True
+      (weight_quantizer): UniformAffineQuantizer(bit=8, is_training=False, inited=True)
+      (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+      (norm_function): StraightThrough()
+      (activation_function): StraightThrough()
+    )
+  )
+)
+/home/alz07xz/project/Cluster-based-Affine-Transformation/quant/quant_layer.py:141: UserWarning: _aminmax is deprecated as of PyTorch 1.11 and will be removed in a future release. Use aminmax instead. This warning will only appear once per process. (Triggered internally at /pytorch/aten/src/ATen/native/TensorCompare.cpp:814.)
+  x_min, x_max = torch._aminmax(y, 1)
+Test: [  0/782]	Time  1.704 ( 1.704)	Acc@1   0.00 (  0.00)	Acc@5   0.00 (  0.00)
+Test: [100/782]	Time  0.018 ( 0.340)	Acc@1   0.00 (  0.00)	Acc@5   0.00 (  0.00)
+Test: [200/782]	Time  0.018 ( 0.364)	Acc@1   0.00 (  0.00)	Acc@5   0.00 (  0.05)
+Test: [300/782]	Time  0.019 ( 0.378)	Acc@1   0.00 (  0.01)	Acc@5   0.00 (  0.06)
+Test: [400/782]	Time  0.018 ( 0.367)	Acc@1   0.00 (  0.10)	Acc@5   0.00 (  0.39)
+Test: [500/782]	Time  0.019 ( 0.348)	Acc@1   0.00 (  0.12)	Acc@5   0.00 (  0.45)
+Test: [600/782]	Time  0.018 ( 0.345)	Acc@1   0.00 (  0.10)	Acc@5   0.00 (  0.41)
+Test: [700/782]	Time  0.144 ( 0.338)	Acc@1   0.00 (  0.11)	Acc@5   0.00 (  0.49)
+ * Acc@1 0.104 Acc@5 0.500
+Full quantization (W2A2) accuracy: 0.10399999469518661
+[Main] Extracting logits from models...
+[get_logits] Sampling 10/1281167 examples from dataset (seed=5).
+[get_logits] Using subset DataLoader: batches=1, batch_size=64.
+[get_logits] Processed batch 0...
+[get_logits] Extraction complete. Shapes -> all_q: (10, 1000), all_fp: (10, 1000)
+[Main] Logits extracted. all_q shape: (10, 1000), all_fp shape: (10, 1000)
+[Main] Building CAT with num_clusters=1, pca_dim=1
+[CAT] Building cluster-affine model: num_clusters=1, pca_dim=1.
+[CAT] Applying PCA before clustering...
+[CAT] PCA complete. Reduced dim: 1
+[CAT] KMeans complete. Cluster sizes:
+  - Cluster 0: 10 samples
+[CAT] Fitted per-cluster affine parameters (gamma, beta).
+[Main] Evaluating CAT with alpha=0.4
+[CAT] Evaluating with alpha=0.4, plot=False.
+[Alpha=0.40] Top-1 Accuracy: 0.12%
+[Alpha=0.40] Top-5 Accuracy: 0.49%
+
+================================================================================
+FINAL RESULTS DATAFRAME:
+================================================================================
+        method  num_clusters  pca_dim  alpha                        top1_acc  top5_acc  seed     arch  w_bits  a_bits
+no_restoration           NaN      NaN    NaN tensor(0.1040, device='cuda:0')       NaN     5 resnet18       2       2
+   restoration           1.0      1.0    0.4                           0.118     0.486     5 resnet18       2       2
+
+[Main] Results saved to: results_resnet18_W2A2_seed5_20250902_111556.csv
+
+================================================================================
+SUMMARY STATISTICS:
+================================================================================
+                                       top1_acc           top5_acc          
+                                           mean std count     mean std count
+method      num_clusters pca_dim alpha                                      
+restoration 1.0          1.0     0.4      0.118 NaN     1    0.486 NaN     1
+
+================================================================================
+==> Using Pytorch Dataset
+Setting the first and the last layer to 8-bit
+the quantized model is below!
+QuantModel(
+  (model): ResNet(
+    (conv1): QuantModule(
+      wbit=8, abit=2, disable_act_quant=False
+      (weight_quantizer): UniformAffineQuantizer(bit=8, is_training=False, inited=True)
+      (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+      (norm_function): StraightThrough()
+      (activation_function): ReLU(inplace=True)
+    )
+    (bn1): StraightThrough()
+    (relu): StraightThrough()
+    (maxpool): MaxPool2d(kernel_size=3, stride=2, padding=1, dilation=1, ceil_mode=False)
+    (layer1): Sequential(
+      (0): QuantBasicBlock(
+        (conv1): QuantModule(
+          wbit=2, abit=2, disable_act_quant=False
+          (weight_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): ReLU(inplace=True)
+        )
+        (conv2): QuantModule(
+          wbit=2, abit=2, disable_act_quant=True
+          (weight_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): StraightThrough()
+        )
+        (activation_function): ReLU(inplace=True)
+        (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+      )
+      (1): QuantBasicBlock(
+        (conv1): QuantModule(
+          wbit=2, abit=2, disable_act_quant=False
+          (weight_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): ReLU(inplace=True)
+        )
+        (conv2): QuantModule(
+          wbit=2, abit=2, disable_act_quant=True
+          (weight_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): StraightThrough()
+        )
+        (activation_function): ReLU(inplace=True)
+        (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+      )
+    )
+    (layer2): Sequential(
+      (0): QuantBasicBlock(
+        (conv1): QuantModule(
+          wbit=2, abit=2, disable_act_quant=False
+          (weight_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): ReLU(inplace=True)
+        )
+        (conv2): QuantModule(
+          wbit=2, abit=2, disable_act_quant=True
+          (weight_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): StraightThrough()
+        )
+        (downsample): QuantModule(
+          wbit=2, abit=2, disable_act_quant=True
+          (weight_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): StraightThrough()
+        )
+        (activation_function): ReLU(inplace=True)
+        (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+      )
+      (1): QuantBasicBlock(
+        (conv1): QuantModule(
+          wbit=2, abit=2, disable_act_quant=False
+          (weight_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): ReLU(inplace=True)
+        )
+        (conv2): QuantModule(
+          wbit=2, abit=2, disable_act_quant=True
+          (weight_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): StraightThrough()
+        )
+        (activation_function): ReLU(inplace=True)
+        (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+      )
+    )
+    (layer3): Sequential(
+      (0): QuantBasicBlock(
+        (conv1): QuantModule(
+          wbit=2, abit=2, disable_act_quant=False
+          (weight_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): ReLU(inplace=True)
+        )
+        (conv2): QuantModule(
+          wbit=2, abit=2, disable_act_quant=True
+          (weight_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): StraightThrough()
+        )
+        (downsample): QuantModule(
+          wbit=2, abit=2, disable_act_quant=True
+          (weight_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): StraightThrough()
+        )
+        (activation_function): ReLU(inplace=True)
+        (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+      )
+      (1): QuantBasicBlock(
+        (conv1): QuantModule(
+          wbit=2, abit=2, disable_act_quant=False
+          (weight_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): ReLU(inplace=True)
+        )
+        (conv2): QuantModule(
+          wbit=2, abit=2, disable_act_quant=True
+          (weight_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): StraightThrough()
+        )
+        (activation_function): ReLU(inplace=True)
+        (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+      )
+    )
+    (layer4): Sequential(
+      (0): QuantBasicBlock(
+        (conv1): QuantModule(
+          wbit=2, abit=2, disable_act_quant=False
+          (weight_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): ReLU(inplace=True)
+        )
+        (conv2): QuantModule(
+          wbit=2, abit=2, disable_act_quant=True
+          (weight_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): StraightThrough()
+        )
+        (downsample): QuantModule(
+          wbit=2, abit=2, disable_act_quant=True
+          (weight_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): StraightThrough()
+        )
+        (activation_function): ReLU(inplace=True)
+        (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+      )
+      (1): QuantBasicBlock(
+        (conv1): QuantModule(
+          wbit=2, abit=2, disable_act_quant=False
+          (weight_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): ReLU(inplace=True)
+        )
+        (conv2): QuantModule(
+          wbit=2, abit=2, disable_act_quant=True
+          (weight_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): StraightThrough()
+        )
+        (activation_function): ReLU(inplace=True)
+        (act_quantizer): UniformAffineQuantizer(bit=8, is_training=False, inited=True)
+      )
+    )
+    (avgpool): AdaptiveAvgPool2d(output_size=(1, 1))
+    (fc): QuantModule(
+      wbit=8, abit=2, disable_act_quant=True
+      (weight_quantizer): UniformAffineQuantizer(bit=8, is_training=False, inited=True)
+      (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+      (norm_function): StraightThrough()
+      (activation_function): StraightThrough()
+    )
+  )
+)
+/home/alz07xz/project/Cluster-based-Affine-Transformation/quant/quant_layer.py:141: UserWarning: _aminmax is deprecated as of PyTorch 1.11 and will be removed in a future release. Use aminmax instead. This warning will only appear once per process. (Triggered internally at /pytorch/aten/src/ATen/native/TensorCompare.cpp:814.)
+  x_min, x_max = torch._aminmax(y, 1)
+Test: [  0/782]	Time  1.533 ( 1.533)	Acc@1   0.00 (  0.00)	Acc@5   0.00 (  0.00)
+Test: [100/782]	Time  0.018 ( 0.400)	Acc@1   0.00 (  0.00)	Acc@5   0.00 (  0.00)
+Test: [200/782]	Time  0.534 ( 0.361)	Acc@1   0.00 (  0.00)	Acc@5   0.00 (  0.05)
+Test: [300/782]	Time  1.090 ( 0.393)	Acc@1   0.00 (  0.01)	Acc@5   0.00 (  0.06)
+Test: [400/782]	Time  0.018 ( 0.363)	Acc@1   0.00 (  0.10)	Acc@5   0.00 (  0.39)
+Test: [500/782]	Time  2.210 ( 0.354)	Acc@1   0.00 (  0.12)	Acc@5   0.00 (  0.45)
+Test: [600/782]	Time  0.205 ( 0.346)	Acc@1   0.00 (  0.10)	Acc@5   0.00 (  0.41)
+Test: [700/782]	Time  0.018 ( 0.336)	Acc@1   0.00 (  0.11)	Acc@5   0.00 (  0.49)
+ * Acc@1 0.104 Acc@5 0.500
+Full quantization (W2A2) accuracy: 0.10399999469518661
+[Main] Extracting logits from models...
+[get_logits] Sampling 10/1281167 examples from dataset (seed=6).
+[get_logits] Using subset DataLoader: batches=1, batch_size=64.
+[get_logits] Processed batch 0...
+[get_logits] Extraction complete. Shapes -> all_q: (10, 1000), all_fp: (10, 1000)
+[Main] Logits extracted. all_q shape: (10, 1000), all_fp shape: (10, 1000)
+[Main] Building CAT with num_clusters=1, pca_dim=1
+[CAT] Building cluster-affine model: num_clusters=1, pca_dim=1.
+[CAT] Applying PCA before clustering...
+[CAT] PCA complete. Reduced dim: 1
+[CAT] KMeans complete. Cluster sizes:
+  - Cluster 0: 10 samples
+[CAT] Fitted per-cluster affine parameters (gamma, beta).
+[Main] Evaluating CAT with alpha=0.4
+[CAT] Evaluating with alpha=0.4, plot=False.
+[Alpha=0.40] Top-1 Accuracy: 0.12%
+[Alpha=0.40] Top-5 Accuracy: 0.55%
+
+================================================================================
+FINAL RESULTS DATAFRAME:
+================================================================================
+        method  num_clusters  pca_dim  alpha                        top1_acc  top5_acc  seed     arch  w_bits  a_bits
+no_restoration           NaN      NaN    NaN tensor(0.1040, device='cuda:0')       NaN     6 resnet18       2       2
+   restoration           1.0      1.0    0.4                           0.122     0.548     6 resnet18       2       2
+
+[Main] Results saved to: results_resnet18_W2A2_seed6_20250902_112247.csv
+
+================================================================================
+SUMMARY STATISTICS:
+================================================================================
+                                       top1_acc           top5_acc          
+                                           mean std count     mean std count
+method      num_clusters pca_dim alpha                                      
+restoration 1.0          1.0     0.4      0.122 NaN     1    0.548 NaN     1
+
+================================================================================
+==> Using Pytorch Dataset
+Setting the first and the last layer to 8-bit
+the quantized model is below!
+QuantModel(
+  (model): ResNet(
+    (conv1): QuantModule(
+      wbit=8, abit=2, disable_act_quant=False
+      (weight_quantizer): UniformAffineQuantizer(bit=8, is_training=False, inited=True)
+      (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+      (norm_function): StraightThrough()
+      (activation_function): ReLU(inplace=True)
+    )
+    (bn1): StraightThrough()
+    (relu): StraightThrough()
+    (maxpool): MaxPool2d(kernel_size=3, stride=2, padding=1, dilation=1, ceil_mode=False)
+    (layer1): Sequential(
+      (0): QuantBasicBlock(
+        (conv1): QuantModule(
+          wbit=2, abit=2, disable_act_quant=False
+          (weight_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): ReLU(inplace=True)
+        )
+        (conv2): QuantModule(
+          wbit=2, abit=2, disable_act_quant=True
+          (weight_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): StraightThrough()
+        )
+        (activation_function): ReLU(inplace=True)
+        (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+      )
+      (1): QuantBasicBlock(
+        (conv1): QuantModule(
+          wbit=2, abit=2, disable_act_quant=False
+          (weight_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): ReLU(inplace=True)
+        )
+        (conv2): QuantModule(
+          wbit=2, abit=2, disable_act_quant=True
+          (weight_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): StraightThrough()
+        )
+        (activation_function): ReLU(inplace=True)
+        (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+      )
+    )
+    (layer2): Sequential(
+      (0): QuantBasicBlock(
+        (conv1): QuantModule(
+          wbit=2, abit=2, disable_act_quant=False
+          (weight_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): ReLU(inplace=True)
+        )
+        (conv2): QuantModule(
+          wbit=2, abit=2, disable_act_quant=True
+          (weight_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): StraightThrough()
+        )
+        (downsample): QuantModule(
+          wbit=2, abit=2, disable_act_quant=True
+          (weight_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): StraightThrough()
+        )
+        (activation_function): ReLU(inplace=True)
+        (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+      )
+      (1): QuantBasicBlock(
+        (conv1): QuantModule(
+          wbit=2, abit=2, disable_act_quant=False
+          (weight_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): ReLU(inplace=True)
+        )
+        (conv2): QuantModule(
+          wbit=2, abit=2, disable_act_quant=True
+          (weight_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): StraightThrough()
+        )
+        (activation_function): ReLU(inplace=True)
+        (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+      )
+    )
+    (layer3): Sequential(
+      (0): QuantBasicBlock(
+        (conv1): QuantModule(
+          wbit=2, abit=2, disable_act_quant=False
+          (weight_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): ReLU(inplace=True)
+        )
+        (conv2): QuantModule(
+          wbit=2, abit=2, disable_act_quant=True
+          (weight_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): StraightThrough()
+        )
+        (downsample): QuantModule(
+          wbit=2, abit=2, disable_act_quant=True
+          (weight_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): StraightThrough()
+        )
+        (activation_function): ReLU(inplace=True)
+        (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+      )
+      (1): QuantBasicBlock(
+        (conv1): QuantModule(
+          wbit=2, abit=2, disable_act_quant=False
+          (weight_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): ReLU(inplace=True)
+        )
+        (conv2): QuantModule(
+          wbit=2, abit=2, disable_act_quant=True
+          (weight_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): StraightThrough()
+        )
+        (activation_function): ReLU(inplace=True)
+        (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+      )
+    )
+    (layer4): Sequential(
+      (0): QuantBasicBlock(
+        (conv1): QuantModule(
+          wbit=2, abit=2, disable_act_quant=False
+          (weight_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): ReLU(inplace=True)
+        )
+        (conv2): QuantModule(
+          wbit=2, abit=2, disable_act_quant=True
+          (weight_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): StraightThrough()
+        )
+        (downsample): QuantModule(
+          wbit=2, abit=2, disable_act_quant=True
+          (weight_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): StraightThrough()
+        )
+        (activation_function): ReLU(inplace=True)
+        (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+      )
+      (1): QuantBasicBlock(
+        (conv1): QuantModule(
+          wbit=2, abit=2, disable_act_quant=False
+          (weight_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): ReLU(inplace=True)
+        )
+        (conv2): QuantModule(
+          wbit=2, abit=2, disable_act_quant=True
+          (weight_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): StraightThrough()
+        )
+        (activation_function): ReLU(inplace=True)
+        (act_quantizer): UniformAffineQuantizer(bit=8, is_training=False, inited=True)
+      )
+    )
+    (avgpool): AdaptiveAvgPool2d(output_size=(1, 1))
+    (fc): QuantModule(
+      wbit=8, abit=2, disable_act_quant=True
+      (weight_quantizer): UniformAffineQuantizer(bit=8, is_training=False, inited=True)
+      (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+      (norm_function): StraightThrough()
+      (activation_function): StraightThrough()
+    )
+  )
+)
+/home/alz07xz/project/Cluster-based-Affine-Transformation/quant/quant_layer.py:141: UserWarning: _aminmax is deprecated as of PyTorch 1.11 and will be removed in a future release. Use aminmax instead. This warning will only appear once per process. (Triggered internally at /pytorch/aten/src/ATen/native/TensorCompare.cpp:814.)
+  x_min, x_max = torch._aminmax(y, 1)
+Test: [  0/782]	Time  2.761 ( 2.761)	Acc@1   0.00 (  0.00)	Acc@5   0.00 (  0.00)
+Test: [100/782]	Time  0.018 ( 0.343)	Acc@1   0.00 (  0.00)	Acc@5   0.00 (  0.00)
+Test: [200/782]	Time  0.018 ( 0.338)	Acc@1   0.00 (  0.00)	Acc@5   0.00 (  0.05)
+Test: [300/782]	Time  0.405 ( 0.330)	Acc@1   0.00 (  0.01)	Acc@5   0.00 (  0.06)
+Test: [400/782]	Time  0.286 ( 0.303)	Acc@1   0.00 (  0.10)	Acc@5   0.00 (  0.39)
+Test: [500/782]	Time  0.018 ( 0.295)	Acc@1   0.00 (  0.12)	Acc@5   0.00 (  0.45)
+Test: [600/782]	Time  0.018 ( 0.285)	Acc@1   0.00 (  0.10)	Acc@5   0.00 (  0.41)
+Test: [700/782]	Time  0.018 ( 0.286)	Acc@1   0.00 (  0.11)	Acc@5   0.00 (  0.49)
+ * Acc@1 0.104 Acc@5 0.500
+Full quantization (W2A2) accuracy: 0.10399999469518661
+[Main] Extracting logits from models...
+[get_logits] Sampling 10/1281167 examples from dataset (seed=7).
+[get_logits] Using subset DataLoader: batches=1, batch_size=64.
+[get_logits] Processed batch 0...
+[get_logits] Extraction complete. Shapes -> all_q: (10, 1000), all_fp: (10, 1000)
+[Main] Logits extracted. all_q shape: (10, 1000), all_fp shape: (10, 1000)
+[Main] Building CAT with num_clusters=1, pca_dim=1
+[CAT] Building cluster-affine model: num_clusters=1, pca_dim=1.
+[CAT] Applying PCA before clustering...
+[CAT] PCA complete. Reduced dim: 1
+[CAT] KMeans complete. Cluster sizes:
+  - Cluster 0: 10 samples
+[CAT] Fitted per-cluster affine parameters (gamma, beta).
+[Main] Evaluating CAT with alpha=0.4
+[CAT] Evaluating with alpha=0.4, plot=False.
+[Alpha=0.40] Top-1 Accuracy: 0.11%
+[Alpha=0.40] Top-5 Accuracy: 0.47%
+
+================================================================================
+FINAL RESULTS DATAFRAME:
+================================================================================
+        method  num_clusters  pca_dim  alpha                        top1_acc  top5_acc  seed     arch  w_bits  a_bits
+no_restoration           NaN      NaN    NaN tensor(0.1040, device='cuda:0')       NaN     7 resnet18       2       2
+   restoration           1.0      1.0    0.4                            0.11     0.468     7 resnet18       2       2
+
+[Main] Results saved to: results_resnet18_W2A2_seed7_20250902_112901.csv
+
+================================================================================
+SUMMARY STATISTICS:
+================================================================================
+                                       top1_acc           top5_acc          
+                                           mean std count     mean std count
+method      num_clusters pca_dim alpha                                      
+restoration 1.0          1.0     0.4       0.11 NaN     1    0.468 NaN     1
+
+================================================================================
+==> Using Pytorch Dataset
+Setting the first and the last layer to 8-bit
+the quantized model is below!
+QuantModel(
+  (model): ResNet(
+    (conv1): QuantModule(
+      wbit=8, abit=2, disable_act_quant=False
+      (weight_quantizer): UniformAffineQuantizer(bit=8, is_training=False, inited=True)
+      (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+      (norm_function): StraightThrough()
+      (activation_function): ReLU(inplace=True)
+    )
+    (bn1): StraightThrough()
+    (relu): StraightThrough()
+    (maxpool): MaxPool2d(kernel_size=3, stride=2, padding=1, dilation=1, ceil_mode=False)
+    (layer1): Sequential(
+      (0): QuantBasicBlock(
+        (conv1): QuantModule(
+          wbit=2, abit=2, disable_act_quant=False
+          (weight_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): ReLU(inplace=True)
+        )
+        (conv2): QuantModule(
+          wbit=2, abit=2, disable_act_quant=True
+          (weight_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): StraightThrough()
+        )
+        (activation_function): ReLU(inplace=True)
+        (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+      )
+      (1): QuantBasicBlock(
+        (conv1): QuantModule(
+          wbit=2, abit=2, disable_act_quant=False
+          (weight_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): ReLU(inplace=True)
+        )
+        (conv2): QuantModule(
+          wbit=2, abit=2, disable_act_quant=True
+          (weight_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): StraightThrough()
+        )
+        (activation_function): ReLU(inplace=True)
+        (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+      )
+    )
+    (layer2): Sequential(
+      (0): QuantBasicBlock(
+        (conv1): QuantModule(
+          wbit=2, abit=2, disable_act_quant=False
+          (weight_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): ReLU(inplace=True)
+        )
+        (conv2): QuantModule(
+          wbit=2, abit=2, disable_act_quant=True
+          (weight_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): StraightThrough()
+        )
+        (downsample): QuantModule(
+          wbit=2, abit=2, disable_act_quant=True
+          (weight_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): StraightThrough()
+        )
+        (activation_function): ReLU(inplace=True)
+        (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+      )
+      (1): QuantBasicBlock(
+        (conv1): QuantModule(
+          wbit=2, abit=2, disable_act_quant=False
+          (weight_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): ReLU(inplace=True)
+        )
+        (conv2): QuantModule(
+          wbit=2, abit=2, disable_act_quant=True
+          (weight_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): StraightThrough()
+        )
+        (activation_function): ReLU(inplace=True)
+        (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+      )
+    )
+    (layer3): Sequential(
+      (0): QuantBasicBlock(
+        (conv1): QuantModule(
+          wbit=2, abit=2, disable_act_quant=False
+          (weight_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): ReLU(inplace=True)
+        )
+        (conv2): QuantModule(
+          wbit=2, abit=2, disable_act_quant=True
+          (weight_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): StraightThrough()
+        )
+        (downsample): QuantModule(
+          wbit=2, abit=2, disable_act_quant=True
+          (weight_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): StraightThrough()
+        )
+        (activation_function): ReLU(inplace=True)
+        (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+      )
+      (1): QuantBasicBlock(
+        (conv1): QuantModule(
+          wbit=2, abit=2, disable_act_quant=False
+          (weight_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): ReLU(inplace=True)
+        )
+        (conv2): QuantModule(
+          wbit=2, abit=2, disable_act_quant=True
+          (weight_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): StraightThrough()
+        )
+        (activation_function): ReLU(inplace=True)
+        (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+      )
+    )
+    (layer4): Sequential(
+      (0): QuantBasicBlock(
+        (conv1): QuantModule(
+          wbit=2, abit=2, disable_act_quant=False
+          (weight_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): ReLU(inplace=True)
+        )
+        (conv2): QuantModule(
+          wbit=2, abit=2, disable_act_quant=True
+          (weight_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): StraightThrough()
+        )
+        (downsample): QuantModule(
+          wbit=2, abit=2, disable_act_quant=True
+          (weight_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): StraightThrough()
+        )
+        (activation_function): ReLU(inplace=True)
+        (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+      )
+      (1): QuantBasicBlock(
+        (conv1): QuantModule(
+          wbit=2, abit=2, disable_act_quant=False
+          (weight_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): ReLU(inplace=True)
+        )
+        (conv2): QuantModule(
+          wbit=2, abit=2, disable_act_quant=True
+          (weight_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): StraightThrough()
+        )
+        (activation_function): ReLU(inplace=True)
+        (act_quantizer): UniformAffineQuantizer(bit=8, is_training=False, inited=True)
+      )
+    )
+    (avgpool): AdaptiveAvgPool2d(output_size=(1, 1))
+    (fc): QuantModule(
+      wbit=8, abit=2, disable_act_quant=True
+      (weight_quantizer): UniformAffineQuantizer(bit=8, is_training=False, inited=True)
+      (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+      (norm_function): StraightThrough()
+      (activation_function): StraightThrough()
+    )
+  )
+)
+/home/alz07xz/project/Cluster-based-Affine-Transformation/quant/quant_layer.py:141: UserWarning: _aminmax is deprecated as of PyTorch 1.11 and will be removed in a future release. Use aminmax instead. This warning will only appear once per process. (Triggered internally at /pytorch/aten/src/ATen/native/TensorCompare.cpp:814.)
+  x_min, x_max = torch._aminmax(y, 1)
+Test: [  0/782]	Time  1.956 ( 1.956)	Acc@1   0.00 (  0.00)	Acc@5   0.00 (  0.00)
+Test: [100/782]	Time  0.018 ( 0.269)	Acc@1   0.00 (  0.00)	Acc@5   0.00 (  0.00)
+Test: [200/782]	Time  0.019 ( 0.292)	Acc@1   0.00 (  0.00)	Acc@5   0.00 (  0.05)
+Test: [300/782]	Time  0.893 ( 0.288)	Acc@1   0.00 (  0.01)	Acc@5   0.00 (  0.06)
+Test: [400/782]	Time  0.018 ( 0.294)	Acc@1   0.00 (  0.10)	Acc@5   0.00 (  0.39)
+Test: [500/782]	Time  1.118 ( 0.297)	Acc@1   0.00 (  0.12)	Acc@5   0.00 (  0.45)
+Test: [600/782]	Time  0.278 ( 0.297)	Acc@1   0.00 (  0.10)	Acc@5   0.00 (  0.41)
+Test: [700/782]	Time  0.018 ( 0.299)	Acc@1   0.00 (  0.11)	Acc@5   0.00 (  0.49)
+ * Acc@1 0.104 Acc@5 0.500
+Full quantization (W2A2) accuracy: 0.10399999469518661
+[Main] Extracting logits from models...
+[get_logits] Sampling 10/1281167 examples from dataset (seed=8).
+[get_logits] Using subset DataLoader: batches=1, batch_size=64.
+[get_logits] Processed batch 0...
+[get_logits] Extraction complete. Shapes -> all_q: (10, 1000), all_fp: (10, 1000)
+[Main] Logits extracted. all_q shape: (10, 1000), all_fp shape: (10, 1000)
+[Main] Building CAT with num_clusters=1, pca_dim=1
+[CAT] Building cluster-affine model: num_clusters=1, pca_dim=1.
+[CAT] Applying PCA before clustering...
+[CAT] PCA complete. Reduced dim: 1
+[CAT] KMeans complete. Cluster sizes:
+  - Cluster 0: 10 samples
+[CAT] Fitted per-cluster affine parameters (gamma, beta).
+[Main] Evaluating CAT with alpha=0.4
+[CAT] Evaluating with alpha=0.4, plot=False.
+[Alpha=0.40] Top-1 Accuracy: 0.11%
+[Alpha=0.40] Top-5 Accuracy: 0.51%
+
+================================================================================
+FINAL RESULTS DATAFRAME:
+================================================================================
+        method  num_clusters  pca_dim  alpha                        top1_acc  top5_acc  seed     arch  w_bits  a_bits
+no_restoration           NaN      NaN    NaN tensor(0.1040, device='cuda:0')       NaN     8 resnet18       2       2
+   restoration           1.0      1.0    0.4                           0.114     0.508     8 resnet18       2       2
+
+[Main] Results saved to: results_resnet18_W2A2_seed8_20250902_113533.csv
+
+================================================================================
+SUMMARY STATISTICS:
+================================================================================
+                                       top1_acc           top5_acc          
+                                           mean std count     mean std count
+method      num_clusters pca_dim alpha                                      
+restoration 1.0          1.0     0.4      0.114 NaN     1    0.508 NaN     1
+
+================================================================================
+==> Using Pytorch Dataset
+Setting the first and the last layer to 8-bit
+the quantized model is below!
+QuantModel(
+  (model): ResNet(
+    (conv1): QuantModule(
+      wbit=8, abit=2, disable_act_quant=False
+      (weight_quantizer): UniformAffineQuantizer(bit=8, is_training=False, inited=True)
+      (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+      (norm_function): StraightThrough()
+      (activation_function): ReLU(inplace=True)
+    )
+    (bn1): StraightThrough()
+    (relu): StraightThrough()
+    (maxpool): MaxPool2d(kernel_size=3, stride=2, padding=1, dilation=1, ceil_mode=False)
+    (layer1): Sequential(
+      (0): QuantBasicBlock(
+        (conv1): QuantModule(
+          wbit=2, abit=2, disable_act_quant=False
+          (weight_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): ReLU(inplace=True)
+        )
+        (conv2): QuantModule(
+          wbit=2, abit=2, disable_act_quant=True
+          (weight_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): StraightThrough()
+        )
+        (activation_function): ReLU(inplace=True)
+        (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+      )
+      (1): QuantBasicBlock(
+        (conv1): QuantModule(
+          wbit=2, abit=2, disable_act_quant=False
+          (weight_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): ReLU(inplace=True)
+        )
+        (conv2): QuantModule(
+          wbit=2, abit=2, disable_act_quant=True
+          (weight_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): StraightThrough()
+        )
+        (activation_function): ReLU(inplace=True)
+        (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+      )
+    )
+    (layer2): Sequential(
+      (0): QuantBasicBlock(
+        (conv1): QuantModule(
+          wbit=2, abit=2, disable_act_quant=False
+          (weight_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): ReLU(inplace=True)
+        )
+        (conv2): QuantModule(
+          wbit=2, abit=2, disable_act_quant=True
+          (weight_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): StraightThrough()
+        )
+        (downsample): QuantModule(
+          wbit=2, abit=2, disable_act_quant=True
+          (weight_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): StraightThrough()
+        )
+        (activation_function): ReLU(inplace=True)
+        (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+      )
+      (1): QuantBasicBlock(
+        (conv1): QuantModule(
+          wbit=2, abit=2, disable_act_quant=False
+          (weight_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): ReLU(inplace=True)
+        )
+        (conv2): QuantModule(
+          wbit=2, abit=2, disable_act_quant=True
+          (weight_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): StraightThrough()
+        )
+        (activation_function): ReLU(inplace=True)
+        (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+      )
+    )
+    (layer3): Sequential(
+      (0): QuantBasicBlock(
+        (conv1): QuantModule(
+          wbit=2, abit=2, disable_act_quant=False
+          (weight_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): ReLU(inplace=True)
+        )
+        (conv2): QuantModule(
+          wbit=2, abit=2, disable_act_quant=True
+          (weight_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): StraightThrough()
+        )
+        (downsample): QuantModule(
+          wbit=2, abit=2, disable_act_quant=True
+          (weight_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): StraightThrough()
+        )
+        (activation_function): ReLU(inplace=True)
+        (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+      )
+      (1): QuantBasicBlock(
+        (conv1): QuantModule(
+          wbit=2, abit=2, disable_act_quant=False
+          (weight_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): ReLU(inplace=True)
+        )
+        (conv2): QuantModule(
+          wbit=2, abit=2, disable_act_quant=True
+          (weight_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): StraightThrough()
+        )
+        (activation_function): ReLU(inplace=True)
+        (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+      )
+    )
+    (layer4): Sequential(
+      (0): QuantBasicBlock(
+        (conv1): QuantModule(
+          wbit=2, abit=2, disable_act_quant=False
+          (weight_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): ReLU(inplace=True)
+        )
+        (conv2): QuantModule(
+          wbit=2, abit=2, disable_act_quant=True
+          (weight_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): StraightThrough()
+        )
+        (downsample): QuantModule(
+          wbit=2, abit=2, disable_act_quant=True
+          (weight_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): StraightThrough()
+        )
+        (activation_function): ReLU(inplace=True)
+        (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+      )
+      (1): QuantBasicBlock(
+        (conv1): QuantModule(
+          wbit=2, abit=2, disable_act_quant=False
+          (weight_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): ReLU(inplace=True)
+        )
+        (conv2): QuantModule(
+          wbit=2, abit=2, disable_act_quant=True
+          (weight_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): StraightThrough()
+        )
+        (activation_function): ReLU(inplace=True)
+        (act_quantizer): UniformAffineQuantizer(bit=8, is_training=False, inited=True)
+      )
+    )
+    (avgpool): AdaptiveAvgPool2d(output_size=(1, 1))
+    (fc): QuantModule(
+      wbit=8, abit=2, disable_act_quant=True
+      (weight_quantizer): UniformAffineQuantizer(bit=8, is_training=False, inited=True)
+      (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+      (norm_function): StraightThrough()
+      (activation_function): StraightThrough()
+    )
+  )
+)
+/home/alz07xz/project/Cluster-based-Affine-Transformation/quant/quant_layer.py:141: UserWarning: _aminmax is deprecated as of PyTorch 1.11 and will be removed in a future release. Use aminmax instead. This warning will only appear once per process. (Triggered internally at /pytorch/aten/src/ATen/native/TensorCompare.cpp:814.)
+  x_min, x_max = torch._aminmax(y, 1)
+Test: [  0/782]	Time  3.223 ( 3.223)	Acc@1   0.00 (  0.00)	Acc@5   0.00 (  0.00)
+Test: [100/782]	Time  0.018 ( 0.258)	Acc@1   0.00 (  0.00)	Acc@5   0.00 (  0.00)
+Test: [200/782]	Time  0.018 ( 0.242)	Acc@1   0.00 (  0.00)	Acc@5   0.00 (  0.05)
+Test: [300/782]	Time  0.575 ( 0.240)	Acc@1   0.00 (  0.01)	Acc@5   0.00 (  0.06)
+Test: [400/782]	Time  0.018 ( 0.253)	Acc@1   0.00 (  0.10)	Acc@5   0.00 (  0.39)
+Test: [500/782]	Time  0.018 ( 0.272)	Acc@1   0.00 (  0.12)	Acc@5   0.00 (  0.45)
+Test: [600/782]	Time  0.018 ( 0.275)	Acc@1   0.00 (  0.10)	Acc@5   0.00 (  0.41)
+Test: [700/782]	Time  0.018 ( 0.267)	Acc@1   0.00 (  0.11)	Acc@5   0.00 (  0.49)
+ * Acc@1 0.104 Acc@5 0.500
+Full quantization (W2A2) accuracy: 0.10399999469518661
+[Main] Extracting logits from models...
+[get_logits] Sampling 10/1281167 examples from dataset (seed=9).
+[get_logits] Using subset DataLoader: batches=1, batch_size=64.
+[get_logits] Processed batch 0...
+[get_logits] Extraction complete. Shapes -> all_q: (10, 1000), all_fp: (10, 1000)
+[Main] Logits extracted. all_q shape: (10, 1000), all_fp shape: (10, 1000)
+[Main] Building CAT with num_clusters=1, pca_dim=1
+[CAT] Building cluster-affine model: num_clusters=1, pca_dim=1.
+[CAT] Applying PCA before clustering...
+[CAT] PCA complete. Reduced dim: 1
+[CAT] KMeans complete. Cluster sizes:
+  - Cluster 0: 10 samples
+[CAT] Fitted per-cluster affine parameters (gamma, beta).
+[Main] Evaluating CAT with alpha=0.4
+[CAT] Evaluating with alpha=0.4, plot=False.
+[Alpha=0.40] Top-1 Accuracy: 0.10%
+[Alpha=0.40] Top-5 Accuracy: 0.48%
+
+================================================================================
+FINAL RESULTS DATAFRAME:
+================================================================================
+        method  num_clusters  pca_dim  alpha                        top1_acc  top5_acc  seed     arch  w_bits  a_bits
+no_restoration           NaN      NaN    NaN tensor(0.1040, device='cuda:0')       NaN     9 resnet18       2       2
+   restoration           1.0      1.0    0.4                           0.096     0.484     9 resnet18       2       2
+
+[Main] Results saved to: results_resnet18_W2A2_seed9_20250902_114131.csv
+
+================================================================================
+SUMMARY STATISTICS:
+================================================================================
+                                       top1_acc           top5_acc          
+                                           mean std count     mean std count
+method      num_clusters pca_dim alpha                                      
+restoration 1.0          1.0     0.4      0.096 NaN     1    0.484 NaN     1
+
+================================================================================
+
+====================================================================================================
+🚀 CAT MULTI-SEED EXPERIMENT RUNNER
+====================================================================================================
+🎯 Experiment Configuration:
+  - Model: resnet18
+  - Weight bits: 2, Activation bits: 2
+  - Data path: /home/alz07xz/imagenet
+  - Seeds: 0 to 9 (10 total)
+  - Sleep between runs: 0.5 seconds
+  - Alpha values: [0.4]
+  - Number of clusters: [1]
+  - PCA dimensions: [1]
+  - Total configurations to test: 1
+  - Total experiments: 10 seeds × 1 configs = 10
+
+⏰ Starting experiments at 2025-09-02 10:33:18
+====================================================================================================
+
+🔄 Progress: 1/10 seeds completed
+
+================================================================================
+STARTING SEED 0 EXPERIMENT
+================================================================================
+[Seed 0] Configuration:
+  - Architecture: resnet18
+  - Weight bits: 2, Activation bits: 2
+  - Alpha values: [0.4]
+  - Number of clusters: [1]
+  - PCA dimensions: [1]
+  - Data path: /home/alz07xz/imagenet
+[Seed 0] Hyperparameters: weight=0.01, T=4.0, lamb_c=0.02
+[Seed 0] Executing command:
+  python main_imagenet.py --data_path /home/alz07xz/imagenet --arch resnet18 --n_bits_w 2 --n_bits_a 2 --weight 0.01 --T 4.0 --lamb_c 0.02 --seed 0 --alpha 0.4 --num_clusters 1 --pca_dim 1
+[Seed 0] Execution completed in 341.74 seconds
+[Seed 0] ✅ SUCCESS - Process completed successfully
+[Seed 0] Looking for saved results file...
+[Seed 0] Found results file: results_resnet18_W2A2_seed0_20250902_103859.csv
+[Seed 0] ⚠️  Warning: Some top1_acc values could not be parsed as numbers
+[Seed 0] ⚠️  Warning: Some top5_acc values could not be parsed as numbers
+[Seed 0] ✅ Successfully loaded DataFrame with 2 rows
+[Seed 0] DataFrame columns: ['method', 'num_clusters', 'pca_dim', 'alpha', 'top1_acc', 'top5_acc', 'seed', 'arch', 'w_bits', 'a_bits']
+[Seed 0] Methods tested: ['no_restoration', 'restoration']
+[Seed 0] Sample top1_acc values: [nan, 0.12]
+[Seed 0] Sleeping for 0.5 seconds before next seed...
+[Seed 0] Experiment finished
+================================================================================
+
+
+🔄 Progress: 2/10 seeds completed
+
+================================================================================
+STARTING SEED 1 EXPERIMENT
+================================================================================
+[Seed 1] Configuration:
+  - Architecture: resnet18
+  - Weight bits: 2, Activation bits: 2
+  - Alpha values: [0.4]
+  - Number of clusters: [1]
+  - PCA dimensions: [1]
+  - Data path: /home/alz07xz/imagenet
+[Seed 1] Hyperparameters: weight=0.01, T=4.0, lamb_c=0.02
+[Seed 1] Executing command:
+  python main_imagenet.py --data_path /home/alz07xz/imagenet --arch resnet18 --n_bits_w 2 --n_bits_a 2 --weight 0.01 --T 4.0 --lamb_c 0.02 --seed 1 --alpha 0.4 --num_clusters 1 --pca_dim 1
+[Seed 1] Execution completed in 343.77 seconds
+[Seed 1] ✅ SUCCESS - Process completed successfully
+[Seed 1] Looking for saved results file...
+[Seed 1] Found results file: results_resnet18_W2A2_seed1_20250902_104443.csv
+[Seed 1] ⚠️  Warning: Some top1_acc values could not be parsed as numbers
+[Seed 1] ⚠️  Warning: Some top5_acc values could not be parsed as numbers
+[Seed 1] ✅ Successfully loaded DataFrame with 2 rows
+[Seed 1] DataFrame columns: ['method', 'num_clusters', 'pca_dim', 'alpha', 'top1_acc', 'top5_acc', 'seed', 'arch', 'w_bits', 'a_bits']
+[Seed 1] Methods tested: ['no_restoration', 'restoration']
+[Seed 1] Sample top1_acc values: [nan, 0.114]
+[Seed 1] Sleeping for 0.5 seconds before next seed...
+[Seed 1] Experiment finished
+================================================================================
+
+
+🔄 Progress: 3/10 seeds completed
+
+================================================================================
+STARTING SEED 2 EXPERIMENT
+================================================================================
+[Seed 2] Configuration:
+  - Architecture: resnet18
+  - Weight bits: 2, Activation bits: 2
+  - Alpha values: [0.4]
+  - Number of clusters: [1]
+  - PCA dimensions: [1]
+  - Data path: /home/alz07xz/imagenet
+[Seed 2] Hyperparameters: weight=0.01, T=4.0, lamb_c=0.02
+[Seed 2] Executing command:
+  python main_imagenet.py --data_path /home/alz07xz/imagenet --arch resnet18 --n_bits_w 2 --n_bits_a 2 --weight 0.01 --T 4.0 --lamb_c 0.02 --seed 2 --alpha 0.4 --num_clusters 1 --pca_dim 1
+[Seed 2] Execution completed in 335.79 seconds
+[Seed 2] ✅ SUCCESS - Process completed successfully
+[Seed 2] Looking for saved results file...
+[Seed 2] Found results file: results_resnet18_W2A2_seed2_20250902_105019.csv
+[Seed 2] ⚠️  Warning: Some top1_acc values could not be parsed as numbers
+[Seed 2] ⚠️  Warning: Some top5_acc values could not be parsed as numbers
+[Seed 2] ✅ Successfully loaded DataFrame with 2 rows
+[Seed 2] DataFrame columns: ['method', 'num_clusters', 'pca_dim', 'alpha', 'top1_acc', 'top5_acc', 'seed', 'arch', 'w_bits', 'a_bits']
+[Seed 2] Methods tested: ['no_restoration', 'restoration']
+[Seed 2] Sample top1_acc values: [nan, 0.118]
+[Seed 2] Sleeping for 0.5 seconds before next seed...
+[Seed 2] Experiment finished
+================================================================================
+
+
+🔄 Progress: 4/10 seeds completed
+
+================================================================================
+STARTING SEED 3 EXPERIMENT
+================================================================================
+[Seed 3] Configuration:
+  - Architecture: resnet18
+  - Weight bits: 2, Activation bits: 2
+  - Alpha values: [0.4]
+  - Number of clusters: [1]
+  - PCA dimensions: [1]
+  - Data path: /home/alz07xz/imagenet
+[Seed 3] Hyperparameters: weight=0.01, T=4.0, lamb_c=0.02
+[Seed 3] Executing command:
+  python main_imagenet.py --data_path /home/alz07xz/imagenet --arch resnet18 --n_bits_w 2 --n_bits_a 2 --weight 0.01 --T 4.0 --lamb_c 0.02 --seed 3 --alpha 0.4 --num_clusters 1 --pca_dim 1
+[Seed 3] Execution completed in 552.48 seconds
+[Seed 3] ✅ SUCCESS - Process completed successfully
+[Seed 3] Looking for saved results file...
+[Seed 3] Found results file: results_resnet18_W2A2_seed3_20250902_105932.csv
+[Seed 3] ⚠️  Warning: Some top1_acc values could not be parsed as numbers
+[Seed 3] ⚠️  Warning: Some top5_acc values could not be parsed as numbers
+[Seed 3] ✅ Successfully loaded DataFrame with 2 rows
+[Seed 3] DataFrame columns: ['method', 'num_clusters', 'pca_dim', 'alpha', 'top1_acc', 'top5_acc', 'seed', 'arch', 'w_bits', 'a_bits']
+[Seed 3] Methods tested: ['no_restoration', 'restoration']
+[Seed 3] Sample top1_acc values: [nan, 0.092]
+[Seed 3] Sleeping for 0.5 seconds before next seed...
+[Seed 3] Experiment finished
+================================================================================
+
+
+🔄 Progress: 5/10 seeds completed
+
+================================================================================
+STARTING SEED 4 EXPERIMENT
+================================================================================
+[Seed 4] Configuration:
+  - Architecture: resnet18
+  - Weight bits: 2, Activation bits: 2
+  - Alpha values: [0.4]
+  - Number of clusters: [1]
+  - PCA dimensions: [1]
+  - Data path: /home/alz07xz/imagenet
+[Seed 4] Hyperparameters: weight=0.01, T=4.0, lamb_c=0.02
+[Seed 4] Executing command:
+  python main_imagenet.py --data_path /home/alz07xz/imagenet --arch resnet18 --n_bits_w 2 --n_bits_a 2 --weight 0.01 --T 4.0 --lamb_c 0.02 --seed 4 --alpha 0.4 --num_clusters 1 --pca_dim 1
+[Seed 4] Execution completed in 546.30 seconds
+[Seed 4] ✅ SUCCESS - Process completed successfully
+[Seed 4] Looking for saved results file...
+[Seed 4] Found results file: results_resnet18_W2A2_seed4_20250902_110839.csv
+[Seed 4] ⚠️  Warning: Some top1_acc values could not be parsed as numbers
+[Seed 4] ⚠️  Warning: Some top5_acc values could not be parsed as numbers
+[Seed 4] ✅ Successfully loaded DataFrame with 2 rows
+[Seed 4] DataFrame columns: ['method', 'num_clusters', 'pca_dim', 'alpha', 'top1_acc', 'top5_acc', 'seed', 'arch', 'w_bits', 'a_bits']
+[Seed 4] Methods tested: ['no_restoration', 'restoration']
+[Seed 4] Sample top1_acc values: [nan, 0.096]
+[Seed 4] Sleeping for 0.5 seconds before next seed...
+[Seed 4] Experiment finished
+================================================================================
+
+
+🔄 Progress: 6/10 seeds completed
+
+================================================================================
+STARTING SEED 5 EXPERIMENT
+================================================================================
+[Seed 5] Configuration:
+  - Architecture: resnet18
+  - Weight bits: 2, Activation bits: 2
+  - Alpha values: [0.4]
+  - Number of clusters: [1]
+  - PCA dimensions: [1]
+  - Data path: /home/alz07xz/imagenet
+[Seed 5] Hyperparameters: weight=0.01, T=4.0, lamb_c=0.02
+[Seed 5] Executing command:
+  python main_imagenet.py --data_path /home/alz07xz/imagenet --arch resnet18 --n_bits_w 2 --n_bits_a 2 --weight 0.01 --T 4.0 --lamb_c 0.02 --seed 5 --alpha 0.4 --num_clusters 1 --pca_dim 1
+[Seed 5] Execution completed in 436.35 seconds
+[Seed 5] ✅ SUCCESS - Process completed successfully
+[Seed 5] Looking for saved results file...
+[Seed 5] Found results file: results_resnet18_W2A2_seed5_20250902_111556.csv
+[Seed 5] ⚠️  Warning: Some top1_acc values could not be parsed as numbers
+[Seed 5] ⚠️  Warning: Some top5_acc values could not be parsed as numbers
+[Seed 5] ✅ Successfully loaded DataFrame with 2 rows
+[Seed 5] DataFrame columns: ['method', 'num_clusters', 'pca_dim', 'alpha', 'top1_acc', 'top5_acc', 'seed', 'arch', 'w_bits', 'a_bits']
+[Seed 5] Methods tested: ['no_restoration', 'restoration']
+[Seed 5] Sample top1_acc values: [nan, 0.118]
+[Seed 5] Sleeping for 0.5 seconds before next seed...
+[Seed 5] Experiment finished
+================================================================================
+
+
+🔄 Progress: 7/10 seeds completed
+
+================================================================================
+STARTING SEED 6 EXPERIMENT
+================================================================================
+[Seed 6] Configuration:
+  - Architecture: resnet18
+  - Weight bits: 2, Activation bits: 2
+  - Alpha values: [0.4]
+  - Number of clusters: [1]
+  - PCA dimensions: [1]
+  - Data path: /home/alz07xz/imagenet
+[Seed 6] Hyperparameters: weight=0.01, T=4.0, lamb_c=0.02
+[Seed 6] Executing command:
+  python main_imagenet.py --data_path /home/alz07xz/imagenet --arch resnet18 --n_bits_w 2 --n_bits_a 2 --weight 0.01 --T 4.0 --lamb_c 0.02 --seed 6 --alpha 0.4 --num_clusters 1 --pca_dim 1
+[Seed 6] Execution completed in 410.77 seconds
+[Seed 6] ✅ SUCCESS - Process completed successfully
+[Seed 6] Looking for saved results file...
+[Seed 6] Found results file: results_resnet18_W2A2_seed6_20250902_112247.csv
+[Seed 6] ⚠️  Warning: Some top1_acc values could not be parsed as numbers
+[Seed 6] ⚠️  Warning: Some top5_acc values could not be parsed as numbers
+[Seed 6] ✅ Successfully loaded DataFrame with 2 rows
+[Seed 6] DataFrame columns: ['method', 'num_clusters', 'pca_dim', 'alpha', 'top1_acc', 'top5_acc', 'seed', 'arch', 'w_bits', 'a_bits']
+[Seed 6] Methods tested: ['no_restoration', 'restoration']
+[Seed 6] Sample top1_acc values: [nan, 0.122]
+[Seed 6] Sleeping for 0.5 seconds before next seed...
+[Seed 6] Experiment finished
+================================================================================
+
+
+🔄 Progress: 8/10 seeds completed
+
+================================================================================
+STARTING SEED 7 EXPERIMENT
+================================================================================
+[Seed 7] Configuration:
+  - Architecture: resnet18
+  - Weight bits: 2, Activation bits: 2
+  - Alpha values: [0.4]
+  - Number of clusters: [1]
+  - PCA dimensions: [1]
+  - Data path: /home/alz07xz/imagenet
+[Seed 7] Hyperparameters: weight=0.01, T=4.0, lamb_c=0.02
+[Seed 7] Executing command:
+  python main_imagenet.py --data_path /home/alz07xz/imagenet --arch resnet18 --n_bits_w 2 --n_bits_a 2 --weight 0.01 --T 4.0 --lamb_c 0.02 --seed 7 --alpha 0.4 --num_clusters 1 --pca_dim 1
+[Seed 7] Execution completed in 373.24 seconds
+[Seed 7] ✅ SUCCESS - Process completed successfully
+[Seed 7] Looking for saved results file...
+[Seed 7] Found results file: results_resnet18_W2A2_seed7_20250902_112901.csv
+[Seed 7] ⚠️  Warning: Some top1_acc values could not be parsed as numbers
+[Seed 7] ⚠️  Warning: Some top5_acc values could not be parsed as numbers
+[Seed 7] ✅ Successfully loaded DataFrame with 2 rows
+[Seed 7] DataFrame columns: ['method', 'num_clusters', 'pca_dim', 'alpha', 'top1_acc', 'top5_acc', 'seed', 'arch', 'w_bits', 'a_bits']
+[Seed 7] Methods tested: ['no_restoration', 'restoration']
+[Seed 7] Sample top1_acc values: [nan, 0.11]
+[Seed 7] Sleeping for 0.5 seconds before next seed...
+[Seed 7] Experiment finished
+================================================================================
+
+
+🔄 Progress: 9/10 seeds completed
+
+================================================================================
+STARTING SEED 8 EXPERIMENT
+================================================================================
+[Seed 8] Configuration:
+  - Architecture: resnet18
+  - Weight bits: 2, Activation bits: 2
+  - Alpha values: [0.4]
+  - Number of clusters: [1]
+  - PCA dimensions: [1]
+  - Data path: /home/alz07xz/imagenet
+[Seed 8] Hyperparameters: weight=0.01, T=4.0, lamb_c=0.02
+[Seed 8] Executing command:
+  python main_imagenet.py --data_path /home/alz07xz/imagenet --arch resnet18 --n_bits_w 2 --n_bits_a 2 --weight 0.01 --T 4.0 --lamb_c 0.02 --seed 8 --alpha 0.4 --num_clusters 1 --pca_dim 1
+[Seed 8] Execution completed in 391.68 seconds
+[Seed 8] ✅ SUCCESS - Process completed successfully
+[Seed 8] Looking for saved results file...
+[Seed 8] Found results file: results_resnet18_W2A2_seed8_20250902_113533.csv
+[Seed 8] ⚠️  Warning: Some top1_acc values could not be parsed as numbers
+[Seed 8] ⚠️  Warning: Some top5_acc values could not be parsed as numbers
+[Seed 8] ✅ Successfully loaded DataFrame with 2 rows
+[Seed 8] DataFrame columns: ['method', 'num_clusters', 'pca_dim', 'alpha', 'top1_acc', 'top5_acc', 'seed', 'arch', 'w_bits', 'a_bits']
+[Seed 8] Methods tested: ['no_restoration', 'restoration']
+[Seed 8] Sample top1_acc values: [nan, 0.114]
+[Seed 8] Sleeping for 0.5 seconds before next seed...
+[Seed 8] Experiment finished
+================================================================================
+
+
+🔄 Progress: 10/10 seeds completed
+
+================================================================================
+STARTING SEED 9 EXPERIMENT
+================================================================================
+[Seed 9] Configuration:
+  - Architecture: resnet18
+  - Weight bits: 2, Activation bits: 2
+  - Alpha values: [0.4]
+  - Number of clusters: [1]
+  - PCA dimensions: [1]
+  - Data path: /home/alz07xz/imagenet
+[Seed 9] Hyperparameters: weight=0.01, T=4.0, lamb_c=0.02
+[Seed 9] Executing command:
+  python main_imagenet.py --data_path /home/alz07xz/imagenet --arch resnet18 --n_bits_w 2 --n_bits_a 2 --weight 0.01 --T 4.0 --lamb_c 0.02 --seed 9 --alpha 0.4 --num_clusters 1 --pca_dim 1
+[Seed 9] Execution completed in 357.18 seconds
+[Seed 9] ✅ SUCCESS - Process completed successfully
+[Seed 9] Looking for saved results file...
+[Seed 9] Found results file: results_resnet18_W2A2_seed9_20250902_114131.csv
+[Seed 9] ⚠️  Warning: Some top1_acc values could not be parsed as numbers
+[Seed 9] ⚠️  Warning: Some top5_acc values could not be parsed as numbers
+[Seed 9] ✅ Successfully loaded DataFrame with 2 rows
+[Seed 9] DataFrame columns: ['method', 'num_clusters', 'pca_dim', 'alpha', 'top1_acc', 'top5_acc', 'seed', 'arch', 'w_bits', 'a_bits']
+[Seed 9] Methods tested: ['no_restoration', 'restoration']
+[Seed 9] Sample top1_acc values: [nan, 0.096]
+[Seed 9] Sleeping for 0.5 seconds before next seed...
+[Seed 9] Experiment finished
+================================================================================
+
+
+====================================================================================================
+🎉 ALL EXPERIMENTS COMPLETED!
+====================================================================================================
+⏱️  Total execution time: 4094.34 seconds (68.24 minutes)
+📊 Results analysis starting...
+
+====================================================================================================
+ANALYZING RESULTS FROM MULTIPLE SEED RUNS
+====================================================================================================
+📊 Analysis Summary:
+  - Total seeds: 10
+  - Successful runs: 10
+  - Failed runs: 0
+
+🔗 Combining results from 10 successful runs...
+✅ Combined DataFrame shape: (20, 10)
+✅ Combined DataFrame columns: ['method', 'num_clusters', 'pca_dim', 'alpha', 'top1_acc', 'top5_acc', 'seed', 'arch', 'w_bits', 'a_bits']
+
+📋 Combined results from all seeds:
+====================================================================================================
+        method  num_clusters  pca_dim  alpha  top1_acc  top5_acc  seed     arch  w_bits  a_bits
+no_restoration           NaN      NaN    NaN       NaN       NaN     0 resnet18       2       2
+   restoration           1.0      1.0    0.4     0.120     0.502     0 resnet18       2       2
+no_restoration           NaN      NaN    NaN       NaN       NaN     1 resnet18       2       2
+   restoration           1.0      1.0    0.4     0.114     0.514     1 resnet18       2       2
+no_restoration           NaN      NaN    NaN       NaN       NaN     2 resnet18       2       2
+   restoration           1.0      1.0    0.4     0.118     0.500     2 resnet18       2       2
+no_restoration           NaN      NaN    NaN       NaN       NaN     3 resnet18       2       2
+   restoration           1.0      1.0    0.4     0.092     0.492     3 resnet18       2       2
+no_restoration           NaN      NaN    NaN       NaN       NaN     4 resnet18       2       2
+   restoration           1.0      1.0    0.4     0.096     0.478     4 resnet18       2       2
+no_restoration           NaN      NaN    NaN       NaN       NaN     5 resnet18       2       2
+   restoration           1.0      1.0    0.4     0.118     0.486     5 resnet18       2       2
+no_restoration           NaN      NaN    NaN       NaN       NaN     6 resnet18       2       2
+   restoration           1.0      1.0    0.4     0.122     0.548     6 resnet18       2       2
+no_restoration           NaN      NaN    NaN       NaN       NaN     7 resnet18       2       2
+   restoration           1.0      1.0    0.4     0.110     0.468     7 resnet18       2       2
+no_restoration           NaN      NaN    NaN       NaN       NaN     8 resnet18       2       2
+   restoration           1.0      1.0    0.4     0.114     0.508     8 resnet18       2       2
+no_restoration           NaN      NaN    NaN       NaN       NaN     9 resnet18       2       2
+   restoration           1.0      1.0    0.4     0.096     0.484     9 resnet18       2       2
+
+📈 Computing aggregated statistics...
+====================================================================================================
+
+ALL CONFIGURATIONS:
+Configuration					Top-1 Acc		Top-5 Acc
+----------------------------------------------------------------------------------------------------
+Restoration(clusters=1.0, pca=1.0, α=0.4)    	0.11±0.01 (n=10)    	0.50±0.02 (n=10)
+
+====================================================================================================
+
+====================================================================================================
+🏁 EXPERIMENT RUNNER FINISHED
+====================================================================================================
+Completed ResNet18 W2A2 experiment at Tue Sep  2 11:41:33 AM CEST 2025
