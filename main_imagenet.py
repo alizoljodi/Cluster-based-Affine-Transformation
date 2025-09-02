@@ -190,6 +190,18 @@ if __name__ == '__main__':
                         help='number of clusters value(s) for CAT LUT building')
     parser.add_argument('--pca_dim', default=[-1], type=int, nargs='+',
                         help='PCA dimension(s); use -1 to disable PCA')
+    
+    # PFQ parameters
+    parser.add_argument("--use_pfq", action="store_true", help="Enable PFQ+FLAO for PD-Quant")
+    parser.add_argument("--feature_steps", type=int, default=1000, help="Number of steps for feature optimization")
+    parser.add_argument("--weight_steps", type=int, default=4000, help="Number of steps for weight optimization")
+    parser.add_argument("--lr_feature", type=float, default=4e-5, help="Learning rate for feature optimization")
+    parser.add_argument("--lr_weight", type=float, default=1e-3, help="Learning rate for weight optimization")
+    parser.add_argument("--pfq_T", type=float, default=1.0, help="Temperature for PFQ PD loss")
+    parser.add_argument("--pfq_lam", type=float, default=1.0, help="Lambda for PFQ PD loss")
+    parser.add_argument("--qdrop_p", type=float, default=0.0, help="QDrop probability for feature optimization")
+    parser.add_argument("--skip_first_last", action="store_true", default=True, help="Skip first and last layers (keep 8-bit)")
+    
     args = parser.parse_args()
 
     seed_all(args.seed)
@@ -226,6 +238,60 @@ if __name__ == '__main__':
     cali_data, cali_target = get_train_samples(train_loader, num_samples=args.num_samples)
     device = next(qnn.parameters()).device
 
+    # PFQ calibration if enabled
+    if args.use_pfq:
+        print("="*80)
+        print("PFQ: Starting Prepositive Feature Quantization with FLAO")
+        print("="*80)
+        
+        from quant.pfq_pd_calibrator import PFQ_PD_Calibrator
+        
+        # Create a copy of the original model for PFQ
+        pfq_model = copy.deepcopy(cnn)
+        pfq_model.cuda()
+        pfq_model.eval()
+        
+        # Initialize PFQ calibrator
+        pfq_calibrator = PFQ_PD_Calibrator(
+            model=pfq_model, 
+            w_bit=args.n_bits_w, 
+            a_bit=args.n_bits_a, 
+            device=device
+        )
+        
+        # Prepare model with PFQ wrappers
+        replaced_layers = pfq_calibrator.prepare()
+        
+        # Create calibration dataloader for PFQ
+        from torch.utils.data import DataLoader, TensorDataset
+        pfq_calib_dataset = TensorDataset(cali_data, cali_target)
+        pfq_calib_loader = DataLoader(
+            pfq_calib_dataset, 
+            batch_size=args.batch_size, 
+            shuffle=True, 
+            num_workers=args.workers
+        )
+        
+        # Run FLAO calibration
+        pfq_calibrator.calibrate_all_layers(
+            calib_loader=pfq_calib_loader,
+            feature_steps=args.feature_steps,
+            weight_steps=args.weight_steps,
+            lr_feature=args.lr_feature,
+            lr_weight=args.lr_weight,
+            T=args.pfq_T,
+            lam=args.pfq_lam,
+            qdrop_p=args.qdrop_p
+        )
+        
+        # Finalize PFQ model
+        pfq_model = pfq_calibrator.finalize()
+        
+        # Replace the original model with PFQ-calibrated model
+        qnn = pfq_model
+        print("PFQ: Calibration completed successfully!")
+        print("="*80)
+
     # Kwargs for weight rounding calibration
     kwargs = dict(cali_data=cali_data, iters=args.iters_w, weight=args.weight,
                 b_range=(args.b_start, args.b_end), warmup=args.warmup, opt_mode='mse',
@@ -233,33 +299,39 @@ if __name__ == '__main__':
                 lamb_r=args.lamb_r, T=args.T, bn_lr=args.bn_lr, lamb_c=args.lamb_c)
 
 
-    '''init weight quantizer'''
-    set_weight_quantize_params(qnn)
+    # Skip existing quantization if PFQ is enabled
+    if not args.use_pfq:
+        '''init weight quantizer'''
+        set_weight_quantize_params(qnn)
 
-    def set_weight_act_quantize_params(module, fp_module):
-        if isinstance(module, QuantModule):
-            layer_reconstruction(qnn, fp_model, module, fp_module, **kwargs)
-        elif isinstance(module, BaseQuantBlock):
-            block_reconstruction(qnn, fp_model, module, fp_module, **kwargs)
-        else:
-            raise NotImplementedError
-    def recon_model(model: nn.Module, fp_model: nn.Module):
-        """
-        Block reconstruction. For the first and last layers, we can only apply layer reconstruction.
-        """
-        for (name, module), (_, fp_module) in zip(model.named_children(), fp_model.named_children()):
+        def set_weight_act_quantize_params(module, fp_module):
             if isinstance(module, QuantModule):
-                print('Reconstruction for layer {}'.format(name))
-                set_weight_act_quantize_params(module, fp_module)
+                layer_reconstruction(qnn, fp_model, module, fp_module, **kwargs)
             elif isinstance(module, BaseQuantBlock):
-                print('Reconstruction for block {}'.format(name))
-                set_weight_act_quantize_params(module, fp_module)
+                block_reconstruction(qnn, fp_model, module, fp_module, **kwargs)
             else:
-                recon_model(module, fp_module)
-    # Start calibration
-    recon_model(qnn, fp_model)
+                raise NotImplementedError
+        def recon_model(model: nn.Module, fp_model: nn.Module):
+            """
+            Block reconstruction. For the first and last layers, we can only apply layer reconstruction.
+            """
+            for (name, module), (_, fp_module) in zip(model.named_children(), fp_model.named_children()):
+                if isinstance(module, QuantModule):
+                    print('Reconstruction for layer {}'.format(name))
+                    set_weight_act_quantize_params(module, fp_module)
+                elif isinstance(module, BaseQuantBlock):
+                    print('Reconstruction for block {}'.format(name))
+                    set_weight_act_quantize_params(module, fp_module)
+                else:
+                    recon_model(module, fp_module)
+        # Start calibration
+        recon_model(qnn, fp_model)
 
-    qnn.set_quant_state(weight_quant=True, act_quant=True)
+        qnn.set_quant_state(weight_quant=True, act_quant=True)
+    else:
+        # For PFQ, we need to set the model to evaluation mode
+        qnn.eval()
+        print("PFQ: Using PFQ-calibrated model, skipping traditional quantization")
     baseline_acc = validate_model(test_loader, qnn)
     print('Full quantization (W{}A{}) accuracy: {}'.format(args.n_bits_w, args.n_bits_a, baseline_acc))
 
@@ -280,8 +352,9 @@ if __name__ == '__main__':
     results = []
     
     # Add baseline result (no restoration)
+    method_name = 'pfq_no_restoration' if args.use_pfq else 'no_restoration'
     results.append({
-        'method': 'no_restoration',
+        'method': method_name,
         'num_clusters': None,
         'pca_dim': None,
         'alpha': None,
@@ -316,8 +389,9 @@ if __name__ == '__main__':
                 )
                 
                 # Store result (restoration)
+                method_name = 'pfq_restoration' if args.use_pfq else 'restoration'
                 results.append({
-                    'method': 'restoration',
+                    'method': method_name,
                     'num_clusters': int(num_clusters),
                     'pca_dim': pca_opt,
                     'alpha': float(alpha),
