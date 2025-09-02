@@ -5,6 +5,7 @@ import re
 import statistics
 import pandas as pd
 import io
+import glob
 from typing import Optional, Tuple, List
 import os 
 
@@ -146,24 +147,14 @@ def run_one_seed(
     
     start_time = time.time()
     
-    # Create temporary files to capture output
-    import tempfile
-    with tempfile.NamedTemporaryFile(mode='w+', delete=False, suffix='.out') as stdout_file, \
-         tempfile.NamedTemporaryFile(mode='w+', delete=False, suffix='.err') as stderr_file:
-        
-        # Redirect output to files
-        cmd_with_redirect = f"{cmd} > {stdout_file.name} 2> {stderr_file.name}"
-        returncode = os.system(cmd_with_redirect)
-        
-        # Read captured output
-        stdout_file.seek(0)
-        stderr_file.seek(0)
-        stdout = stdout_file.read()
-        stderr = stderr_file.read()
-        
-        # Clean up temporary files
-        os.unlink(stdout_file.name)
-        os.unlink(stderr_file.name)
+    # For SLURM environments, use a simpler approach
+    # Run the command directly and let output go to console
+    returncode = os.system(cmd)
+    
+    # Since we can't capture output with os.system in SLURM, 
+    # we'll need to rely on the main_imagenet.py script to save results to files
+    stdout = ""  # We can't capture stdout with os.system
+    stderr = ""  # We can't capture stderr with os.system
     
     end_time = time.time()
     execution_time = end_time - start_time
@@ -172,22 +163,35 @@ def run_one_seed(
     
     if returncode != 0:
         print(f"[Seed {seed}] ❌ FAILED - Process exited with code {returncode}")
-        print(f"[Seed {seed}] Error output:")
-        print(f"{stderr}")
         df = None
     else:
         print(f"[Seed {seed}] ✅ SUCCESS - Process completed successfully")
-        print(f"[Seed {seed}] Parsing results DataFrame...")
-        df = parse_dataframe_from_output(stdout)
-        if df is not None:
-            print(f"[Seed {seed}] ✅ Successfully parsed DataFrame with {len(df)} rows")
-            print(f"[Seed {seed}] DataFrame columns: {list(df.columns)}")
-            if len(df) > 0:
-                print(f"[Seed {seed}] Methods tested: {df['method'].unique().tolist()}")
+        print(f"[Seed {seed}] Looking for saved results file...")
+        
+        # Look for the saved CSV file
+        import datetime
+        timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
+        pattern = f"results_{arch}_W{w_bits}A{a_bits}_seed{seed}_*.csv"
+        matching_files = glob.glob(pattern)
+        
+        if matching_files:
+            # Sort by modification time to get the most recent
+            matching_files.sort(key=lambda x: os.path.getmtime(x), reverse=True)
+            latest_file = matching_files[0]
+            print(f"[Seed {seed}] Found results file: {latest_file}")
+            
+            try:
+                df = pd.read_csv(latest_file)
+                print(f"[Seed {seed}] ✅ Successfully loaded DataFrame with {len(df)} rows")
+                print(f"[Seed {seed}] DataFrame columns: {list(df.columns)}")
+                if len(df) > 0:
+                    print(f"[Seed {seed}] Methods tested: {df['method'].unique().tolist()}")
+            except Exception as e:
+                print(f"[Seed {seed}] ❌ Failed to load DataFrame from file: {e}")
+                df = None
         else:
-            print(f"[Seed {seed}] ❌ Failed to parse DataFrame from output")
-            print(f"[Seed {seed}] Output preview (first 500 chars):")
-            print(f"{stdout[:500]}...")
+            print(f"[Seed {seed}] ❌ No results file found matching pattern: {pattern}")
+            df = None
     
     print(f"[Seed {seed}] Sleeping for {extra_sleep} seconds before next seed...")
     time.sleep(extra_sleep)
