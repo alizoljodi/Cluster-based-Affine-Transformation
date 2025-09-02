@@ -182,10 +182,34 @@ def run_one_seed(
             
             try:
                 df = pd.read_csv(latest_file)
+                
+                # Clean and validate numeric columns
+                if 'top1_acc' in df.columns:
+                    # Convert to numeric, handling any concatenated strings
+                    df['top1_acc'] = pd.to_numeric(df['top1_acc'], errors='coerce')
+                    # Check for any NaN values that might indicate parsing issues
+                    if df['top1_acc'].isna().any():
+                        print(f"[Seed {seed}] ⚠️  Warning: Some top1_acc values could not be parsed as numbers")
+                
+                if 'top5_acc' in df.columns:
+                    df['top5_acc'] = pd.to_numeric(df['top5_acc'], errors='coerce')
+                    if df['top5_acc'].isna().any():
+                        print(f"[Seed {seed}] ⚠️  Warning: Some top5_acc values could not be parsed as numbers")
+                
+                # Additional validation: check for reasonable value ranges
+                if 'top1_acc' in df.columns:
+                    valid_top1 = df['top1_acc'].dropna()
+                    if len(valid_top1) > 0:
+                        min_val, max_val = valid_top1.min(), valid_top1.max()
+                        if min_val < 0 or max_val > 100:
+                            print(f"[Seed {seed}] ⚠️  Warning: top1_acc values outside expected range [0,100]: [{min_val:.2f}, {max_val:.2f}]")
+                
                 print(f"[Seed {seed}] ✅ Successfully loaded DataFrame with {len(df)} rows")
                 print(f"[Seed {seed}] DataFrame columns: {list(df.columns)}")
                 if len(df) > 0:
                     print(f"[Seed {seed}] Methods tested: {df['method'].unique().tolist()}")
+                    # Show sample of data for debugging
+                    print(f"[Seed {seed}] Sample top1_acc values: {df['top1_acc'].head().tolist()}")
             except Exception as e:
                 print(f"[Seed {seed}] ❌ Failed to load DataFrame from file: {e}")
                 df = None
@@ -246,18 +270,41 @@ def analyze_results(dataframes: List[Optional[pd.DataFrame]], seeds: List[int]) 
     for name, group in grouped:
         method, num_clusters, pca_dim, alpha = name
         
-        # Calculate statistics
-        top1_mean = group['top1_acc'].mean()
-        top1_std = group['top1_acc'].std() if len(group) > 1 else 0.0
-        top1_count = len(group)
+        # Ensure top1_acc is numeric and handle any remaining issues
+        try:
+            # Convert to numeric if not already
+            if not pd.api.types.is_numeric_dtype(group['top1_acc']):
+                group['top1_acc'] = pd.to_numeric(group['top1_acc'], errors='coerce')
+            
+            # Calculate statistics
+            top1_mean = group['top1_acc'].mean()
+            top1_std = group['top1_acc'].std() if len(group) > 1 else 0.0
+            top1_count = len(group)
+        except Exception as e:
+            print(f"❌ Error processing group {name}: {e}")
+            print(f"   top1_acc data type: {group['top1_acc'].dtype}")
+            print(f"   top1_acc sample values: {group['top1_acc'].head().tolist()}")
+            # Skip this group or use default values
+            top1_mean = top1_std = top1_count = 0
         
         # Handle top5 (might have NaN values for baseline)
-        top5_valid = group['top5_acc'].dropna()
-        if len(top5_valid) > 0:
-            top5_mean = top5_valid.mean()
-            top5_std = top5_valid.std() if len(top5_valid) > 1 else 0.0
-            top5_count = len(top5_valid)
-        else:
+        try:
+            if 'top5_acc' in group.columns:
+                # Convert to numeric if not already
+                if not pd.api.types.is_numeric_dtype(group['top5_acc']):
+                    group['top5_acc'] = pd.to_numeric(group['top5_acc'], errors='coerce')
+                
+                top5_valid = group['top5_acc'].dropna()
+                if len(top5_valid) > 0:
+                    top5_mean = top5_valid.mean()
+                    top5_std = top5_valid.std() if len(top5_valid) > 1 else 0.0
+                    top5_count = len(top5_valid)
+                else:
+                    top5_mean = top5_std = top5_count = None
+            else:
+                top5_mean = top5_std = top5_count = None
+        except Exception as e:
+            print(f"❌ Error processing top5_acc for group {name}: {e}")
             top5_mean = top5_std = top5_count = None
         
         result_entry = {
