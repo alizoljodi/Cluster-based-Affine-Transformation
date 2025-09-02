@@ -145,33 +145,17 @@ def run_one_seed(
     print(f"  {cmd}")
     
     start_time = time.time()
-    
-    # Create temporary files to capture output
-    import tempfile
-    with tempfile.NamedTemporaryFile(mode='w+', delete=False, suffix='.out') as stdout_file, \
-         tempfile.NamedTemporaryFile(mode='w+', delete=False, suffix='.err') as stderr_file:
-        
-        # Redirect output to files
-        cmd_with_redirect = f"{cmd} > {stdout_file.name} 2> {stderr_file.name}"
-        returncode = os.system(cmd_with_redirect)
-        
-        # Read captured output
-        stdout_file.seek(0)
-        stderr_file.seek(0)
-        stdout = stdout_file.read()
-        stderr = stderr_file.read()
-        
-        # Clean up temporary files
-        os.unlink(stdout_file.name)
-        os.unlink(stderr_file.name)
-    
+    proc = os.system(cmd)
     end_time = time.time()
     execution_time = end_time - start_time
     
+    stdout = proc.stdout or ""
+    stderr = proc.stderr or ""
+    
     print(f"[Seed {seed}] Execution completed in {execution_time:.2f} seconds")
     
-    if returncode != 0:
-        print(f"[Seed {seed}] ❌ FAILED - Process exited with code {returncode}")
+    if proc.returncode != 0:
+        print(f"[Seed {seed}] ❌ FAILED - Process exited with code {proc.returncode}")
         print(f"[Seed {seed}] Error output:")
         print(f"{stderr}")
         df = None
@@ -195,7 +179,7 @@ def run_one_seed(
     print(f"[Seed {seed}] Experiment finished")
     print(f"{'='*80}\n")
     
-    return df, returncode, stdout
+    return df, proc.returncode, stdout
 
 
 def analyze_results(dataframes: List[Optional[pd.DataFrame]], seeds: List[int]) -> None:
