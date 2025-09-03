@@ -12,5 +12,5 @@
 
 source /home/alz07xz/project/PD-Quant/pd_quant/bin/activate
 echo "Starting RegNetX-600M W4A2 cluster ablation experiment at $(date)"
-python run_script_seed.py regnetx_600m --w_bits 4 --a_bits 2 --num_seeds 3 --start_seed 0 --sleep 0.5 --alpha 0.6 --num_clusters 1 8 16 24 32 48 64 96 128 192 256 --pca_dim 50
+python ../run_script_seed.py regnetx_600m --w_bits 4 --a_bits 2 --num_seeds 3 --start_seed 0 --sleep 0.5 --alpha 0.6 --num_clusters 1 8 16 24 32 48 64 96 128 192 256 --pca_dim 50
 echo "Completed RegNetX-600M W4A2 cluster ablation experiment at $(date)"
