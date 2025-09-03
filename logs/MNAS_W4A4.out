@@ -11879,3 +11879,48 @@ Start correcting 32 batches of data!
   x_min, x_max = torch._aminmax(x)
 /home/alz07xz/project/Cluster-based-Affine-Transformation/quant/layer_recon.py:88: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.detach().clone() or sourceTensor.detach().clone().requires_grad_(True), rather than torch.tensor(sourceTensor).
   layer.act_quantizer.delta = torch.nn.Parameter(torch.tensor(layer.act_quantizer.delta))
+Init alpha to be FP32
+Total loss:	1.495 (rec:0.733, pd:0.762, round:0.000)	b=0.00	count=500
+Total loss:	0.980 (rec:0.691, pd:0.288, round:0.000)	b=0.00	count=1000
+Total loss:	2.053 (rec:0.703, pd:1.350, round:0.000)	b=0.00	count=1500
+Total loss:	1.558 (rec:0.711, pd:0.847, round:0.000)	b=0.00	count=2000
+Total loss:	1.467 (rec:0.833, pd:0.634, round:0.000)	b=0.00	count=2500
+Total loss:	1.977 (rec:0.968, pd:1.009, round:0.000)	b=0.00	count=3000
+Total loss:	1.803 (rec:0.973, pd:0.830, round:0.000)	b=0.00	count=3500
+Total loss:	282.863 (rec:0.625, pd:0.382, round:281.856)	b=20.00	count=4000
+Total loss:	114.941 (rec:0.648, pd:0.544, round:113.749)	b=19.44	count=4500
+Total loss:	103.333 (rec:0.752, pd:0.581, round:102.001)	b=18.88	count=5000
+Total loss:	95.870 (rec:0.863, pd:1.160, round:93.847)	b=18.31	count=5500
+Total loss:	86.667 (rec:0.827, pd:1.265, round:84.575)	b=17.75	count=6000
+Total loss:	77.916 (rec:0.618, pd:1.007, round:76.292)	b=17.19	count=6500
+Total loss:	71.313 (rec:1.001, pd:0.354, round:69.958)	b=16.62	count=7000
+Total loss:	65.645 (rec:0.650, pd:0.185, round:64.810)	b=16.06	count=7500
+Total loss:	62.377 (rec:0.719, pd:1.060, round:60.597)	b=15.50	count=8000
+Total loss:	55.867 (rec:0.848, pd:0.333, round:54.685)	b=14.94	count=8500
+Total loss:	52.385 (rec:0.719, pd:0.671, round:50.994)	b=14.38	count=9000
+Total loss:	48.166 (rec:0.716, pd:0.460, round:46.989)	b=13.81	count=9500
+Total loss:	43.700 (rec:0.778, pd:0.237, round:42.684)	b=13.25	count=10000
+Total loss:	42.065 (rec:0.612, pd:0.611, round:40.843)	b=12.69	count=10500
+Total loss:	36.474 (rec:0.778, pd:0.482, round:35.214)	b=12.12	count=11000
+Total loss:	31.836 (rec:0.671, pd:0.311, round:30.853)	b=11.56	count=11500
+Total loss:	31.025 (rec:0.751, pd:0.843, round:29.431)	b=11.00	count=12000
+Total loss:	27.228 (rec:0.530, pd:1.459, round:25.239)	b=10.44	count=12500
+Total loss:	24.147 (rec:0.671, pd:1.678, round:21.799)	b=9.88	count=13000
+Total loss:	19.157 (rec:0.760, pd:0.805, round:17.591)	b=9.31	count=13500
+Total loss:	16.983 (rec:0.916, pd:1.475, round:14.592)	b=8.75	count=14000
+Total loss:	13.885 (rec:0.945, pd:0.740, round:12.200)	b=8.19	count=14500
+Total loss:	12.512 (rec:0.664, pd:0.648, round:11.200)	b=7.62	count=15000
+Total loss:	10.877 (rec:0.812, pd:1.657, round:8.408)	b=7.06	count=15500
+Total loss:	8.215 (rec:0.706, pd:0.270, round:7.240)	b=6.50	count=16000
+Total loss:	6.301 (rec:0.952, pd:0.552, round:4.798)	b=5.94	count=16500
+Total loss:	4.542 (rec:0.651, pd:0.491, round:3.400)	b=5.38	count=17000
+Total loss:	2.634 (rec:0.605, pd:0.310, round:1.718)	b=4.81	count=17500
+Total loss:	3.000 (rec:1.038, pd:1.651, round:0.311)	b=4.25	count=18000
+Total loss:	1.158 (rec:0.704, pd:0.455, round:0.000)	b=3.69	count=18500
+Total loss:	4.288 (rec:1.715, pd:2.574, round:0.000)	b=3.12	count=19000
+Total loss:	1.073 (rec:0.771, pd:0.301, round:0.000)	b=2.56	count=19500
+Total loss:	2.122 (rec:0.881, pd:1.241, round:0.000)	b=2.00	count=20000
+Reconstruction for layer 3
+Start correcting 32 batches of data!
+  0%|          | 0/32 [00:00<?, ?it/s]  3%|▎         | 1/32 [00:04<02:31,  4.89s/it]  6%|▋         | 2/32 [00:09<02:24,  4.80s/it]  9%|▉         | 3/32 [00:14<02:19,  4.79s/it] 12%|█▎        | 4/32 [00:19<02:14,  4.79s/it] 16%|█▌        | 5/32 [00:24<02:09,  4.80s/it] 19%|█▉        | 6/32 [00:29<02:07,  4.90s/it] 22%|██▏       | 7/32 [00:34<02:09,  5.20s/it] 25%|██▌       | 8/32 [00:39<02:00,  5.04s/it] 28%|██▊       | 9/32 [00:44<01:54,  4.96s/it] 31%|███▏      | 10/32 [00:49<01:47,  4.90s/it] 34%|███▍      | 11/32 [00:53<01:41,  4.84s/it] 38%|███▊      | 12/32 [00:58<01:36,  4.84s/it] 41%|████      | 13/32 [01:03<01:31,  4.83s/it] 44%|████▍     | 14/32 [01:08<01:26,  4.79s/it] 47%|████▋     | 15/32 [01:13<01:21,  4.78s/it] 50%|█████     | 16/32 [01:17<01:16,  4.78s/it] 53%|█████▎    | 17/32 [01:22<01:11,  4.76s/it] 56%|█████▋    | 18/32 [01:27<01:06,  4.78s/it] 59%|█████▉    | 19/32 [01:32<01:02,  4.77s/it] 62%|██████▎   | 20/32 [01:36<00:57,  4.76s/it] 66%|██████▌   | 21/32 [01:41<00:52,  4.74s/it] 69%|██████▉   | 22/32 [01:46<00:47,  4.74s/it] 72%|███████▏  | 23/32 [01:50<00:42,  4.74s/it] 75%|███████▌  | 24/32 [01:55<00:37,  4.74s/it] 78%|███████▊  | 25/32 [02:00<00:33,  4.72s/it] 81%|████████▏ | 26/32 [02:05<00:28,  4.76s/it] 84%|████████▍ | 27/32 [02:09<00:23,  4.76s/it] 88%|████████▊ | 28/32 [02:14<00:19,  4.76s/it] 91%|█████████ | 29/32 [02:19<00:14,  4.74s/it] 94%|█████████▍| 30/32 [02:24<00:09,  4.76s/it] 97%|█████████▋| 31/32 [02:28<00:04,  4.75s/it]100%|██████████| 32/32 [02:33<00:00,  4.74s/it]100%|██████████| 32/32 [02:33<00:00,  4.80s/it]
+slurmstepd-jnfat04: error: *** JOB 1607662 ON jnfat04 CANCELLED AT 2025-09-03T10:25:58 ***

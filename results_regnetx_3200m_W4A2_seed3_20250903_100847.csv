@@ -1,0 +1,3 @@
+method,num_clusters,pca_dim,alpha,top1_acc,top5_acc,seed,arch,w_bits,a_bits
+no_restoration,,,,"tensor(62.3920, device='cuda:0')",,3,regnetx_3200m,4,2
+restoration,1.0,1.0,0.2,62.52,85.71,3,regnetx_3200m,4,2
