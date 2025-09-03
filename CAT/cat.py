@@ -31,10 +31,10 @@ class CAT:
         if pca_dim is not None and pca_dim < all_q.shape[1]:
             print("[CAT] Applying PCA before clustering...")
             pca = PCA(n_components=pca_dim, random_state=42)
-            q_features = pca.fit_transform(all_q.detach().cpu().numpy())
+            q_features = pca.fit_transform(all_q.numpy())
             print(f"[CAT] PCA complete. Reduced dim: {q_features.shape[1]}")
         else:
-            q_features = all_q.detach().cpu().numpy()
+            q_features = all_q.numpy()
 
         # Cluster quantized outputs
         cluster_model = KMeans(n_clusters=num_clusters, random_state=42)
@@ -56,8 +56,8 @@ class CAT:
 
             if idxs_t.sum().item() == 0:
                 # Empty cluster, default to identity
-                gamma_dict[cid] = torch.ones(all_q.shape[1], device=all_q.device, dtype=all_q.dtype)
-                beta_dict[cid] = torch.zeros(all_q.shape[1], device=all_q.device, dtype=all_q.dtype)
+                gamma_dict[cid] = torch.ones(all_q.shape[1])
+                beta_dict[cid] = torch.zeros(all_q.shape[1])
                 continue
 
             q_c = all_q[idxs_t]  # [Nc, C]
@@ -69,7 +69,7 @@ class CAT:
 
             # Compute variance, avoid div by zero
             var_q = q_c.var(dim=0, unbiased=False)
-            var_q = torch.clamp(var_q, min=1e-8)
+            var_q[var_q < 1e-8] = 1e-8
 
             gamma = ((q_c - mean_q) * (fp_c - mean_fp)).mean(dim=0) / var_q
             beta = mean_fp - gamma * mean_q
@@ -92,7 +92,7 @@ class CAT:
         """
         Apply per-cluster affine correction with optional PCA and alpha blending.
         """
-        q_np = q_logits.detach().cpu().numpy()
+        q_np = q_logits.cpu().numpy()
 
         # Apply same PCA as used during LUT building
         if pca is not None:
@@ -103,8 +103,8 @@ class CAT:
         corrected = []
         for i, q in enumerate(q_logits):
             cid = int(cluster_ids[i])
-            gamma = gamma_dict[cid].to(q.device, dtype=q.dtype)
-            beta = beta_dict[cid].to(q.device, dtype=q.dtype)
+            gamma = gamma_dict[cid].to(q.device)
+            beta = beta_dict[cid].to(q.device)
             affine_corrected = q * gamma + beta
             blended = q + alpha * (affine_corrected - q)
             corrected.append(blended)
