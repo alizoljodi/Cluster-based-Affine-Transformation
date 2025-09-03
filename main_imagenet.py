@@ -285,7 +285,7 @@ if __name__ == '__main__':
         'num_clusters': None,
         'pca_dim': None,
         'alpha': None,
-        'top1_acc': baseline_acc,
+        'top1_acc': baseline_acc.item(),
         'top5_acc': None,  # baseline doesn't report top5
         'seed': args.seed,
         'arch': args.arch,
