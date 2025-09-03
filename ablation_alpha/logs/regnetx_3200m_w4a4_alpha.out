@@ -1,0 +1,932 @@
+Starting RegNetX-3200M W4A4 alpha ablation experiment at Wed Sep  3 11:47:28 AM CEST 2025
+==> Using Pytorch Dataset
+Setting the first and the last layer to 8-bit
+the quantized model is below!
+QuantModel(
+  (model): RegNet(
+    (stem): SimpleStemIN(
+      (conv): QuantModule(
+        wbit=8, abit=4, disable_act_quant=False
+        (weight_quantizer): UniformAffineQuantizer(bit=8, is_training=False, inited=True)
+        (act_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+        (norm_function): StraightThrough()
+        (activation_function): ReLU(inplace=True)
+      )
+      (bn): StraightThrough()
+      (relu): StraightThrough()
+    )
+    (s1): AnyStage(
+      (b1): QuantResBottleneckBlock(
+        (conv1): QuantModule(
+          wbit=4, abit=4, disable_act_quant=False
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): ReLU(inplace=True)
+        )
+        (conv2): QuantModule(
+          wbit=4, abit=4, disable_act_quant=False
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): ReLU(inplace=True)
+        )
+        (conv3): QuantModule(
+          wbit=4, abit=4, disable_act_quant=True
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): StraightThrough()
+        )
+        (downsample): QuantModule(
+          wbit=4, abit=4, disable_act_quant=True
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): StraightThrough()
+        )
+        (activation_function): ReLU(inplace=True)
+        (act_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+      )
+      (b2): QuantResBottleneckBlock(
+        (conv1): QuantModule(
+          wbit=4, abit=4, disable_act_quant=False
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): ReLU(inplace=True)
+        )
+        (conv2): QuantModule(
+          wbit=4, abit=4, disable_act_quant=False
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): ReLU(inplace=True)
+        )
+        (conv3): QuantModule(
+          wbit=4, abit=4, disable_act_quant=True
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): StraightThrough()
+        )
+        (activation_function): ReLU(inplace=True)
+        (act_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+      )
+    )
+    (s2): AnyStage(
+      (b1): QuantResBottleneckBlock(
+        (conv1): QuantModule(
+          wbit=4, abit=4, disable_act_quant=False
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): ReLU(inplace=True)
+        )
+        (conv2): QuantModule(
+          wbit=4, abit=4, disable_act_quant=False
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): ReLU(inplace=True)
+        )
+        (conv3): QuantModule(
+          wbit=4, abit=4, disable_act_quant=True
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): StraightThrough()
+        )
+        (downsample): QuantModule(
+          wbit=4, abit=4, disable_act_quant=True
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): StraightThrough()
+        )
+        (activation_function): ReLU(inplace=True)
+        (act_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+      )
+      (b2): QuantResBottleneckBlock(
+        (conv1): QuantModule(
+          wbit=4, abit=4, disable_act_quant=False
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): ReLU(inplace=True)
+        )
+        (conv2): QuantModule(
+          wbit=4, abit=4, disable_act_quant=False
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): ReLU(inplace=True)
+        )
+        (conv3): QuantModule(
+          wbit=4, abit=4, disable_act_quant=True
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): StraightThrough()
+        )
+        (activation_function): ReLU(inplace=True)
+        (act_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+      )
+      (b3): QuantResBottleneckBlock(
+        (conv1): QuantModule(
+          wbit=4, abit=4, disable_act_quant=False
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): ReLU(inplace=True)
+        )
+        (conv2): QuantModule(
+          wbit=4, abit=4, disable_act_quant=False
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): ReLU(inplace=True)
+        )
+        (conv3): QuantModule(
+          wbit=4, abit=4, disable_act_quant=True
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): StraightThrough()
+        )
+        (activation_function): ReLU(inplace=True)
+        (act_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+      )
+      (b4): QuantResBottleneckBlock(
+        (conv1): QuantModule(
+          wbit=4, abit=4, disable_act_quant=False
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): ReLU(inplace=True)
+        )
+        (conv2): QuantModule(
+          wbit=4, abit=4, disable_act_quant=False
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): ReLU(inplace=True)
+        )
+        (conv3): QuantModule(
+          wbit=4, abit=4, disable_act_quant=True
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): StraightThrough()
+        )
+        (activation_function): ReLU(inplace=True)
+        (act_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+      )
+      (b5): QuantResBottleneckBlock(
+        (conv1): QuantModule(
+          wbit=4, abit=4, disable_act_quant=False
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): ReLU(inplace=True)
+        )
+        (conv2): QuantModule(
+          wbit=4, abit=4, disable_act_quant=False
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): ReLU(inplace=True)
+        )
+        (conv3): QuantModule(
+          wbit=4, abit=4, disable_act_quant=True
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): StraightThrough()
+        )
+        (activation_function): ReLU(inplace=True)
+        (act_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+      )
+      (b6): QuantResBottleneckBlock(
+        (conv1): QuantModule(
+          wbit=4, abit=4, disable_act_quant=False
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): ReLU(inplace=True)
+        )
+        (conv2): QuantModule(
+          wbit=4, abit=4, disable_act_quant=False
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): ReLU(inplace=True)
+        )
+        (conv3): QuantModule(
+          wbit=4, abit=4, disable_act_quant=True
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): StraightThrough()
+        )
+        (activation_function): ReLU(inplace=True)
+        (act_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+      )
+    )
+    (s3): AnyStage(
+      (b1): QuantResBottleneckBlock(
+        (conv1): QuantModule(
+          wbit=4, abit=4, disable_act_quant=False
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): ReLU(inplace=True)
+        )
+        (conv2): QuantModule(
+          wbit=4, abit=4, disable_act_quant=False
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): ReLU(inplace=True)
+        )
+        (conv3): QuantModule(
+          wbit=4, abit=4, disable_act_quant=True
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): StraightThrough()
+        )
+        (downsample): QuantModule(
+          wbit=4, abit=4, disable_act_quant=True
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): StraightThrough()
+        )
+        (activation_function): ReLU(inplace=True)
+        (act_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+      )
+      (b2): QuantResBottleneckBlock(
+        (conv1): QuantModule(
+          wbit=4, abit=4, disable_act_quant=False
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): ReLU(inplace=True)
+        )
+        (conv2): QuantModule(
+          wbit=4, abit=4, disable_act_quant=False
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): ReLU(inplace=True)
+        )
+        (conv3): QuantModule(
+          wbit=4, abit=4, disable_act_quant=True
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): StraightThrough()
+        )
+        (activation_function): ReLU(inplace=True)
+        (act_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+      )
+      (b3): QuantResBottleneckBlock(
+        (conv1): QuantModule(
+          wbit=4, abit=4, disable_act_quant=False
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): ReLU(inplace=True)
+        )
+        (conv2): QuantModule(
+          wbit=4, abit=4, disable_act_quant=False
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): ReLU(inplace=True)
+        )
+        (conv3): QuantModule(
+          wbit=4, abit=4, disable_act_quant=True
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): StraightThrough()
+        )
+        (activation_function): ReLU(inplace=True)
+        (act_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+      )
+      (b4): QuantResBottleneckBlock(
+        (conv1): QuantModule(
+          wbit=4, abit=4, disable_act_quant=False
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): ReLU(inplace=True)
+        )
+        (conv2): QuantModule(
+          wbit=4, abit=4, disable_act_quant=False
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): ReLU(inplace=True)
+        )
+        (conv3): QuantModule(
+          wbit=4, abit=4, disable_act_quant=True
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): StraightThrough()
+        )
+        (activation_function): ReLU(inplace=True)
+        (act_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+      )
+      (b5): QuantResBottleneckBlock(
+        (conv1): QuantModule(
+          wbit=4, abit=4, disable_act_quant=False
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): ReLU(inplace=True)
+        )
+        (conv2): QuantModule(
+          wbit=4, abit=4, disable_act_quant=False
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): ReLU(inplace=True)
+        )
+        (conv3): QuantModule(
+          wbit=4, abit=4, disable_act_quant=True
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): StraightThrough()
+        )
+        (activation_function): ReLU(inplace=True)
+        (act_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+      )
+      (b6): QuantResBottleneckBlock(
+        (conv1): QuantModule(
+          wbit=4, abit=4, disable_act_quant=False
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): ReLU(inplace=True)
+        )
+        (conv2): QuantModule(
+          wbit=4, abit=4, disable_act_quant=False
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): ReLU(inplace=True)
+        )
+        (conv3): QuantModule(
+          wbit=4, abit=4, disable_act_quant=True
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): StraightThrough()
+        )
+        (activation_function): ReLU(inplace=True)
+        (act_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+      )
+      (b7): QuantResBottleneckBlock(
+        (conv1): QuantModule(
+          wbit=4, abit=4, disable_act_quant=False
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): ReLU(inplace=True)
+        )
+        (conv2): QuantModule(
+          wbit=4, abit=4, disable_act_quant=False
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): ReLU(inplace=True)
+        )
+        (conv3): QuantModule(
+          wbit=4, abit=4, disable_act_quant=True
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): StraightThrough()
+        )
+        (activation_function): ReLU(inplace=True)
+        (act_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+      )
+      (b8): QuantResBottleneckBlock(
+        (conv1): QuantModule(
+          wbit=4, abit=4, disable_act_quant=False
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): ReLU(inplace=True)
+        )
+        (conv2): QuantModule(
+          wbit=4, abit=4, disable_act_quant=False
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): ReLU(inplace=True)
+        )
+        (conv3): QuantModule(
+          wbit=4, abit=4, disable_act_quant=True
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): StraightThrough()
+        )
+        (activation_function): ReLU(inplace=True)
+        (act_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+      )
+      (b9): QuantResBottleneckBlock(
+        (conv1): QuantModule(
+          wbit=4, abit=4, disable_act_quant=False
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): ReLU(inplace=True)
+        )
+        (conv2): QuantModule(
+          wbit=4, abit=4, disable_act_quant=False
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): ReLU(inplace=True)
+        )
+        (conv3): QuantModule(
+          wbit=4, abit=4, disable_act_quant=True
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): StraightThrough()
+        )
+        (activation_function): ReLU(inplace=True)
+        (act_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+      )
+      (b10): QuantResBottleneckBlock(
+        (conv1): QuantModule(
+          wbit=4, abit=4, disable_act_quant=False
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): ReLU(inplace=True)
+        )
+        (conv2): QuantModule(
+          wbit=4, abit=4, disable_act_quant=False
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): ReLU(inplace=True)
+        )
+        (conv3): QuantModule(
+          wbit=4, abit=4, disable_act_quant=True
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): StraightThrough()
+        )
+        (activation_function): ReLU(inplace=True)
+        (act_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+      )
+      (b11): QuantResBottleneckBlock(
+        (conv1): QuantModule(
+          wbit=4, abit=4, disable_act_quant=False
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): ReLU(inplace=True)
+        )
+        (conv2): QuantModule(
+          wbit=4, abit=4, disable_act_quant=False
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): ReLU(inplace=True)
+        )
+        (conv3): QuantModule(
+          wbit=4, abit=4, disable_act_quant=True
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): StraightThrough()
+        )
+        (activation_function): ReLU(inplace=True)
+        (act_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+      )
+      (b12): QuantResBottleneckBlock(
+        (conv1): QuantModule(
+          wbit=4, abit=4, disable_act_quant=False
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): ReLU(inplace=True)
+        )
+        (conv2): QuantModule(
+          wbit=4, abit=4, disable_act_quant=False
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): ReLU(inplace=True)
+        )
+        (conv3): QuantModule(
+          wbit=4, abit=4, disable_act_quant=True
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): StraightThrough()
+        )
+        (activation_function): ReLU(inplace=True)
+        (act_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+      )
+      (b13): QuantResBottleneckBlock(
+        (conv1): QuantModule(
+          wbit=4, abit=4, disable_act_quant=False
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): ReLU(inplace=True)
+        )
+        (conv2): QuantModule(
+          wbit=4, abit=4, disable_act_quant=False
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): ReLU(inplace=True)
+        )
+        (conv3): QuantModule(
+          wbit=4, abit=4, disable_act_quant=True
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): StraightThrough()
+        )
+        (activation_function): ReLU(inplace=True)
+        (act_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+      )
+      (b14): QuantResBottleneckBlock(
+        (conv1): QuantModule(
+          wbit=4, abit=4, disable_act_quant=False
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): ReLU(inplace=True)
+        )
+        (conv2): QuantModule(
+          wbit=4, abit=4, disable_act_quant=False
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): ReLU(inplace=True)
+        )
+        (conv3): QuantModule(
+          wbit=4, abit=4, disable_act_quant=True
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): StraightThrough()
+        )
+        (activation_function): ReLU(inplace=True)
+        (act_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+      )
+      (b15): QuantResBottleneckBlock(
+        (conv1): QuantModule(
+          wbit=4, abit=4, disable_act_quant=False
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): ReLU(inplace=True)
+        )
+        (conv2): QuantModule(
+          wbit=4, abit=4, disable_act_quant=False
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): ReLU(inplace=True)
+        )
+        (conv3): QuantModule(
+          wbit=4, abit=4, disable_act_quant=True
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): StraightThrough()
+        )
+        (activation_function): ReLU(inplace=True)
+        (act_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+      )
+    )
+    (s4): AnyStage(
+      (b1): QuantResBottleneckBlock(
+        (conv1): QuantModule(
+          wbit=4, abit=4, disable_act_quant=False
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): ReLU(inplace=True)
+        )
+        (conv2): QuantModule(
+          wbit=4, abit=4, disable_act_quant=False
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): ReLU(inplace=True)
+        )
+        (conv3): QuantModule(
+          wbit=4, abit=4, disable_act_quant=True
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): StraightThrough()
+        )
+        (downsample): QuantModule(
+          wbit=4, abit=4, disable_act_quant=True
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): StraightThrough()
+        )
+        (activation_function): ReLU(inplace=True)
+        (act_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+      )
+      (b2): QuantResBottleneckBlock(
+        (conv1): QuantModule(
+          wbit=4, abit=4, disable_act_quant=False
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): ReLU(inplace=True)
+        )
+        (conv2): QuantModule(
+          wbit=4, abit=4, disable_act_quant=False
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): ReLU(inplace=True)
+        )
+        (conv3): QuantModule(
+          wbit=4, abit=4, disable_act_quant=True
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): StraightThrough()
+        )
+        (activation_function): ReLU(inplace=True)
+        (act_quantizer): UniformAffineQuantizer(bit=8, is_training=False, inited=True)
+      )
+    )
+    (head): AnyHead(
+      (avg_pool): AdaptiveAvgPool2d(output_size=(1, 1))
+      (fc): QuantModule(
+        wbit=8, abit=4, disable_act_quant=True
+        (weight_quantizer): UniformAffineQuantizer(bit=8, is_training=False, inited=True)
+        (act_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+        (norm_function): StraightThrough()
+        (activation_function): StraightThrough()
+      )
+    )
+  )
+)
+/home/alz07xz/project/Cluster-based-Affine-Transformation/quant/quant_layer.py:141: UserWarning: _aminmax is deprecated as of PyTorch 1.11 and will be removed in a future release. Use aminmax instead. This warning will only appear once per process. (Triggered internally at /pytorch/aten/src/ATen/native/TensorCompare.cpp:814.)
+  x_min, x_max = torch._aminmax(y, 1)
+Reconstruction for layer conv
+Start correcting 32 batches of data!
+  0%|          | 0/32 [00:00<?, ?it/s]  3%|▎         | 1/32 [00:01<00:52,  1.70s/it]  6%|▋         | 2/32 [00:03<00:47,  1.58s/it]  9%|▉         | 3/32 [00:04<00:44,  1.55s/it] 12%|█▎        | 4/32 [00:06<00:42,  1.54s/it] 16%|█▌        | 5/32 [00:07<00:41,  1.52s/it] 19%|█▉        | 6/32 [00:09<00:39,  1.51s/it] 22%|██▏       | 7/32 [00:10<00:37,  1.51s/it] 25%|██▌       | 8/32 [00:12<00:36,  1.51s/it] 28%|██▊       | 9/32 [00:13<00:34,  1.51s/it] 31%|███▏      | 10/32 [00:15<00:33,  1.51s/it] 34%|███▍      | 11/32 [00:16<00:31,  1.51s/it] 38%|███▊      | 12/32 [00:18<00:30,  1.51s/it] 41%|████      | 13/32 [00:19<00:28,  1.51s/it] 44%|████▍     | 14/32 [00:21<00:27,  1.51s/it] 47%|████▋     | 15/32 [00:22<00:25,  1.51s/it] 50%|█████     | 16/32 [00:24<00:24,  1.51s/it] 53%|█████▎    | 17/32 [00:25<00:22,  1.51s/it] 56%|█████▋    | 18/32 [00:27<00:21,  1.50s/it] 59%|█████▉    | 19/32 [00:28<00:19,  1.49s/it] 62%|██████▎   | 20/32 [00:30<00:17,  1.48s/it] 66%|██████▌   | 21/32 [00:31<00:16,  1.47s/it] 69%|██████▉   | 22/32 [00:33<00:14,  1.47s/it] 72%|███████▏  | 23/32 [00:34<00:13,  1.46s/it] 75%|███████▌  | 24/32 [00:36<00:11,  1.46s/it] 78%|███████▊  | 25/32 [00:37<00:10,  1.46s/it] 81%|████████▏ | 26/32 [00:38<00:08,  1.46s/it] 84%|████████▍ | 27/32 [00:40<00:07,  1.46s/it] 88%|████████▊ | 28/32 [00:41<00:05,  1.46s/it] 91%|█████████ | 29/32 [00:43<00:04,  1.46s/it] 94%|█████████▍| 30/32 [00:44<00:02,  1.46s/it] 97%|█████████▋| 31/32 [00:46<00:01,  1.46s/it]100%|██████████| 32/32 [00:47<00:00,  1.46s/it]100%|██████████| 32/32 [00:47<00:00,  1.49s/it]
+/home/alz07xz/project/Cluster-based-Affine-Transformation/quant/quant_layer.py:172: UserWarning: _aminmax is deprecated as of PyTorch 1.11 and will be removed in a future release. Use aminmax instead. This warning will only appear once per process. (Triggered internally at /pytorch/aten/src/ATen/native/ReduceAllOps.cpp:71.)
+  x_min, x_max = torch._aminmax(x)
+/home/alz07xz/project/Cluster-based-Affine-Transformation/quant/layer_recon.py:88: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.detach().clone() or sourceTensor.detach().clone().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  layer.act_quantizer.delta = torch.nn.Parameter(torch.tensor(layer.act_quantizer.delta))
+Init alpha to be FP32
+Total loss:	0.244 (rec:0.199, pd:0.045, round:0.000)	b=0.00	count=500
+Total loss:	0.208 (rec:0.183, pd:0.025, round:0.000)	b=0.00	count=1000
+Total loss:	0.184 (rec:0.161, pd:0.023, round:0.000)	b=0.00	count=1500
+Total loss:	0.187 (rec:0.162, pd:0.025, round:0.000)	b=0.00	count=2000
+Total loss:	0.198 (rec:0.181, pd:0.017, round:0.000)	b=0.00	count=2500
+Total loss:	0.203 (rec:0.187, pd:0.016, round:0.000)	b=0.00	count=3000
+Total loss:	0.180 (rec:0.165, pd:0.015, round:0.000)	b=0.00	count=3500
+Total loss:	6.144 (rec:0.178, pd:0.021, round:5.946)	b=20.00	count=4000
+Total loss:	2.778 (rec:0.189, pd:0.017, round:2.572)	b=19.44	count=4500
+Total loss:	2.620 (rec:0.185, pd:0.023, round:2.413)	b=18.88	count=5000
+Total loss:	2.385 (rec:0.176, pd:0.019, round:2.191)	b=18.31	count=5500
+Total loss:	2.192 (rec:0.183, pd:0.024, round:1.985)	b=17.75	count=6000
+Total loss:	1.993 (rec:0.166, pd:0.016, round:1.812)	b=17.19	count=6500
+Total loss:	1.828 (rec:0.169, pd:0.024, round:1.635)	b=16.62	count=7000
+Total loss:	1.649 (rec:0.169, pd:0.011, round:1.469)	b=16.06	count=7500
+Total loss:	1.508 (rec:0.174, pd:0.019, round:1.315)	b=15.50	count=8000
+Total loss:	1.405 (rec:0.149, pd:0.026, round:1.230)	b=14.94	count=8500
+Total loss:	1.321 (rec:0.162, pd:0.019, round:1.140)	b=14.38	count=9000
+Total loss:	1.204 (rec:0.155, pd:0.019, round:1.030)	b=13.81	count=9500
+Total loss:	1.099 (rec:0.159, pd:0.019, round:0.920)	b=13.25	count=10000
+Total loss:	1.052 (rec:0.180, pd:0.020, round:0.853)	b=12.69	count=10500
+Total loss:	0.907 (rec:0.159, pd:0.009, round:0.740)	b=12.12	count=11000
+Total loss:	0.856 (rec:0.173, pd:0.019, round:0.664)	b=11.56	count=11500
+Total loss:	0.745 (rec:0.162, pd:0.014, round:0.569)	b=11.00	count=12000
+Total loss:	0.693 (rec:0.152, pd:0.011, round:0.530)	b=10.44	count=12500
+Total loss:	0.635 (rec:0.165, pd:0.019, round:0.451)	b=9.88	count=13000
+Total loss:	0.556 (rec:0.166, pd:0.020, round:0.370)	b=9.31	count=13500
+Total loss:	0.492 (rec:0.195, pd:0.017, round:0.280)	b=8.75	count=14000
+Total loss:	0.447 (rec:0.193, pd:0.014, round:0.240)	b=8.19	count=14500
+Total loss:	0.381 (rec:0.173, pd:0.018, round:0.190)	b=7.62	count=15000
+Total loss:	0.288 (rec:0.157, pd:0.025, round:0.106)	b=7.06	count=15500
+Total loss:	0.240 (rec:0.166, pd:0.024, round:0.050)	b=6.50	count=16000
+Total loss:	0.198 (rec:0.164, pd:0.013, round:0.022)	b=5.94	count=16500
+Total loss:	0.190 (rec:0.164, pd:0.016, round:0.010)	b=5.38	count=17000
+Total loss:	0.147 (rec:0.134, pd:0.012, round:0.000)	b=4.81	count=17500
+Total loss:	0.182 (rec:0.166, pd:0.017, round:0.000)	b=4.25	count=18000
+Total loss:	0.175 (rec:0.156, pd:0.019, round:0.000)	b=3.69	count=18500
+Total loss:	0.171 (rec:0.157, pd:0.014, round:0.000)	b=3.12	count=19000
+Total loss:	0.184 (rec:0.167, pd:0.018, round:0.000)	b=2.56	count=19500
+Total loss:	0.205 (rec:0.182, pd:0.023, round:0.000)	b=2.00	count=20000
+Reconstruction for block b1
+Start correcting 32 batches of data!
+  0%|          | 0/32 [00:00<?, ?it/s]  3%|▎         | 1/32 [00:06<03:25,  6.63s/it]  6%|▋         | 2/32 [00:13<03:18,  6.61s/it]  9%|▉         | 3/32 [00:19<03:11,  6.62s/it] 12%|█▎        | 4/32 [00:26<03:04,  6.60s/it] 16%|█▌        | 5/32 [00:33<02:58,  6.60s/it] 19%|█▉        | 6/32 [00:39<02:51,  6.59s/it] 22%|██▏       | 7/32 [00:46<02:44,  6.58s/it] 25%|██▌       | 8/32 [00:52<02:37,  6.58s/it] 28%|██▊       | 9/32 [00:59<02:31,  6.58s/it] 31%|███▏      | 10/32 [01:05<02:24,  6.58s/it] 34%|███▍      | 11/32 [01:12<02:18,  6.58s/it] 38%|███▊      | 12/32 [01:19<02:11,  6.57s/it] 41%|████      | 13/32 [01:25<02:05,  6.59s/it] 44%|████▍     | 14/32 [01:32<01:58,  6.59s/it] 47%|████▋     | 15/32 [01:38<01:51,  6.59s/it] 50%|█████     | 16/32 [01:45<01:45,  6.58s/it] 53%|█████▎    | 17/32 [01:51<01:38,  6.58s/it] 56%|█████▋    | 18/32 [01:58<01:32,  6.58s/it] 59%|█████▉    | 19/32 [02:05<01:25,  6.57s/it] 62%|██████▎   | 20/32 [02:11<01:19,  6.59s/it] 66%|██████▌   | 21/32 [02:18<01:12,  6.58s/it] 69%|██████▉   | 22/32 [02:24<01:05,  6.58s/it] 72%|███████▏  | 23/32 [02:31<00:59,  6.58s/it] 75%|███████▌  | 24/32 [02:38<00:52,  6.58s/it] 78%|███████▊  | 25/32 [02:44<00:46,  6.58s/it] 81%|████████▏ | 26/32 [02:51<00:39,  6.60s/it] 84%|████████▍ | 27/32 [02:57<00:32,  6.59s/it] 88%|████████▊ | 28/32 [03:04<00:26,  6.59s/it] 91%|█████████ | 29/32 [03:10<00:19,  6.58s/it] 94%|█████████▍| 30/32 [03:17<00:13,  6.58s/it] 97%|█████████▋| 31/32 [03:24<00:06,  6.58s/it]100%|██████████| 32/32 [03:30<00:00,  6.58s/it]100%|██████████| 32/32 [03:30<00:00,  6.59s/it]
+/home/alz07xz/project/Cluster-based-Affine-Transformation/quant/block_recon.py:90: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.detach().clone() or sourceTensor.detach().clone().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  module.act_quantizer.delta = torch.nn.Parameter(torch.tensor(module.act_quantizer.delta))
+Init alpha to be FP32
+Init alpha to be FP32
+Init alpha to be FP32
+Init alpha to be FP32
+Total loss:	0.400 (rec:0.377, pd:0.023, round:0.000)	b=0.00	count=500
+Total loss:	0.434 (rec:0.406, pd:0.028, round:0.000)	b=0.00	count=1000
+Total loss:	0.472 (rec:0.438, pd:0.035, round:0.000)	b=0.00	count=1500
+Total loss:	0.380 (rec:0.363, pd:0.017, round:0.000)	b=0.00	count=2000
+Total loss:	0.417 (rec:0.384, pd:0.033, round:0.000)	b=0.00	count=2500
+Total loss:	0.402 (rec:0.383, pd:0.019, round:0.000)	b=0.00	count=3000
+Total loss:	0.384 (rec:0.361, pd:0.023, round:0.000)	b=0.00	count=3500
+Total loss:	476.995 (rec:0.357, pd:0.017, round:476.620)	b=20.00	count=4000
+Total loss:	244.608 (rec:0.376, pd:0.022, round:244.210)	b=19.44	count=4500
+Total loss:	223.981 (rec:0.400, pd:0.022, round:223.559)	b=18.88	count=5000
+Total loss:	208.337 (rec:0.389, pd:0.028, round:207.920)	b=18.31	count=5500
+Total loss:	195.064 (rec:0.426, pd:0.041, round:194.597)	b=17.75	count=6000
+Total loss:	183.450 (rec:0.387, pd:0.030, round:183.034)	b=17.19	count=6500
+Total loss:	172.883 (rec:0.382, pd:0.023, round:172.478)	b=16.62	count=7000
+Total loss:	162.508 (rec:0.405, pd:0.030, round:162.074)	b=16.06	count=7500
+Total loss:	153.218 (rec:0.437, pd:0.035, round:152.746)	b=15.50	count=8000
+Total loss:	143.857 (rec:0.383, pd:0.026, round:143.449)	b=14.94	count=8500
+Total loss:	134.452 (rec:0.419, pd:0.035, round:133.999)	b=14.38	count=9000
+Total loss:	124.742 (rec:0.384, pd:0.030, round:124.328)	b=13.81	count=9500
+Total loss:	115.385 (rec:0.396, pd:0.027, round:114.962)	b=13.25	count=10000
+Total loss:	105.841 (rec:0.385, pd:0.022, round:105.434)	b=12.69	count=10500
+Total loss:	96.467 (rec:0.403, pd:0.028, round:96.037)	b=12.12	count=11000
+Total loss:	87.135 (rec:0.410, pd:0.020, round:86.705)	b=11.56	count=11500
+Total loss:	78.026 (rec:0.392, pd:0.024, round:77.610)	b=11.00	count=12000
+Total loss:	68.459 (rec:0.360, pd:0.020, round:68.079)	b=10.44	count=12500
+Total loss:	59.453 (rec:0.391, pd:0.023, round:59.040)	b=9.88	count=13000
+Total loss:	50.461 (rec:0.398, pd:0.024, round:50.039)	b=9.31	count=13500
+Total loss:	41.851 (rec:0.400, pd:0.028, round:41.423)	b=8.75	count=14000
+Total loss:	33.318 (rec:0.414, pd:0.025, round:32.879)	b=8.19	count=14500
+Total loss:	25.605 (rec:0.443, pd:0.039, round:25.123)	b=7.62	count=15000
+Total loss:	18.614 (rec:0.397, pd:0.035, round:18.183)	b=7.06	count=15500
+Total loss:	12.696 (rec:0.379, pd:0.028, round:12.288)	b=6.50	count=16000
+Total loss:	7.631 (rec:0.449, pd:0.027, round:7.155)	b=5.94	count=16500
+Total loss:	3.865 (rec:0.407, pd:0.022, round:3.437)	b=5.38	count=17000
+Total loss:	1.777 (rec:0.479, pd:0.022, round:1.276)	b=4.81	count=17500
+Total loss:	0.849 (rec:0.476, pd:0.021, round:0.352)	b=4.25	count=18000
+Total loss:	0.485 (rec:0.425, pd:0.025, round:0.036)	b=3.69	count=18500
+Total loss:	0.464 (rec:0.429, pd:0.025, round:0.010)	b=3.12	count=19000
+Total loss:	0.496 (rec:0.455, pd:0.040, round:0.000)	b=2.56	count=19500
+Total loss:	0.494 (rec:0.455, pd:0.039, round:0.000)	b=2.00	count=20000
+Reconstruction for block b2
+Start correcting 32 batches of data!
+  0%|          | 0/32 [00:00<?, ?it/s]  3%|▎         | 1/32 [00:03<01:47,  3.47s/it]  6%|▋         | 2/32 [00:06<01:42,  3.42s/it]  9%|▉         | 3/32 [00:10<01:38,  3.40s/it] 12%|█▎        | 4/32 [00:13<01:35,  3.40s/it] 16%|█▌        | 5/32 [00:17<01:31,  3.39s/it] 19%|█▉        | 6/32 [00:20<01:28,  3.39s/it] 22%|██▏       | 7/32 [00:23<01:24,  3.39s/it] 25%|██▌       | 8/32 [00:27<01:21,  3.39s/it] 28%|██▊       | 9/32 [00:30<01:17,  3.39s/it] 31%|███▏      | 10/32 [00:33<01:14,  3.39s/it] 34%|███▍      | 11/32 [00:37<01:11,  3.39s/it] 38%|███▊      | 12/32 [00:40<01:07,  3.39s/it] 41%|████      | 13/32 [00:44<01:04,  3.39s/it] 44%|████▍     | 14/32 [00:47<01:01,  3.39s/it] 47%|████▋     | 15/32 [00:50<00:57,  3.39s/it] 50%|█████     | 16/32 [00:54<00:54,  3.39s/it] 53%|█████▎    | 17/32 [00:57<00:50,  3.39s/it] 56%|█████▋    | 18/32 [01:01<00:47,  3.39s/it] 59%|█████▉    | 19/32 [01:04<00:44,  3.39s/it] 62%|██████▎   | 20/32 [01:07<00:40,  3.39s/it] 66%|██████▌   | 21/32 [01:11<00:37,  3.39s/it] 69%|██████▉   | 22/32 [01:14<00:33,  3.39s/it] 72%|███████▏  | 23/32 [01:18<00:30,  3.40s/it] 75%|███████▌  | 24/32 [01:21<00:27,  3.40s/it] 78%|███████▊  | 25/32 [01:24<00:23,  3.40s/it] 81%|████████▏ | 26/32 [01:28<00:20,  3.39s/it] 84%|████████▍ | 27/32 [01:31<00:16,  3.39s/it] 88%|████████▊ | 28/32 [01:35<00:13,  3.39s/it] 91%|█████████ | 29/32 [01:38<00:10,  3.40s/it] 94%|█████████▍| 30/32 [01:41<00:06,  3.40s/it] 97%|█████████▋| 31/32 [01:45<00:03,  3.40s/it]100%|██████████| 32/32 [01:48<00:00,  3.40s/it]100%|██████████| 32/32 [01:48<00:00,  3.39s/it]
+Init alpha to be FP32
+Init alpha to be FP32
+Init alpha to be FP32
+Total loss:	0.581 (rec:0.539, pd:0.042, round:0.000)	b=0.00	count=500
+Total loss:	0.619 (rec:0.599, pd:0.021, round:0.000)	b=0.00	count=1000
+Total loss:	0.601 (rec:0.567, pd:0.035, round:0.000)	b=0.00	count=1500
+Total loss:	0.580 (rec:0.549, pd:0.031, round:0.000)	b=0.00	count=2000
+Total loss:	0.578 (rec:0.555, pd:0.023, round:0.000)	b=0.00	count=2500
+Total loss:	0.592 (rec:0.568, pd:0.023, round:0.000)	b=0.00	count=3000
+Total loss:	0.576 (rec:0.548, pd:0.028, round:0.000)	b=0.00	count=3500
+Total loss:	489.234 (rec:0.576, pd:0.037, round:488.621)	b=20.00	count=4000
+Total loss:	251.544 (rec:0.660, pd:0.032, round:250.851)	b=19.44	count=4500
+Total loss:	231.992 (rec:0.562, pd:0.025, round:231.405)	b=18.88	count=5000
+Total loss:	217.926 (rec:0.622, pd:0.038, round:217.266)	b=18.31	count=5500
+Total loss:	205.481 (rec:0.690, pd:0.039, round:204.752)	b=17.75	count=6000
+Total loss:	194.478 (rec:0.560, pd:0.025, round:193.893)	b=17.19	count=6500
+Total loss:	183.590 (rec:0.612, pd:0.027, round:182.951)	b=16.62	count=7000
+Total loss:	174.131 (rec:0.567, pd:0.030, round:173.535)	b=16.06	count=7500
+Total loss:	164.859 (rec:0.555, pd:0.032, round:164.272)	b=15.50	count=8000
+Total loss:	155.191 (rec:0.556, pd:0.028, round:154.607)	b=14.94	count=8500
+Total loss:	146.081 (rec:0.654, pd:0.032, round:145.395)	b=14.38	count=9000
+Total loss:	136.566 (rec:0.550, pd:0.029, round:135.987)	b=13.81	count=9500
+Total loss:	126.951 (rec:0.636, pd:0.029, round:126.286)	b=13.25	count=10000
+Total loss:	117.673 (rec:0.590, pd:0.030, round:117.053)	b=12.69	count=10500
+Total loss:	107.720 (rec:0.574, pd:0.028, round:107.118)	b=12.12	count=11000
+Total loss:	98.227 (rec:0.593, pd:0.024, round:97.610)	b=11.56	count=11500
+Total loss:	87.699 (rec:0.597, pd:0.025, round:87.076)	b=11.00	count=12000
+Total loss:	76.995 (rec:0.598, pd:0.026, round:76.371)	b=10.44	count=12500
+Total loss:	66.408 (rec:0.625, pd:0.039, round:65.743)	b=9.88	count=13000
+Total loss:	55.673 (rec:0.556, pd:0.031, round:55.086)	b=9.31	count=13500
+Total loss:	44.964 (rec:0.583, pd:0.022, round:44.359)	b=8.75	count=14000
+Total loss:	34.996 (rec:0.656, pd:0.031, round:34.309)	b=8.19	count=14500
+Total loss:	25.202 (rec:0.617, pd:0.028, round:24.557)	b=7.62	count=15000
+Total loss:	16.484 (rec:0.582, pd:0.028, round:15.874)	b=7.06	count=15500
+Total loss:	9.097 (rec:0.587, pd:0.021, round:8.489)	b=6.50	count=16000
+Total loss:	4.470 (rec:0.614, pd:0.027, round:3.830)	b=5.94	count=16500
+Total loss:	1.868 (rec:0.586, pd:0.034, round:1.248)	b=5.38	count=17000
+Total loss:	0.993 (rec:0.628, pd:0.031, round:0.335)	b=4.81	count=17500
+Total loss:	0.800 (rec:0.600, pd:0.037, round:0.162)	b=4.25	count=18000
+Total loss:	0.649 (rec:0.566, pd:0.027, round:0.056)	b=3.69	count=18500
+Total loss:	0.615 (rec:0.580, pd:0.028, round:0.007)	b=3.12	count=19000
+Total loss:	0.636 (rec:0.603, pd:0.033, round:0.000)	b=2.56	count=19500
+Total loss:	0.634 (rec:0.605, pd:0.029, round:0.000)	b=2.00	count=20000
+Reconstruction for block b1
+Start correcting 32 batches of data!
+  0%|          | 0/32 [00:00<?, ?it/s]  3%|▎         | 1/32 [00:03<01:47,  3.45s/it]  6%|▋         | 2/32 [00:06<01:43,  3.45s/it]  9%|▉         | 3/32 [00:10<01:47,  3.71s/it] 12%|█▎        | 4/32 [00:15<01:48,  3.87s/it] 16%|█▌        | 5/32 [00:19<01:46,  3.96s/it] 19%|█▉        | 6/32 [00:23<01:44,  4.01s/it] 22%|██▏       | 7/32 [00:27<01:41,  4.04s/it] 25%|██▌       | 8/32 [00:31<01:37,  4.07s/it] 28%|██▊       | 9/32 [00:35<01:33,  4.08s/it] 31%|███▏      | 10/32 [00:39<01:30,  4.10s/it] 34%|███▍      | 11/32 [00:43<01:26,  4.10s/it] 38%|███▊      | 12/32 [00:47<01:22,  4.11s/it] 41%|████      | 13/32 [00:52<01:18,  4.12s/it] 44%|████▍     | 14/32 [00:56<01:14,  4.12s/it] 47%|████▋     | 15/32 [01:00<01:10,  4.12s/it] 50%|█████     | 16/32 [01:04<01:05,  4.12s/it] 53%|█████▎    | 17/32 [01:08<01:01,  4.13s/it] 56%|█████▋    | 18/32 [01:12<00:57,  4.13s/it] 59%|█████▉    | 19/32 [01:16<00:53,  4.12s/it] 62%|██████▎   | 20/32 [01:20<00:49,  4.13s/it] 66%|██████▌   | 21/32 [01:25<00:45,  4.13s/it] 69%|██████▉   | 22/32 [01:29<00:41,  4.13s/it] 72%|███████▏  | 23/32 [01:33<00:37,  4.13s/it] 75%|███████▌  | 24/32 [01:37<00:33,  4.13s/it] 78%|███████▊  | 25/32 [01:41<00:28,  4.13s/it] 81%|████████▏ | 26/32 [01:45<00:24,  4.13s/it] 84%|████████▍ | 27/32 [01:49<00:20,  4.14s/it] 88%|████████▊ | 28/32 [01:54<00:16,  4.14s/it] 91%|█████████ | 29/32 [01:58<00:12,  4.14s/it] 94%|█████████▍| 30/32 [02:02<00:08,  4.14s/it] 97%|█████████▋| 31/32 [02:06<00:04,  4.16s/it]100%|██████████| 32/32 [02:10<00:00,  4.18s/it]100%|██████████| 32/32 [02:10<00:00,  4.09s/it]
+Init alpha to be FP32
+Init alpha to be FP32
+Init alpha to be FP32
+Init alpha to be FP32
+Total loss:	0.711 (rec:0.674, pd:0.037, round:0.000)	b=0.00	count=500
+Total loss:	0.702 (rec:0.679, pd:0.023, round:0.000)	b=0.00	count=1000
+Total loss:	0.673 (rec:0.636, pd:0.037, round:0.000)	b=0.00	count=1500
+Total loss:	0.662 (rec:0.638, pd:0.024, round:0.000)	b=0.00	count=2000
+Total loss:	0.652 (rec:0.619, pd:0.033, round:0.000)	b=0.00	count=2500
+Total loss:	0.686 (rec:0.656, pd:0.030, round:0.000)	b=0.00	count=3000
+Total loss:	0.670 (rec:0.634, pd:0.036, round:0.000)	b=0.00	count=3500
+Total loss:	1330.958 (rec:0.624, pd:0.027, round:1330.308)	b=20.00	count=4000
+Total loss:	667.181 (rec:0.622, pd:0.032, round:666.527)	b=19.44	count=4500
+Total loss:	609.648 (rec:0.673, pd:0.031, round:608.945)	b=18.88	count=5000
+Total loss:	569.500 (rec:0.635, pd:0.023, round:568.841)	b=18.31	count=5500
+Total loss:	534.204 (rec:0.651, pd:0.030, round:533.522)	b=17.75	count=6000
+Total loss:	502.294 (rec:0.647, pd:0.031, round:501.617)	b=17.19	count=6500
+Total loss:	474.311 (rec:0.615, pd:0.022, round:473.674)	b=16.62	count=7000
+Total loss:	446.634 (rec:0.665, pd:0.040, round:445.929)	b=16.06	count=7500
+Total loss:	419.394 (rec:0.637, pd:0.034, round:418.723)	b=15.50	count=8000
+Total loss:	393.044 (rec:0.607, pd:0.021, round:392.416)	b=14.94	count=8500
+Total loss:	367.298 (rec:0.664, pd:0.032, round:366.602)	b=14.38	count=9000
+Total loss:	342.116 (rec:0.650, pd:0.028, round:341.437)	b=13.81	count=9500
+Total loss:	317.466 (rec:0.649, pd:0.029, round:316.788)	b=13.25	count=10000
+Total loss:	291.572 (rec:0.648, pd:0.029, round:290.895)	b=12.69	count=10500
+Total loss:	266.114 (rec:0.648, pd:0.035, round:265.431)	b=12.12	count=11000
+Total loss:	239.712 (rec:0.644, pd:0.024, round:239.044)	b=11.56	count=11500
+Total loss:	213.443 (rec:0.657, pd:0.031, round:212.755)	b=11.00	count=12000
+Total loss:	186.299 (rec:0.732, pd:0.021, round:185.545)	b=10.44	count=12500
+Total loss:	157.545 (rec:0.664, pd:0.021, round:156.861)	b=9.88	count=13000
+Total loss:	130.362 (rec:0.656, pd:0.028, round:129.679)	b=9.31	count=13500
+Total loss:	102.431 (rec:0.664, pd:0.031, round:101.736)	b=8.75	count=14000
+Total loss:	77.009 (rec:0.645, pd:0.033, round:76.331)	b=8.19	count=14500
+Total loss:	54.306 (rec:0.745, pd:0.028, round:53.533)	b=7.62	count=15000
+Total loss:	34.519 (rec:0.668, pd:0.028, round:33.823)	b=7.06	count=15500
+Total loss:	18.783 (rec:0.659, pd:0.026, round:18.097)	b=6.50	count=16000
+Total loss:	7.998 (rec:0.685, pd:0.025, round:7.287)	b=5.94	count=16500
+Total loss:	2.497 (rec:0.729, pd:0.034, round:1.735)	b=5.38	count=17000
+Total loss:	1.211 (rec:0.739, pd:0.028, round:0.444)	b=4.81	count=17500
+Total loss:	0.887 (rec:0.710, pd:0.026, round:0.152)	b=4.25	count=18000
+Total loss:	0.814 (rec:0.741, pd:0.038, round:0.035)	b=3.69	count=18500
+Total loss:	0.791 (rec:0.752, pd:0.039, round:0.000)	b=3.12	count=19000
+Total loss:	0.792 (rec:0.767, pd:0.024, round:0.000)	b=2.56	count=19500
+Total loss:	0.743 (rec:0.719, pd:0.024, round:0.000)	b=2.00	count=20000
+Reconstruction for block b2
+Start correcting 32 batches of data!
+  0%|          | 0/32 [00:00<?, ?it/s]  3%|▎         | 1/32 [00:02<01:27,  2.83s/it]  6%|▋         | 2/32 [00:05<01:25,  2.85s/it]  9%|▉         | 3/32 [00:08<01:22,  2.86s/it] 12%|█▎        | 4/32 [00:11<01:20,  2.86s/it] 16%|█▌        | 5/32 [00:14<01:17,  2.86s/it] 19%|█▉        | 6/32 [00:17<01:14,  2.87s/it] 22%|██▏       | 7/32 [00:20<01:11,  2.87s/it] 25%|██▌       | 8/32 [00:22<01:08,  2.87s/it] 28%|██▊       | 9/32 [00:25<01:06,  2.87s/it] 31%|███▏      | 10/32 [00:28<01:03,  2.88s/it] 34%|███▍      | 11/32 [00:31<01:00,  2.88s/it] 38%|███▊      | 12/32 [00:34<00:57,  2.88s/it] 41%|████      | 13/32 [00:37<00:54,  2.88s/it] 44%|████▍     | 14/32 [00:40<00:51,  2.88s/it] 47%|████▋     | 15/32 [00:43<00:49,  2.89s/it] 50%|█████     | 16/32 [00:45<00:46,  2.89s/it] 53%|█████▎    | 17/32 [00:48<00:43,  2.89s/it] 56%|█████▋    | 18/32 [00:51<00:40,  2.89s/it] 59%|█████▉    | 19/32 [00:54<00:37,  2.89s/it] 62%|██████▎   | 20/32 [00:57<00:34,  2.89s/it] 66%|██████▌   | 21/32 [01:00<00:31,  2.89s/it] 69%|██████▉   | 22/32 [01:03<00:28,  2.89s/it] 72%|███████▏  | 23/32 [01:06<00:26,  2.89s/it] 75%|███████▌  | 24/32 [01:09<00:23,  2.90s/it] 78%|███████▊  | 25/32 [01:12<00:20,  2.90s/it] 81%|████████▏ | 26/32 [01:14<00:17,  2.90s/it] 84%|████████▍ | 27/32 [01:17<00:14,  2.90s/it] 88%|████████▊ | 28/32 [01:20<00:11,  2.89s/it] 91%|█████████ | 29/32 [01:23<00:08,  2.90s/it] 94%|█████████▍| 30/32 [01:26<00:05,  2.90s/it] 97%|█████████▋| 31/32 [01:29<00:02,  2.90s/it]100%|██████████| 32/32 [01:32<00:00,  2.90s/it]100%|██████████| 32/32 [01:32<00:00,  2.89s/it]
+Init alpha to be FP32
+Init alpha to be FP32
+Init alpha to be FP32
+Total loss:	1.123 (rec:1.088, pd:0.035, round:0.000)	b=0.00	count=500
+Total loss:	1.112 (rec:1.080, pd:0.032, round:0.000)	b=0.00	count=1000
+Total loss:	1.073 (rec:1.047, pd:0.026, round:0.000)	b=0.00	count=1500
+Total loss:	1.070 (rec:1.045, pd:0.025, round:0.000)	b=0.00	count=2000
+Total loss:	1.050 (rec:1.025, pd:0.025, round:0.000)	b=0.00	count=2500
+Total loss:	1.038 (rec:1.014, pd:0.025, round:0.000)	b=0.00	count=3000
+Total loss:	1.120 (rec:1.092, pd:0.028, round:0.000)	b=0.00	count=3500
+Total loss:	1073.901 (rec:1.119, pd:0.021, round:1072.761)	b=20.00	count=4000
+Total loss:	471.984 (rec:1.121, pd:0.025, round:470.839)	b=19.44	count=4500
+Total loss:	426.504 (rec:1.043, pd:0.034, round:425.427)	b=18.88	count=5000
+Total loss:	392.196 (rec:1.111, pd:0.022, round:391.063)	b=18.31	count=5500
+Total loss:	361.825 (rec:0.994, pd:0.023, round:360.808)	b=17.75	count=6000
+Total loss:	333.773 (rec:1.110, pd:0.028, round:332.635)	b=17.19	count=6500
+Total loss:	308.392 (rec:0.979, pd:0.024, round:307.389)	b=16.62	count=7000
+Total loss:	284.404 (rec:1.087, pd:0.030, round:283.287)	b=16.06	count=7500
+Total loss:	263.400 (rec:1.001, pd:0.024, round:262.375)	b=15.50	count=8000
+Total loss:	242.057 (rec:0.995, pd:0.020, round:241.042)	b=14.94	count=8500
+Total loss:	221.822 (rec:1.093, pd:0.031, round:220.698)	b=14.38	count=9000
+Total loss:	201.810 (rec:1.062, pd:0.026, round:200.721)	b=13.81	count=9500
+Total loss:	182.845 (rec:1.089, pd:0.026, round:181.730)	b=13.25	count=10000
+Total loss:	164.809 (rec:1.063, pd:0.019, round:163.728)	b=12.69	count=10500
+Total loss:	146.847 (rec:1.074, pd:0.021, round:145.752)	b=12.12	count=11000
+Total loss:	129.874 (rec:0.992, pd:0.036, round:128.846)	b=11.56	count=11500
+Total loss:	112.807 (rec:1.044, pd:0.022, round:111.740)	b=11.00	count=12000
+Total loss:	96.036 (rec:1.026, pd:0.021, round:94.989)	b=10.44	count=12500
+Total loss:	80.606 (rec:1.054, pd:0.022, round:79.529)	b=9.88	count=13000
+Total loss:	65.033 (rec:1.071, pd:0.028, round:63.934)	b=9.31	count=13500
+Total loss:	50.530 (rec:1.086, pd:0.021, round:49.423)	b=8.75	count=14000
+Total loss:	37.084 (rec:1.026, pd:0.021, round:36.037)	b=8.19	count=14500
+Total loss:	25.315 (rec:1.123, pd:0.024, round:24.168)	b=7.62	count=15000
+Total loss:	15.282 (rec:1.034, pd:0.027, round:14.221)	b=7.06	count=15500
+Total loss:	8.088 (rec:1.030, pd:0.024, round:7.034)	b=6.50	count=16000
+Total loss:	4.022 (rec:1.065, pd:0.025, round:2.932)	b=5.94	count=16500
+Total loss:	2.074 (rec:1.050, pd:0.032, round:0.992)	b=5.38	count=17000
+Total loss:	1.454 (rec:1.052, pd:0.024, round:0.377)	b=4.81	count=17500
+Total loss:	1.244 (rec:1.149, pd:0.037, round:0.057)	b=4.25	count=18000
+Total loss:	1.110 (rec:1.078, pd:0.028, round:0.004)	b=3.69	count=18500
+Total loss:	1.143 (rec:1.109, pd:0.034, round:0.000)	b=3.12	count=19000
+Total loss:	1.066 (rec:1.045, pd:0.021, round:0.000)	b=2.56	count=19500
+Total loss:	1.101 (rec:1.080, pd:0.021, round:0.000)	b=2.00	count=20000
+Reconstruction for block b3
+Start correcting 32 batches of data!
+  0%|          | 0/32 [00:00<?, ?it/s]  3%|▎         | 1/32 [00:02<01:27,  2.82s/it]  6%|▋         | 2/32 [00:05<01:25,  2.85s/it]  9%|▉         | 3/32 [00:08<01:23,  2.87s/it] 12%|█▎        | 4/32 [00:11<01:20,  2.87s/it] 16%|█▌        | 5/32 [00:14<01:17,  2.87s/it] 19%|█▉        | 6/32 [00:17<01:14,  2.87s/it] 22%|██▏       | 7/32 [00:20<01:11,  2.87s/it] 25%|██▌       | 8/32 [00:22<01:08,  2.87s/it] 28%|██▊       | 9/32 [00:25<01:06,  2.88s/it] 31%|███▏      | 10/32 [00:28<01:03,  2.87s/it] 34%|███▍      | 11/32 [00:31<01:00,  2.88s/it] 38%|███▊      | 12/32 [00:34<00:57,  2.88s/it] 41%|████      | 13/32 [00:37<00:54,  2.88s/it] 44%|████▍     | 14/32 [00:40<00:51,  2.88s/it] 47%|████▋     | 15/32 [00:43<00:49,  2.89s/it] 50%|█████     | 16/32 [00:46<00:46,  2.89s/it] 53%|█████▎    | 17/32 [00:48<00:43,  2.89s/it] 56%|█████▋    | 18/32 [00:51<00:40,  2.89s/it] 59%|█████▉    | 19/32 [00:54<00:37,  2.89s/it] 62%|██████▎   | 20/32 [00:57<00:34,  2.89s/it] 66%|██████▌   | 21/32 [01:00<00:31,  2.90s/it] 69%|██████▉   | 22/32 [01:03<00:28,  2.90s/it] 72%|███████▏  | 23/32 [01:06<00:26,  2.90s/it] 75%|███████▌  | 24/32 [01:09<00:23,  2.90s/it] 78%|███████▊  | 25/32 [01:12<00:20,  2.90s/it] 81%|████████▏ | 26/32 [01:15<00:17,  2.90s/it] 84%|████████▍ | 27/32 [01:17<00:14,  2.90s/it] 88%|████████▊ | 28/32 [01:20<00:11,  2.90s/it] 91%|█████████ | 29/32 [01:23<00:08,  2.90s/it] 94%|█████████▍| 30/32 [01:26<00:05,  2.90s/it] 97%|█████████▋| 31/32 [01:29<00:02,  2.90s/it]100%|██████████| 32/32 [01:32<00:00,  2.90s/it]100%|██████████| 32/32 [01:32<00:00,  2.89s/it]
+slurmstepd-jnfat07: error: *** JOB 1611515 ON jnfat07 CANCELLED AT 2025-09-03T13:31:25 ***

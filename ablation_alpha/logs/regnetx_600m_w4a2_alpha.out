@@ -1,0 +1,1122 @@
+Starting RegNetX-600M W4A2 alpha ablation experiment at Wed Sep  3 11:47:28 AM CEST 2025
+==> Using Pytorch Dataset
+Setting the first and the last layer to 8-bit
+the quantized model is below!
+QuantModel(
+  (model): RegNet(
+    (stem): SimpleStemIN(
+      (conv): QuantModule(
+        wbit=8, abit=2, disable_act_quant=False
+        (weight_quantizer): UniformAffineQuantizer(bit=8, is_training=False, inited=True)
+        (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+        (norm_function): StraightThrough()
+        (activation_function): ReLU(inplace=True)
+      )
+      (bn): StraightThrough()
+      (relu): StraightThrough()
+    )
+    (s1): AnyStage(
+      (b1): QuantResBottleneckBlock(
+        (conv1): QuantModule(
+          wbit=4, abit=2, disable_act_quant=False
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): ReLU(inplace=True)
+        )
+        (conv2): QuantModule(
+          wbit=4, abit=2, disable_act_quant=False
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): ReLU(inplace=True)
+        )
+        (conv3): QuantModule(
+          wbit=4, abit=2, disable_act_quant=True
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): StraightThrough()
+        )
+        (downsample): QuantModule(
+          wbit=4, abit=2, disable_act_quant=True
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): StraightThrough()
+        )
+        (activation_function): ReLU(inplace=True)
+        (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+      )
+    )
+    (s2): AnyStage(
+      (b1): QuantResBottleneckBlock(
+        (conv1): QuantModule(
+          wbit=4, abit=2, disable_act_quant=False
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): ReLU(inplace=True)
+        )
+        (conv2): QuantModule(
+          wbit=4, abit=2, disable_act_quant=False
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): ReLU(inplace=True)
+        )
+        (conv3): QuantModule(
+          wbit=4, abit=2, disable_act_quant=True
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): StraightThrough()
+        )
+        (downsample): QuantModule(
+          wbit=4, abit=2, disable_act_quant=True
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): StraightThrough()
+        )
+        (activation_function): ReLU(inplace=True)
+        (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+      )
+      (b2): QuantResBottleneckBlock(
+        (conv1): QuantModule(
+          wbit=4, abit=2, disable_act_quant=False
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): ReLU(inplace=True)
+        )
+        (conv2): QuantModule(
+          wbit=4, abit=2, disable_act_quant=False
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): ReLU(inplace=True)
+        )
+        (conv3): QuantModule(
+          wbit=4, abit=2, disable_act_quant=True
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): StraightThrough()
+        )
+        (activation_function): ReLU(inplace=True)
+        (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+      )
+      (b3): QuantResBottleneckBlock(
+        (conv1): QuantModule(
+          wbit=4, abit=2, disable_act_quant=False
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): ReLU(inplace=True)
+        )
+        (conv2): QuantModule(
+          wbit=4, abit=2, disable_act_quant=False
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): ReLU(inplace=True)
+        )
+        (conv3): QuantModule(
+          wbit=4, abit=2, disable_act_quant=True
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): StraightThrough()
+        )
+        (activation_function): ReLU(inplace=True)
+        (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+      )
+    )
+    (s3): AnyStage(
+      (b1): QuantResBottleneckBlock(
+        (conv1): QuantModule(
+          wbit=4, abit=2, disable_act_quant=False
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): ReLU(inplace=True)
+        )
+        (conv2): QuantModule(
+          wbit=4, abit=2, disable_act_quant=False
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): ReLU(inplace=True)
+        )
+        (conv3): QuantModule(
+          wbit=4, abit=2, disable_act_quant=True
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): StraightThrough()
+        )
+        (downsample): QuantModule(
+          wbit=4, abit=2, disable_act_quant=True
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): StraightThrough()
+        )
+        (activation_function): ReLU(inplace=True)
+        (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+      )
+      (b2): QuantResBottleneckBlock(
+        (conv1): QuantModule(
+          wbit=4, abit=2, disable_act_quant=False
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): ReLU(inplace=True)
+        )
+        (conv2): QuantModule(
+          wbit=4, abit=2, disable_act_quant=False
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): ReLU(inplace=True)
+        )
+        (conv3): QuantModule(
+          wbit=4, abit=2, disable_act_quant=True
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): StraightThrough()
+        )
+        (activation_function): ReLU(inplace=True)
+        (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+      )
+      (b3): QuantResBottleneckBlock(
+        (conv1): QuantModule(
+          wbit=4, abit=2, disable_act_quant=False
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): ReLU(inplace=True)
+        )
+        (conv2): QuantModule(
+          wbit=4, abit=2, disable_act_quant=False
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): ReLU(inplace=True)
+        )
+        (conv3): QuantModule(
+          wbit=4, abit=2, disable_act_quant=True
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): StraightThrough()
+        )
+        (activation_function): ReLU(inplace=True)
+        (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+      )
+      (b4): QuantResBottleneckBlock(
+        (conv1): QuantModule(
+          wbit=4, abit=2, disable_act_quant=False
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): ReLU(inplace=True)
+        )
+        (conv2): QuantModule(
+          wbit=4, abit=2, disable_act_quant=False
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): ReLU(inplace=True)
+        )
+        (conv3): QuantModule(
+          wbit=4, abit=2, disable_act_quant=True
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): StraightThrough()
+        )
+        (activation_function): ReLU(inplace=True)
+        (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+      )
+      (b5): QuantResBottleneckBlock(
+        (conv1): QuantModule(
+          wbit=4, abit=2, disable_act_quant=False
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): ReLU(inplace=True)
+        )
+        (conv2): QuantModule(
+          wbit=4, abit=2, disable_act_quant=False
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): ReLU(inplace=True)
+        )
+        (conv3): QuantModule(
+          wbit=4, abit=2, disable_act_quant=True
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): StraightThrough()
+        )
+        (activation_function): ReLU(inplace=True)
+        (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+      )
+    )
+    (s4): AnyStage(
+      (b1): QuantResBottleneckBlock(
+        (conv1): QuantModule(
+          wbit=4, abit=2, disable_act_quant=False
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): ReLU(inplace=True)
+        )
+        (conv2): QuantModule(
+          wbit=4, abit=2, disable_act_quant=False
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): ReLU(inplace=True)
+        )
+        (conv3): QuantModule(
+          wbit=4, abit=2, disable_act_quant=True
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): StraightThrough()
+        )
+        (downsample): QuantModule(
+          wbit=4, abit=2, disable_act_quant=True
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): StraightThrough()
+        )
+        (activation_function): ReLU(inplace=True)
+        (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+      )
+      (b2): QuantResBottleneckBlock(
+        (conv1): QuantModule(
+          wbit=4, abit=2, disable_act_quant=False
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): ReLU(inplace=True)
+        )
+        (conv2): QuantModule(
+          wbit=4, abit=2, disable_act_quant=False
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): ReLU(inplace=True)
+        )
+        (conv3): QuantModule(
+          wbit=4, abit=2, disable_act_quant=True
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): StraightThrough()
+        )
+        (activation_function): ReLU(inplace=True)
+        (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+      )
+      (b3): QuantResBottleneckBlock(
+        (conv1): QuantModule(
+          wbit=4, abit=2, disable_act_quant=False
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): ReLU(inplace=True)
+        )
+        (conv2): QuantModule(
+          wbit=4, abit=2, disable_act_quant=False
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): ReLU(inplace=True)
+        )
+        (conv3): QuantModule(
+          wbit=4, abit=2, disable_act_quant=True
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): StraightThrough()
+        )
+        (activation_function): ReLU(inplace=True)
+        (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+      )
+      (b4): QuantResBottleneckBlock(
+        (conv1): QuantModule(
+          wbit=4, abit=2, disable_act_quant=False
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): ReLU(inplace=True)
+        )
+        (conv2): QuantModule(
+          wbit=4, abit=2, disable_act_quant=False
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): ReLU(inplace=True)
+        )
+        (conv3): QuantModule(
+          wbit=4, abit=2, disable_act_quant=True
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): StraightThrough()
+        )
+        (activation_function): ReLU(inplace=True)
+        (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+      )
+      (b5): QuantResBottleneckBlock(
+        (conv1): QuantModule(
+          wbit=4, abit=2, disable_act_quant=False
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): ReLU(inplace=True)
+        )
+        (conv2): QuantModule(
+          wbit=4, abit=2, disable_act_quant=False
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): ReLU(inplace=True)
+        )
+        (conv3): QuantModule(
+          wbit=4, abit=2, disable_act_quant=True
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): StraightThrough()
+        )
+        (activation_function): ReLU(inplace=True)
+        (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+      )
+      (b6): QuantResBottleneckBlock(
+        (conv1): QuantModule(
+          wbit=4, abit=2, disable_act_quant=False
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): ReLU(inplace=True)
+        )
+        (conv2): QuantModule(
+          wbit=4, abit=2, disable_act_quant=False
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): ReLU(inplace=True)
+        )
+        (conv3): QuantModule(
+          wbit=4, abit=2, disable_act_quant=True
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): StraightThrough()
+        )
+        (activation_function): ReLU(inplace=True)
+        (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+      )
+      (b7): QuantResBottleneckBlock(
+        (conv1): QuantModule(
+          wbit=4, abit=2, disable_act_quant=False
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): ReLU(inplace=True)
+        )
+        (conv2): QuantModule(
+          wbit=4, abit=2, disable_act_quant=False
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): ReLU(inplace=True)
+        )
+        (conv3): QuantModule(
+          wbit=4, abit=2, disable_act_quant=True
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): StraightThrough()
+        )
+        (activation_function): ReLU(inplace=True)
+        (act_quantizer): UniformAffineQuantizer(bit=8, is_training=False, inited=True)
+      )
+    )
+    (head): AnyHead(
+      (avg_pool): AdaptiveAvgPool2d(output_size=(1, 1))
+      (fc): QuantModule(
+        wbit=8, abit=2, disable_act_quant=True
+        (weight_quantizer): UniformAffineQuantizer(bit=8, is_training=False, inited=True)
+        (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+        (norm_function): StraightThrough()
+        (activation_function): StraightThrough()
+      )
+    )
+  )
+)
+/home/alz07xz/project/Cluster-based-Affine-Transformation/quant/quant_layer.py:141: UserWarning: _aminmax is deprecated as of PyTorch 1.11 and will be removed in a future release. Use aminmax instead. This warning will only appear once per process. (Triggered internally at /pytorch/aten/src/ATen/native/TensorCompare.cpp:814.)
+  x_min, x_max = torch._aminmax(y, 1)
+Reconstruction for layer conv
+Start correcting 32 batches of data!
+  0%|          | 0/32 [00:00<?, ?it/s]  3%|▎         | 1/32 [00:01<00:50,  1.64s/it]  6%|▋         | 2/32 [00:03<00:45,  1.52s/it]  9%|▉         | 3/32 [00:04<00:42,  1.48s/it] 12%|█▎        | 4/32 [00:05<00:40,  1.46s/it] 16%|█▌        | 5/32 [00:07<00:39,  1.45s/it] 19%|█▉        | 6/32 [00:08<00:37,  1.45s/it] 22%|██▏       | 7/32 [00:10<00:36,  1.44s/it] 25%|██▌       | 8/32 [00:11<00:34,  1.44s/it] 28%|██▊       | 9/32 [00:13<00:33,  1.44s/it] 31%|███▏      | 10/32 [00:14<00:31,  1.44s/it] 34%|███▍      | 11/32 [00:15<00:30,  1.44s/it] 38%|███▊      | 12/32 [00:17<00:28,  1.44s/it] 41%|████      | 13/32 [00:18<00:27,  1.44s/it] 44%|████▍     | 14/32 [00:20<00:25,  1.44s/it] 47%|████▋     | 15/32 [00:21<00:24,  1.44s/it] 50%|█████     | 16/32 [00:23<00:23,  1.44s/it] 53%|█████▎    | 17/32 [00:24<00:21,  1.44s/it] 56%|█████▋    | 18/32 [00:26<00:20,  1.44s/it] 59%|█████▉    | 19/32 [00:27<00:18,  1.44s/it] 62%|██████▎   | 20/32 [00:28<00:17,  1.44s/it] 66%|██████▌   | 21/32 [00:30<00:15,  1.44s/it] 69%|██████▉   | 22/32 [00:31<00:14,  1.44s/it] 72%|███████▏  | 23/32 [00:33<00:12,  1.44s/it] 75%|███████▌  | 24/32 [00:34<00:11,  1.44s/it] 78%|███████▊  | 25/32 [00:36<00:10,  1.44s/it] 81%|████████▏ | 26/32 [00:37<00:08,  1.44s/it] 84%|████████▍ | 27/32 [00:39<00:07,  1.44s/it] 88%|████████▊ | 28/32 [00:40<00:05,  1.44s/it] 91%|█████████ | 29/32 [00:41<00:04,  1.45s/it] 94%|█████████▍| 30/32 [00:43<00:02,  1.44s/it] 97%|█████████▋| 31/32 [00:44<00:01,  1.45s/it]100%|██████████| 32/32 [00:46<00:00,  1.44s/it]100%|██████████| 32/32 [00:46<00:00,  1.45s/it]
+/home/alz07xz/project/Cluster-based-Affine-Transformation/quant/quant_layer.py:172: UserWarning: _aminmax is deprecated as of PyTorch 1.11 and will be removed in a future release. Use aminmax instead. This warning will only appear once per process. (Triggered internally at /pytorch/aten/src/ATen/native/ReduceAllOps.cpp:71.)
+  x_min, x_max = torch._aminmax(x)
+/home/alz07xz/project/Cluster-based-Affine-Transformation/quant/layer_recon.py:88: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.detach().clone() or sourceTensor.detach().clone().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  layer.act_quantizer.delta = torch.nn.Parameter(torch.tensor(layer.act_quantizer.delta))
+Init alpha to be FP32
+Total loss:	0.692 (rec:0.537, pd:0.155, round:0.000)	b=0.00	count=500
+Total loss:	0.609 (rec:0.535, pd:0.074, round:0.000)	b=0.00	count=1000
+Total loss:	0.616 (rec:0.520, pd:0.096, round:0.000)	b=0.00	count=1500
+Total loss:	0.693 (rec:0.600, pd:0.093, round:0.000)	b=0.00	count=2000
+Total loss:	0.682 (rec:0.562, pd:0.119, round:0.000)	b=0.00	count=2500
+Total loss:	0.653 (rec:0.543, pd:0.110, round:0.000)	b=0.00	count=3000
+Total loss:	0.649 (rec:0.544, pd:0.105, round:0.000)	b=0.00	count=3500
+Total loss:	4.950 (rec:0.503, pd:0.120, round:4.327)	b=20.00	count=4000
+Total loss:	2.571 (rec:0.615, pd:0.083, round:1.873)	b=19.44	count=4500
+Total loss:	2.241 (rec:0.564, pd:0.095, round:1.582)	b=18.88	count=5000
+Total loss:	1.974 (rec:0.566, pd:0.090, round:1.318)	b=18.31	count=5500
+Total loss:	1.788 (rec:0.497, pd:0.075, round:1.216)	b=17.75	count=6000
+Total loss:	1.715 (rec:0.515, pd:0.060, round:1.140)	b=17.19	count=6500
+Total loss:	1.586 (rec:0.499, pd:0.103, round:0.984)	b=16.62	count=7000
+Total loss:	1.538 (rec:0.544, pd:0.083, round:0.910)	b=16.06	count=7500
+Total loss:	1.535 (rec:0.527, pd:0.118, round:0.890)	b=15.50	count=8000
+Total loss:	1.430 (rec:0.526, pd:0.094, round:0.810)	b=14.94	count=8500
+Total loss:	1.380 (rec:0.527, pd:0.093, round:0.760)	b=14.38	count=9000
+Total loss:	1.398 (rec:0.572, pd:0.086, round:0.740)	b=13.81	count=9500
+Total loss:	1.309 (rec:0.570, pd:0.090, round:0.650)	b=13.25	count=10000
+Total loss:	1.162 (rec:0.493, pd:0.072, round:0.597)	b=12.69	count=10500
+Total loss:	1.218 (rec:0.539, pd:0.109, round:0.570)	b=12.12	count=11000
+Total loss:	1.167 (rec:0.568, pd:0.081, round:0.518)	b=11.56	count=11500
+Total loss:	1.061 (rec:0.531, pd:0.091, round:0.438)	b=11.00	count=12000
+Total loss:	1.072 (rec:0.601, pd:0.103, round:0.367)	b=10.44	count=12500
+Total loss:	0.885 (rec:0.489, pd:0.086, round:0.310)	b=9.88	count=13000
+Total loss:	0.883 (rec:0.535, pd:0.078, round:0.270)	b=9.31	count=13500
+Total loss:	0.928 (rec:0.548, pd:0.110, round:0.270)	b=8.75	count=14000
+Total loss:	0.883 (rec:0.547, pd:0.096, round:0.240)	b=8.19	count=14500
+Total loss:	0.803 (rec:0.525, pd:0.100, round:0.179)	b=7.62	count=15000
+Total loss:	0.730 (rec:0.528, pd:0.083, round:0.120)	b=7.06	count=15500
+Total loss:	0.809 (rec:0.618, pd:0.111, round:0.080)	b=6.50	count=16000
+Total loss:	0.703 (rec:0.568, pd:0.065, round:0.070)	b=5.94	count=16500
+Total loss:	0.618 (rec:0.501, pd:0.068, round:0.050)	b=5.38	count=17000
+Total loss:	0.709 (rec:0.537, pd:0.143, round:0.030)	b=4.81	count=17500
+Total loss:	0.633 (rec:0.538, pd:0.094, round:0.001)	b=4.25	count=18000
+Total loss:	0.666 (rec:0.556, pd:0.110, round:0.000)	b=3.69	count=18500
+Total loss:	0.681 (rec:0.610, pd:0.071, round:0.000)	b=3.12	count=19000
+Total loss:	0.584 (rec:0.517, pd:0.067, round:0.000)	b=2.56	count=19500
+Total loss:	0.607 (rec:0.511, pd:0.097, round:0.000)	b=2.00	count=20000
+Reconstruction for block b1
+Start correcting 32 batches of data!
+  0%|          | 0/32 [00:00<?, ?it/s]  3%|▎         | 1/32 [00:03<01:57,  3.78s/it]  6%|▋         | 2/32 [00:07<01:53,  3.78s/it]  9%|▉         | 3/32 [00:11<01:49,  3.77s/it] 12%|█▎        | 4/32 [00:15<01:45,  3.78s/it] 16%|█▌        | 5/32 [00:18<01:41,  3.78s/it] 19%|█▉        | 6/32 [00:22<01:38,  3.77s/it] 22%|██▏       | 7/32 [00:26<01:34,  3.77s/it] 25%|██▌       | 8/32 [00:30<01:30,  3.77s/it] 28%|██▊       | 9/32 [00:33<01:26,  3.77s/it] 31%|███▏      | 10/32 [00:37<01:23,  3.77s/it] 34%|███▍      | 11/32 [00:41<01:19,  3.77s/it] 38%|███▊      | 12/32 [00:45<01:15,  3.78s/it] 41%|████      | 13/32 [00:49<01:11,  3.78s/it] 44%|████▍     | 14/32 [00:52<01:07,  3.78s/it] 47%|████▋     | 15/32 [00:56<01:04,  3.78s/it] 50%|█████     | 16/32 [01:00<01:00,  3.78s/it] 53%|█████▎    | 17/32 [01:04<00:56,  3.78s/it] 56%|█████▋    | 18/32 [01:07<00:52,  3.78s/it] 59%|█████▉    | 19/32 [01:11<00:49,  3.78s/it] 62%|██████▎   | 20/32 [01:15<00:45,  3.79s/it] 66%|██████▌   | 21/32 [01:19<00:41,  3.79s/it] 69%|██████▉   | 22/32 [01:23<00:37,  3.79s/it] 72%|███████▏  | 23/32 [01:26<00:34,  3.78s/it] 75%|███████▌  | 24/32 [01:30<00:30,  3.78s/it] 78%|███████▊  | 25/32 [01:34<00:26,  3.78s/it] 81%|████████▏ | 26/32 [01:38<00:22,  3.78s/it] 84%|████████▍ | 27/32 [01:42<00:18,  3.78s/it] 88%|████████▊ | 28/32 [01:45<00:15,  3.78s/it] 91%|█████████ | 29/32 [01:49<00:11,  3.79s/it] 94%|█████████▍| 30/32 [01:53<00:07,  3.79s/it] 97%|█████████▋| 31/32 [01:57<00:03,  3.79s/it]100%|██████████| 32/32 [02:00<00:00,  3.79s/it]100%|██████████| 32/32 [02:00<00:00,  3.78s/it]
+/home/alz07xz/project/Cluster-based-Affine-Transformation/quant/block_recon.py:90: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.detach().clone() or sourceTensor.detach().clone().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  module.act_quantizer.delta = torch.nn.Parameter(torch.tensor(module.act_quantizer.delta))
+Init alpha to be FP32
+Init alpha to be FP32
+Init alpha to be FP32
+Init alpha to be FP32
+Total loss:	2.735 (rec:2.541, pd:0.195, round:0.000)	b=0.00	count=500
+Total loss:	2.573 (rec:2.379, pd:0.193, round:0.000)	b=0.00	count=1000
+Total loss:	2.747 (rec:2.552, pd:0.195, round:0.000)	b=0.00	count=1500
+Total loss:	2.573 (rec:2.334, pd:0.240, round:0.000)	b=0.00	count=2000
+Total loss:	2.590 (rec:2.409, pd:0.180, round:0.000)	b=0.00	count=2500
+Total loss:	2.743 (rec:2.581, pd:0.163, round:0.000)	b=0.00	count=3000
+Total loss:	2.642 (rec:2.455, pd:0.187, round:0.000)	b=0.00	count=3500
+Total loss:	98.490 (rec:2.463, pd:0.183, round:95.843)	b=20.00	count=4000
+Total loss:	52.686 (rec:2.458, pd:0.233, round:49.995)	b=19.44	count=4500
+Total loss:	47.984 (rec:2.516, pd:0.174, round:45.294)	b=18.88	count=5000
+Total loss:	44.612 (rec:2.509, pd:0.153, round:41.949)	b=18.31	count=5500
+Total loss:	41.775 (rec:2.386, pd:0.188, round:39.201)	b=17.75	count=6000
+Total loss:	39.452 (rec:2.501, pd:0.190, round:36.760)	b=17.19	count=6500
+Total loss:	37.379 (rec:2.525, pd:0.183, round:34.671)	b=16.62	count=7000
+Total loss:	35.357 (rec:2.333, pd:0.169, round:32.854)	b=16.06	count=7500
+Total loss:	33.795 (rec:2.416, pd:0.202, round:31.177)	b=15.50	count=8000
+Total loss:	32.548 (rec:2.601, pd:0.228, round:29.718)	b=14.94	count=8500
+Total loss:	30.476 (rec:2.308, pd:0.194, round:27.974)	b=14.38	count=9000
+Total loss:	28.731 (rec:2.310, pd:0.197, round:26.225)	b=13.81	count=9500
+Total loss:	27.343 (rec:2.418, pd:0.218, round:24.708)	b=13.25	count=10000
+Total loss:	25.939 (rec:2.493, pd:0.171, round:23.276)	b=12.69	count=10500
+Total loss:	24.256 (rec:2.368, pd:0.153, round:21.735)	b=12.12	count=11000
+Total loss:	22.904 (rec:2.392, pd:0.193, round:20.318)	b=11.56	count=11500
+Total loss:	21.509 (rec:2.492, pd:0.189, round:18.828)	b=11.00	count=12000
+Total loss:	19.979 (rec:2.528, pd:0.146, round:17.305)	b=10.44	count=12500
+Total loss:	18.524 (rec:2.474, pd:0.180, round:15.870)	b=9.88	count=13000
+Total loss:	16.921 (rec:2.313, pd:0.189, round:14.420)	b=9.31	count=13500
+Total loss:	15.635 (rec:2.469, pd:0.219, round:12.946)	b=8.75	count=14000
+Total loss:	13.764 (rec:2.269, pd:0.164, round:11.331)	b=8.19	count=14500
+Total loss:	12.486 (rec:2.413, pd:0.191, round:9.882)	b=7.62	count=15000
+Total loss:	10.650 (rec:2.300, pd:0.171, round:8.180)	b=7.06	count=15500
+Total loss:	9.002 (rec:2.440, pd:0.163, round:6.399)	b=6.50	count=16000
+Total loss:	7.401 (rec:2.405, pd:0.186, round:4.809)	b=5.94	count=16500
+Total loss:	5.885 (rec:2.524, pd:0.189, round:3.173)	b=5.38	count=17000
+Total loss:	4.440 (rec:2.495, pd:0.211, round:1.734)	b=4.81	count=17500
+Total loss:	3.132 (rec:2.334, pd:0.190, round:0.608)	b=4.25	count=18000
+Total loss:	3.140 (rec:2.727, pd:0.177, round:0.235)	b=3.69	count=18500
+Total loss:	2.648 (rec:2.402, pd:0.188, round:0.058)	b=3.12	count=19000
+Total loss:	2.595 (rec:2.457, pd:0.138, round:0.000)	b=2.56	count=19500
+Total loss:	2.617 (rec:2.428, pd:0.189, round:0.000)	b=2.00	count=20000
+Reconstruction for block b1
+Start correcting 32 batches of data!
+  0%|          | 0/32 [00:00<?, ?it/s]  3%|▎         | 1/32 [00:02<01:28,  2.85s/it]  6%|▋         | 2/32 [00:05<01:26,  2.88s/it]  9%|▉         | 3/32 [00:08<01:23,  2.88s/it] 12%|█▎        | 4/32 [00:11<01:21,  2.93s/it] 16%|█▌        | 5/32 [00:14<01:18,  2.92s/it] 19%|█▉        | 6/32 [00:17<01:15,  2.91s/it] 22%|██▏       | 7/32 [00:20<01:12,  2.91s/it] 25%|██▌       | 8/32 [00:23<01:09,  2.91s/it] 28%|██▊       | 9/32 [00:26<01:06,  2.91s/it] 31%|███▏      | 10/32 [00:29<01:03,  2.90s/it] 34%|███▍      | 11/32 [00:31<01:00,  2.90s/it] 38%|███▊      | 12/32 [00:34<00:58,  2.90s/it] 41%|████      | 13/32 [00:37<00:55,  2.90s/it] 44%|████▍     | 14/32 [00:40<00:52,  2.89s/it] 47%|████▋     | 15/32 [00:43<00:49,  2.89s/it] 50%|█████     | 16/32 [00:46<00:46,  2.89s/it] 53%|█████▎    | 17/32 [00:49<00:43,  2.91s/it] 56%|█████▋    | 18/32 [00:52<00:40,  2.91s/it] 59%|█████▉    | 19/32 [00:55<00:37,  2.92s/it] 62%|██████▎   | 20/32 [00:58<00:34,  2.91s/it] 66%|██████▌   | 21/32 [01:00<00:32,  2.91s/it] 69%|██████▉   | 22/32 [01:03<00:29,  2.92s/it] 72%|███████▏  | 23/32 [01:06<00:26,  2.92s/it] 75%|███████▌  | 24/32 [01:09<00:23,  2.91s/it] 78%|███████▊  | 25/32 [01:12<00:20,  2.92s/it] 81%|████████▏ | 26/32 [01:15<00:17,  2.92s/it] 84%|████████▍ | 27/32 [01:18<00:14,  2.92s/it] 88%|████████▊ | 28/32 [01:21<00:11,  2.92s/it] 91%|█████████ | 29/32 [01:24<00:08,  2.92s/it] 94%|█████████▍| 30/32 [01:27<00:05,  2.91s/it] 97%|█████████▋| 31/32 [01:30<00:02,  2.91s/it]100%|██████████| 32/32 [01:33<00:00,  2.91s/it]100%|██████████| 32/32 [01:33<00:00,  2.91s/it]
+Init alpha to be FP32
+Init alpha to be FP32
+Init alpha to be FP32
+Init alpha to be FP32
+Total loss:	4.330 (rec:3.997, pd:0.333, round:0.000)	b=0.00	count=500
+Total loss:	4.050 (rec:3.817, pd:0.233, round:0.000)	b=0.00	count=1000
+Total loss:	4.000 (rec:3.714, pd:0.287, round:0.000)	b=0.00	count=1500
+Total loss:	3.910 (rec:3.637, pd:0.273, round:0.000)	b=0.00	count=2000
+Total loss:	3.869 (rec:3.616, pd:0.253, round:0.000)	b=0.00	count=2500
+Total loss:	3.939 (rec:3.693, pd:0.246, round:0.000)	b=0.00	count=3000
+Total loss:	3.733 (rec:3.480, pd:0.253, round:0.000)	b=0.00	count=3500
+Total loss:	262.608 (rec:3.616, pd:0.190, round:258.802)	b=20.00	count=4000
+Total loss:	135.543 (rec:3.493, pd:0.201, round:131.850)	b=19.44	count=4500
+Total loss:	124.599 (rec:3.621, pd:0.214, round:120.765)	b=18.88	count=5000
+Total loss:	116.167 (rec:3.606, pd:0.235, round:112.326)	b=18.31	count=5500
+Total loss:	108.800 (rec:3.431, pd:0.268, round:105.101)	b=17.75	count=6000
+Total loss:	102.187 (rec:3.665, pd:0.260, round:98.262)	b=17.19	count=6500
+Total loss:	95.809 (rec:3.566, pd:0.239, round:92.004)	b=16.62	count=7000
+Total loss:	90.596 (rec:3.742, pd:0.255, round:86.599)	b=16.06	count=7500
+Total loss:	85.686 (rec:3.779, pd:0.247, round:81.661)	b=15.50	count=8000
+Total loss:	80.666 (rec:3.687, pd:0.257, round:76.723)	b=14.94	count=8500
+Total loss:	75.749 (rec:3.389, pd:0.260, round:72.100)	b=14.38	count=9000
+Total loss:	71.578 (rec:3.859, pd:0.255, round:67.464)	b=13.81	count=9500
+Total loss:	67.515 (rec:3.815, pd:0.255, round:63.445)	b=13.25	count=10000
+Total loss:	63.074 (rec:3.489, pd:0.213, round:59.372)	b=12.69	count=10500
+Total loss:	59.208 (rec:3.496, pd:0.249, round:55.462)	b=12.12	count=11000
+Total loss:	55.246 (rec:3.457, pd:0.248, round:51.541)	b=11.56	count=11500
+Total loss:	51.136 (rec:3.489, pd:0.244, round:47.403)	b=11.00	count=12000
+Total loss:	47.581 (rec:3.625, pd:0.230, round:43.725)	b=10.44	count=12500
+Total loss:	43.556 (rec:3.506, pd:0.221, round:39.829)	b=9.88	count=13000
+Total loss:	39.821 (rec:3.701, pd:0.291, round:35.828)	b=9.31	count=13500
+Total loss:	36.060 (rec:3.843, pd:0.277, round:31.940)	b=8.75	count=14000
+Total loss:	31.493 (rec:3.430, pd:0.238, round:27.826)	b=8.19	count=14500
+Total loss:	27.576 (rec:3.692, pd:0.260, round:23.624)	b=7.62	count=15000
+Total loss:	23.274 (rec:3.705, pd:0.238, round:19.331)	b=7.06	count=15500
+Total loss:	19.181 (rec:3.538, pd:0.235, round:15.408)	b=6.50	count=16000
+Total loss:	14.993 (rec:3.669, pd:0.279, round:11.045)	b=5.94	count=16500
+Total loss:	10.762 (rec:3.667, pd:0.249, round:6.846)	b=5.38	count=17000
+Total loss:	7.234 (rec:3.784, pd:0.240, round:3.210)	b=4.81	count=17500
+Total loss:	4.979 (rec:3.525, pd:0.274, round:1.181)	b=4.25	count=18000
+Total loss:	4.152 (rec:3.600, pd:0.236, round:0.316)	b=3.69	count=18500
+Total loss:	3.790 (rec:3.489, pd:0.269, round:0.031)	b=3.12	count=19000
+Total loss:	3.889 (rec:3.586, pd:0.303, round:0.000)	b=2.56	count=19500
+Total loss:	3.781 (rec:3.514, pd:0.268, round:0.000)	b=2.00	count=20000
+Reconstruction for block b2
+Start correcting 32 batches of data!
+  0%|          | 0/32 [00:00<?, ?it/s]  3%|▎         | 1/32 [00:02<01:08,  2.21s/it]  6%|▋         | 2/32 [00:04<01:06,  2.23s/it]  9%|▉         | 3/32 [00:06<01:04,  2.24s/it] 12%|█▎        | 4/32 [00:08<01:02,  2.24s/it] 16%|█▌        | 5/32 [00:11<01:00,  2.25s/it] 19%|█▉        | 6/32 [00:13<00:58,  2.25s/it] 22%|██▏       | 7/32 [00:15<00:56,  2.25s/it] 25%|██▌       | 8/32 [00:17<00:54,  2.25s/it] 28%|██▊       | 9/32 [00:20<00:51,  2.25s/it] 31%|███▏      | 10/32 [00:22<00:49,  2.25s/it] 34%|███▍      | 11/32 [00:24<00:47,  2.25s/it] 38%|███▊      | 12/32 [00:26<00:45,  2.26s/it] 41%|████      | 13/32 [00:29<00:42,  2.26s/it] 44%|████▍     | 14/32 [00:31<00:40,  2.26s/it] 47%|████▋     | 15/32 [00:33<00:38,  2.29s/it] 50%|█████     | 16/32 [00:36<00:36,  2.31s/it] 53%|█████▎    | 17/32 [00:38<00:34,  2.32s/it] 56%|█████▋    | 18/32 [00:40<00:32,  2.33s/it] 59%|█████▉    | 19/32 [00:43<00:30,  2.34s/it] 62%|██████▎   | 20/32 [00:45<00:28,  2.35s/it] 66%|██████▌   | 21/32 [00:48<00:25,  2.35s/it] 69%|██████▉   | 22/32 [00:50<00:23,  2.36s/it] 72%|███████▏  | 23/32 [00:52<00:21,  2.36s/it] 75%|███████▌  | 24/32 [00:55<00:18,  2.36s/it] 78%|███████▊  | 25/32 [00:57<00:16,  2.36s/it] 81%|████████▏ | 26/32 [00:59<00:14,  2.36s/it] 84%|████████▍ | 27/32 [01:02<00:11,  2.37s/it] 88%|████████▊ | 28/32 [01:04<00:09,  2.37s/it] 91%|█████████ | 29/32 [01:06<00:07,  2.37s/it] 94%|█████████▍| 30/32 [01:09<00:04,  2.37s/it] 97%|█████████▋| 31/32 [01:11<00:02,  2.37s/it]100%|██████████| 32/32 [01:14<00:00,  2.37s/it]100%|██████████| 32/32 [01:14<00:00,  2.32s/it]
+Init alpha to be FP32
+Init alpha to be FP32
+Init alpha to be FP32
+Total loss:	6.483 (rec:6.179, pd:0.304, round:0.000)	b=0.00	count=500
+Total loss:	6.499 (rec:6.108, pd:0.391, round:0.000)	b=0.00	count=1000
+Total loss:	6.319 (rec:6.089, pd:0.230, round:0.000)	b=0.00	count=1500
+Total loss:	6.430 (rec:6.149, pd:0.281, round:0.000)	b=0.00	count=2000
+Total loss:	6.484 (rec:6.241, pd:0.243, round:0.000)	b=0.00	count=2500
+Total loss:	6.380 (rec:6.161, pd:0.219, round:0.000)	b=0.00	count=3000
+Total loss:	6.471 (rec:6.172, pd:0.300, round:0.000)	b=0.00	count=3500
+Total loss:	234.371 (rec:6.366, pd:0.244, round:227.761)	b=20.00	count=4000
+Total loss:	115.809 (rec:6.114, pd:0.271, round:109.425)	b=19.44	count=4500
+Total loss:	105.799 (rec:5.886, pd:0.270, round:99.643)	b=18.88	count=5000
+Total loss:	98.539 (rec:6.137, pd:0.279, round:92.123)	b=18.31	count=5500
+Total loss:	92.381 (rec:6.280, pd:0.281, round:85.820)	b=17.75	count=6000
+Total loss:	86.192 (rec:5.988, pd:0.251, round:79.953)	b=17.19	count=6500
+Total loss:	80.412 (rec:5.728, pd:0.275, round:74.409)	b=16.62	count=7000
+Total loss:	75.854 (rec:6.128, pd:0.272, round:69.454)	b=16.06	count=7500
+Total loss:	71.416 (rec:6.062, pd:0.207, round:65.148)	b=15.50	count=8000
+Total loss:	67.294 (rec:6.000, pd:0.217, round:61.078)	b=14.94	count=8500
+Total loss:	63.621 (rec:6.063, pd:0.239, round:57.319)	b=14.38	count=9000
+Total loss:	60.038 (rec:5.977, pd:0.270, round:53.791)	b=13.81	count=9500
+Total loss:	56.376 (rec:5.772, pd:0.215, round:50.389)	b=13.25	count=10000
+Total loss:	53.389 (rec:5.993, pd:0.206, round:47.190)	b=12.69	count=10500
+Total loss:	50.251 (rec:5.936, pd:0.253, round:44.062)	b=12.12	count=11000
+Total loss:	47.195 (rec:6.332, pd:0.227, round:40.636)	b=11.56	count=11500
+Total loss:	43.659 (rec:6.058, pd:0.248, round:37.353)	b=11.00	count=12000
+Total loss:	40.412 (rec:6.076, pd:0.235, round:34.101)	b=10.44	count=12500
+Total loss:	37.400 (rec:5.867, pd:0.196, round:31.337)	b=9.88	count=13000
+Total loss:	34.413 (rec:5.957, pd:0.276, round:28.180)	b=9.31	count=13500
+Total loss:	30.929 (rec:5.810, pd:0.285, round:24.834)	b=8.75	count=14000
+Total loss:	27.594 (rec:6.014, pd:0.245, round:21.334)	b=8.19	count=14500
+Total loss:	24.361 (rec:6.032, pd:0.229, round:18.100)	b=7.62	count=15000
+Total loss:	20.880 (rec:5.955, pd:0.270, round:14.654)	b=7.06	count=15500
+Total loss:	17.837 (rec:6.332, pd:0.306, round:11.199)	b=6.50	count=16000
+Total loss:	14.023 (rec:5.982, pd:0.281, round:7.760)	b=5.94	count=16500
+Total loss:	11.017 (rec:6.025, pd:0.324, round:4.667)	b=5.38	count=17000
+Total loss:	8.529 (rec:5.904, pd:0.252, round:2.374)	b=4.81	count=17500
+Total loss:	7.195 (rec:6.197, pd:0.207, round:0.791)	b=4.25	count=18000
+Total loss:	6.155 (rec:5.775, pd:0.237, round:0.144)	b=3.69	count=18500
+Total loss:	6.480 (rec:6.200, pd:0.280, round:0.000)	b=3.12	count=19000
+Total loss:	6.183 (rec:5.892, pd:0.290, round:0.000)	b=2.56	count=19500
+Total loss:	6.278 (rec:6.034, pd:0.244, round:0.000)	b=2.00	count=20000
+Reconstruction for block b3
+Start correcting 32 batches of data!
+  0%|          | 0/32 [00:00<?, ?it/s]  3%|▎         | 1/32 [00:02<01:08,  2.21s/it]  6%|▋         | 2/32 [00:04<01:06,  2.23s/it]  9%|▉         | 3/32 [00:06<01:05,  2.24s/it] 12%|█▎        | 4/32 [00:08<01:02,  2.25s/it] 16%|█▌        | 5/32 [00:11<01:00,  2.25s/it] 19%|█▉        | 6/32 [00:13<00:58,  2.25s/it] 22%|██▏       | 7/32 [00:15<00:56,  2.25s/it] 25%|██▌       | 8/32 [00:17<00:54,  2.26s/it] 28%|██▊       | 9/32 [00:20<00:51,  2.26s/it] 31%|███▏      | 10/32 [00:22<00:49,  2.26s/it] 34%|███▍      | 11/32 [00:24<00:47,  2.28s/it] 38%|███▊      | 12/32 [00:27<00:46,  2.30s/it] 41%|████      | 13/32 [00:29<00:44,  2.32s/it] 44%|████▍     | 14/32 [00:31<00:41,  2.33s/it] 47%|████▋     | 15/32 [00:34<00:39,  2.34s/it] 50%|█████     | 16/32 [00:36<00:37,  2.35s/it] 53%|█████▎    | 17/32 [00:39<00:35,  2.35s/it] 56%|█████▋    | 18/32 [00:41<00:32,  2.36s/it] 59%|█████▉    | 19/32 [00:43<00:30,  2.36s/it] 62%|██████▎   | 20/32 [00:46<00:28,  2.36s/it] 66%|██████▌   | 21/32 [00:48<00:25,  2.36s/it] 69%|██████▉   | 22/32 [00:50<00:23,  2.36s/it] 72%|███████▏  | 23/32 [00:53<00:21,  2.37s/it] 75%|███████▌  | 24/32 [00:55<00:18,  2.37s/it] 78%|███████▊  | 25/32 [00:57<00:16,  2.37s/it] 81%|████████▏ | 26/32 [01:00<00:14,  2.37s/it] 84%|████████▍ | 27/32 [01:02<00:11,  2.37s/it] 88%|████████▊ | 28/32 [01:05<00:09,  2.37s/it] 91%|█████████ | 29/32 [01:07<00:07,  2.37s/it] 94%|█████████▍| 30/32 [01:09<00:04,  2.37s/it] 97%|█████████▋| 31/32 [01:12<00:02,  2.37s/it]100%|██████████| 32/32 [01:14<00:00,  2.38s/it]100%|██████████| 32/32 [01:14<00:00,  2.33s/it]
+Init alpha to be FP32
+Init alpha to be FP32
+Init alpha to be FP32
+Total loss:	8.979 (rec:8.702, pd:0.277, round:0.000)	b=0.00	count=500
+Total loss:	8.976 (rec:8.734, pd:0.243, round:0.000)	b=0.00	count=1000
+Total loss:	9.457 (rec:9.202, pd:0.255, round:0.000)	b=0.00	count=1500
+Total loss:	9.027 (rec:8.768, pd:0.259, round:0.000)	b=0.00	count=2000
+Total loss:	8.779 (rec:8.526, pd:0.253, round:0.000)	b=0.00	count=2500
+Total loss:	8.889 (rec:8.564, pd:0.325, round:0.000)	b=0.00	count=3000
+Total loss:	8.949 (rec:8.703, pd:0.246, round:0.000)	b=0.00	count=3500
+Total loss:	253.697 (rec:8.679, pd:0.266, round:244.752)	b=20.00	count=4000
+Total loss:	134.062 (rec:8.567, pd:0.302, round:125.194)	b=19.44	count=4500
+Total loss:	123.880 (rec:8.757, pd:0.346, round:114.777)	b=18.88	count=5000
+Total loss:	115.808 (rec:8.705, pd:0.240, round:106.863)	b=18.31	count=5500
+Total loss:	109.021 (rec:8.672, pd:0.333, round:100.016)	b=17.75	count=6000
+Total loss:	102.813 (rec:8.624, pd:0.233, round:93.956)	b=17.19	count=6500
+Total loss:	97.646 (rec:8.561, pd:0.210, round:88.875)	b=16.62	count=7000
+Total loss:	92.961 (rec:8.728, pd:0.257, round:83.977)	b=16.06	count=7500
+Total loss:	88.369 (rec:8.411, pd:0.319, round:79.638)	b=15.50	count=8000
+Total loss:	84.288 (rec:8.824, pd:0.251, round:75.213)	b=14.94	count=8500
+Total loss:	80.113 (rec:8.792, pd:0.324, round:70.997)	b=14.38	count=9000
+Total loss:	75.932 (rec:8.613, pd:0.274, round:67.046)	b=13.81	count=9500
+Total loss:	71.946 (rec:8.600, pd:0.226, round:63.120)	b=13.25	count=10000
+Total loss:	68.373 (rec:8.891, pd:0.232, round:59.249)	b=12.69	count=10500
+Total loss:	64.111 (rec:8.302, pd:0.247, round:55.563)	b=12.12	count=11000
+Total loss:	60.219 (rec:8.349, pd:0.292, round:51.577)	b=11.56	count=11500
+Total loss:	57.028 (rec:8.840, pd:0.262, round:47.927)	b=11.00	count=12000
+Total loss:	53.078 (rec:8.730, pd:0.254, round:44.094)	b=10.44	count=12500
+Total loss:	49.339 (rec:8.668, pd:0.253, round:40.418)	b=9.88	count=13000
+Total loss:	45.889 (rec:8.763, pd:0.309, round:36.816)	b=9.31	count=13500
+Total loss:	41.713 (rec:8.613, pd:0.278, round:32.822)	b=8.75	count=14000
+Total loss:	37.382 (rec:8.288, pd:0.248, round:28.846)	b=8.19	count=14500
+Total loss:	33.565 (rec:8.606, pd:0.265, round:24.694)	b=7.62	count=15000
+Total loss:	29.133 (rec:8.719, pd:0.231, round:20.184)	b=7.06	count=15500
+Total loss:	24.533 (rec:8.755, pd:0.243, round:15.535)	b=6.50	count=16000
+Total loss:	20.511 (rec:9.169, pd:0.240, round:11.102)	b=5.94	count=16500
+Total loss:	15.804 (rec:8.552, pd:0.297, round:6.955)	b=5.38	count=17000
+Total loss:	12.396 (rec:8.803, pd:0.176, round:3.416)	b=4.81	count=17500
+Total loss:	9.644 (rec:8.487, pd:0.253, round:0.904)	b=4.25	count=18000
+Total loss:	8.939 (rec:8.562, pd:0.265, round:0.112)	b=3.69	count=18500
+Total loss:	9.007 (rec:8.699, pd:0.307, round:0.000)	b=3.12	count=19000
+Total loss:	9.044 (rec:8.819, pd:0.226, round:0.000)	b=2.56	count=19500
+Total loss:	9.119 (rec:8.884, pd:0.235, round:0.000)	b=2.00	count=20000
+Reconstruction for block b1
+Start correcting 32 batches of data!
+  0%|          | 0/32 [00:00<?, ?it/s]  3%|▎         | 1/32 [00:02<01:22,  2.65s/it]  6%|▋         | 2/32 [00:05<01:20,  2.67s/it]  9%|▉         | 3/32 [00:08<01:17,  2.68s/it] 12%|█▎        | 4/32 [00:10<01:15,  2.68s/it] 16%|█▌        | 5/32 [00:13<01:12,  2.68s/it] 19%|█▉        | 6/32 [00:16<01:09,  2.69s/it] 22%|██▏       | 7/32 [00:18<01:07,  2.69s/it] 25%|██▌       | 8/32 [00:21<01:04,  2.69s/it] 28%|██▊       | 9/32 [00:24<01:01,  2.69s/it] 31%|███▏      | 10/32 [00:26<00:59,  2.69s/it] 34%|███▍      | 11/32 [00:29<00:56,  2.69s/it] 38%|███▊      | 12/32 [00:32<00:53,  2.69s/it] 41%|████      | 13/32 [00:34<00:51,  2.69s/it] 44%|████▍     | 14/32 [00:37<00:48,  2.70s/it] 47%|████▋     | 15/32 [00:40<00:45,  2.70s/it] 50%|█████     | 16/32 [00:43<00:43,  2.70s/it] 53%|█████▎    | 17/32 [00:45<00:40,  2.70s/it] 56%|█████▋    | 18/32 [00:48<00:37,  2.70s/it] 59%|█████▉    | 19/32 [00:51<00:35,  2.70s/it] 62%|██████▎   | 20/32 [00:53<00:32,  2.71s/it] 66%|██████▌   | 21/32 [00:56<00:29,  2.71s/it] 69%|██████▉   | 22/32 [00:59<00:27,  2.71s/it] 72%|███████▏  | 23/32 [01:02<00:24,  2.71s/it] 75%|███████▌  | 24/32 [01:04<00:21,  2.71s/it] 78%|███████▊  | 25/32 [01:07<00:18,  2.71s/it] 81%|████████▏ | 26/32 [01:10<00:16,  2.71s/it] 84%|████████▍ | 27/32 [01:12<00:13,  2.71s/it] 88%|████████▊ | 28/32 [01:15<00:10,  2.71s/it] 91%|█████████ | 29/32 [01:18<00:08,  2.72s/it] 94%|█████████▍| 30/32 [01:21<00:05,  2.72s/it] 97%|█████████▋| 31/32 [01:23<00:02,  2.72s/it]100%|██████████| 32/32 [01:26<00:00,  2.72s/it]100%|██████████| 32/32 [01:26<00:00,  2.70s/it]
+Init alpha to be FP32
+Init alpha to be FP32
+Init alpha to be FP32
+Init alpha to be FP32
+Total loss:	7.686 (rec:7.386, pd:0.300, round:0.000)	b=0.00	count=500
+Total loss:	7.221 (rec:6.984, pd:0.237, round:0.000)	b=0.00	count=1000
+Total loss:	7.768 (rec:7.482, pd:0.287, round:0.000)	b=0.00	count=1500
+Total loss:	7.315 (rec:7.048, pd:0.267, round:0.000)	b=0.00	count=2000
+Total loss:	7.486 (rec:7.277, pd:0.209, round:0.000)	b=0.00	count=2500
+Total loss:	7.350 (rec:7.098, pd:0.252, round:0.000)	b=0.00	count=3000
+Total loss:	7.161 (rec:6.959, pd:0.202, round:0.000)	b=0.00	count=3500
+Total loss:	1214.685 (rec:6.720, pd:0.206, round:1207.758)	b=20.00	count=4000
+Total loss:	659.244 (rec:6.924, pd:0.220, round:652.100)	b=19.44	count=4500
+Total loss:	608.290 (rec:7.246, pd:0.216, round:600.827)	b=18.88	count=5000
+Total loss:	570.843 (rec:6.714, pd:0.194, round:563.935)	b=18.31	count=5500
+Total loss:	538.304 (rec:6.873, pd:0.231, round:531.201)	b=17.75	count=6000
+Total loss:	509.821 (rec:6.857, pd:0.196, round:502.769)	b=17.19	count=6500
+Total loss:	483.574 (rec:7.074, pd:0.186, round:476.314)	b=16.62	count=7000
+Total loss:	458.506 (rec:7.185, pd:0.196, round:451.125)	b=16.06	count=7500
+Total loss:	435.197 (rec:7.196, pd:0.218, round:427.783)	b=15.50	count=8000
+Total loss:	412.902 (rec:7.025, pd:0.236, round:405.641)	b=14.94	count=8500
+Total loss:	391.205 (rec:7.110, pd:0.195, round:383.901)	b=14.38	count=9000
+Total loss:	369.651 (rec:6.701, pd:0.220, round:362.730)	b=13.81	count=9500
+Total loss:	349.127 (rec:7.456, pd:0.241, round:341.430)	b=13.25	count=10000
+Total loss:	327.792 (rec:7.031, pd:0.179, round:320.582)	b=12.69	count=10500
+Total loss:	307.364 (rec:7.028, pd:0.191, round:300.146)	b=12.12	count=11000
+Total loss:	287.484 (rec:7.199, pd:0.203, round:280.082)	b=11.56	count=11500
+Total loss:	267.489 (rec:7.124, pd:0.224, round:260.141)	b=11.00	count=12000
+Total loss:	246.560 (rec:7.019, pd:0.223, round:239.318)	b=10.44	count=12500
+Total loss:	225.874 (rec:7.113, pd:0.200, round:218.561)	b=9.88	count=13000
+Total loss:	205.448 (rec:6.748, pd:0.231, round:198.469)	b=9.31	count=13500
+Total loss:	184.532 (rec:7.416, pd:0.224, round:176.892)	b=8.75	count=14000
+Total loss:	162.266 (rec:6.931, pd:0.188, round:155.147)	b=8.19	count=14500
+Total loss:	139.352 (rec:6.891, pd:0.204, round:132.256)	b=7.62	count=15000
+Total loss:	115.632 (rec:6.809, pd:0.198, round:108.626)	b=7.06	count=15500
+Total loss:	92.857 (rec:7.067, pd:0.186, round:85.604)	b=6.50	count=16000
+Total loss:	68.477 (rec:7.064, pd:0.175, round:61.238)	b=5.94	count=16500
+Total loss:	46.141 (rec:7.248, pd:0.203, round:38.689)	b=5.38	count=17000
+Total loss:	26.377 (rec:6.961, pd:0.238, round:19.179)	b=4.81	count=17500
+Total loss:	14.473 (rec:7.356, pd:0.237, round:6.881)	b=4.25	count=18000
+Total loss:	8.360 (rec:6.890, pd:0.242, round:1.228)	b=3.69	count=18500
+Total loss:	7.442 (rec:7.116, pd:0.211, round:0.115)	b=3.12	count=19000
+Total loss:	7.273 (rec:7.100, pd:0.163, round:0.010)	b=2.56	count=19500
+Total loss:	7.311 (rec:7.084, pd:0.227, round:0.000)	b=2.00	count=20000
+Reconstruction for block b2
+Start correcting 32 batches of data!
+  0%|          | 0/32 [00:00<?, ?it/s]  3%|▎         | 1/32 [00:02<01:21,  2.62s/it]  6%|▋         | 2/32 [00:05<01:18,  2.62s/it]  9%|▉         | 3/32 [00:07<01:14,  2.56s/it] 12%|█▎        | 4/32 [00:10<01:10,  2.53s/it] 16%|█▌        | 5/32 [00:12<01:08,  2.52s/it] 19%|█▉        | 6/32 [00:15<01:05,  2.51s/it] 22%|██▏       | 7/32 [00:17<01:02,  2.51s/it] 25%|██▌       | 8/32 [00:20<01:00,  2.50s/it] 28%|██▊       | 9/32 [00:22<00:57,  2.50s/it] 31%|███▏      | 10/32 [00:25<00:54,  2.50s/it] 34%|███▍      | 11/32 [00:27<00:52,  2.50s/it] 38%|███▊      | 12/32 [00:30<00:49,  2.50s/it] 41%|████      | 13/32 [00:32<00:47,  2.50s/it] 44%|████▍     | 14/32 [00:35<00:44,  2.50s/it] 47%|████▋     | 15/32 [00:37<00:42,  2.50s/it] 50%|█████     | 16/32 [00:40<00:40,  2.50s/it] 53%|█████▎    | 17/32 [00:42<00:37,  2.50s/it] 56%|█████▋    | 18/32 [00:45<00:35,  2.50s/it] 59%|█████▉    | 19/32 [00:47<00:32,  2.50s/it] 62%|██████▎   | 20/32 [00:50<00:30,  2.51s/it] 66%|██████▌   | 21/32 [00:52<00:27,  2.51s/it] 69%|██████▉   | 22/32 [00:55<00:25,  2.51s/it] 72%|███████▏  | 23/32 [00:57<00:22,  2.51s/it] 75%|███████▌  | 24/32 [01:00<00:20,  2.51s/it] 78%|███████▊  | 25/32 [01:02<00:17,  2.51s/it] 81%|████████▏ | 26/32 [01:05<00:15,  2.51s/it] 84%|████████▍ | 27/32 [01:07<00:12,  2.51s/it] 88%|████████▊ | 28/32 [01:10<00:10,  2.51s/it] 91%|█████████ | 29/32 [01:12<00:07,  2.51s/it] 94%|█████████▍| 30/32 [01:15<00:05,  2.51s/it] 97%|█████████▋| 31/32 [01:17<00:02,  2.51s/it]100%|██████████| 32/32 [01:20<00:00,  2.52s/it]100%|██████████| 32/32 [01:20<00:00,  2.51s/it]
+Init alpha to be FP32
+Init alpha to be FP32
+Init alpha to be FP32
+Total loss:	10.243 (rec:9.907, pd:0.335, round:0.000)	b=0.00	count=500
+Total loss:	9.853 (rec:9.620, pd:0.233, round:0.000)	b=0.00	count=1000
+Total loss:	9.321 (rec:9.120, pd:0.201, round:0.000)	b=0.00	count=1500
+Total loss:	10.101 (rec:9.824, pd:0.277, round:0.000)	b=0.00	count=2000
+Total loss:	10.354 (rec:10.158, pd:0.196, round:0.000)	b=0.00	count=2500
+Total loss:	9.882 (rec:9.640, pd:0.242, round:0.000)	b=0.00	count=3000
+Total loss:	9.735 (rec:9.529, pd:0.206, round:0.000)	b=0.00	count=3500
+Total loss:	1146.828 (rec:9.773, pd:0.195, round:1136.860)	b=20.00	count=4000
+Total loss:	563.109 (rec:9.791, pd:0.231, round:553.087)	b=19.44	count=4500
+Total loss:	513.272 (rec:9.449, pd:0.181, round:503.643)	b=18.88	count=5000
+Total loss:	477.703 (rec:9.853, pd:0.217, round:467.634)	b=18.31	count=5500
+Total loss:	445.435 (rec:9.239, pd:0.220, round:435.976)	b=17.75	count=6000
+Total loss:	417.317 (rec:9.549, pd:0.215, round:407.553)	b=17.19	count=6500
+Total loss:	391.346 (rec:9.388, pd:0.205, round:381.753)	b=16.62	count=7000
+Total loss:	367.667 (rec:9.730, pd:0.265, round:357.671)	b=16.06	count=7500
+Total loss:	344.638 (rec:9.450, pd:0.223, round:334.964)	b=15.50	count=8000
+Total loss:	323.551 (rec:9.590, pd:0.213, round:313.748)	b=14.94	count=8500
+Total loss:	304.310 (rec:9.960, pd:0.211, round:294.139)	b=14.38	count=9000
+Total loss:	284.614 (rec:9.982, pd:0.175, round:274.457)	b=13.81	count=9500
+Total loss:	265.527 (rec:9.683, pd:0.165, round:255.679)	b=13.25	count=10000
+Total loss:	247.322 (rec:9.649, pd:0.238, round:237.436)	b=12.69	count=10500
+Total loss:	229.701 (rec:9.834, pd:0.210, round:219.656)	b=12.12	count=11000
+Total loss:	213.151 (rec:9.745, pd:0.183, round:203.223)	b=11.56	count=11500
+Total loss:	196.226 (rec:9.411, pd:0.216, round:186.600)	b=11.00	count=12000
+Total loss:	179.395 (rec:9.330, pd:0.229, round:169.836)	b=10.44	count=12500
+Total loss:	162.454 (rec:9.170, pd:0.222, round:153.063)	b=9.88	count=13000
+Total loss:	146.675 (rec:9.727, pd:0.213, round:136.735)	b=9.31	count=13500
+Total loss:	129.130 (rec:9.754, pd:0.220, round:119.156)	b=8.75	count=14000
+Total loss:	113.136 (rec:10.280, pd:0.211, round:102.645)	b=8.19	count=14500
+Total loss:	95.335 (rec:9.289, pd:0.203, round:85.843)	b=7.62	count=15000
+Total loss:	78.963 (rec:10.106, pd:0.212, round:68.644)	b=7.06	count=15500
+Total loss:	62.178 (rec:9.818, pd:0.174, round:52.186)	b=6.50	count=16000
+Total loss:	45.083 (rec:9.617, pd:0.210, round:35.255)	b=5.94	count=16500
+Total loss:	29.351 (rec:9.535, pd:0.204, round:19.612)	b=5.38	count=17000
+Total loss:	17.856 (rec:9.701, pd:0.204, round:7.952)	b=4.81	count=17500
+Total loss:	11.744 (rec:9.618, pd:0.231, round:1.895)	b=4.25	count=18000
+Total loss:	10.062 (rec:9.613, pd:0.240, round:0.209)	b=3.69	count=18500
+Total loss:	9.737 (rec:9.432, pd:0.296, round:0.010)	b=3.12	count=19000
+Total loss:	10.038 (rec:9.851, pd:0.186, round:0.000)	b=2.56	count=19500
+Total loss:	9.871 (rec:9.673, pd:0.198, round:0.000)	b=2.00	count=20000
+Reconstruction for block b3
+Start correcting 32 batches of data!
+  0%|          | 0/32 [00:00<?, ?it/s]  3%|▎         | 1/32 [00:02<01:15,  2.45s/it]  6%|▋         | 2/32 [00:04<01:14,  2.47s/it]  9%|▉         | 3/32 [00:07<01:11,  2.48s/it] 12%|█▎        | 4/32 [00:09<01:09,  2.48s/it] 16%|█▌        | 5/32 [00:12<01:07,  2.48s/it] 19%|█▉        | 6/32 [00:14<01:04,  2.49s/it] 22%|██▏       | 7/32 [00:17<01:02,  2.49s/it] 25%|██▌       | 8/32 [00:19<00:59,  2.49s/it] 28%|██▊       | 9/32 [00:22<00:57,  2.49s/it] 31%|███▏      | 10/32 [00:24<00:54,  2.49s/it] 34%|███▍      | 11/32 [00:27<00:52,  2.49s/it] 38%|███▊      | 12/32 [00:29<00:49,  2.49s/it] 41%|████      | 13/32 [00:32<00:47,  2.49s/it] 44%|████▍     | 14/32 [00:34<00:44,  2.49s/it] 47%|████▋     | 15/32 [00:37<00:42,  2.49s/it] 50%|█████     | 16/32 [00:39<00:39,  2.50s/it] 53%|█████▎    | 17/32 [00:42<00:37,  2.50s/it] 56%|█████▋    | 18/32 [00:44<00:34,  2.50s/it] 59%|█████▉    | 19/32 [00:47<00:32,  2.50s/it] 62%|██████▎   | 20/32 [00:49<00:30,  2.50s/it] 66%|██████▌   | 21/32 [00:52<00:27,  2.50s/it] 69%|██████▉   | 22/32 [00:54<00:25,  2.51s/it] 72%|███████▏  | 23/32 [00:57<00:22,  2.51s/it] 75%|███████▌  | 24/32 [00:59<00:20,  2.51s/it] 78%|███████▊  | 25/32 [01:02<00:17,  2.51s/it] 81%|████████▏ | 26/32 [01:04<00:15,  2.51s/it] 84%|████████▍ | 27/32 [01:07<00:12,  2.51s/it] 88%|████████▊ | 28/32 [01:09<00:10,  2.51s/it] 91%|█████████ | 29/32 [01:12<00:07,  2.51s/it] 94%|█████████▍| 30/32 [01:14<00:05,  2.51s/it] 97%|█████████▋| 31/32 [01:17<00:02,  2.51s/it]100%|██████████| 32/32 [01:19<00:00,  2.51s/it]100%|██████████| 32/32 [01:19<00:00,  2.50s/it]
+Init alpha to be FP32
+Init alpha to be FP32
+Init alpha to be FP32
+Total loss:	12.289 (rec:12.080, pd:0.209, round:0.000)	b=0.00	count=500
+Total loss:	11.907 (rec:11.690, pd:0.218, round:0.000)	b=0.00	count=1000
+Total loss:	11.819 (rec:11.615, pd:0.204, round:0.000)	b=0.00	count=1500
+Total loss:	12.275 (rec:12.073, pd:0.202, round:0.000)	b=0.00	count=2000
+Total loss:	11.523 (rec:11.303, pd:0.220, round:0.000)	b=0.00	count=2500
+Total loss:	11.411 (rec:11.211, pd:0.201, round:0.000)	b=0.00	count=3000
+Total loss:	11.576 (rec:11.364, pd:0.211, round:0.000)	b=0.00	count=3500
+Total loss:	1251.867 (rec:11.719, pd:0.218, round:1239.930)	b=20.00	count=4000
+Total loss:	648.478 (rec:11.899, pd:0.220, round:636.359)	b=19.44	count=4500
+Total loss:	595.003 (rec:11.305, pd:0.186, round:583.511)	b=18.88	count=5000
+Total loss:	556.600 (rec:12.008, pd:0.196, round:544.396)	b=18.31	count=5500
+Total loss:	521.531 (rec:11.175, pd:0.188, round:510.168)	b=17.75	count=6000
+Total loss:	490.464 (rec:11.079, pd:0.159, round:479.226)	b=17.19	count=6500
+Total loss:	463.477 (rec:11.296, pd:0.183, round:451.998)	b=16.62	count=7000
+Total loss:	437.966 (rec:11.865, pd:0.189, round:425.912)	b=16.06	count=7500
+Total loss:	413.836 (rec:11.817, pd:0.206, round:401.813)	b=15.50	count=8000
+Total loss:	390.329 (rec:11.934, pd:0.208, round:378.187)	b=14.94	count=8500
+Total loss:	367.345 (rec:11.753, pd:0.173, round:355.419)	b=14.38	count=9000
+Total loss:	346.485 (rec:11.750, pd:0.160, round:334.575)	b=13.81	count=9500
+Total loss:	325.399 (rec:11.716, pd:0.184, round:313.499)	b=13.25	count=10000
+Total loss:	305.734 (rec:11.809, pd:0.233, round:293.693)	b=12.69	count=10500
+Total loss:	285.590 (rec:11.503, pd:0.225, round:273.861)	b=12.12	count=11000
+Total loss:	266.013 (rec:11.776, pd:0.230, round:254.007)	b=11.56	count=11500
+Total loss:	246.114 (rec:11.364, pd:0.196, round:234.553)	b=11.00	count=12000
+Total loss:	227.831 (rec:11.713, pd:0.215, round:215.903)	b=10.44	count=12500
+Total loss:	207.849 (rec:11.334, pd:0.197, round:196.319)	b=9.88	count=13000
+Total loss:	188.754 (rec:12.066, pd:0.218, round:176.470)	b=9.31	count=13500
+Total loss:	167.425 (rec:11.515, pd:0.209, round:155.701)	b=8.75	count=14000
+Total loss:	146.193 (rec:11.155, pd:0.189, round:134.849)	b=8.19	count=14500
+Total loss:	126.008 (rec:11.615, pd:0.218, round:114.175)	b=7.62	count=15000
+Total loss:	106.223 (rec:12.097, pd:0.173, round:93.954)	b=7.06	count=15500
+Total loss:	84.590 (rec:11.321, pd:0.203, round:73.067)	b=6.50	count=16000
+Total loss:	63.329 (rec:11.159, pd:0.188, round:51.983)	b=5.94	count=16500
+Total loss:	44.219 (rec:11.600, pd:0.185, round:32.434)	b=5.38	count=17000
+Total loss:	26.186 (rec:11.548, pd:0.211, round:14.427)	b=4.81	count=17500
+Total loss:	14.994 (rec:11.703, pd:0.195, round:3.096)	b=4.25	count=18000
+Total loss:	11.937 (rec:11.499, pd:0.187, round:0.250)	b=3.69	count=18500
+Total loss:	11.894 (rec:11.701, pd:0.193, round:0.000)	b=3.12	count=19000
+Total loss:	11.760 (rec:11.585, pd:0.175, round:0.000)	b=2.56	count=19500
+Total loss:	11.589 (rec:11.356, pd:0.233, round:0.000)	b=2.00	count=20000
+Reconstruction for block b4
+Start correcting 32 batches of data!
+  0%|          | 0/32 [00:00<?, ?it/s]  3%|▎         | 1/32 [00:02<01:15,  2.45s/it]  6%|▋         | 2/32 [00:04<01:14,  2.47s/it]  9%|▉         | 3/32 [00:07<01:11,  2.48s/it] 12%|█▎        | 4/32 [00:09<01:09,  2.48s/it] 16%|█▌        | 5/32 [00:12<01:07,  2.48s/it] 19%|█▉        | 6/32 [00:14<01:04,  2.49s/it] 22%|██▏       | 7/32 [00:17<01:02,  2.49s/it] 25%|██▌       | 8/32 [00:19<00:59,  2.49s/it] 28%|██▊       | 9/32 [00:22<00:57,  2.49s/it] 31%|███▏      | 10/32 [00:24<00:54,  2.49s/it] 34%|███▍      | 11/32 [00:27<00:52,  2.49s/it] 38%|███▊      | 12/32 [00:29<00:49,  2.49s/it] 41%|████      | 13/32 [00:32<00:47,  2.50s/it] 44%|████▍     | 14/32 [00:34<00:44,  2.50s/it] 47%|████▋     | 15/32 [00:37<00:42,  2.50s/it] 50%|█████     | 16/32 [00:39<00:39,  2.50s/it] 53%|█████▎    | 17/32 [00:42<00:37,  2.50s/it] 56%|█████▋    | 18/32 [00:44<00:34,  2.50s/it] 59%|█████▉    | 19/32 [00:47<00:32,  2.50s/it] 62%|██████▎   | 20/32 [00:49<00:30,  2.50s/it] 66%|██████▌   | 21/32 [00:52<00:27,  2.50s/it] 69%|██████▉   | 22/32 [00:54<00:25,  2.51s/it] 72%|███████▏  | 23/32 [00:57<00:22,  2.51s/it] 75%|███████▌  | 24/32 [00:59<00:20,  2.51s/it] 78%|███████▊  | 25/32 [01:02<00:17,  2.51s/it] 81%|████████▏ | 26/32 [01:04<00:15,  2.51s/it] 84%|████████▍ | 27/32 [01:07<00:12,  2.51s/it] 88%|████████▊ | 28/32 [01:09<00:10,  2.51s/it] 91%|█████████ | 29/32 [01:12<00:07,  2.51s/it] 94%|█████████▍| 30/32 [01:14<00:05,  2.51s/it] 97%|█████████▋| 31/32 [01:17<00:02,  2.51s/it]100%|██████████| 32/32 [01:20<00:00,  2.51s/it]100%|██████████| 32/32 [01:20<00:00,  2.50s/it]
+Init alpha to be FP32
+Init alpha to be FP32
+Init alpha to be FP32
+Total loss:	15.019 (rec:14.782, pd:0.237, round:0.000)	b=0.00	count=500
+Total loss:	14.590 (rec:14.379, pd:0.211, round:0.000)	b=0.00	count=1000
+Total loss:	14.886 (rec:14.691, pd:0.195, round:0.000)	b=0.00	count=1500
+Total loss:	14.196 (rec:13.988, pd:0.208, round:0.000)	b=0.00	count=2000
+Total loss:	14.018 (rec:13.802, pd:0.216, round:0.000)	b=0.00	count=2500
+Total loss:	14.859 (rec:14.679, pd:0.180, round:0.000)	b=0.00	count=3000
+Total loss:	14.170 (rec:13.936, pd:0.234, round:0.000)	b=0.00	count=3500
+Total loss:	1235.011 (rec:14.177, pd:0.200, round:1220.634)	b=20.00	count=4000
+Total loss:	652.230 (rec:14.559, pd:0.207, round:637.464)	b=19.44	count=4500
+Total loss:	600.854 (rec:14.057, pd:0.190, round:586.607)	b=18.88	count=5000
+Total loss:	561.915 (rec:14.071, pd:0.209, round:547.635)	b=18.31	count=5500
+Total loss:	528.074 (rec:14.323, pd:0.161, round:513.590)	b=17.75	count=6000
+Total loss:	497.595 (rec:13.729, pd:0.163, round:483.703)	b=17.19	count=6500
+Total loss:	470.770 (rec:14.298, pd:0.201, round:456.271)	b=16.62	count=7000
+Total loss:	445.646 (rec:14.534, pd:0.211, round:430.901)	b=16.06	count=7500
+Total loss:	421.270 (rec:13.998, pd:0.202, round:407.070)	b=15.50	count=8000
+Total loss:	398.880 (rec:14.437, pd:0.179, round:384.264)	b=14.94	count=8500
+Total loss:	376.916 (rec:14.265, pd:0.185, round:362.466)	b=14.38	count=9000
+Total loss:	354.474 (rec:14.127, pd:0.161, round:340.186)	b=13.81	count=9500
+Total loss:	334.224 (rec:14.350, pd:0.191, round:319.684)	b=13.25	count=10000
+Total loss:	313.490 (rec:14.579, pd:0.181, round:298.730)	b=12.69	count=10500
+Total loss:	293.589 (rec:14.207, pd:0.196, round:279.186)	b=12.12	count=11000
+Total loss:	274.376 (rec:13.972, pd:0.183, round:260.221)	b=11.56	count=11500
+Total loss:	255.351 (rec:14.283, pd:0.179, round:240.888)	b=11.00	count=12000
+Total loss:	236.699 (rec:14.357, pd:0.199, round:222.144)	b=10.44	count=12500
+Total loss:	217.262 (rec:14.589, pd:0.185, round:202.489)	b=9.88	count=13000
+Total loss:	197.485 (rec:14.692, pd:0.180, round:182.614)	b=9.31	count=13500
+Total loss:	176.936 (rec:13.935, pd:0.200, round:162.802)	b=8.75	count=14000
+Total loss:	157.572 (rec:14.471, pd:0.231, round:142.869)	b=8.19	count=14500
+Total loss:	136.831 (rec:14.257, pd:0.182, round:122.393)	b=7.62	count=15000
+Total loss:	116.696 (rec:14.362, pd:0.182, round:102.152)	b=7.06	count=15500
+Total loss:	94.843 (rec:14.274, pd:0.162, round:80.407)	b=6.50	count=16000
+Total loss:	73.048 (rec:13.848, pd:0.202, round:58.998)	b=5.94	count=16500
+Total loss:	52.431 (rec:14.167, pd:0.215, round:38.049)	b=5.38	count=17000
+Total loss:	32.670 (rec:14.917, pd:0.201, round:17.553)	b=4.81	count=17500
+Total loss:	18.829 (rec:14.681, pd:0.191, round:3.957)	b=4.25	count=18000
+Total loss:	15.101 (rec:14.471, pd:0.207, round:0.423)	b=3.69	count=18500
+Total loss:	14.609 (rec:14.416, pd:0.192, round:0.000)	b=3.12	count=19000
+Total loss:	14.757 (rec:14.576, pd:0.181, round:0.000)	b=2.56	count=19500
+Total loss:	14.757 (rec:14.576, pd:0.181, round:0.000)	b=2.00	count=20000
+Reconstruction for block b5
+Start correcting 32 batches of data!
+  0%|          | 0/32 [00:00<?, ?it/s]  3%|▎         | 1/32 [00:02<01:15,  2.45s/it]  6%|▋         | 2/32 [00:04<01:14,  2.47s/it]  9%|▉         | 3/32 [00:07<01:11,  2.48s/it] 12%|█▎        | 4/32 [00:09<01:09,  2.48s/it] 16%|█▌        | 5/32 [00:12<01:07,  2.49s/it] 19%|█▉        | 6/32 [00:14<01:04,  2.49s/it] 22%|██▏       | 7/32 [00:17<01:02,  2.49s/it] 25%|██▌       | 8/32 [00:19<00:59,  2.49s/it] 28%|██▊       | 9/32 [00:22<00:57,  2.49s/it] 31%|███▏      | 10/32 [00:24<00:54,  2.49s/it] 34%|███▍      | 11/32 [00:27<00:52,  2.49s/it] 38%|███▊      | 12/32 [00:29<00:49,  2.49s/it] 41%|████      | 13/32 [00:32<00:47,  2.49s/it] 44%|████▍     | 14/32 [00:34<00:44,  2.49s/it] 47%|████▋     | 15/32 [00:37<00:42,  2.50s/it] 50%|█████     | 16/32 [00:39<00:39,  2.50s/it] 53%|█████▎    | 17/32 [00:42<00:37,  2.50s/it] 56%|█████▋    | 18/32 [00:44<00:35,  2.50s/it] 59%|█████▉    | 19/32 [00:47<00:32,  2.50s/it] 62%|██████▎   | 20/32 [00:49<00:30,  2.50s/it] 66%|██████▌   | 21/32 [00:52<00:27,  2.51s/it] 69%|██████▉   | 22/32 [00:54<00:25,  2.51s/it] 72%|███████▏  | 23/32 [00:57<00:22,  2.51s/it] 75%|███████▌  | 24/32 [00:59<00:20,  2.51s/it] 78%|███████▊  | 25/32 [01:02<00:17,  2.51s/it] 81%|████████▏ | 26/32 [01:04<00:15,  2.51s/it] 84%|████████▍ | 27/32 [01:07<00:12,  2.51s/it] 88%|████████▊ | 28/32 [01:09<00:10,  2.51s/it] 91%|█████████ | 29/32 [01:12<00:07,  2.51s/it] 94%|█████████▍| 30/32 [01:15<00:05,  2.51s/it] 97%|█████████▋| 31/32 [01:17<00:02,  2.51s/it]100%|██████████| 32/32 [01:20<00:00,  2.51s/it]100%|██████████| 32/32 [01:20<00:00,  2.50s/it]
+Init alpha to be FP32
+Init alpha to be FP32
+Init alpha to be FP32
+Total loss:	16.151 (rec:15.929, pd:0.222, round:0.000)	b=0.00	count=500
+Total loss:	16.173 (rec:16.014, pd:0.159, round:0.000)	b=0.00	count=1000
+Total loss:	16.250 (rec:16.017, pd:0.232, round:0.000)	b=0.00	count=1500
+Total loss:	15.973 (rec:15.797, pd:0.176, round:0.000)	b=0.00	count=2000
+Total loss:	15.616 (rec:15.426, pd:0.190, round:0.000)	b=0.00	count=2500
+Total loss:	15.335 (rec:15.124, pd:0.211, round:0.000)	b=0.00	count=3000
+Total loss:	15.102 (rec:14.897, pd:0.205, round:0.000)	b=0.00	count=3500
+Total loss:	1206.882 (rec:16.055, pd:0.217, round:1190.610)	b=20.00	count=4000
+Total loss:	613.117 (rec:14.952, pd:0.173, round:597.991)	b=19.44	count=4500
+Total loss:	563.435 (rec:15.416, pd:0.190, round:547.830)	b=18.88	count=5000
+Total loss:	524.599 (rec:15.807, pd:0.254, round:508.537)	b=18.31	count=5500
+Total loss:	490.853 (rec:15.780, pd:0.192, round:474.881)	b=17.75	count=6000
+Total loss:	460.930 (rec:15.506, pd:0.167, round:445.257)	b=17.19	count=6500
+Total loss:	433.917 (rec:16.105, pd:0.161, round:417.650)	b=16.62	count=7000
+Total loss:	407.069 (rec:15.451, pd:0.175, round:391.443)	b=16.06	count=7500
+Total loss:	383.673 (rec:15.779, pd:0.227, round:367.666)	b=15.50	count=8000
+Total loss:	360.861 (rec:15.921, pd:0.181, round:344.759)	b=14.94	count=8500
+Total loss:	338.219 (rec:15.383, pd:0.162, round:322.674)	b=14.38	count=9000
+Total loss:	317.641 (rec:15.795, pd:0.186, round:301.660)	b=13.81	count=9500
+Total loss:	297.873 (rec:16.196, pd:0.222, round:281.455)	b=13.25	count=10000
+Total loss:	278.182 (rec:15.564, pd:0.188, round:262.431)	b=12.69	count=10500
+Total loss:	259.395 (rec:15.528, pd:0.168, round:243.699)	b=12.12	count=11000
+Total loss:	240.554 (rec:15.684, pd:0.199, round:224.671)	b=11.56	count=11500
+Total loss:	222.182 (rec:15.359, pd:0.212, round:206.611)	b=11.00	count=12000
+Total loss:	204.983 (rec:15.692, pd:0.222, round:189.068)	b=10.44	count=12500
+Total loss:	187.068 (rec:15.637, pd:0.172, round:171.259)	b=9.88	count=13000
+Total loss:	169.667 (rec:15.747, pd:0.205, round:153.714)	b=9.31	count=13500
+Total loss:	151.256 (rec:15.232, pd:0.216, round:135.808)	b=8.75	count=14000
+Total loss:	133.824 (rec:15.194, pd:0.165, round:118.465)	b=8.19	count=14500
+Total loss:	116.586 (rec:15.812, pd:0.171, round:100.603)	b=7.62	count=15000
+Total loss:	98.512 (rec:15.774, pd:0.192, round:82.546)	b=7.06	count=15500
+Total loss:	79.899 (rec:15.895, pd:0.228, round:63.777)	b=6.50	count=16000
+Total loss:	61.252 (rec:15.732, pd:0.166, round:45.355)	b=5.94	count=16500
+Total loss:	43.760 (rec:15.413, pd:0.193, round:28.154)	b=5.38	count=17000
+Total loss:	28.494 (rec:15.342, pd:0.174, round:12.978)	b=4.81	count=17500
+Total loss:	19.439 (rec:15.793, pd:0.202, round:3.444)	b=4.25	count=18000
+Total loss:	15.989 (rec:15.356, pd:0.185, round:0.448)	b=3.69	count=18500
+Total loss:	15.286 (rec:15.082, pd:0.182, round:0.022)	b=3.12	count=19000
+Total loss:	16.332 (rec:16.131, pd:0.202, round:0.000)	b=2.56	count=19500
+Total loss:	15.521 (rec:15.309, pd:0.212, round:0.000)	b=2.00	count=20000
+Reconstruction for block b1
+Start correcting 32 batches of data!
+  0%|          | 0/32 [00:00<?, ?it/s]  3%|▎         | 1/32 [00:02<01:26,  2.79s/it]  6%|▋         | 2/32 [00:05<01:24,  2.81s/it]  9%|▉         | 3/32 [00:08<01:21,  2.82s/it] 12%|█▎        | 4/32 [00:11<01:19,  2.82s/it] 16%|█▌        | 5/32 [00:14<01:16,  2.83s/it] 19%|█▉        | 6/32 [00:16<01:13,  2.83s/it] 22%|██▏       | 7/32 [00:19<01:10,  2.83s/it] 25%|██▌       | 8/32 [00:22<01:07,  2.83s/it] 28%|██▊       | 9/32 [00:25<01:05,  2.83s/it] 31%|███▏      | 10/32 [00:28<01:02,  2.83s/it] 34%|███▍      | 11/32 [00:31<00:59,  2.83s/it] 38%|███▊      | 12/32 [00:33<00:56,  2.83s/it] 41%|████      | 13/32 [00:36<00:53,  2.84s/it] 44%|████▍     | 14/32 [00:39<00:51,  2.84s/it] 47%|████▋     | 15/32 [00:42<00:48,  2.84s/it] 50%|█████     | 16/32 [00:45<00:45,  2.84s/it] 53%|█████▎    | 17/32 [00:48<00:42,  2.84s/it] 56%|█████▋    | 18/32 [00:50<00:39,  2.84s/it] 59%|█████▉    | 19/32 [00:53<00:36,  2.84s/it] 62%|██████▎   | 20/32 [00:56<00:34,  2.84s/it] 66%|██████▌   | 21/32 [00:59<00:31,  2.84s/it] 69%|██████▉   | 22/32 [01:02<00:28,  2.84s/it] 72%|███████▏  | 23/32 [01:05<00:25,  2.85s/it] 75%|███████▌  | 24/32 [01:08<00:22,  2.85s/it] 78%|███████▊  | 25/32 [01:10<00:19,  2.85s/it] 81%|████████▏ | 26/32 [01:13<00:17,  2.85s/it] 84%|████████▍ | 27/32 [01:16<00:14,  2.85s/it] 88%|████████▊ | 28/32 [01:19<00:11,  2.85s/it] 91%|█████████ | 29/32 [01:22<00:08,  2.85s/it] 94%|█████████▍| 30/32 [01:25<00:05,  2.85s/it] 97%|█████████▋| 31/32 [01:28<00:02,  2.85s/it]100%|██████████| 32/32 [01:30<00:00,  2.85s/it]100%|██████████| 32/32 [01:30<00:00,  2.84s/it]
+Init alpha to be FP32
+Init alpha to be FP32
+Init alpha to be FP32
+Init alpha to be FP32
+Total loss:	27.481 (rec:27.265, pd:0.216, round:0.000)	b=0.00	count=500
+Total loss:	28.498 (rec:28.294, pd:0.204, round:0.000)	b=0.00	count=1000
+Total loss:	28.051 (rec:27.835, pd:0.215, round:0.000)	b=0.00	count=1500
+Total loss:	27.984 (rec:27.775, pd:0.208, round:0.000)	b=0.00	count=2000
+Total loss:	27.232 (rec:27.065, pd:0.167, round:0.000)	b=0.00	count=2500
+Total loss:	26.772 (rec:26.563, pd:0.209, round:0.000)	b=0.00	count=3000
+Total loss:	28.492 (rec:28.306, pd:0.187, round:0.000)	b=0.00	count=3500
+Total loss:	5373.585 (rec:27.226, pd:0.172, round:5346.188)	b=20.00	count=4000
+Total loss:	3071.395 (rec:26.327, pd:0.192, round:3044.876)	b=19.44	count=4500
+Total loss:	2847.072 (rec:26.887, pd:0.198, round:2819.987)	b=18.88	count=5000
+Total loss:	2680.513 (rec:26.515, pd:0.204, round:2653.794)	b=18.31	count=5500
+Total loss:	2535.714 (rec:26.390, pd:0.174, round:2509.150)	b=17.75	count=6000
+Total loss:	2398.916 (rec:26.210, pd:0.185, round:2372.521)	b=17.19	count=6500
+Total loss:	2274.190 (rec:25.397, pd:0.185, round:2248.609)	b=16.62	count=7000
+Total loss:	2159.279 (rec:27.554, pd:0.184, round:2131.542)	b=16.06	count=7500
+Total loss:	2048.612 (rec:28.204, pd:0.199, round:2020.209)	b=15.50	count=8000
+Total loss:	1940.006 (rec:26.562, pd:0.176, round:1913.268)	b=14.94	count=8500
+Total loss:	1837.489 (rec:26.692, pd:0.176, round:1810.621)	b=14.38	count=9000
+Total loss:	1736.794 (rec:27.449, pd:0.179, round:1709.166)	b=13.81	count=9500
+Total loss:	1637.907 (rec:27.332, pd:0.192, round:1610.382)	b=13.25	count=10000
+Total loss:	1541.048 (rec:25.516, pd:0.213, round:1515.319)	b=12.69	count=10500
+Total loss:	1447.227 (rec:25.968, pd:0.221, round:1421.038)	b=12.12	count=11000
+Total loss:	1354.436 (rec:26.085, pd:0.182, round:1328.169)	b=11.56	count=11500
+Total loss:	1262.894 (rec:26.273, pd:0.183, round:1236.437)	b=11.00	count=12000
+Total loss:	1170.180 (rec:26.162, pd:0.205, round:1143.812)	b=10.44	count=12500
+Total loss:	1077.930 (rec:26.615, pd:0.157, round:1051.158)	b=9.88	count=13000
+Total loss:	985.553 (rec:27.092, pd:0.202, round:958.260)	b=9.31	count=13500
+Total loss:	890.055 (rec:25.234, pd:0.192, round:864.630)	b=8.75	count=14000
+Total loss:	797.132 (rec:27.219, pd:0.155, round:769.758)	b=8.19	count=14500
+Total loss:	700.260 (rec:27.269, pd:0.191, round:672.800)	b=7.62	count=15000
+Total loss:	600.051 (rec:26.114, pd:0.198, round:573.739)	b=7.06	count=15500
+Total loss:	498.501 (rec:26.950, pd:0.189, round:471.362)	b=6.50	count=16000
+Total loss:	396.554 (rec:26.941, pd:0.159, round:369.455)	b=5.94	count=16500
+Total loss:	292.453 (rec:26.590, pd:0.184, round:265.679)	b=5.38	count=17000
+Total loss:	190.660 (rec:25.678, pd:0.176, round:164.806)	b=4.81	count=17500
+Total loss:	102.006 (rec:26.090, pd:0.192, round:75.723)	b=4.25	count=18000
+Total loss:	45.186 (rec:26.066, pd:0.183, round:18.937)	b=3.69	count=18500
+Total loss:	29.163 (rec:27.504, pd:0.181, round:1.478)	b=3.12	count=19000
+Total loss:	27.501 (rec:27.313, pd:0.176, round:0.012)	b=2.56	count=19500
+Total loss:	26.597 (rec:26.436, pd:0.161, round:0.000)	b=2.00	count=20000
+Reconstruction for block b2
+Start correcting 32 batches of data!
+  0%|          | 0/32 [00:00<?, ?it/s]  3%|▎         | 1/32 [00:02<01:16,  2.47s/it]  6%|▋         | 2/32 [00:04<01:14,  2.49s/it]  9%|▉         | 3/32 [00:07<01:12,  2.50s/it] 12%|█▎        | 4/32 [00:09<01:09,  2.50s/it] 16%|█▌        | 5/32 [00:12<01:07,  2.50s/it] 19%|█▉        | 6/32 [00:14<01:05,  2.50s/it] 22%|██▏       | 7/32 [00:17<01:02,  2.51s/it] 25%|██▌       | 8/32 [00:20<01:00,  2.51s/it] 28%|██▊       | 9/32 [00:22<00:57,  2.51s/it] 31%|███▏      | 10/32 [00:25<00:55,  2.51s/it] 34%|███▍      | 11/32 [00:27<00:52,  2.51s/it] 38%|███▊      | 12/32 [00:30<00:50,  2.51s/it] 41%|████      | 13/32 [00:32<00:47,  2.51s/it] 44%|████▍     | 14/32 [00:35<00:45,  2.51s/it] 47%|████▋     | 15/32 [00:37<00:42,  2.51s/it] 50%|█████     | 16/32 [00:40<00:40,  2.51s/it] 53%|█████▎    | 17/32 [00:42<00:37,  2.52s/it] 56%|█████▋    | 18/32 [00:45<00:35,  2.51s/it] 59%|█████▉    | 19/32 [00:47<00:32,  2.52s/it] 62%|██████▎   | 20/32 [00:50<00:30,  2.52s/it] 66%|██████▌   | 21/32 [00:52<00:27,  2.52s/it] 69%|██████▉   | 22/32 [00:55<00:25,  2.52s/it] 72%|███████▏  | 23/32 [00:57<00:22,  2.52s/it] 75%|███████▌  | 24/32 [01:00<00:20,  2.52s/it] 78%|███████▊  | 25/32 [01:02<00:17,  2.52s/it] 81%|████████▏ | 26/32 [01:05<00:15,  2.52s/it] 84%|████████▍ | 27/32 [01:07<00:12,  2.52s/it] 88%|████████▊ | 28/32 [01:10<00:10,  2.52s/it] 91%|█████████ | 29/32 [01:12<00:07,  2.52s/it] 94%|█████████▍| 30/32 [01:15<00:05,  2.52s/it] 97%|█████████▋| 31/32 [01:17<00:02,  2.52s/it]100%|██████████| 32/32 [01:20<00:00,  2.52s/it]100%|██████████| 32/32 [01:20<00:00,  2.51s/it]
+Init alpha to be FP32
+Init alpha to be FP32
+Init alpha to be FP32
+Total loss:	34.263 (rec:34.020, pd:0.243, round:0.000)	b=0.00	count=500
+Total loss:	33.482 (rec:33.277, pd:0.205, round:0.000)	b=0.00	count=1000
+Total loss:	36.104 (rec:35.893, pd:0.210, round:0.000)	b=0.00	count=1500
+Total loss:	34.324 (rec:34.110, pd:0.213, round:0.000)	b=0.00	count=2000
+Total loss:	34.247 (rec:33.980, pd:0.267, round:0.000)	b=0.00	count=2500
+Total loss:	32.563 (rec:32.369, pd:0.194, round:0.000)	b=0.00	count=3000
+Total loss:	32.721 (rec:32.527, pd:0.194, round:0.000)	b=0.00	count=3500
+Total loss:	5508.709 (rec:32.584, pd:0.245, round:5475.881)	b=20.00	count=4000
+Total loss:	2979.442 (rec:33.612, pd:0.178, round:2945.652)	b=19.44	count=4500
+Total loss:	2746.036 (rec:33.638, pd:0.175, round:2712.223)	b=18.88	count=5000
+Total loss:	2565.738 (rec:33.876, pd:0.179, round:2531.683)	b=18.31	count=5500
+Total loss:	2408.721 (rec:34.178, pd:0.166, round:2374.377)	b=17.75	count=6000
+Total loss:	2262.384 (rec:32.779, pd:0.205, round:2229.400)	b=17.19	count=6500
+Total loss:	2127.614 (rec:32.517, pd:0.142, round:2094.955)	b=16.62	count=7000
+Total loss:	2000.142 (rec:32.841, pd:0.163, round:1967.138)	b=16.06	count=7500
+Total loss:	1881.036 (rec:34.003, pd:0.193, round:1846.840)	b=15.50	count=8000
+Total loss:	1763.817 (rec:33.464, pd:0.180, round:1730.173)	b=14.94	count=8500
+Total loss:	1654.558 (rec:33.971, pd:0.213, round:1620.374)	b=14.38	count=9000
+Total loss:	1545.532 (rec:32.063, pd:0.221, round:1513.248)	b=13.81	count=9500
+Total loss:	1445.549 (rec:33.117, pd:0.179, round:1412.253)	b=13.25	count=10000
+Total loss:	1345.429 (rec:32.070, pd:0.182, round:1313.178)	b=12.69	count=10500
+Total loss:	1251.709 (rec:33.014, pd:0.214, round:1218.481)	b=12.12	count=11000
+Total loss:	1160.524 (rec:33.606, pd:0.184, round:1126.734)	b=11.56	count=11500
+Total loss:	1069.979 (rec:34.793, pd:0.185, round:1035.001)	b=11.00	count=12000
+Total loss:	979.324 (rec:33.688, pd:0.186, round:945.450)	b=10.44	count=12500
+Total loss:	891.027 (rec:34.192, pd:0.175, round:856.660)	b=9.88	count=13000
+Total loss:	806.015 (rec:35.342, pd:0.163, round:770.510)	b=9.31	count=13500
+Total loss:	718.577 (rec:33.258, pd:0.196, round:685.123)	b=8.75	count=14000
+Total loss:	632.312 (rec:31.756, pd:0.172, round:600.384)	b=8.19	count=14500
+Total loss:	549.840 (rec:33.182, pd:0.176, round:516.482)	b=7.62	count=15000
+Total loss:	466.053 (rec:34.234, pd:0.202, round:431.617)	b=7.06	count=15500
+Total loss:	382.193 (rec:33.219, pd:0.176, round:348.798)	b=6.50	count=16000
+Total loss:	296.277 (rec:32.412, pd:0.181, round:263.684)	b=5.94	count=16500
+Total loss:	215.291 (rec:33.461, pd:0.197, round:181.633)	b=5.38	count=17000
+Total loss:	137.620 (rec:33.186, pd:0.180, round:104.253)	b=4.81	count=17500
+Total loss:	74.988 (rec:34.338, pd:0.195, round:40.455)	b=4.25	count=18000
+Total loss:	39.071 (rec:31.499, pd:0.200, round:7.373)	b=3.69	count=18500
+Total loss:	33.874 (rec:33.222, pd:0.212, round:0.440)	b=3.12	count=19000
+Total loss:	32.673 (rec:32.472, pd:0.201, round:0.000)	b=2.56	count=19500
+Total loss:	33.576 (rec:33.396, pd:0.181, round:0.000)	b=2.00	count=20000
+Reconstruction for block b3
+Start correcting 32 batches of data!
+  0%|          | 0/32 [00:00<?, ?it/s]  3%|▎         | 1/32 [00:02<01:16,  2.46s/it]  6%|▋         | 2/32 [00:04<01:14,  2.49s/it]  9%|▉         | 3/32 [00:07<01:12,  2.49s/it] 12%|█▎        | 4/32 [00:09<01:09,  2.50s/it] 16%|█▌        | 5/32 [00:12<01:07,  2.50s/it] 19%|█▉        | 6/32 [00:14<01:05,  2.50s/it] 22%|██▏       | 7/32 [00:17<01:02,  2.51s/it] 25%|██▌       | 8/32 [00:20<01:00,  2.51s/it] 28%|██▊       | 9/32 [00:22<00:57,  2.51s/it] 31%|███▏      | 10/32 [00:25<00:55,  2.51s/it] 34%|███▍      | 11/32 [00:27<00:52,  2.51s/it] 38%|███▊      | 12/32 [00:30<00:50,  2.51s/it] 41%|████      | 13/32 [00:32<00:47,  2.51s/it] 44%|████▍     | 14/32 [00:35<00:45,  2.51s/it] 47%|████▋     | 15/32 [00:37<00:42,  2.51s/it] 50%|█████     | 16/32 [00:40<00:40,  2.51s/it] 53%|█████▎    | 17/32 [00:42<00:37,  2.51s/it] 56%|█████▋    | 18/32 [00:45<00:35,  2.51s/it] 59%|█████▉    | 19/32 [00:47<00:32,  2.51s/it] 62%|██████▎   | 20/32 [00:50<00:30,  2.52s/it] 66%|██████▌   | 21/32 [00:52<00:27,  2.52s/it] 69%|██████▉   | 22/32 [00:55<00:25,  2.52s/it] 72%|███████▏  | 23/32 [00:57<00:22,  2.52s/it] 75%|███████▌  | 24/32 [01:00<00:20,  2.52s/it] 78%|███████▊  | 25/32 [01:02<00:17,  2.52s/it] 81%|████████▏ | 26/32 [01:05<00:15,  2.52s/it] 84%|████████▍ | 27/32 [01:07<00:12,  2.52s/it] 88%|████████▊ | 28/32 [01:10<00:10,  2.52s/it] 91%|█████████ | 29/32 [01:12<00:07,  2.52s/it] 94%|█████████▍| 30/32 [01:15<00:05,  2.52s/it] 97%|█████████▋| 31/32 [01:17<00:02,  2.52s/it]100%|██████████| 32/32 [01:20<00:00,  2.52s/it]100%|██████████| 32/32 [01:20<00:00,  2.51s/it]
+Init alpha to be FP32
+Init alpha to be FP32
+Init alpha to be FP32
+Total loss:	36.861 (rec:36.615, pd:0.247, round:0.000)	b=0.00	count=500
+Total loss:	35.850 (rec:35.596, pd:0.254, round:0.000)	b=0.00	count=1000
+Total loss:	37.023 (rec:36.856, pd:0.167, round:0.000)	b=0.00	count=1500
+Total loss:	38.093 (rec:37.871, pd:0.221, round:0.000)	b=0.00	count=2000
+Total loss:	36.869 (rec:36.654, pd:0.215, round:0.000)	b=0.00	count=2500
+Total loss:	36.806 (rec:36.618, pd:0.189, round:0.000)	b=0.00	count=3000
+Total loss:	34.717 (rec:34.548, pd:0.169, round:0.000)	b=0.00	count=3500
+Total loss:	5551.521 (rec:35.661, pd:0.221, round:5515.639)	b=20.00	count=4000
+Total loss:	3048.379 (rec:35.422, pd:0.174, round:3012.783)	b=19.44	count=4500
+Total loss:	2812.254 (rec:36.151, pd:0.173, round:2775.930)	b=18.88	count=5000
+Total loss:	2627.800 (rec:34.123, pd:0.229, round:2593.448)	b=18.31	count=5500
+Total loss:	2468.653 (rec:36.234, pd:0.155, round:2432.265)	b=17.75	count=6000
+Total loss:	2320.507 (rec:35.078, pd:0.184, round:2285.245)	b=17.19	count=6500
+Total loss:	2186.601 (rec:38.074, pd:0.217, round:2148.309)	b=16.62	count=7000
+Total loss:	2057.500 (rec:37.299, pd:0.178, round:2020.023)	b=16.06	count=7500
+Total loss:	1932.684 (rec:36.200, pd:0.219, round:1896.265)	b=15.50	count=8000
+Total loss:	1814.381 (rec:34.810, pd:0.227, round:1779.344)	b=14.94	count=8500
+Total loss:	1702.845 (rec:35.590, pd:0.183, round:1667.073)	b=14.38	count=9000
+Total loss:	1595.185 (rec:36.602, pd:0.147, round:1558.436)	b=13.81	count=9500
+Total loss:	1487.048 (rec:34.205, pd:0.196, round:1452.647)	b=13.25	count=10000
+Total loss:	1389.473 (rec:36.414, pd:0.179, round:1352.880)	b=12.69	count=10500
+Total loss:	1293.222 (rec:37.353, pd:0.158, round:1255.712)	b=12.12	count=11000
+Total loss:	1195.312 (rec:35.591, pd:0.214, round:1159.506)	b=11.56	count=11500
+Total loss:	1103.172 (rec:37.430, pd:0.205, round:1065.537)	b=11.00	count=12000
+Total loss:	1011.622 (rec:37.422, pd:0.190, round:974.011)	b=10.44	count=12500
+Total loss:	921.848 (rec:35.915, pd:0.213, round:885.721)	b=9.88	count=13000
+Total loss:	833.967 (rec:37.030, pd:0.212, round:796.725)	b=9.31	count=13500
+Total loss:	746.169 (rec:35.647, pd:0.188, round:710.334)	b=8.75	count=14000
+Total loss:	661.233 (rec:36.651, pd:0.183, round:624.398)	b=8.19	count=14500
+Total loss:	572.909 (rec:34.956, pd:0.163, round:537.790)	b=7.62	count=15000
+Total loss:	489.703 (rec:36.504, pd:0.220, round:452.979)	b=7.06	count=15500
+Total loss:	404.547 (rec:36.413, pd:0.200, round:367.933)	b=6.50	count=16000
+Total loss:	320.965 (rec:36.459, pd:0.180, round:284.325)	b=5.94	count=16500
+Total loss:	237.047 (rec:35.024, pd:0.161, round:201.861)	b=5.38	count=17000
+Total loss:	159.994 (rec:37.078, pd:0.181, round:122.735)	b=4.81	count=17500
+Total loss:	89.022 (rec:35.315, pd:0.155, round:53.552)	b=4.25	count=18000
+Total loss:	47.465 (rec:35.874, pd:0.173, round:11.418)	b=3.69	count=18500
+Total loss:	37.124 (rec:36.425, pd:0.155, round:0.545)	b=3.12	count=19000
+Total loss:	35.050 (rec:34.852, pd:0.198, round:0.000)	b=2.56	count=19500
+Total loss:	36.479 (rec:36.292, pd:0.187, round:0.000)	b=2.00	count=20000
+Reconstruction for block b4
+Start correcting 32 batches of data!
+  0%|          | 0/32 [00:00<?, ?it/s]  3%|▎         | 1/32 [00:02<01:16,  2.46s/it]  6%|▋         | 2/32 [00:04<01:14,  2.48s/it]  9%|▉         | 3/32 [00:07<01:12,  2.49s/it] 12%|█▎        | 4/32 [00:09<01:09,  2.50s/it] 16%|█▌        | 5/32 [00:12<01:07,  2.50s/it] 19%|█▉        | 6/32 [00:14<01:05,  2.50s/it] 22%|██▏       | 7/32 [00:17<01:02,  2.51s/it] 25%|██▌       | 8/32 [00:20<01:00,  2.51s/it] 28%|██▊       | 9/32 [00:22<00:57,  2.51s/it] 31%|███▏      | 10/32 [00:25<00:55,  2.51s/it] 34%|███▍      | 11/32 [00:27<00:52,  2.51s/it] 38%|███▊      | 12/32 [00:30<00:50,  2.51s/it] 41%|████      | 13/32 [00:32<00:47,  2.51s/it] 44%|████▍     | 14/32 [00:35<00:45,  2.51s/it] 47%|████▋     | 15/32 [00:37<00:42,  2.51s/it] 50%|█████     | 16/32 [00:40<00:40,  2.52s/it] 53%|█████▎    | 17/32 [00:42<00:37,  2.52s/it] 56%|█████▋    | 18/32 [00:45<00:35,  2.52s/it] 59%|█████▉    | 19/32 [00:47<00:32,  2.52s/it] 62%|██████▎   | 20/32 [00:50<00:30,  2.52s/it] 66%|██████▌   | 21/32 [00:52<00:27,  2.52s/it] 69%|██████▉   | 22/32 [00:55<00:25,  2.52s/it] 72%|███████▏  | 23/32 [00:57<00:22,  2.52s/it] 75%|███████▌  | 24/32 [01:00<00:20,  2.52s/it] 78%|███████▊  | 25/32 [01:02<00:17,  2.52s/it] 81%|████████▏ | 26/32 [01:05<00:15,  2.52s/it] 84%|████████▍ | 27/32 [01:07<00:12,  2.52s/it] 88%|████████▊ | 28/32 [01:10<00:10,  2.52s/it] 91%|█████████ | 29/32 [01:12<00:07,  2.52s/it] 94%|█████████▍| 30/32 [01:15<00:05,  2.52s/it] 97%|█████████▋| 31/32 [01:17<00:02,  2.52s/it]100%|██████████| 32/32 [01:20<00:00,  2.52s/it]100%|██████████| 32/32 [01:20<00:00,  2.52s/it]
+Init alpha to be FP32
+Init alpha to be FP32
+Init alpha to be FP32
+Total loss:	39.600 (rec:39.393, pd:0.207, round:0.000)	b=0.00	count=500
+Total loss:	39.872 (rec:39.695, pd:0.178, round:0.000)	b=0.00	count=1000
+Total loss:	37.578 (rec:37.397, pd:0.181, round:0.000)	b=0.00	count=1500
+Total loss:	38.623 (rec:38.426, pd:0.198, round:0.000)	b=0.00	count=2000
+Total loss:	38.009 (rec:37.820, pd:0.189, round:0.000)	b=0.00	count=2500
+Total loss:	40.343 (rec:40.144, pd:0.199, round:0.000)	b=0.00	count=3000
+Total loss:	38.427 (rec:38.250, pd:0.177, round:0.000)	b=0.00	count=3500
+Total loss:	5578.563 (rec:39.711, pd:0.183, round:5538.669)	b=20.00	count=4000
+Total loss:	3085.517 (rec:37.539, pd:0.198, round:3047.781)	b=19.44	count=4500
+Total loss:	2845.279 (rec:40.134, pd:0.187, round:2804.958)	b=18.88	count=5000
+Total loss:	2658.467 (rec:39.421, pd:0.175, round:2618.872)	b=18.31	count=5500
+Total loss:	2492.641 (rec:37.796, pd:0.165, round:2454.680)	b=17.75	count=6000
+Total loss:	2341.274 (rec:38.163, pd:0.183, round:2302.929)	b=17.19	count=6500
+Total loss:	2198.247 (rec:38.114, pd:0.166, round:2159.967)	b=16.62	count=7000
+Total loss:	2066.484 (rec:38.513, pd:0.170, round:2027.801)	b=16.06	count=7500
+Total loss:	1939.016 (rec:37.499, pd:0.169, round:1901.348)	b=15.50	count=8000
+Total loss:	1819.711 (rec:38.251, pd:0.171, round:1781.289)	b=14.94	count=8500
+Total loss:	1705.981 (rec:38.023, pd:0.179, round:1667.779)	b=14.38	count=9000
+Total loss:	1595.076 (rec:37.822, pd:0.187, round:1557.067)	b=13.81	count=9500
+Total loss:	1491.527 (rec:39.810, pd:0.176, round:1451.541)	b=13.25	count=10000
+Total loss:	1386.586 (rec:36.383, pd:0.150, round:1350.053)	b=12.69	count=10500
+Total loss:	1289.949 (rec:38.227, pd:0.168, round:1251.554)	b=12.12	count=11000
+Total loss:	1195.433 (rec:37.394, pd:0.188, round:1157.851)	b=11.56	count=11500
+Total loss:	1103.798 (rec:37.237, pd:0.177, round:1066.384)	b=11.00	count=12000
+Total loss:	1013.573 (rec:37.938, pd:0.177, round:975.458)	b=10.44	count=12500
+Total loss:	925.281 (rec:38.474, pd:0.176, round:886.631)	b=9.88	count=13000
+Total loss:	836.518 (rec:38.090, pd:0.173, round:798.254)	b=9.31	count=13500
+Total loss:	748.414 (rec:38.124, pd:0.185, round:710.105)	b=8.75	count=14000
+Total loss:	661.727 (rec:38.757, pd:0.148, round:622.822)	b=8.19	count=14500
+Total loss:	577.937 (rec:39.605, pd:0.207, round:538.126)	b=7.62	count=15000
+Total loss:	490.464 (rec:37.107, pd:0.170, round:453.187)	b=7.06	count=15500
+Total loss:	408.042 (rec:39.164, pd:0.197, round:368.681)	b=6.50	count=16000
+Total loss:	324.157 (rec:36.674, pd:0.172, round:287.311)	b=5.94	count=16500
+Total loss:	243.034 (rec:38.014, pd:0.168, round:204.852)	b=5.38	count=17000
+Total loss:	166.440 (rec:38.243, pd:0.159, round:128.038)	b=4.81	count=17500
+Total loss:	101.509 (rec:38.910, pd:0.175, round:62.424)	b=4.25	count=18000
+Total loss:	54.248 (rec:37.613, pd:0.143, round:16.493)	b=3.69	count=18500
+Total loss:	40.264 (rec:38.839, pd:0.165, round:1.260)	b=3.12	count=19000
+Total loss:	39.381 (rec:39.204, pd:0.161, round:0.016)	b=2.56	count=19500
+Total loss:	37.600 (rec:37.415, pd:0.185, round:0.000)	b=2.00	count=20000
+Reconstruction for block b5
+Start correcting 32 batches of data!
+  0%|          | 0/32 [00:00<?, ?it/s]  3%|▎         | 1/32 [00:02<01:16,  2.47s/it]  6%|▋         | 2/32 [00:04<01:14,  2.49s/it]  9%|▉         | 3/32 [00:07<01:12,  2.50s/it] 12%|█▎        | 4/32 [00:09<01:09,  2.50s/it] 16%|█▌        | 5/32 [00:12<01:07,  2.50s/it] 19%|█▉        | 6/32 [00:14<01:05,  2.50s/it] 22%|██▏       | 7/32 [00:17<01:02,  2.51s/it] 25%|██▌       | 8/32 [00:20<01:00,  2.51s/it] 28%|██▊       | 9/32 [00:22<00:57,  2.51s/it] 31%|███▏      | 10/32 [00:25<00:55,  2.51s/it] 34%|███▍      | 11/32 [00:27<00:52,  2.51s/it] 38%|███▊      | 12/32 [00:30<00:50,  2.51s/it] 41%|████      | 13/32 [00:32<00:47,  2.51s/it] 44%|████▍     | 14/32 [00:35<00:45,  2.51s/it] 47%|████▋     | 15/32 [00:37<00:42,  2.51s/it] 50%|█████     | 16/32 [00:40<00:40,  2.51s/it]slurmstepd-jnfat06: error: *** JOB 1611510 ON jnfat06 CANCELLED AT 2025-09-03T13:31:25 ***

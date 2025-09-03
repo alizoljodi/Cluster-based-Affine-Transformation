@@ -12,7 +12,7 @@ echo "=========================================="
 
 # ResNet18 experiments
 echo "Submitting ResNet18 experiments..."
-sbatch --output=./logs/resnet18_w2a2_alpha.out ablation_alpha_run_resnet18_w2a2.sh
+sbatch --output=./logs/resnet18_w2a2_alpha.out ./ablation_alpha_run_resnet18_w2a2.sh
 sbatch --output=./logs/resnet18_w2a4_alpha.out ablation_alpha_run_resnet18_w2a4.sh
 sbatch --output=./logs/resnet18_w4a2_alpha.out ablation_alpha_run_resnet18_w4a2.sh
 sbatch --output=./logs/resnet18_w4a4_alpha.out ablation_alpha_run_resnet18_w4a4.sh
