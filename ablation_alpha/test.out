@@ -1,3 +1,109 @@
-Starting ResNet18 W2A2 alpha ablation experiment at Wed Sep  3 10:38:19 AM CEST 2025
-python: can't open file '/home/alz07xz/project/Cluster-based-Affine-Transformation/ablation_alpha/run_script_seed.py': [Errno 2] No such file or directory
-Completed ResNet18 W2A2 alpha ablation experiment at Wed Sep  3 10:38:19 AM CEST 2025
+Starting ResNet18 W2A2 alpha ablation experiment at Wed Sep  3 10:42:12 AM CEST 2025
+python: can't open file '/home/alz07xz/project/Cluster-based-Affine-Transformation/ablation_alpha/main_imagenet.py': [Errno 2] No such file or directory
+python: can't open file '/home/alz07xz/project/Cluster-based-Affine-Transformation/ablation_alpha/main_imagenet.py': [Errno 2] No such file or directory
+python: can't open file '/home/alz07xz/project/Cluster-based-Affine-Transformation/ablation_alpha/main_imagenet.py': [Errno 2] No such file or directory
+
+====================================================================================================
+🚀 CAT MULTI-SEED EXPERIMENT RUNNER
+====================================================================================================
+🎯 Experiment Configuration:
+  - Model: resnet18
+  - Weight bits: 2, Activation bits: 2
+  - Data path: /home/alz07xz/imagenet
+  - Seeds: 0 to 2 (3 total)
+  - Sleep between runs: 0.5 seconds
+  - Alpha values: [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0]
+  - Number of clusters: [64]
+  - PCA dimensions: [50]
+  - Total configurations to test: 10
+  - Total experiments: 3 seeds × 10 configs = 30
+
+⏰ Starting experiments at 2025-09-03 10:42:15
+====================================================================================================
+
+🔄 Progress: 1/3 seeds completed
+
+================================================================================
+STARTING SEED 0 EXPERIMENT
+================================================================================
+[Seed 0] Configuration:
+  - Architecture: resnet18
+  - Weight bits: 2, Activation bits: 2
+  - Alpha values: [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0]
+  - Number of clusters: [64]
+  - PCA dimensions: [50]
+  - Data path: /home/alz07xz/imagenet
+[Seed 0] Hyperparameters: weight=0.01, T=4.0, lamb_c=0.02
+[Seed 0] Executing command:
+  python main_imagenet.py --data_path /home/alz07xz/imagenet --arch resnet18 --n_bits_w 2 --n_bits_a 2 --weight 0.01 --T 4.0 --lamb_c 0.02 --seed 0 --alpha 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1.0 --num_clusters 64 --pca_dim 50
+[Seed 0] Execution completed in 0.02 seconds
+[Seed 0] ❌ FAILED - Process exited with code 512
+[Seed 0] Sleeping for 0.5 seconds before next seed...
+[Seed 0] Experiment finished
+================================================================================
+
+
+🔄 Progress: 2/3 seeds completed
+
+================================================================================
+STARTING SEED 1 EXPERIMENT
+================================================================================
+[Seed 1] Configuration:
+  - Architecture: resnet18
+  - Weight bits: 2, Activation bits: 2
+  - Alpha values: [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0]
+  - Number of clusters: [64]
+  - PCA dimensions: [50]
+  - Data path: /home/alz07xz/imagenet
+[Seed 1] Hyperparameters: weight=0.01, T=4.0, lamb_c=0.02
+[Seed 1] Executing command:
+  python main_imagenet.py --data_path /home/alz07xz/imagenet --arch resnet18 --n_bits_w 2 --n_bits_a 2 --weight 0.01 --T 4.0 --lamb_c 0.02 --seed 1 --alpha 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1.0 --num_clusters 64 --pca_dim 50
+[Seed 1] Execution completed in 0.02 seconds
+[Seed 1] ❌ FAILED - Process exited with code 512
+[Seed 1] Sleeping for 0.5 seconds before next seed...
+[Seed 1] Experiment finished
+================================================================================
+
+
+🔄 Progress: 3/3 seeds completed
+
+================================================================================
+STARTING SEED 2 EXPERIMENT
+================================================================================
+[Seed 2] Configuration:
+  - Architecture: resnet18
+  - Weight bits: 2, Activation bits: 2
+  - Alpha values: [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0]
+  - Number of clusters: [64]
+  - PCA dimensions: [50]
+  - Data path: /home/alz07xz/imagenet
+[Seed 2] Hyperparameters: weight=0.01, T=4.0, lamb_c=0.02
+[Seed 2] Executing command:
+  python main_imagenet.py --data_path /home/alz07xz/imagenet --arch resnet18 --n_bits_w 2 --n_bits_a 2 --weight 0.01 --T 4.0 --lamb_c 0.02 --seed 2 --alpha 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1.0 --num_clusters 64 --pca_dim 50
+[Seed 2] Execution completed in 0.01 seconds
+[Seed 2] ❌ FAILED - Process exited with code 512
+[Seed 2] Sleeping for 0.5 seconds before next seed...
+[Seed 2] Experiment finished
+================================================================================
+
+
+====================================================================================================
+🎉 ALL EXPERIMENTS COMPLETED!
+====================================================================================================
+⏱️  Total execution time: 1.55 seconds (0.03 minutes)
+📊 Results analysis starting...
+
+====================================================================================================
+ANALYZING RESULTS FROM MULTIPLE SEED RUNS
+====================================================================================================
+📊 Analysis Summary:
+  - Total seeds: 3
+  - Successful runs: 0
+  - Failed runs: 3
+  - Failed seed numbers: [0, 1, 2]
+❌ No valid results to analyze!
+
+====================================================================================================
+🏁 EXPERIMENT RUNNER FINISHED
+====================================================================================================
+Completed ResNet18 W2A2 alpha ablation experiment at Wed Sep  3 10:42:16 AM CEST 2025
