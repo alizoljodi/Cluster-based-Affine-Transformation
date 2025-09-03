@@ -265,7 +265,7 @@ if __name__ == '__main__':
 
     # Extract logits from quantized and full-precision models using a seeded random subset of training data
     extractor = get_logits(q_model=qnn, fp_model=fp_model, dataloader=train_loader, device=device,
-                           num_samples=10, seed=args.seed)
+                           num_samples=1024, seed=args.seed)
     print('[Main] Extracting logits from models...')
     all_q, all_fp = extractor()
     print(f"[Main] Logits extracted. all_q shape: {tuple(all_q.shape)}, all_fp shape: {tuple(all_fp.shape)}")
