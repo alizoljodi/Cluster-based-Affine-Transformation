@@ -1,3 +1,0 @@
-method,num_clusters,pca_dim,alpha,top1_acc,top5_acc,seed,arch,w_bits,a_bits
-no_restoration,,,,"tensor(55.2400, device='cuda:0')",,3,mobilenetv2,2,4
-restoration,56.0,40.0,0.5,51.628,77.586,3,mobilenetv2,2,4

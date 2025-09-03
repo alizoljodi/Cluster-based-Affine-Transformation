@@ -1,3 +1,0 @@
-method,num_clusters,pca_dim,alpha,top1_acc,top5_acc,seed,arch,w_bits,a_bits
-no_restoration,,,,"tensor(52.8820, device='cuda:0')",,7,resnet18,2,2
-restoration,1.0,1.0,0.4,53.056,78.45,7,resnet18,2,2

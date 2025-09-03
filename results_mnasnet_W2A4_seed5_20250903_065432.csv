@@ -1,3 +1,0 @@
-method,num_clusters,pca_dim,alpha,top1_acc,top5_acc,seed,arch,w_bits,a_bits
-no_restoration,,,,"tensor(63.4680, device='cuda:0')",,5,mnasnet,2,4
-restoration,56.0,40.0,0.5,60.846,84.97,5,mnasnet,2,4
