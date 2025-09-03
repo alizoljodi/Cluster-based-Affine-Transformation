@@ -154,7 +154,7 @@ def run_one_seed(
     pca_str = ' '.join(map(str, pca_dim))
     
     cmd = (
-        f"python main_imagenet.py --data_path {data_path} --arch {arch} "
+        f"python ../main_imagenet.py --data_path {data_path} --arch {arch} "
         f"--n_bits_w {w_bits} --n_bits_a {a_bits} --weight {weight} --T {T} --lamb_c {lamb_c} --seed {seed} "
         f"--alpha {alpha_str} --num_clusters {clusters_str} --pca_dim {pca_str}"
     )
