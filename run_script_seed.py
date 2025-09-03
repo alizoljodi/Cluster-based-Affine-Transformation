@@ -12,6 +12,22 @@ import os
 ARCH_CHOICES = ['resnet18', 'resnet50', 'mobilenetv2', 'regnetx_600m', 'regnetx_3200m', 'mnasnet']
 
 
+def convert_tensor_to_scalar(value):
+    """Convert tensor values to scalar values, handling various formats."""
+    if isinstance(value, str) and 'tensor(' in value:
+        # Extract the numeric value from tensor string
+        try:
+            # Handle tensor(0.1234) format
+            match = re.search(r'tensor\(([^)]+)\)', value)
+            if match:
+                return float(match.group(1))
+        except:
+            pass
+    elif hasattr(value, 'item'):  # If it's a tensor object
+        return value.item()
+    return value
+
+
 def arch_hparams(exp_name: str) -> Tuple[float, float, float]:
     """Return (weight, T, lamb_c) defaults following run_script.py for a given arch."""
     if exp_name in ("resnet18", "resnet50"):
@@ -185,13 +201,20 @@ def run_one_seed(
                 
                 # Clean and validate numeric columns
                 if 'top1_acc' in df.columns:
-                    # Convert to numeric, handling any concatenated strings
+                    # Apply tensor conversion to each value
+                    df['top1_acc'] = df['top1_acc'].apply(convert_tensor_to_scalar)
+                    
+                    # Convert to numeric, handling any remaining issues
                     df['top1_acc'] = pd.to_numeric(df['top1_acc'], errors='coerce')
+                    
                     # Check for any NaN values that might indicate parsing issues
                     if df['top1_acc'].isna().any():
                         print(f"[Seed {seed}] ⚠️  Warning: Some top1_acc values could not be parsed as numbers")
                 
                 if 'top5_acc' in df.columns:
+                    # Apply tensor conversion to each value
+                    df['top5_acc'] = df['top5_acc'].apply(convert_tensor_to_scalar)
+                    
                     df['top5_acc'] = pd.to_numeric(df['top5_acc'], errors='coerce')
                     if df['top5_acc'].isna().any():
                         print(f"[Seed {seed}] ⚠️  Warning: Some top5_acc values could not be parsed as numbers")
@@ -272,6 +295,9 @@ def analyze_results(dataframes: List[Optional[pd.DataFrame]], seeds: List[int]) 
         
         # Ensure top1_acc is numeric and handle any remaining issues
         try:
+            # Apply tensor conversion to handle any remaining tensor values
+            group['top1_acc'] = group['top1_acc'].apply(convert_tensor_to_scalar)
+            
             # Convert to numeric if not already
             if not pd.api.types.is_numeric_dtype(group['top1_acc']):
                 group['top1_acc'] = pd.to_numeric(group['top1_acc'], errors='coerce')
@@ -290,6 +316,9 @@ def analyze_results(dataframes: List[Optional[pd.DataFrame]], seeds: List[int]) 
         # Handle top5 (might have NaN values for baseline)
         try:
             if 'top5_acc' in group.columns:
+                # Apply tensor conversion to handle any remaining tensor values
+                group['top5_acc'] = group['top5_acc'].apply(convert_tensor_to_scalar)
+                
                 # Convert to numeric if not already
                 if not pd.api.types.is_numeric_dtype(group['top5_acc']):
                     group['top5_acc'] = pd.to_numeric(group['top5_acc'], errors='coerce')

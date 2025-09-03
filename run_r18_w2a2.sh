@@ -12,5 +12,5 @@
 
 source /home/alz07xz/project/PD-Quant/pd_quant/bin/activate
 echo "Starting ResNet18 W2A2 experiment at $(date)"
-python run_script_seed.py resnet18 --w_bits 2 --a_bits 2 --num_seeds 10 --start_seed 0 --sleep 0.5 --alpha 0.4 --num_clusters 1 --pca_dim 1
+python run_script_seed.py resnet18 --w_bits 2 --a_bits 2 --num_seeds 3 --start_seed 0 --sleep 0.5 --alpha 0.4 --num_clusters 1 --pca_dim 1
 echo "Completed ResNet18 W2A2 experiment at $(date)"
