@@ -1,0 +1,205 @@
+Starting ResNet18 W2A2 with 5000 samples experiment at Mon Sep  8 04:26:01 PM CEST 2025
+Running experiment with seed=1001
+==> Using Pytorch Dataset
+Setting the first and the last layer to 8-bit
+the quantized model is below!
+QuantModel(
+  (model): ResNet(
+    (conv1): QuantModule(
+      wbit=8, abit=2, disable_act_quant=False
+      (weight_quantizer): UniformAffineQuantizer(bit=8, is_training=False, inited=True)
+      (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+      (norm_function): StraightThrough()
+      (activation_function): ReLU(inplace=True)
+    )
+    (bn1): StraightThrough()
+    (relu): StraightThrough()
+    (maxpool): MaxPool2d(kernel_size=3, stride=2, padding=1, dilation=1, ceil_mode=False)
+    (layer1): Sequential(
+      (0): QuantBasicBlock(
+        (conv1): QuantModule(
+          wbit=2, abit=2, disable_act_quant=False
+          (weight_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): ReLU(inplace=True)
+        )
+        (conv2): QuantModule(
+          wbit=2, abit=2, disable_act_quant=True
+          (weight_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): StraightThrough()
+        )
+        (activation_function): ReLU(inplace=True)
+        (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+      )
+      (1): QuantBasicBlock(
+        (conv1): QuantModule(
+          wbit=2, abit=2, disable_act_quant=False
+          (weight_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): ReLU(inplace=True)
+        )
+        (conv2): QuantModule(
+          wbit=2, abit=2, disable_act_quant=True
+          (weight_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): StraightThrough()
+        )
+        (activation_function): ReLU(inplace=True)
+        (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+      )
+    )
+    (layer2): Sequential(
+      (0): QuantBasicBlock(
+        (conv1): QuantModule(
+          wbit=2, abit=2, disable_act_quant=False
+          (weight_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): ReLU(inplace=True)
+        )
+        (conv2): QuantModule(
+          wbit=2, abit=2, disable_act_quant=True
+          (weight_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): StraightThrough()
+        )
+        (downsample): QuantModule(
+          wbit=2, abit=2, disable_act_quant=True
+          (weight_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): StraightThrough()
+        )
+        (activation_function): ReLU(inplace=True)
+        (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+      )
+      (1): QuantBasicBlock(
+        (conv1): QuantModule(
+          wbit=2, abit=2, disable_act_quant=False
+          (weight_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): ReLU(inplace=True)
+        )
+        (conv2): QuantModule(
+          wbit=2, abit=2, disable_act_quant=True
+          (weight_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): StraightThrough()
+        )
+        (activation_function): ReLU(inplace=True)
+        (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+      )
+    )
+    (layer3): Sequential(
+      (0): QuantBasicBlock(
+        (conv1): QuantModule(
+          wbit=2, abit=2, disable_act_quant=False
+          (weight_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): ReLU(inplace=True)
+        )
+        (conv2): QuantModule(
+          wbit=2, abit=2, disable_act_quant=True
+          (weight_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): StraightThrough()
+        )
+        (downsample): QuantModule(
+          wbit=2, abit=2, disable_act_quant=True
+          (weight_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): StraightThrough()
+        )
+        (activation_function): ReLU(inplace=True)
+        (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+      )
+      (1): QuantBasicBlock(
+        (conv1): QuantModule(
+          wbit=2, abit=2, disable_act_quant=False
+          (weight_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): ReLU(inplace=True)
+        )
+        (conv2): QuantModule(
+          wbit=2, abit=2, disable_act_quant=True
+          (weight_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): StraightThrough()
+        )
+        (activation_function): ReLU(inplace=True)
+        (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+      )
+    )
+    (layer4): Sequential(
+      (0): QuantBasicBlock(
+        (conv1): QuantModule(
+          wbit=2, abit=2, disable_act_quant=False
+          (weight_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): ReLU(inplace=True)
+        )
+        (conv2): QuantModule(
+          wbit=2, abit=2, disable_act_quant=True
+          (weight_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): StraightThrough()
+        )
+        (downsample): QuantModule(
+          wbit=2, abit=2, disable_act_quant=True
+          (weight_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): StraightThrough()
+        )
+        (activation_function): ReLU(inplace=True)
+        (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+      )
+      (1): QuantBasicBlock(
+        (conv1): QuantModule(
+          wbit=2, abit=2, disable_act_quant=False
+          (weight_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): ReLU(inplace=True)
+        )
+        (conv2): QuantModule(
+          wbit=2, abit=2, disable_act_quant=True
+          (weight_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): StraightThrough()
+        )
+        (activation_function): ReLU(inplace=True)
+        (act_quantizer): UniformAffineQuantizer(bit=8, is_training=False, inited=True)
+      )
+    )
+    (avgpool): AdaptiveAvgPool2d(output_size=(1, 1))
+    (fc): QuantModule(
+      wbit=8, abit=2, disable_act_quant=True
+      (weight_quantizer): UniformAffineQuantizer(bit=8, is_training=False, inited=True)
+      (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+      (norm_function): StraightThrough()
+      (activation_function): StraightThrough()
+    )
+  )
+)
+/home/alz07xz/project/Cluster-based-Affine-Transformation/quant/quant_layer.py:141: UserWarning: _aminmax is deprecated as of PyTorch 1.11 and will be removed in a future release. Use aminmax instead. This warning will only appear once per process. (Triggered internally at /pytorch/aten/src/ATen/native/TensorCompare.cpp:814.)
+  x_min, x_max = torch._aminmax(y, 1)
+Reconstruction for layer conv1
+Start correcting 156 batches of data!
+  0%|          | 0/156 [00:00<?, ?it/s]  1%|          | 1/156 [00:02<06:11,  2.40s/it]  1%|▏         | 2/156 [00:04<05:51,  2.28s/it]  2%|▏         | 3/156 [00:06<05:42,  2.24s/it]  3%|▎         | 4/156 [00:08<05:38,  2.23s/it]  3%|▎         | 5/156 [00:11<05:34,  2.22s/it]  4%|▍         | 6/156 [00:13<05:31,  2.21s/it]  4%|▍         | 7/156 [00:15<05:28,  2.21s/it]  5%|▌         | 8/156 [00:17<05:26,  2.21s/it]  6%|▌         | 9/156 [00:19<05:24,  2.20s/it]  6%|▋         | 10/156 [00:22<05:21,  2.21s/it]  7%|▋         | 11/156 [00:24<05:19,  2.20s/it]  8%|▊         | 12/156 [00:26<05:17,  2.20s/it]  8%|▊         | 13/156 [00:28<05:15,  2.21s/it]  9%|▉         | 14/156 [00:31<05:13,  2.21s/it] 10%|▉         | 15/156 [00:33<05:11,  2.21s/it] 10%|█         | 16/156 [00:35<05:09,  2.21s/it] 11%|█         | 17/156 [00:37<05:07,  2.21s/it] 12%|█▏        | 18/156 [00:39<05:05,  2.21s/it] 12%|█▏        | 19/156 [00:42<05:03,  2.21s/it] 13%|█▎        | 20/156 [00:44<05:01,  2.22s/it] 13%|█▎        | 21/156 [00:46<04:59,  2.22s/it] 14%|█▍        | 22/156 [00:48<04:57,  2.22s/it] 15%|█▍        | 23/156 [00:50<04:54,  2.22s/it] 15%|█▌        | 24/156 [00:53<04:52,  2.22s/it] 16%|█▌        | 25/156 [00:55<04:50,  2.22s/it] 17%|█▋        | 26/156 [00:57<04:48,  2.22s/it] 17%|█▋        | 27/156 [00:59<04:45,  2.22s/it] 18%|█▊        | 28/156 [01:02<04:43,  2.22s/it] 19%|█▊        | 29/156 [01:04<04:41,  2.22s/it] 19%|█▉        | 30/156 [01:06<04:39,  2.22s/it] 20%|█▉        | 31/156 [01:08<04:36,  2.21s/it] 21%|██        | 32/156 [01:10<04:34,  2.22s/it] 21%|██        | 33/156 [01:13<04:32,  2.22s/it] 22%|██▏       | 34/156 [01:15<04:30,  2.22s/it] 22%|██▏       | 35/156 [01:17<04:28,  2.22s/it] 23%|██▎       | 36/156 [01:19<04:26,  2.22s/it] 24%|██▎       | 37/156 [01:22<04:23,  2.22s/it] 24%|██▍       | 38/156 [01:24<04:21,  2.22s/it] 25%|██▌       | 39/156 [01:26<04:19,  2.22s/it] 26%|██▌       | 40/156 [01:28<04:17,  2.22s/it] 26%|██▋       | 41/156 [01:30<04:15,  2.22s/it] 27%|██▋       | 42/156 [01:33<04:13,  2.22s/it] 28%|██▊       | 43/156 [01:35<04:10,  2.22s/it] 28%|██▊       | 44/156 [01:37<04:08,  2.22s/it] 29%|██▉       | 45/156 [01:39<04:06,  2.22s/it] 29%|██▉       | 46/156 [01:42<04:04,  2.22s/it] 30%|███       | 47/156 [01:44<04:01,  2.22s/it] 31%|███       | 48/156 [01:46<03:59,  2.22s/it] 31%|███▏      | 49/156 [01:48<03:57,  2.22s/it] 32%|███▏      | 50/156 [01:50<03:55,  2.22s/it] 33%|███▎      | 51/156 [01:53<03:53,  2.22s/it] 33%|███▎      | 52/156 [01:55<03:51,  2.22s/it] 34%|███▍      | 53/156 [01:57<03:48,  2.22s/it] 35%|███▍      | 54/156 [01:59<03:46,  2.22s/it] 35%|███▌      | 55/156 [02:02<03:44,  2.22s/it] 36%|███▌      | 56/156 [02:04<03:42,  2.22s/it] 37%|███▋      | 57/156 [02:06<03:40,  2.22s/it] 37%|███▋      | 58/156 [02:08<03:38,  2.22s/it] 38%|███▊      | 59/156 [02:10<03:35,  2.22s/it] 38%|███▊      | 60/156 [02:13<03:33,  2.22s/it] 39%|███▉      | 61/156 [02:15<03:31,  2.22s/it] 40%|███▉      | 62/156 [02:17<03:29,  2.22s/it] 40%|████      | 63/156 [02:19<03:26,  2.22s/it] 41%|████      | 64/156 [02:22<03:24,  2.23s/it] 42%|████▏     | 65/156 [02:24<03:22,  2.23s/it] 42%|████▏     | 66/156 [02:26<03:20,  2.23s/it] 43%|████▎     | 67/156 [02:28<03:18,  2.22s/it] 44%|████▎     | 68/156 [02:30<03:15,  2.23s/it]slurmstepd-jnfat07: error: *** JOB 1643709 ON jnfat07 CANCELLED AT 2025-09-08T16:29:58 ***
