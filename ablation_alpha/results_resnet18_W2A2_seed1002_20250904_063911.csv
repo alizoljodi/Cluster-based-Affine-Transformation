@@ -1,0 +1,12 @@
+method,num_clusters,pca_dim,alpha,top1_acc,top5_acc,seed,arch,w_bits,a_bits
+no_restoration,,,,52.895999908447266,,1002,resnet18,2,2
+restoration,64.0,50.0,0.1,53.024,78.202,1002,resnet18,2,2
+restoration,64.0,50.0,0.2,53.116,78.306,1002,resnet18,2,2
+restoration,64.0,50.0,0.3,53.16,78.322,1002,resnet18,2,2
+restoration,64.0,50.0,0.4,53.132,78.278,1002,resnet18,2,2
+restoration,64.0,50.0,0.5,53.082,78.26,1002,resnet18,2,2
+restoration,64.0,50.0,0.6,52.976,78.212,1002,resnet18,2,2
+restoration,64.0,50.0,0.7,52.824,78.144,1002,resnet18,2,2
+restoration,64.0,50.0,0.8,52.674,78.0,1002,resnet18,2,2
+restoration,64.0,50.0,0.9,52.546,77.914,1002,resnet18,2,2
+restoration,64.0,50.0,1.0,52.322,77.766,1002,resnet18,2,2

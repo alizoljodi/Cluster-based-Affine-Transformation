@@ -1,0 +1,13 @@
+method,num_clusters,pca_dim,alpha,top1_acc,top5_acc,seed,arch,w_bits,a_bits
+no_restoration,,,,39.045997619628906,,1000,mnasnet,4,2
+restoration,1.0,50.0,0.6,39.658,66.43,1000,mnasnet,4,2
+restoration,8.0,50.0,0.6,39.826,66.466,1000,mnasnet,4,2
+restoration,16.0,50.0,0.6,39.876,66.364,1000,mnasnet,4,2
+restoration,24.0,50.0,0.6,39.78,66.342,1000,mnasnet,4,2
+restoration,32.0,50.0,0.6,39.708,66.364,1000,mnasnet,4,2
+restoration,48.0,50.0,0.6,39.782,66.34,1000,mnasnet,4,2
+restoration,64.0,50.0,0.6,39.744,66.382,1000,mnasnet,4,2
+restoration,96.0,50.0,0.6,39.688,66.366,1000,mnasnet,4,2
+restoration,128.0,50.0,0.6,39.752,66.48,1000,mnasnet,4,2
+restoration,192.0,50.0,0.6,39.696,66.43,1000,mnasnet,4,2
+restoration,256.0,50.0,0.6,39.63,66.37,1000,mnasnet,4,2

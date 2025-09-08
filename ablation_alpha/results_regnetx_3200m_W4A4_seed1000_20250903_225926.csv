@@ -1,0 +1,12 @@
+method,num_clusters,pca_dim,alpha,top1_acc,top5_acc,seed,arch,w_bits,a_bits
+no_restoration,,,,76.51200103759766,,1000,regnetx_3200m,4,4
+restoration,64.0,50.0,0.1,76.548,93.274,1000,regnetx_3200m,4,4
+restoration,64.0,50.0,0.2,76.582,93.272,1000,regnetx_3200m,4,4
+restoration,64.0,50.0,0.3,76.598,93.27,1000,regnetx_3200m,4,4
+restoration,64.0,50.0,0.4,76.588,93.268,1000,regnetx_3200m,4,4
+restoration,64.0,50.0,0.5,76.592,93.274,1000,regnetx_3200m,4,4
+restoration,64.0,50.0,0.6,76.602,93.274,1000,regnetx_3200m,4,4
+restoration,64.0,50.0,0.7,76.624,93.268,1000,regnetx_3200m,4,4
+restoration,64.0,50.0,0.8,76.582,93.274,1000,regnetx_3200m,4,4
+restoration,64.0,50.0,0.9,76.576,93.254,1000,regnetx_3200m,4,4
+restoration,64.0,50.0,1.0,76.568,93.238,1000,regnetx_3200m,4,4

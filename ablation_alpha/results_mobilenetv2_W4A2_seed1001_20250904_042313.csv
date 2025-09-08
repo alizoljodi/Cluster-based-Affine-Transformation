@@ -1,0 +1,12 @@
+method,num_clusters,pca_dim,alpha,top1_acc,top5_acc,seed,arch,w_bits,a_bits
+no_restoration,,,,19.84000015258789,,1001,mobilenetv2,4,2
+restoration,64.0,50.0,0.1,20.0,42.344,1001,mobilenetv2,4,2
+restoration,64.0,50.0,0.2,20.186,42.498,1001,mobilenetv2,4,2
+restoration,64.0,50.0,0.3,20.246,42.554,1001,mobilenetv2,4,2
+restoration,64.0,50.0,0.4,20.238,42.506,1001,mobilenetv2,4,2
+restoration,64.0,50.0,0.5,20.244,42.458,1001,mobilenetv2,4,2
+restoration,64.0,50.0,0.6,20.066,42.32,1001,mobilenetv2,4,2
+restoration,64.0,50.0,0.7,19.88,42.064,1001,mobilenetv2,4,2
+restoration,64.0,50.0,0.8,19.676,41.778,1001,mobilenetv2,4,2
+restoration,64.0,50.0,0.9,19.432,41.44,1001,mobilenetv2,4,2
+restoration,64.0,50.0,1.0,19.12,41.058,1001,mobilenetv2,4,2
