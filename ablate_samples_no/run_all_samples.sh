@@ -27,8 +27,10 @@ for samples in "${sample_counts[@]}"; do
         echo "=========================================="
         
         if [ -f "$script_name" ]; then
+            output_file="${script_name%.sh}.out"
             echo "Submitting job: $script_name"
-            sbatch "$script_name"
+            echo "Output will be saved to: $output_file"
+            sbatch --output="$output_file" "$script_name"
             echo "Job submitted successfully"
         else
             echo "ERROR: Script $script_name not found!"
