@@ -1,0 +1,761 @@
+Starting ResNet18 W4A2 with 10000 samples experiment at Tue Sep  9 02:04:02 AM CEST 2025
+Running experiment with seed=1001
+==> Using Pytorch Dataset
+Setting the first and the last layer to 8-bit
+the quantized model is below!
+QuantModel(
+  (model): ResNet(
+    (conv1): QuantModule(
+      wbit=8, abit=2, disable_act_quant=False
+      (weight_quantizer): UniformAffineQuantizer(bit=8, is_training=False, inited=True)
+      (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+      (norm_function): StraightThrough()
+      (activation_function): ReLU(inplace=True)
+    )
+    (bn1): StraightThrough()
+    (relu): StraightThrough()
+    (maxpool): MaxPool2d(kernel_size=3, stride=2, padding=1, dilation=1, ceil_mode=False)
+    (layer1): Sequential(
+      (0): QuantBasicBlock(
+        (conv1): QuantModule(
+          wbit=4, abit=2, disable_act_quant=False
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): ReLU(inplace=True)
+        )
+        (conv2): QuantModule(
+          wbit=4, abit=2, disable_act_quant=True
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): StraightThrough()
+        )
+        (activation_function): ReLU(inplace=True)
+        (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+      )
+      (1): QuantBasicBlock(
+        (conv1): QuantModule(
+          wbit=4, abit=2, disable_act_quant=False
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): ReLU(inplace=True)
+        )
+        (conv2): QuantModule(
+          wbit=4, abit=2, disable_act_quant=True
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): StraightThrough()
+        )
+        (activation_function): ReLU(inplace=True)
+        (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+      )
+    )
+    (layer2): Sequential(
+      (0): QuantBasicBlock(
+        (conv1): QuantModule(
+          wbit=4, abit=2, disable_act_quant=False
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): ReLU(inplace=True)
+        )
+        (conv2): QuantModule(
+          wbit=4, abit=2, disable_act_quant=True
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): StraightThrough()
+        )
+        (downsample): QuantModule(
+          wbit=4, abit=2, disable_act_quant=True
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): StraightThrough()
+        )
+        (activation_function): ReLU(inplace=True)
+        (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+      )
+      (1): QuantBasicBlock(
+        (conv1): QuantModule(
+          wbit=4, abit=2, disable_act_quant=False
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): ReLU(inplace=True)
+        )
+        (conv2): QuantModule(
+          wbit=4, abit=2, disable_act_quant=True
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): StraightThrough()
+        )
+        (activation_function): ReLU(inplace=True)
+        (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+      )
+    )
+    (layer3): Sequential(
+      (0): QuantBasicBlock(
+        (conv1): QuantModule(
+          wbit=4, abit=2, disable_act_quant=False
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): ReLU(inplace=True)
+        )
+        (conv2): QuantModule(
+          wbit=4, abit=2, disable_act_quant=True
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): StraightThrough()
+        )
+        (downsample): QuantModule(
+          wbit=4, abit=2, disable_act_quant=True
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): StraightThrough()
+        )
+        (activation_function): ReLU(inplace=True)
+        (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+      )
+      (1): QuantBasicBlock(
+        (conv1): QuantModule(
+          wbit=4, abit=2, disable_act_quant=False
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): ReLU(inplace=True)
+        )
+        (conv2): QuantModule(
+          wbit=4, abit=2, disable_act_quant=True
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): StraightThrough()
+        )
+        (activation_function): ReLU(inplace=True)
+        (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+      )
+    )
+    (layer4): Sequential(
+      (0): QuantBasicBlock(
+        (conv1): QuantModule(
+          wbit=4, abit=2, disable_act_quant=False
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): ReLU(inplace=True)
+        )
+        (conv2): QuantModule(
+          wbit=4, abit=2, disable_act_quant=True
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): StraightThrough()
+        )
+        (downsample): QuantModule(
+          wbit=4, abit=2, disable_act_quant=True
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): StraightThrough()
+        )
+        (activation_function): ReLU(inplace=True)
+        (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+      )
+      (1): QuantBasicBlock(
+        (conv1): QuantModule(
+          wbit=4, abit=2, disable_act_quant=False
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): ReLU(inplace=True)
+        )
+        (conv2): QuantModule(
+          wbit=4, abit=2, disable_act_quant=True
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): StraightThrough()
+        )
+        (activation_function): ReLU(inplace=True)
+        (act_quantizer): UniformAffineQuantizer(bit=8, is_training=False, inited=True)
+      )
+    )
+    (avgpool): AdaptiveAvgPool2d(output_size=(1, 1))
+    (fc): QuantModule(
+      wbit=8, abit=2, disable_act_quant=True
+      (weight_quantizer): UniformAffineQuantizer(bit=8, is_training=False, inited=True)
+      (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+      (norm_function): StraightThrough()
+      (activation_function): StraightThrough()
+    )
+  )
+)
+/home/alz07xz/project/Cluster-based-Affine-Transformation/quant/quant_layer.py:141: UserWarning: _aminmax is deprecated as of PyTorch 1.11 and will be removed in a future release. Use aminmax instead. This warning will only appear once per process. (Triggered internally at /pytorch/aten/src/ATen/native/TensorCompare.cpp:814.)
+  x_min, x_max = torch._aminmax(y, 1)
+Reconstruction for layer conv1
+Start correcting 312 batches of data!
+  0%|          | 0/312 [00:00<?, ?it/s]  0%|          | 1/312 [00:02<12:09,  2.35s/it]  1%|          | 2/312 [00:04<11:32,  2.23s/it]  1%|          | 3/312 [00:06<11:16,  2.19s/it]  1%|▏         | 4/312 [00:08<11:10,  2.18s/it]  2%|▏         | 5/312 [00:10<11:03,  2.16s/it]  2%|▏         | 6/312 [00:13<11:01,  2.16s/it]  2%|▏         | 7/312 [00:15<10:56,  2.15s/it]  3%|▎         | 8/312 [00:17<10:55,  2.16s/it]  3%|▎         | 9/312 [00:19<10:51,  2.15s/it]  3%|▎         | 10/312 [00:21<10:50,  2.15s/it]  4%|▎         | 11/312 [00:23<10:47,  2.15s/it]  4%|▍         | 12/312 [00:25<10:46,  2.15s/it]  4%|▍         | 13/312 [00:28<10:42,  2.15s/it]  4%|▍         | 14/312 [00:30<10:41,  2.15s/it]  5%|▍         | 15/312 [00:32<10:38,  2.15s/it]  5%|▌         | 16/312 [00:34<10:37,  2.15s/it]  5%|▌         | 17/312 [00:36<10:33,  2.15s/it]  6%|▌         | 18/312 [00:38<10:33,  2.15s/it]  6%|▌         | 19/312 [00:41<10:29,  2.15s/it]  6%|▋         | 20/312 [00:43<10:28,  2.15s/it]  7%|▋         | 21/312 [00:45<10:25,  2.15s/it]  7%|▋         | 22/312 [00:47<10:24,  2.15s/it]  7%|▋         | 23/312 [00:49<10:20,  2.15s/it]  8%|▊         | 24/312 [00:51<10:19,  2.15s/it]  8%|▊         | 25/312 [00:53<10:16,  2.15s/it]  8%|▊         | 26/312 [00:56<10:15,  2.15s/it]  9%|▊         | 27/312 [00:58<10:12,  2.15s/it]  9%|▉         | 28/312 [01:00<10:11,  2.15s/it]  9%|▉         | 29/312 [01:02<10:07,  2.15s/it] 10%|▉         | 30/312 [01:04<10:06,  2.15s/it] 10%|▉         | 31/312 [01:06<10:03,  2.15s/it] 10%|█         | 32/312 [01:08<10:02,  2.15s/it] 11%|█         | 33/312 [01:11<09:59,  2.15s/it] 11%|█         | 34/312 [01:13<09:58,  2.15s/it] 11%|█         | 35/312 [01:15<09:54,  2.15s/it] 12%|█▏        | 36/312 [01:17<09:54,  2.15s/it] 12%|█▏        | 37/312 [01:19<09:50,  2.15s/it] 12%|█▏        | 38/312 [01:21<09:49,  2.15s/it] 12%|█▎        | 39/312 [01:24<09:46,  2.15s/it] 13%|█▎        | 40/312 [01:26<09:45,  2.15s/it] 13%|█▎        | 41/312 [01:28<09:42,  2.15s/it] 13%|█▎        | 42/312 [01:30<09:41,  2.15s/it] 14%|█▍        | 43/312 [01:32<09:38,  2.15s/it] 14%|█▍        | 44/312 [01:34<09:37,  2.15s/it] 14%|█▍        | 45/312 [01:36<09:33,  2.15s/it] 15%|█▍        | 46/312 [01:39<09:32,  2.15s/it] 15%|█▌        | 47/312 [01:41<09:29,  2.15s/it] 15%|█▌        | 48/312 [01:43<09:28,  2.15s/it] 16%|█▌        | 49/312 [01:45<09:25,  2.15s/it] 16%|█▌        | 50/312 [01:47<09:24,  2.15s/it] 16%|█▋        | 51/312 [01:49<09:20,  2.15s/it] 17%|█▋        | 52/312 [01:52<09:19,  2.15s/it] 17%|█▋        | 53/312 [01:54<09:16,  2.15s/it] 17%|█▋        | 54/312 [01:56<09:15,  2.15s/it] 18%|█▊        | 55/312 [01:58<09:12,  2.15s/it] 18%|█▊        | 56/312 [02:00<09:11,  2.15s/it] 18%|█▊        | 57/312 [02:02<09:08,  2.15s/it] 19%|█▊        | 58/312 [02:04<09:06,  2.15s/it] 19%|█▉        | 59/312 [02:07<09:03,  2.15s/it] 19%|█▉        | 60/312 [02:09<09:02,  2.15s/it] 20%|█▉        | 61/312 [02:11<08:59,  2.15s/it] 20%|█▉        | 62/312 [02:13<08:58,  2.16s/it] 20%|██        | 63/312 [02:15<08:55,  2.15s/it] 21%|██        | 64/312 [02:17<08:55,  2.16s/it] 21%|██        | 65/312 [02:20<08:52,  2.15s/it] 21%|██        | 66/312 [02:22<08:50,  2.16s/it] 21%|██▏       | 67/312 [02:24<08:47,  2.15s/it] 22%|██▏       | 68/312 [02:26<08:46,  2.16s/it] 22%|██▏       | 69/312 [02:28<08:43,  2.15s/it] 22%|██▏       | 70/312 [02:30<08:42,  2.16s/it] 23%|██▎       | 71/312 [02:32<08:38,  2.15s/it] 23%|██▎       | 72/312 [02:35<08:37,  2.16s/it] 23%|██▎       | 73/312 [02:37<08:34,  2.15s/it] 24%|██▎       | 74/312 [02:39<08:33,  2.16s/it] 24%|██▍       | 75/312 [02:41<08:30,  2.15s/it] 24%|██▍       | 76/312 [02:43<08:29,  2.16s/it] 25%|██▍       | 77/312 [02:45<08:26,  2.15s/it] 25%|██▌       | 78/312 [02:48<08:25,  2.16s/it] 25%|██▌       | 79/312 [02:50<08:21,  2.15s/it] 26%|██▌       | 80/312 [02:52<08:20,  2.16s/it] 26%|██▌       | 81/312 [02:54<08:17,  2.15s/it] 26%|██▋       | 82/312 [02:56<08:19,  2.17s/it] 27%|██▋       | 83/312 [02:58<08:17,  2.17s/it] 27%|██▋       | 84/312 [03:01<08:17,  2.18s/it] 27%|██▋       | 85/312 [03:03<08:16,  2.19s/it] 28%|██▊       | 86/312 [03:06<09:11,  2.44s/it] 28%|██▊       | 87/312 [03:11<12:03,  3.21s/it] 28%|██▊       | 88/312 [03:13<11:20,  3.04s/it] 29%|██▊       | 89/312 [03:16<10:36,  2.85s/it] 29%|██▉       | 90/312 [03:18<09:51,  2.66s/it] 29%|██▉       | 91/312 [03:20<09:17,  2.52s/it] 29%|██▉       | 92/312 [03:22<08:53,  2.43s/it] 30%|██▉       | 93/312 [03:25<08:34,  2.35s/it] 30%|███       | 94/312 [03:27<08:22,  2.30s/it] 30%|███       | 95/312 [03:29<08:12,  2.27s/it] 31%|███       | 96/312 [03:31<08:05,  2.25s/it] 31%|███       | 97/312 [03:33<07:59,  2.23s/it] 31%|███▏      | 98/312 [03:36<07:55,  2.22s/it] 32%|███▏      | 99/312 [03:38<07:50,  2.21s/it] 32%|███▏      | 100/312 [03:40<07:48,  2.21s/it] 32%|███▏      | 101/312 [03:42<07:44,  2.20s/it] 33%|███▎      | 102/312 [03:44<07:42,  2.20s/it] 33%|███▎      | 103/312 [03:47<07:39,  2.20s/it] 33%|███▎      | 104/312 [03:49<07:38,  2.20s/it] 34%|███▎      | 105/312 [03:51<07:35,  2.20s/it] 34%|███▍      | 106/312 [03:53<07:33,  2.20s/it] 34%|███▍      | 107/312 [03:55<07:29,  2.19s/it] 35%|███▍      | 108/312 [03:58<07:28,  2.20s/it] 35%|███▍      | 109/312 [04:00<07:25,  2.19s/it] 35%|███▌      | 110/312 [04:02<07:23,  2.20s/it] 36%|███▌      | 111/312 [04:04<07:20,  2.19s/it] 36%|███▌      | 112/312 [04:06<07:19,  2.20s/it] 36%|███▌      | 113/312 [04:09<07:16,  2.20s/it] 37%|███▋      | 114/312 [04:11<07:15,  2.20s/it] 37%|███▋      | 115/312 [04:13<07:11,  2.19s/it] 37%|███▋      | 116/312 [04:15<07:10,  2.20s/it] 38%|███▊      | 117/312 [04:17<07:07,  2.19s/it] 38%|███▊      | 118/312 [04:20<07:05,  2.19s/it] 38%|███▊      | 119/312 [04:22<07:02,  2.19s/it] 38%|███▊      | 120/312 [04:24<07:01,  2.20s/it] 39%|███▉      | 121/312 [04:26<06:58,  2.19s/it] 39%|███▉      | 122/312 [04:28<06:57,  2.20s/it] 39%|███▉      | 123/312 [04:31<06:54,  2.19s/it] 40%|███▉      | 124/312 [04:33<06:53,  2.20s/it] 40%|████      | 125/312 [04:35<06:50,  2.20s/it] 40%|████      | 126/312 [04:37<06:48,  2.20s/it] 41%|████      | 127/312 [04:39<06:45,  2.19s/it] 41%|████      | 128/312 [04:41<06:44,  2.20s/it] 41%|████▏     | 129/312 [04:44<06:41,  2.19s/it] 42%|████▏     | 130/312 [04:46<06:39,  2.20s/it] 42%|████▏     | 131/312 [04:48<06:36,  2.19s/it] 42%|████▏     | 132/312 [04:50<06:35,  2.20s/it] 43%|████▎     | 133/312 [04:52<06:32,  2.19s/it] 43%|████▎     | 134/312 [04:55<06:31,  2.20s/it] 43%|████▎     | 135/312 [04:57<06:27,  2.19s/it] 44%|████▎     | 136/312 [04:59<06:26,  2.20s/it] 44%|████▍     | 137/312 [05:01<06:23,  2.19s/it] 44%|████▍     | 138/312 [05:03<06:21,  2.19s/it] 45%|████▍     | 139/312 [05:06<06:19,  2.19s/it] 45%|████▍     | 140/312 [05:08<06:17,  2.20s/it] 45%|████▌     | 141/312 [05:10<06:14,  2.19s/it] 46%|████▌     | 142/312 [05:12<06:13,  2.20s/it] 46%|████▌     | 143/312 [05:14<06:10,  2.20s/it] 46%|████▌     | 144/312 [05:17<06:09,  2.20s/it] 46%|████▋     | 145/312 [05:19<06:06,  2.20s/it] 47%|████▋     | 146/312 [05:21<06:05,  2.20s/it] 47%|████▋     | 147/312 [05:23<06:02,  2.19s/it] 47%|████▋     | 148/312 [05:25<06:00,  2.20s/it] 48%|████▊     | 149/312 [05:28<05:57,  2.19s/it] 48%|████▊     | 150/312 [05:30<05:56,  2.20s/it] 48%|████▊     | 151/312 [05:32<05:54,  2.20s/it] 49%|████▊     | 152/312 [05:34<05:53,  2.21s/it] 49%|████▉     | 153/312 [05:36<05:50,  2.21s/it] 49%|████▉     | 154/312 [05:39<05:50,  2.22s/it] 50%|████▉     | 155/312 [05:41<05:47,  2.21s/it] 50%|█████     | 156/312 [05:43<05:45,  2.21s/it] 50%|█████     | 157/312 [05:45<05:42,  2.21s/it] 51%|█████     | 158/312 [05:48<05:42,  2.23s/it] 51%|█████     | 159/312 [05:50<05:37,  2.20s/it] 51%|█████▏    | 160/312 [05:52<05:38,  2.23s/it] 52%|█████▏    | 161/312 [05:54<05:47,  2.30s/it] 52%|█████▏    | 162/312 [05:58<06:22,  2.55s/it] 52%|█████▏    | 163/312 [06:00<06:08,  2.47s/it] 53%|█████▎    | 164/312 [06:02<05:58,  2.42s/it] 53%|█████▎    | 165/312 [06:04<05:45,  2.35s/it] 53%|█████▎    | 166/312 [06:07<05:37,  2.31s/it] 54%|█████▎    | 167/312 [06:09<05:29,  2.27s/it] 54%|█████▍    | 168/312 [06:11<05:24,  2.25s/it] 54%|█████▍    | 169/312 [06:13<05:19,  2.23s/it] 54%|█████▍    | 170/312 [06:15<05:16,  2.23s/it] 55%|█████▍    | 171/312 [06:18<05:12,  2.21s/it] 55%|█████▌    | 172/312 [06:20<05:10,  2.22s/it] 55%|█████▌    | 173/312 [06:22<05:05,  2.20s/it] 56%|█████▌    | 174/312 [06:24<05:03,  2.20s/it] 56%|█████▌    | 175/312 [06:26<05:01,  2.20s/it] 56%|█████▋    | 176/312 [06:29<04:59,  2.20s/it] 57%|█████▋    | 177/312 [06:31<04:56,  2.20s/it] 57%|█████▋    | 178/312 [06:33<04:54,  2.20s/it] 57%|█████▋    | 179/312 [06:35<04:52,  2.20s/it] 58%|█████▊    | 180/312 [06:37<04:49,  2.19s/it] 58%|█████▊    | 181/312 [06:40<04:46,  2.19s/it] 58%|█████▊    | 182/312 [06:42<04:45,  2.19s/it] 59%|█████▊    | 183/312 [06:44<04:50,  2.26s/it] 59%|█████▉    | 184/312 [06:46<04:51,  2.28s/it] 59%|█████▉    | 185/312 [06:49<04:45,  2.25s/it] 60%|█████▉    | 186/312 [06:51<04:41,  2.24s/it] 60%|█████▉    | 187/312 [06:53<04:37,  2.22s/it] 60%|██████    | 188/312 [06:55<04:34,  2.22s/it] 61%|██████    | 189/312 [06:57<04:31,  2.21s/it] 61%|██████    | 190/312 [07:00<04:29,  2.21s/it] 61%|██████    | 191/312 [07:02<04:26,  2.20s/it] 62%|██████▏   | 192/312 [07:04<04:22,  2.19s/it] 62%|██████▏   | 193/312 [07:06<04:18,  2.18s/it] 62%|██████▏   | 194/312 [07:08<04:16,  2.17s/it] 62%|██████▎   | 195/312 [07:10<04:13,  2.16s/it] 63%|██████▎   | 196/312 [07:13<04:11,  2.16s/it] 63%|██████▎   | 197/312 [07:15<04:08,  2.16s/it] 63%|██████▎   | 198/312 [07:17<04:06,  2.16s/it] 64%|██████▍   | 199/312 [07:19<04:03,  2.16s/it] 64%|██████▍   | 200/312 [07:21<04:03,  2.17s/it] 64%|██████▍   | 201/312 [07:23<04:01,  2.17s/it] 65%|██████▍   | 202/312 [07:26<03:59,  2.18s/it] 65%|██████▌   | 203/312 [07:28<03:57,  2.18s/it] 65%|██████▌   | 204/312 [07:30<03:56,  2.19s/it] 66%|██████▌   | 205/312 [07:32<03:53,  2.19s/it] 66%|██████▌   | 206/312 [07:34<03:52,  2.19s/it] 66%|██████▋   | 207/312 [07:37<03:49,  2.19s/it] 67%|██████▋   | 208/312 [07:39<03:48,  2.19s/it] 67%|██████▋   | 209/312 [07:41<03:45,  2.19s/it] 67%|██████▋   | 210/312 [07:43<03:44,  2.20s/it] 68%|██████▊   | 211/312 [07:45<03:41,  2.20s/it] 68%|██████▊   | 212/312 [07:48<03:39,  2.19s/it] 68%|██████▊   | 213/312 [07:50<03:35,  2.18s/it] 69%|██████▊   | 214/312 [07:52<03:33,  2.18s/it] 69%|██████▉   | 215/312 [07:54<03:30,  2.17s/it] 69%|██████▉   | 216/312 [07:56<03:27,  2.17s/it] 70%|██████▉   | 217/312 [07:58<03:25,  2.16s/it] 70%|██████▉   | 218/312 [08:00<03:23,  2.16s/it] 70%|███████   | 219/312 [08:03<03:20,  2.16s/it] 71%|███████   | 220/312 [08:05<03:18,  2.16s/it] 71%|███████   | 221/312 [08:07<03:15,  2.15s/it] 71%|███████   | 222/312 [08:09<03:14,  2.16s/it] 71%|███████▏  | 223/312 [08:11<03:12,  2.16s/it] 72%|███████▏  | 224/312 [08:13<03:11,  2.18s/it] 72%|███████▏  | 225/312 [08:16<03:09,  2.18s/it] 72%|███████▏  | 226/312 [08:18<03:07,  2.19s/it] 73%|███████▎  | 227/312 [08:20<03:05,  2.19s/it] 73%|███████▎  | 228/312 [08:22<03:04,  2.19s/it] 73%|███████▎  | 229/312 [08:24<03:01,  2.19s/it] 74%|███████▎  | 230/312 [08:27<02:59,  2.19s/it] 74%|███████▍  | 231/312 [08:29<02:57,  2.19s/it] 74%|███████▍  | 232/312 [08:31<02:55,  2.19s/it] 75%|███████▍  | 233/312 [08:33<02:53,  2.19s/it] 75%|███████▌  | 234/312 [08:35<02:51,  2.20s/it] 75%|███████▌  | 235/312 [08:38<02:48,  2.19s/it] 76%|███████▌  | 236/312 [08:40<02:46,  2.20s/it] 76%|███████▌  | 237/312 [08:42<02:44,  2.19s/it] 76%|███████▋  | 238/312 [08:44<02:42,  2.20s/it] 77%|███████▋  | 239/312 [08:46<02:40,  2.19s/it] 77%|███████▋  | 240/312 [08:49<02:38,  2.20s/it] 77%|███████▋  | 241/312 [08:51<02:35,  2.20s/it] 78%|███████▊  | 242/312 [08:53<02:33,  2.20s/it] 78%|███████▊  | 243/312 [08:55<02:31,  2.19s/it] 78%|███████▊  | 244/312 [08:57<02:29,  2.19s/it] 79%|███████▊  | 245/312 [09:00<02:26,  2.19s/it] 79%|███████▉  | 246/312 [09:02<02:24,  2.19s/it] 79%|███████▉  | 247/312 [09:04<02:22,  2.19s/it] 79%|███████▉  | 248/312 [09:06<02:20,  2.19s/it] 80%|███████▉  | 249/312 [09:08<02:18,  2.19s/it] 80%|████████  | 250/312 [09:11<02:16,  2.20s/it] 80%|████████  | 251/312 [09:13<02:13,  2.19s/it] 81%|████████  | 252/312 [09:15<02:11,  2.20s/it] 81%|████████  | 253/312 [09:17<02:09,  2.19s/it] 81%|████████▏ | 254/312 [09:19<02:07,  2.20s/it] 82%|████████▏ | 255/312 [09:22<02:05,  2.20s/it] 82%|████████▏ | 256/312 [09:24<02:03,  2.21s/it] 82%|████████▏ | 257/312 [09:26<02:01,  2.20s/it] 83%|████████▎ | 258/312 [09:28<01:59,  2.21s/it] 83%|████████▎ | 259/312 [09:30<01:56,  2.20s/it] 83%|████████▎ | 260/312 [09:33<01:54,  2.20s/it] 84%|████████▎ | 261/312 [09:35<01:52,  2.20s/it] 84%|████████▍ | 262/312 [09:37<01:50,  2.20s/it] 84%|████████▍ | 263/312 [09:39<01:47,  2.20s/it] 85%|████████▍ | 264/312 [09:41<01:45,  2.20s/it] 85%|████████▍ | 265/312 [09:44<01:43,  2.20s/it] 85%|████████▌ | 266/312 [09:46<01:41,  2.21s/it] 86%|████████▌ | 267/312 [09:48<01:39,  2.20s/it] 86%|████████▌ | 268/312 [09:50<01:37,  2.20s/it] 86%|████████▌ | 269/312 [09:52<01:34,  2.20s/it] 87%|████████▋ | 270/312 [09:55<01:32,  2.20s/it] 87%|████████▋ | 271/312 [09:57<01:29,  2.19s/it] 87%|████████▋ | 272/312 [09:59<01:27,  2.20s/it] 88%|████████▊ | 273/312 [10:01<01:25,  2.19s/it] 88%|████████▊ | 274/312 [10:03<01:23,  2.19s/it] 88%|████████▊ | 275/312 [10:05<01:21,  2.19s/it] 88%|████████▊ | 276/312 [10:08<01:19,  2.20s/it] 89%|████████▉ | 277/312 [10:10<01:16,  2.19s/it] 89%|████████▉ | 278/312 [10:12<01:14,  2.19s/it] 89%|████████▉ | 279/312 [10:14<01:12,  2.19s/it] 90%|████████▉ | 280/312 [10:16<01:10,  2.20s/it] 90%|█████████ | 281/312 [10:19<01:07,  2.19s/it] 90%|█████████ | 282/312 [10:21<01:05,  2.20s/it] 91%|█████████ | 283/312 [10:23<01:03,  2.19s/it] 91%|█████████ | 284/312 [10:25<01:01,  2.20s/it] 91%|█████████▏| 285/312 [10:27<00:59,  2.19s/it] 92%|█████████▏| 286/312 [10:30<00:57,  2.19s/it] 92%|█████████▏| 287/312 [10:32<00:54,  2.19s/it] 92%|█████████▏| 288/312 [10:34<00:52,  2.20s/it] 93%|█████████▎| 289/312 [10:36<00:50,  2.19s/it] 93%|█████████▎| 290/312 [10:38<00:48,  2.20s/it] 93%|█████████▎| 291/312 [10:41<00:45,  2.19s/it] 94%|█████████▎| 292/312 [10:43<00:43,  2.19s/it] 94%|█████████▍| 293/312 [10:45<00:41,  2.19s/it] 94%|█████████▍| 294/312 [10:47<00:39,  2.20s/it] 95%|█████████▍| 295/312 [10:49<00:37,  2.19s/it] 95%|█████████▍| 296/312 [10:52<00:35,  2.19s/it] 95%|█████████▌| 297/312 [10:54<00:32,  2.19s/it] 96%|█████████▌| 298/312 [10:56<00:30,  2.20s/it] 96%|█████████▌| 299/312 [10:58<00:28,  2.19s/it] 96%|█████████▌| 300/312 [11:00<00:26,  2.20s/it] 96%|█████████▋| 301/312 [11:03<00:24,  2.19s/it] 97%|█████████▋| 302/312 [11:05<00:21,  2.20s/it] 97%|█████████▋| 303/312 [11:07<00:19,  2.19s/it] 97%|█████████▋| 304/312 [11:09<00:17,  2.19s/it] 98%|█████████▊| 305/312 [11:11<00:15,  2.19s/it] 98%|█████████▊| 306/312 [11:14<00:13,  2.20s/it] 98%|█████████▊| 307/312 [11:16<00:10,  2.20s/it] 99%|█████████▊| 308/312 [11:18<00:08,  2.20s/it] 99%|█████████▉| 309/312 [11:20<00:06,  2.19s/it] 99%|█████████▉| 310/312 [11:22<00:04,  2.20s/it]100%|█████████▉| 311/312 [11:24<00:02,  2.19s/it]100%|██████████| 312/312 [11:27<00:00,  2.20s/it]100%|██████████| 312/312 [11:27<00:00,  2.20s/it]
+/home/alz07xz/project/Cluster-based-Affine-Transformation/quant/quant_layer.py:172: UserWarning: _aminmax is deprecated as of PyTorch 1.11 and will be removed in a future release. Use aminmax instead. This warning will only appear once per process. (Triggered internally at /pytorch/aten/src/ATen/native/ReduceAllOps.cpp:71.)
+  x_min, x_max = torch._aminmax(x)
+Traceback (most recent call last):
+  File "/home/alz07xz/project/Cluster-based-Affine-Transformation/ablate_samples_no/../main_imagenet.py", line 260, in <module>
+    recon_model(qnn, fp_model)
+  File "/home/alz07xz/project/Cluster-based-Affine-Transformation/ablate_samples_no/../main_imagenet.py", line 258, in recon_model
+    recon_model(module, fp_module)
+  File "/home/alz07xz/project/Cluster-based-Affine-Transformation/ablate_samples_no/../main_imagenet.py", line 253, in recon_model
+    set_weight_act_quantize_params(module, fp_module)
+  File "/home/alz07xz/project/Cluster-based-Affine-Transformation/ablate_samples_no/../main_imagenet.py", line 241, in set_weight_act_quantize_params
+    layer_reconstruction(qnn, fp_model, module, fp_module, **kwargs)
+  File "/home/alz07xz/project/Cluster-based-Affine-Transformation/quant/layer_recon.py", line 61, in layer_reconstruction
+    set_act_quantize_params(layer, cali_data=cached_inps[:min(256, cached_inps.size(0))])
+  File "/home/alz07xz/project/Cluster-based-Affine-Transformation/quant/set_act_quantize_params.py", line 19, in set_act_quantize_params
+    module(cali_data[i * batch_size:(i + 1) * batch_size].cuda())
+  File "/home/alz07xz/project/PD-Quant/pd_quant/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1751, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/alz07xz/project/PD-Quant/pd_quant/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1762, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/alz07xz/project/Cluster-based-Affine-Transformation/quant/quant_layer.py", line 282, in forward
+    out = self.act_quantizer(out)
+          ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/alz07xz/project/PD-Quant/pd_quant/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1751, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/alz07xz/project/PD-Quant/pd_quant/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1762, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/alz07xz/project/Cluster-based-Affine-Transformation/quant/quant_layer.py", line 92, in forward
+    self.delta, self.zero_point = self.init_quantization_scale(x.clone().detach(), self.channel_wise)
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/alz07xz/project/Cluster-based-Affine-Transformation/quant/quant_layer.py", line 215, in init_quantization_scale
+    delta, zero_point = self.init_quantization_scale_channel(x_clone)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/alz07xz/project/Cluster-based-Affine-Transformation/quant/quant_layer.py", line 203, in init_quantization_scale_channel
+    x_min, x_max = self.get_x_min_x_max(x)
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/alz07xz/project/Cluster-based-Affine-Transformation/quant/quant_layer.py", line 195, in get_x_min_x_max
+    best_min, best_max = self.perform_1D_search(x)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/alz07xz/project/Cluster-based-Affine-Transformation/quant/quant_layer.py", line 182, in perform_1D_search
+    x_q = self.quantize(x, new_max, new_min)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/alz07xz/project/Cluster-based-Affine-Transformation/quant/quant_layer.py", line 133, in quantize
+    x_int = torch.round(x / delta)
+            ^^^^^^^^^^^^^^^^^^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 784.00 MiB. GPU 0 has a total capacity of 44.42 GiB of which 197.38 MiB is free. Including non-PyTorch memory, this process has 44.20 GiB memory in use. Of the allocated memory 43.67 GiB is allocated by PyTorch, and 32.54 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+Running experiment with seed=1002
+==> Using Pytorch Dataset
+Setting the first and the last layer to 8-bit
+the quantized model is below!
+QuantModel(
+  (model): ResNet(
+    (conv1): QuantModule(
+      wbit=8, abit=2, disable_act_quant=False
+      (weight_quantizer): UniformAffineQuantizer(bit=8, is_training=False, inited=True)
+      (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+      (norm_function): StraightThrough()
+      (activation_function): ReLU(inplace=True)
+    )
+    (bn1): StraightThrough()
+    (relu): StraightThrough()
+    (maxpool): MaxPool2d(kernel_size=3, stride=2, padding=1, dilation=1, ceil_mode=False)
+    (layer1): Sequential(
+      (0): QuantBasicBlock(
+        (conv1): QuantModule(
+          wbit=4, abit=2, disable_act_quant=False
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): ReLU(inplace=True)
+        )
+        (conv2): QuantModule(
+          wbit=4, abit=2, disable_act_quant=True
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): StraightThrough()
+        )
+        (activation_function): ReLU(inplace=True)
+        (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+      )
+      (1): QuantBasicBlock(
+        (conv1): QuantModule(
+          wbit=4, abit=2, disable_act_quant=False
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): ReLU(inplace=True)
+        )
+        (conv2): QuantModule(
+          wbit=4, abit=2, disable_act_quant=True
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): StraightThrough()
+        )
+        (activation_function): ReLU(inplace=True)
+        (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+      )
+    )
+    (layer2): Sequential(
+      (0): QuantBasicBlock(
+        (conv1): QuantModule(
+          wbit=4, abit=2, disable_act_quant=False
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): ReLU(inplace=True)
+        )
+        (conv2): QuantModule(
+          wbit=4, abit=2, disable_act_quant=True
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): StraightThrough()
+        )
+        (downsample): QuantModule(
+          wbit=4, abit=2, disable_act_quant=True
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): StraightThrough()
+        )
+        (activation_function): ReLU(inplace=True)
+        (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+      )
+      (1): QuantBasicBlock(
+        (conv1): QuantModule(
+          wbit=4, abit=2, disable_act_quant=False
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): ReLU(inplace=True)
+        )
+        (conv2): QuantModule(
+          wbit=4, abit=2, disable_act_quant=True
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): StraightThrough()
+        )
+        (activation_function): ReLU(inplace=True)
+        (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+      )
+    )
+    (layer3): Sequential(
+      (0): QuantBasicBlock(
+        (conv1): QuantModule(
+          wbit=4, abit=2, disable_act_quant=False
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): ReLU(inplace=True)
+        )
+        (conv2): QuantModule(
+          wbit=4, abit=2, disable_act_quant=True
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): StraightThrough()
+        )
+        (downsample): QuantModule(
+          wbit=4, abit=2, disable_act_quant=True
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): StraightThrough()
+        )
+        (activation_function): ReLU(inplace=True)
+        (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+      )
+      (1): QuantBasicBlock(
+        (conv1): QuantModule(
+          wbit=4, abit=2, disable_act_quant=False
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): ReLU(inplace=True)
+        )
+        (conv2): QuantModule(
+          wbit=4, abit=2, disable_act_quant=True
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): StraightThrough()
+        )
+        (activation_function): ReLU(inplace=True)
+        (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+      )
+    )
+    (layer4): Sequential(
+      (0): QuantBasicBlock(
+        (conv1): QuantModule(
+          wbit=4, abit=2, disable_act_quant=False
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): ReLU(inplace=True)
+        )
+        (conv2): QuantModule(
+          wbit=4, abit=2, disable_act_quant=True
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): StraightThrough()
+        )
+        (downsample): QuantModule(
+          wbit=4, abit=2, disable_act_quant=True
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): StraightThrough()
+        )
+        (activation_function): ReLU(inplace=True)
+        (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+      )
+      (1): QuantBasicBlock(
+        (conv1): QuantModule(
+          wbit=4, abit=2, disable_act_quant=False
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): ReLU(inplace=True)
+        )
+        (conv2): QuantModule(
+          wbit=4, abit=2, disable_act_quant=True
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): StraightThrough()
+        )
+        (activation_function): ReLU(inplace=True)
+        (act_quantizer): UniformAffineQuantizer(bit=8, is_training=False, inited=True)
+      )
+    )
+    (avgpool): AdaptiveAvgPool2d(output_size=(1, 1))
+    (fc): QuantModule(
+      wbit=8, abit=2, disable_act_quant=True
+      (weight_quantizer): UniformAffineQuantizer(bit=8, is_training=False, inited=True)
+      (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+      (norm_function): StraightThrough()
+      (activation_function): StraightThrough()
+    )
+  )
+)
+/home/alz07xz/project/Cluster-based-Affine-Transformation/quant/quant_layer.py:141: UserWarning: _aminmax is deprecated as of PyTorch 1.11 and will be removed in a future release. Use aminmax instead. This warning will only appear once per process. (Triggered internally at /pytorch/aten/src/ATen/native/TensorCompare.cpp:814.)
+  x_min, x_max = torch._aminmax(y, 1)
+Reconstruction for layer conv1
+Start correcting 312 batches of data!
+  0%|          | 0/312 [00:00<?, ?it/s]  0%|          | 1/312 [00:04<21:53,  4.22s/it]  1%|          | 2/312 [00:06<15:53,  3.08s/it]  1%|          | 3/312 [00:08<13:56,  2.71s/it]  1%|▏         | 4/312 [00:11<13:00,  2.54s/it]  2%|▏         | 5/312 [00:13<12:28,  2.44s/it]  2%|▏         | 6/312 [00:15<12:08,  2.38s/it]  2%|▏         | 7/312 [00:17<11:56,  2.35s/it]  3%|▎         | 8/312 [00:20<11:46,  2.33s/it]  3%|▎         | 9/312 [00:22<11:39,  2.31s/it]  3%|▎         | 10/312 [00:24<11:34,  2.30s/it]  4%|▎         | 11/312 [00:26<11:29,  2.29s/it]  4%|▍         | 12/312 [00:29<11:26,  2.29s/it]  4%|▍         | 13/312 [00:31<11:21,  2.28s/it]  4%|▍         | 14/312 [00:33<11:19,  2.28s/it]  5%|▍         | 15/312 [00:36<11:16,  2.28s/it]  5%|▌         | 16/312 [00:38<11:14,  2.28s/it]  5%|▌         | 17/312 [00:40<11:11,  2.28s/it]  6%|▌         | 18/312 [00:42<11:10,  2.28s/it]  6%|▌         | 19/312 [00:45<11:11,  2.29s/it]  6%|▋         | 20/312 [00:47<11:01,  2.27s/it]  7%|▋         | 21/312 [00:49<10:52,  2.24s/it]  7%|▋         | 22/312 [00:51<10:47,  2.23s/it]  7%|▋         | 23/312 [00:53<10:41,  2.22s/it]  8%|▊         | 24/312 [00:56<10:38,  2.22s/it]  8%|▊         | 25/312 [00:58<10:33,  2.21s/it]  8%|▊         | 26/312 [01:00<10:31,  2.21s/it]  9%|▊         | 27/312 [01:02<10:26,  2.20s/it]  9%|▉         | 28/312 [01:04<10:24,  2.20s/it]  9%|▉         | 29/312 [01:07<10:21,  2.19s/it] 10%|▉         | 30/312 [01:09<10:19,  2.20s/it] 10%|▉         | 31/312 [01:11<10:16,  2.19s/it] 10%|█         | 32/312 [01:13<10:15,  2.20s/it] 11%|█         | 33/312 [01:15<10:11,  2.19s/it] 11%|█         | 34/312 [01:18<10:10,  2.20s/it] 11%|█         | 35/312 [01:20<10:08,  2.20s/it] 12%|█▏        | 36/312 [01:22<10:06,  2.20s/it] 12%|█▏        | 37/312 [01:24<10:02,  2.19s/it] 12%|█▏        | 38/312 [01:26<10:02,  2.20s/it] 12%|█▎        | 39/312 [01:29<09:59,  2.19s/it] 13%|█▎        | 40/312 [01:31<09:57,  2.20s/it] 13%|█▎        | 41/312 [01:33<09:54,  2.19s/it] 13%|█▎        | 42/312 [01:35<09:53,  2.20s/it] 14%|█▍        | 43/312 [01:37<09:49,  2.19s/it] 14%|█▍        | 44/312 [01:40<09:48,  2.20s/it] 14%|█▍        | 45/312 [01:42<09:45,  2.19s/it] 15%|█▍        | 46/312 [01:44<09:44,  2.20s/it] 15%|█▌        | 47/312 [01:46<09:41,  2.19s/it] 15%|█▌        | 48/312 [01:48<09:39,  2.20s/it] 16%|█▌        | 49/312 [01:51<09:36,  2.19s/it] 16%|█▌        | 50/312 [01:53<09:34,  2.19s/it] 16%|█▋        | 51/312 [01:55<09:31,  2.19s/it] 17%|█▋        | 52/312 [01:57<09:29,  2.19s/it] 17%|█▋        | 53/312 [01:59<09:26,  2.19s/it] 17%|█▋        | 54/312 [02:02<09:25,  2.19s/it] 18%|█▊        | 55/312 [02:04<09:22,  2.19s/it] 18%|█▊        | 56/312 [02:06<09:21,  2.19s/it] 18%|█▊        | 57/312 [02:08<09:17,  2.19s/it] 19%|█▊        | 58/312 [02:10<09:16,  2.19s/it] 19%|█▉        | 59/312 [02:12<09:13,  2.19s/it] 19%|█▉        | 60/312 [02:15<09:13,  2.20s/it] 20%|█▉        | 61/312 [02:17<09:08,  2.19s/it] 20%|█▉        | 62/312 [02:19<09:13,  2.21s/it] 20%|██        | 63/312 [02:21<09:13,  2.22s/it] 21%|██        | 64/312 [02:24<09:10,  2.22s/it] 21%|██        | 65/312 [02:26<09:05,  2.21s/it] 21%|██        | 66/312 [02:28<09:03,  2.21s/it] 21%|██▏       | 67/312 [02:30<09:00,  2.21s/it] 22%|██▏       | 68/312 [02:32<08:58,  2.21s/it] 22%|██▏       | 69/312 [02:35<08:54,  2.20s/it] 22%|██▏       | 70/312 [02:37<08:53,  2.20s/it] 23%|██▎       | 71/312 [02:39<08:50,  2.20s/it] 23%|██▎       | 72/312 [02:41<08:49,  2.20s/it] 23%|██▎       | 73/312 [02:43<08:44,  2.19s/it] 24%|██▎       | 74/312 [02:46<08:43,  2.20s/it] 24%|██▍       | 75/312 [02:48<08:40,  2.19s/it] 24%|██▍       | 76/312 [02:50<08:38,  2.20s/it] 25%|██▍       | 77/312 [02:52<08:35,  2.19s/it] 25%|██▌       | 78/312 [02:54<08:34,  2.20s/it] 25%|██▌       | 79/312 [02:57<08:31,  2.19s/it] 26%|██▌       | 80/312 [02:59<08:28,  2.19s/it] 26%|██▌       | 81/312 [03:01<08:23,  2.18s/it] 26%|██▋       | 82/312 [03:03<08:20,  2.18s/it] 27%|██▋       | 83/312 [03:05<08:16,  2.17s/it] 27%|██▋       | 84/312 [03:07<08:14,  2.17s/it] 27%|██▋       | 85/312 [03:09<08:10,  2.16s/it] 28%|██▊       | 86/312 [03:12<08:08,  2.16s/it] 28%|██▊       | 87/312 [03:14<08:05,  2.16s/it] 28%|██▊       | 88/312 [03:16<08:04,  2.16s/it] 29%|██▊       | 89/312 [03:18<08:01,  2.16s/it] 29%|██▉       | 90/312 [03:20<07:59,  2.16s/it] 29%|██▉       | 91/312 [03:22<07:56,  2.16s/it] 29%|██▉       | 92/312 [03:25<07:55,  2.16s/it] 30%|██▉       | 93/312 [03:27<07:51,  2.15s/it] 30%|███       | 94/312 [03:29<07:50,  2.16s/it] 30%|███       | 95/312 [03:31<07:47,  2.15s/it] 31%|███       | 96/312 [03:33<07:46,  2.16s/it] 31%|███       | 97/312 [03:35<07:43,  2.15s/it] 31%|███▏      | 98/312 [03:38<07:41,  2.16s/it] 32%|███▏      | 99/312 [03:40<07:39,  2.16s/it] 32%|███▏      | 100/312 [03:42<07:38,  2.16s/it] 32%|███▏      | 101/312 [03:44<07:35,  2.16s/it] 33%|███▎      | 102/312 [03:46<07:33,  2.16s/it] 33%|███▎      | 103/312 [03:48<07:31,  2.16s/it] 33%|███▎      | 104/312 [03:51<07:30,  2.16s/it] 34%|███▎      | 105/312 [03:53<07:27,  2.16s/it] 34%|███▍      | 106/312 [03:55<07:25,  2.16s/it] 34%|███▍      | 107/312 [03:57<07:23,  2.16s/it] 35%|███▍      | 108/312 [03:59<07:21,  2.17s/it] 35%|███▍      | 109/312 [04:01<07:18,  2.16s/it] 35%|███▌      | 110/312 [04:03<07:17,  2.16s/it] 36%|███▌      | 111/312 [04:06<07:13,  2.16s/it] 36%|███▌      | 112/312 [04:08<07:11,  2.16s/it] 36%|███▌      | 113/312 [04:10<07:08,  2.15s/it] 37%|███▋      | 114/312 [04:12<07:07,  2.16s/it] 37%|███▋      | 115/312 [04:14<07:06,  2.17s/it] 37%|███▋      | 116/312 [04:16<07:07,  2.18s/it] 38%|███▊      | 117/312 [04:19<07:05,  2.18s/it] 38%|███▊      | 118/312 [04:21<07:04,  2.19s/it] 38%|███▊      | 119/312 [04:23<07:02,  2.19s/it] 38%|███▊      | 120/312 [04:25<07:01,  2.20s/it] 39%|███▉      | 121/312 [04:27<06:59,  2.19s/it] 39%|███▉      | 122/312 [04:30<06:57,  2.20s/it] 39%|███▉      | 123/312 [04:32<06:55,  2.20s/it] 40%|███▉      | 124/312 [04:34<06:54,  2.21s/it] 40%|████      | 125/312 [04:36<06:52,  2.21s/it] 40%|████      | 126/312 [04:39<06:49,  2.20s/it] 41%|████      | 127/312 [04:41<06:47,  2.20s/it] 41%|████      | 128/312 [04:43<06:46,  2.21s/it] 41%|████▏     | 129/312 [04:45<06:43,  2.21s/it] 42%|████▏     | 130/312 [04:47<06:39,  2.20s/it] 42%|████▏     | 131/312 [04:50<06:37,  2.20s/it] 42%|████▏     | 132/312 [04:52<06:33,  2.19s/it] 43%|████▎     | 133/312 [04:54<06:30,  2.18s/it] 43%|████▎     | 134/312 [04:56<06:29,  2.19s/it] 43%|████▎     | 135/312 [04:58<06:25,  2.18s/it] 44%|████▎     | 136/312 [05:00<06:22,  2.18s/it] 44%|████▍     | 137/312 [05:03<06:19,  2.17s/it] 44%|████▍     | 138/312 [05:05<06:17,  2.17s/it] 45%|████▍     | 139/312 [05:07<06:14,  2.16s/it] 45%|████▍     | 140/312 [05:09<06:12,  2.16s/it] 45%|████▌     | 141/312 [05:11<06:09,  2.16s/it] 46%|████▌     | 142/312 [05:13<06:07,  2.16s/it] 46%|████▌     | 143/312 [05:15<06:04,  2.16s/it] 46%|████▌     | 144/312 [05:18<06:04,  2.17s/it] 46%|████▋     | 145/312 [05:20<06:02,  2.17s/it] 47%|████▋     | 146/312 [05:22<06:02,  2.18s/it] 47%|████▋     | 147/312 [05:24<05:58,  2.17s/it] 47%|████▋     | 148/312 [05:26<05:58,  2.19s/it] 48%|████▊     | 149/312 [05:29<05:56,  2.19s/it] 48%|████▊     | 150/312 [05:31<05:54,  2.19s/it] 48%|████▊     | 151/312 [05:33<05:51,  2.18s/it] 49%|████▊     | 152/312 [05:35<05:50,  2.19s/it] 49%|████▉     | 153/312 [05:37<05:47,  2.19s/it] 49%|████▉     | 154/312 [05:40<05:46,  2.19s/it] 50%|████▉     | 155/312 [05:42<05:43,  2.19s/it] 50%|█████     | 156/312 [05:44<05:41,  2.19s/it] 50%|█████     | 157/312 [05:46<05:39,  2.19s/it] 51%|█████     | 158/312 [05:48<05:37,  2.19s/it] 51%|█████     | 159/312 [05:50<05:34,  2.18s/it] 51%|█████▏    | 160/312 [05:53<05:32,  2.19s/it] 52%|█████▏    | 161/312 [05:55<05:29,  2.18s/it] 52%|█████▏    | 162/312 [05:57<05:28,  2.19s/it] 52%|█████▏    | 163/312 [05:59<05:25,  2.19s/it] 53%|█████▎    | 164/312 [06:01<05:24,  2.19s/it] 53%|█████▎    | 165/312 [06:04<05:21,  2.19s/it] 53%|█████▎    | 166/312 [06:06<05:20,  2.19s/it] 54%|█████▎    | 167/312 [06:08<05:17,  2.19s/it] 54%|█████▍    | 168/312 [06:10<05:15,  2.19s/it] 54%|█████▍    | 169/312 [06:12<05:12,  2.19s/it] 54%|█████▍    | 170/312 [06:15<05:11,  2.19s/it] 55%|█████▍    | 171/312 [06:17<05:09,  2.19s/it] 55%|█████▌    | 172/312 [06:19<05:07,  2.20s/it] 55%|█████▌    | 173/312 [06:21<05:04,  2.19s/it] 56%|█████▌    | 174/312 [06:23<05:02,  2.19s/it] 56%|█████▌    | 175/312 [06:26<04:59,  2.19s/it] 56%|█████▋    | 176/312 [06:28<04:58,  2.19s/it] 57%|█████▋    | 177/312 [06:30<04:55,  2.19s/it] 57%|█████▋    | 178/312 [06:32<04:53,  2.19s/it] 57%|█████▋    | 179/312 [06:34<04:51,  2.19s/it] 58%|█████▊    | 180/312 [06:37<04:49,  2.20s/it] 58%|█████▊    | 181/312 [06:39<04:47,  2.19s/it] 58%|█████▊    | 182/312 [06:41<04:45,  2.20s/it] 59%|█████▊    | 183/312 [06:43<04:42,  2.19s/it] 59%|█████▉    | 184/312 [06:45<04:41,  2.20s/it] 59%|█████▉    | 185/312 [06:47<04:38,  2.20s/it] 60%|█████▉    | 186/312 [06:50<04:37,  2.20s/it] 60%|█████▉    | 187/312 [06:52<04:34,  2.20s/it] 60%|██████    | 188/312 [06:54<04:32,  2.20s/it] 61%|██████    | 189/312 [06:56<04:30,  2.20s/it] 61%|██████    | 190/312 [06:58<04:28,  2.20s/it] 61%|██████    | 191/312 [07:01<04:26,  2.20s/it] 62%|██████▏   | 192/312 [07:03<04:24,  2.20s/it] 62%|██████▏   | 193/312 [07:05<04:21,  2.20s/it] 62%|██████▏   | 194/312 [07:07<04:20,  2.20s/it] 62%|██████▎   | 195/312 [07:09<04:16,  2.20s/it] 63%|██████▎   | 196/312 [07:12<04:15,  2.20s/it] 63%|██████▎   | 197/312 [07:14<04:12,  2.19s/it] 63%|██████▎   | 198/312 [07:16<04:10,  2.20s/it] 64%|██████▍   | 199/312 [07:18<04:07,  2.19s/it] 64%|██████▍   | 200/312 [07:20<04:06,  2.20s/it] 64%|██████▍   | 201/312 [07:23<04:03,  2.19s/it] 65%|██████▍   | 202/312 [07:25<04:01,  2.20s/it] 65%|██████▌   | 203/312 [07:27<03:59,  2.20s/it] 65%|██████▌   | 204/312 [07:29<03:57,  2.20s/it] 66%|██████▌   | 205/312 [07:31<03:55,  2.20s/it] 66%|██████▌   | 206/312 [07:34<03:53,  2.20s/it] 66%|██████▋   | 207/312 [07:36<03:50,  2.20s/it] 67%|██████▋   | 208/312 [07:38<03:48,  2.20s/it] 67%|██████▋   | 209/312 [07:40<03:45,  2.19s/it] 67%|██████▋   | 210/312 [07:42<03:44,  2.20s/it] 68%|██████▊   | 211/312 [07:45<03:41,  2.19s/it] 68%|██████▊   | 212/312 [07:47<03:40,  2.20s/it] 68%|██████▊   | 213/312 [07:49<03:37,  2.19s/it] 69%|██████▊   | 214/312 [07:51<03:35,  2.20s/it] 69%|██████▉   | 215/312 [07:53<03:32,  2.19s/it] 69%|██████▉   | 216/312 [07:56<03:30,  2.19s/it] 70%|██████▉   | 217/312 [07:58<03:28,  2.19s/it] 70%|██████▉   | 218/312 [08:00<03:26,  2.20s/it] 70%|███████   | 219/312 [08:02<03:24,  2.20s/it] 71%|███████   | 220/312 [08:04<03:22,  2.20s/it] 71%|███████   | 221/312 [08:07<03:19,  2.20s/it] 71%|███████   | 222/312 [08:09<03:18,  2.20s/it] 71%|███████▏  | 223/312 [08:11<03:15,  2.19s/it] 72%|███████▏  | 224/312 [08:13<03:13,  2.20s/it] 72%|███████▏  | 225/312 [08:15<03:10,  2.19s/it] 72%|███████▏  | 226/312 [08:18<03:08,  2.20s/it] 73%|███████▎  | 227/312 [08:20<03:06,  2.19s/it] 73%|███████▎  | 228/312 [08:22<03:04,  2.19s/it] 73%|███████▎  | 229/312 [08:24<03:01,  2.19s/it] 74%|███████▎  | 230/312 [08:26<03:00,  2.20s/it] 74%|███████▍  | 231/312 [08:29<02:57,  2.19s/it] 74%|███████▍  | 232/312 [08:31<02:55,  2.20s/it] 75%|███████▍  | 233/312 [08:33<02:53,  2.19s/it] 75%|███████▌  | 234/312 [08:35<02:51,  2.20s/it] 75%|███████▌  | 235/312 [08:37<02:48,  2.19s/it] 76%|███████▌  | 236/312 [08:40<02:46,  2.20s/it] 76%|███████▌  | 237/312 [08:42<02:44,  2.19s/it] 76%|███████▋  | 238/312 [08:44<02:42,  2.19s/it] 77%|███████▋  | 239/312 [08:46<02:39,  2.19s/it] 77%|███████▋  | 240/312 [08:48<02:37,  2.19s/it] 77%|███████▋  | 241/312 [08:50<02:35,  2.19s/it] 78%|███████▊  | 242/312 [08:53<02:33,  2.19s/it] 78%|███████▊  | 243/312 [08:55<02:31,  2.19s/it] 78%|███████▊  | 244/312 [08:57<02:29,  2.19s/it] 79%|███████▊  | 245/312 [08:59<02:26,  2.19s/it] 79%|███████▉  | 246/312 [09:01<02:24,  2.19s/it] 79%|███████▉  | 247/312 [09:04<02:22,  2.19s/it] 79%|███████▉  | 248/312 [09:06<02:20,  2.20s/it] 80%|███████▉  | 249/312 [09:08<02:18,  2.19s/it] 80%|████████  | 250/312 [09:10<02:16,  2.20s/it] 80%|████████  | 251/312 [09:12<02:13,  2.19s/it] 81%|████████  | 252/312 [09:15<02:11,  2.19s/it] 81%|████████  | 253/312 [09:17<02:09,  2.19s/it] 81%|████████▏ | 254/312 [09:19<02:07,  2.20s/it] 82%|████████▏ | 255/312 [09:21<02:05,  2.19s/it] 82%|████████▏ | 256/312 [09:23<02:03,  2.20s/it] 82%|████████▏ | 257/312 [09:26<02:00,  2.20s/it] 83%|████████▎ | 258/312 [09:28<01:58,  2.20s/it] 83%|████████▎ | 259/312 [09:30<01:56,  2.20s/it] 83%|████████▎ | 260/312 [09:32<01:54,  2.20s/it] 84%|████████▎ | 261/312 [09:34<01:52,  2.20s/it] 84%|████████▍ | 262/312 [09:37<01:49,  2.20s/it] 84%|████████▍ | 263/312 [09:39<01:47,  2.20s/it] 85%|████████▍ | 264/312 [09:41<01:45,  2.20s/it] 85%|████████▍ | 265/312 [09:43<01:43,  2.20s/it] 85%|████████▌ | 266/312 [09:45<01:41,  2.20s/it] 86%|████████▌ | 267/312 [09:48<01:38,  2.19s/it] 86%|████████▌ | 268/312 [09:50<01:36,  2.20s/it] 86%|████████▌ | 269/312 [09:52<01:34,  2.19s/it] 87%|████████▋ | 270/312 [09:54<01:32,  2.19s/it] 87%|████████▋ | 271/312 [09:56<01:29,  2.19s/it] 87%|████████▋ | 272/312 [09:59<01:27,  2.20s/it] 88%|████████▊ | 273/312 [10:01<01:25,  2.20s/it] 88%|████████▊ | 274/312 [10:03<01:24,  2.21s/it] 88%|████████▊ | 275/312 [10:05<01:21,  2.21s/it] 88%|████████▊ | 276/312 [10:07<01:19,  2.21s/it] 89%|████████▉ | 277/312 [10:10<01:17,  2.21s/it] 89%|████████▉ | 278/312 [10:12<01:15,  2.21s/it] 89%|████████▉ | 279/312 [10:14<01:12,  2.21s/it] 90%|████████▉ | 280/312 [10:16<01:10,  2.21s/it] 90%|█████████ | 281/312 [10:18<01:08,  2.21s/it] 90%|█████████ | 282/312 [10:21<01:06,  2.21s/it] 91%|█████████ | 283/312 [10:23<01:04,  2.21s/it] 91%|█████████ | 284/312 [10:25<01:02,  2.22s/it] 91%|█████████▏| 285/312 [10:27<00:59,  2.21s/it] 92%|█████████▏| 286/312 [10:30<00:57,  2.22s/it] 92%|█████████▏| 287/312 [10:32<00:55,  2.21s/it] 92%|█████████▏| 288/312 [10:34<00:53,  2.23s/it] 93%|█████████▎| 289/312 [10:36<00:51,  2.22s/it] 93%|█████████▎| 290/312 [10:38<00:48,  2.22s/it] 93%|█████████▎| 291/312 [10:41<00:46,  2.22s/it] 94%|█████████▎| 292/312 [10:43<00:44,  2.22s/it] 94%|█████████▍| 293/312 [10:45<00:42,  2.21s/it] 94%|█████████▍| 294/312 [10:47<00:39,  2.22s/it] 95%|█████████▍| 295/312 [10:49<00:37,  2.21s/it] 95%|█████████▍| 296/312 [10:52<00:35,  2.22s/it] 95%|█████████▌| 297/312 [10:54<00:33,  2.21s/it] 96%|█████████▌| 298/312 [10:56<00:31,  2.22s/it] 96%|█████████▌| 299/312 [10:58<00:28,  2.21s/it] 96%|█████████▌| 300/312 [11:01<00:26,  2.21s/it] 96%|█████████▋| 301/312 [11:03<00:24,  2.21s/it] 97%|█████████▋| 302/312 [11:05<00:22,  2.21s/it] 97%|█████████▋| 303/312 [11:07<00:20,  2.23s/it] 97%|█████████▋| 304/312 [11:10<00:17,  2.24s/it] 98%|█████████▊| 305/312 [11:12<00:15,  2.23s/it] 98%|█████████▊| 306/312 [11:14<00:13,  2.23s/it] 98%|█████████▊| 307/312 [11:16<00:11,  2.22s/it] 99%|█████████▊| 308/312 [11:18<00:08,  2.22s/it] 99%|█████████▉| 309/312 [11:21<00:06,  2.21s/it] 99%|█████████▉| 310/312 [11:23<00:04,  2.21s/it]100%|█████████▉| 311/312 [11:25<00:02,  2.21s/it]100%|██████████| 312/312 [11:27<00:00,  2.22s/it]100%|██████████| 312/312 [11:27<00:00,  2.20s/it]
+/home/alz07xz/project/Cluster-based-Affine-Transformation/quant/quant_layer.py:172: UserWarning: _aminmax is deprecated as of PyTorch 1.11 and will be removed in a future release. Use aminmax instead. This warning will only appear once per process. (Triggered internally at /pytorch/aten/src/ATen/native/ReduceAllOps.cpp:71.)
+  x_min, x_max = torch._aminmax(x)
+Traceback (most recent call last):
+  File "/home/alz07xz/project/Cluster-based-Affine-Transformation/ablate_samples_no/../main_imagenet.py", line 260, in <module>
+    recon_model(qnn, fp_model)
+  File "/home/alz07xz/project/Cluster-based-Affine-Transformation/ablate_samples_no/../main_imagenet.py", line 258, in recon_model
+    recon_model(module, fp_module)
+  File "/home/alz07xz/project/Cluster-based-Affine-Transformation/ablate_samples_no/../main_imagenet.py", line 253, in recon_model
+    set_weight_act_quantize_params(module, fp_module)
+  File "/home/alz07xz/project/Cluster-based-Affine-Transformation/ablate_samples_no/../main_imagenet.py", line 241, in set_weight_act_quantize_params
+    layer_reconstruction(qnn, fp_model, module, fp_module, **kwargs)
+  File "/home/alz07xz/project/Cluster-based-Affine-Transformation/quant/layer_recon.py", line 61, in layer_reconstruction
+    set_act_quantize_params(layer, cali_data=cached_inps[:min(256, cached_inps.size(0))])
+  File "/home/alz07xz/project/Cluster-based-Affine-Transformation/quant/set_act_quantize_params.py", line 19, in set_act_quantize_params
+    module(cali_data[i * batch_size:(i + 1) * batch_size].cuda())
+  File "/home/alz07xz/project/PD-Quant/pd_quant/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1751, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/alz07xz/project/PD-Quant/pd_quant/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1762, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/alz07xz/project/Cluster-based-Affine-Transformation/quant/quant_layer.py", line 282, in forward
+    out = self.act_quantizer(out)
+          ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/alz07xz/project/PD-Quant/pd_quant/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1751, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/alz07xz/project/PD-Quant/pd_quant/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1762, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/alz07xz/project/Cluster-based-Affine-Transformation/quant/quant_layer.py", line 92, in forward
+    self.delta, self.zero_point = self.init_quantization_scale(x.clone().detach(), self.channel_wise)
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/alz07xz/project/Cluster-based-Affine-Transformation/quant/quant_layer.py", line 215, in init_quantization_scale
+    delta, zero_point = self.init_quantization_scale_channel(x_clone)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/alz07xz/project/Cluster-based-Affine-Transformation/quant/quant_layer.py", line 203, in init_quantization_scale_channel
+    x_min, x_max = self.get_x_min_x_max(x)
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/alz07xz/project/Cluster-based-Affine-Transformation/quant/quant_layer.py", line 195, in get_x_min_x_max
+    best_min, best_max = self.perform_1D_search(x)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/alz07xz/project/Cluster-based-Affine-Transformation/quant/quant_layer.py", line 182, in perform_1D_search
+    x_q = self.quantize(x, new_max, new_min)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/alz07xz/project/Cluster-based-Affine-Transformation/quant/quant_layer.py", line 133, in quantize
+    x_int = torch.round(x / delta)
+            ^^^^^^^^^^^^^^^^^^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 784.00 MiB. GPU 0 has a total capacity of 44.42 GiB of which 197.38 MiB is free. Including non-PyTorch memory, this process has 44.20 GiB memory in use. Of the allocated memory 43.67 GiB is allocated by PyTorch, and 32.54 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+Running experiment with seed=1003
+==> Using Pytorch Dataset
+Setting the first and the last layer to 8-bit
+the quantized model is below!
+QuantModel(
+  (model): ResNet(
+    (conv1): QuantModule(
+      wbit=8, abit=2, disable_act_quant=False
+      (weight_quantizer): UniformAffineQuantizer(bit=8, is_training=False, inited=True)
+      (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+      (norm_function): StraightThrough()
+      (activation_function): ReLU(inplace=True)
+    )
+    (bn1): StraightThrough()
+    (relu): StraightThrough()
+    (maxpool): MaxPool2d(kernel_size=3, stride=2, padding=1, dilation=1, ceil_mode=False)
+    (layer1): Sequential(
+      (0): QuantBasicBlock(
+        (conv1): QuantModule(
+          wbit=4, abit=2, disable_act_quant=False
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): ReLU(inplace=True)
+        )
+        (conv2): QuantModule(
+          wbit=4, abit=2, disable_act_quant=True
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): StraightThrough()
+        )
+        (activation_function): ReLU(inplace=True)
+        (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+      )
+      (1): QuantBasicBlock(
+        (conv1): QuantModule(
+          wbit=4, abit=2, disable_act_quant=False
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): ReLU(inplace=True)
+        )
+        (conv2): QuantModule(
+          wbit=4, abit=2, disable_act_quant=True
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): StraightThrough()
+        )
+        (activation_function): ReLU(inplace=True)
+        (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+      )
+    )
+    (layer2): Sequential(
+      (0): QuantBasicBlock(
+        (conv1): QuantModule(
+          wbit=4, abit=2, disable_act_quant=False
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): ReLU(inplace=True)
+        )
+        (conv2): QuantModule(
+          wbit=4, abit=2, disable_act_quant=True
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): StraightThrough()
+        )
+        (downsample): QuantModule(
+          wbit=4, abit=2, disable_act_quant=True
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): StraightThrough()
+        )
+        (activation_function): ReLU(inplace=True)
+        (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+      )
+      (1): QuantBasicBlock(
+        (conv1): QuantModule(
+          wbit=4, abit=2, disable_act_quant=False
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): ReLU(inplace=True)
+        )
+        (conv2): QuantModule(
+          wbit=4, abit=2, disable_act_quant=True
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): StraightThrough()
+        )
+        (activation_function): ReLU(inplace=True)
+        (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+      )
+    )
+    (layer3): Sequential(
+      (0): QuantBasicBlock(
+        (conv1): QuantModule(
+          wbit=4, abit=2, disable_act_quant=False
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): ReLU(inplace=True)
+        )
+        (conv2): QuantModule(
+          wbit=4, abit=2, disable_act_quant=True
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): StraightThrough()
+        )
+        (downsample): QuantModule(
+          wbit=4, abit=2, disable_act_quant=True
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): StraightThrough()
+        )
+        (activation_function): ReLU(inplace=True)
+        (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+      )
+      (1): QuantBasicBlock(
+        (conv1): QuantModule(
+          wbit=4, abit=2, disable_act_quant=False
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): ReLU(inplace=True)
+        )
+        (conv2): QuantModule(
+          wbit=4, abit=2, disable_act_quant=True
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): StraightThrough()
+        )
+        (activation_function): ReLU(inplace=True)
+        (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+      )
+    )
+    (layer4): Sequential(
+      (0): QuantBasicBlock(
+        (conv1): QuantModule(
+          wbit=4, abit=2, disable_act_quant=False
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): ReLU(inplace=True)
+        )
+        (conv2): QuantModule(
+          wbit=4, abit=2, disable_act_quant=True
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): StraightThrough()
+        )
+        (downsample): QuantModule(
+          wbit=4, abit=2, disable_act_quant=True
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): StraightThrough()
+        )
+        (activation_function): ReLU(inplace=True)
+        (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+      )
+      (1): QuantBasicBlock(
+        (conv1): QuantModule(
+          wbit=4, abit=2, disable_act_quant=False
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): ReLU(inplace=True)
+        )
+        (conv2): QuantModule(
+          wbit=4, abit=2, disable_act_quant=True
+          (weight_quantizer): UniformAffineQuantizer(bit=4, is_training=False, inited=True)
+          (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+          (norm_function): StraightThrough()
+          (activation_function): StraightThrough()
+        )
+        (activation_function): ReLU(inplace=True)
+        (act_quantizer): UniformAffineQuantizer(bit=8, is_training=False, inited=True)
+      )
+    )
+    (avgpool): AdaptiveAvgPool2d(output_size=(1, 1))
+    (fc): QuantModule(
+      wbit=8, abit=2, disable_act_quant=True
+      (weight_quantizer): UniformAffineQuantizer(bit=8, is_training=False, inited=True)
+      (act_quantizer): UniformAffineQuantizer(bit=2, is_training=False, inited=True)
+      (norm_function): StraightThrough()
+      (activation_function): StraightThrough()
+    )
+  )
+)
+/home/alz07xz/project/Cluster-based-Affine-Transformation/quant/quant_layer.py:141: UserWarning: _aminmax is deprecated as of PyTorch 1.11 and will be removed in a future release. Use aminmax instead. This warning will only appear once per process. (Triggered internally at /pytorch/aten/src/ATen/native/TensorCompare.cpp:814.)
+  x_min, x_max = torch._aminmax(y, 1)
+Reconstruction for layer conv1
+Start correcting 312 batches of data!
+  0%|          | 0/312 [00:00<?, ?it/s]  0%|          | 1/312 [00:03<15:53,  3.07s/it]  1%|          | 2/312 [00:05<13:27,  2.60s/it]  1%|          | 3/312 [00:07<12:38,  2.45s/it]  1%|▏         | 4/312 [00:09<12:15,  2.39s/it]  2%|▏         | 5/312 [00:12<12:03,  2.36s/it]  2%|▏         | 6/312 [00:14<11:53,  2.33s/it]  2%|▏         | 7/312 [00:16<11:45,  2.31s/it]  3%|▎         | 8/312 [00:19<11:42,  2.31s/it]  3%|▎         | 9/312 [00:21<11:35,  2.30s/it]  3%|▎         | 10/312 [00:23<11:33,  2.30s/it]  4%|▎         | 11/312 [00:25<11:29,  2.29s/it]  4%|▍         | 12/312 [00:28<11:26,  2.29s/it]  4%|▍         | 13/312 [00:30<11:23,  2.28s/it]  4%|▍         | 14/312 [00:32<11:21,  2.29s/it]  5%|▍         | 15/312 [00:35<11:18,  2.28s/it]  5%|▌         | 16/312 [00:37<11:15,  2.28s/it]  5%|▌         | 17/312 [00:39<11:12,  2.28s/it]  6%|▌         | 18/312 [00:41<11:11,  2.28s/it]  6%|▌         | 19/312 [00:44<11:08,  2.28s/it]  6%|▋         | 20/312 [00:46<11:06,  2.28s/it]  7%|▋         | 21/312 [00:48<11:02,  2.28s/it]  7%|▋         | 22/312 [00:50<10:59,  2.27s/it]  7%|▋         | 23/312 [00:53<10:55,  2.27s/it]  8%|▊         | 24/312 [00:55<10:54,  2.27s/it]  8%|▊         | 25/312 [00:57<10:51,  2.27s/it]  8%|▊         | 26/312 [01:00<10:50,  2.27s/it]  9%|▊         | 27/312 [01:02<10:46,  2.27s/it]  9%|▉         | 28/312 [01:04<10:44,  2.27s/it]  9%|▉         | 29/312 [01:06<10:40,  2.26s/it] 10%|▉         | 30/312 [01:09<10:39,  2.27s/it] 10%|▉         | 31/312 [01:11<10:35,  2.26s/it] 10%|█         | 32/312 [01:13<10:33,  2.26s/it] 11%|█         | 33/312 [01:15<10:30,  2.26s/it] 11%|█         | 34/312 [01:18<10:28,  2.26s/it] 11%|█         | 35/312 [01:20<10:25,  2.26s/it] 12%|█▏        | 36/312 [01:22<10:23,  2.26s/it] 12%|█▏        | 37/312 [01:24<10:19,  2.25s/it] 12%|█▏        | 38/312 [01:27<10:17,  2.25s/it] 12%|█▎        | 39/312 [01:29<10:15,  2.26s/it] 13%|█▎        | 40/312 [01:31<10:12,  2.25s/it] 13%|█▎        | 41/312 [01:33<10:08,  2.25s/it] 13%|█▎        | 42/312 [01:36<10:07,  2.25s/it] 14%|█▍        | 43/312 [01:38<10:03,  2.24s/it] 14%|█▍        | 44/312 [01:40<10:02,  2.25s/it] 14%|█▍        | 45/312 [01:42<09:58,  2.24s/it] 15%|█▍        | 46/312 [01:45<09:57,  2.25s/it] 15%|█▌        | 47/312 [01:47<09:54,  2.24s/it] 15%|█▌        | 48/312 [01:49<09:52,  2.25s/it] 16%|█▌        | 49/312 [01:51<09:49,  2.24s/it] 16%|█▌        | 50/312 [01:54<09:48,  2.25s/it] 16%|█▋        | 51/312 [01:56<09:45,  2.24s/it] 17%|█▋        | 52/312 [01:58<09:47,  2.26s/it] 17%|█▋        | 53/312 [02:00<09:44,  2.26s/it] 17%|█▋        | 54/312 [02:03<09:41,  2.26s/it] 18%|█▊        | 55/312 [02:05<09:37,  2.25s/it] 18%|█▊        | 56/312 [02:07<09:35,  2.25s/it] 18%|█▊        | 57/312 [02:09<09:31,  2.24s/it] 19%|█▊        | 58/312 [02:12<09:29,  2.24s/it] 19%|█▉        | 59/312 [02:14<09:26,  2.24s/it] 19%|█▉        | 60/312 [02:16<09:24,  2.24s/it] 20%|█▉        | 61/312 [02:18<09:21,  2.24s/it] 20%|█▉        | 62/312 [02:21<09:20,  2.24s/it] 20%|██        | 63/312 [02:23<09:16,  2.24s/it] 21%|██        | 64/312 [02:25<09:15,  2.24s/it] 21%|██        | 65/312 [02:27<09:12,  2.24s/it] 21%|██        | 66/312 [02:29<09:11,  2.24s/it] 21%|██▏       | 67/312 [02:32<09:08,  2.24s/it] 22%|██▏       | 68/312 [02:34<09:07,  2.24s/it] 22%|██▏       | 69/312 [02:36<09:04,  2.24s/it] 22%|██▏       | 70/312 [02:38<09:02,  2.24s/it] 23%|██▎       | 71/312 [02:41<08:59,  2.24s/it] 23%|██▎       | 72/312 [02:43<09:01,  2.26s/it] 23%|██▎       | 73/312 [02:45<08:57,  2.25s/it] 24%|██▎       | 74/312 [02:47<08:55,  2.25s/it] 24%|██▍       | 75/312 [02:50<08:51,  2.24s/it] 24%|██▍       | 76/312 [02:52<08:49,  2.25s/it] 25%|██▍       | 77/312 [02:54<08:46,  2.24s/it] 25%|██▌       | 78/312 [02:56<08:45,  2.24s/it] 25%|██▌       | 79/312 [02:59<08:41,  2.24s/it] 26%|██▌       | 80/312 [03:01<08:40,  2.24s/it] 26%|██▌       | 81/312 [03:03<08:37,  2.24s/it] 26%|██▋       | 82/312 [03:05<08:35,  2.24s/it] 27%|██▋       | 83/312 [03:08<08:32,  2.24s/it] 27%|██▋       | 84/312 [03:10<08:31,  2.24s/it] 27%|██▋       | 85/312 [03:12<08:28,  2.24s/it] 28%|██▊       | 86/312 [03:14<08:26,  2.24s/it] 28%|██▊       | 87/312 [03:17<08:23,  2.24s/it] 28%|██▊       | 88/312 [03:19<08:22,  2.24s/it] 29%|██▊       | 89/312 [03:21<08:18,  2.24s/it] 29%|██▉       | 90/312 [03:23<08:17,  2.24s/it] 29%|██▉       | 91/312 [03:26<08:14,  2.24s/it] 29%|██▉       | 92/312 [03:28<08:12,  2.24s/it] 30%|██▉       | 93/312 [03:30<08:09,  2.24s/it] 30%|███       | 94/312 [03:32<08:08,  2.24s/it] 30%|███       | 95/312 [03:34<08:05,  2.24s/it] 31%|███       | 96/312 [03:37<08:04,  2.24s/it] 31%|███       | 97/312 [03:39<08:01,  2.24s/it] 31%|███▏      | 98/312 [03:41<07:58,  2.24s/it] 32%|███▏      | 99/312 [03:43<07:54,  2.23s/it] 32%|███▏      | 100/312 [03:46<07:52,  2.23s/it] 32%|███▏      | 101/312 [03:48<07:48,  2.22s/it] 33%|███▎      | 102/312 [03:50<07:47,  2.22s/it] 33%|███▎      | 103/312 [03:52<07:44,  2.22s/it] 33%|███▎      | 104/312 [03:55<07:43,  2.23s/it] 34%|███▎      | 105/312 [03:57<07:41,  2.23s/it] 34%|███▍      | 106/312 [03:59<07:42,  2.24s/it] 34%|███▍      | 107/312 [04:01<07:41,  2.25s/it] 35%|███▍      | 108/312 [04:04<07:42,  2.27s/it] 35%|███▍      | 109/312 [04:06<07:40,  2.27s/it] 35%|███▌      | 110/312 [04:08<07:39,  2.27s/it] 36%|███▌      | 111/312 [04:10<07:35,  2.27s/it] 36%|███▌      | 112/312 [04:13<07:34,  2.27s/it] 36%|███▌      | 113/312 [04:15<07:32,  2.27s/it] 37%|███▋      | 114/312 [04:17<07:30,  2.28s/it] 37%|███▋      | 115/312 [04:20<07:27,  2.27s/it] 37%|███▋      | 116/312 [04:22<07:23,  2.26s/it] 38%|███▊      | 117/312 [04:24<07:19,  2.25s/it] 38%|███▊      | 118/312 [04:26<07:16,  2.25s/it] 38%|███▊      | 119/312 [04:28<07:12,  2.24s/it] 38%|███▊      | 120/312 [04:31<07:10,  2.24s/it] 39%|███▉      | 121/312 [04:33<07:07,  2.24s/it] 39%|███▉      | 122/312 [04:35<07:05,  2.24s/it] 39%|███▉      | 123/312 [04:37<07:02,  2.24s/it] 40%|███▉      | 124/312 [04:40<07:00,  2.24s/it] 40%|████      | 125/312 [04:42<06:57,  2.23s/it] 40%|████      | 126/312 [04:44<06:55,  2.24s/it] 41%|████      | 127/312 [04:46<06:52,  2.23s/it] 41%|████      | 128/312 [04:49<06:51,  2.23s/it] 41%|████▏     | 129/312 [04:51<06:47,  2.23s/it] 42%|████▏     | 130/312 [04:53<06:46,  2.23s/it] 42%|████▏     | 131/312 [04:55<06:43,  2.23s/it] 42%|████▏     | 132/312 [04:57<06:42,  2.23s/it] 43%|████▎     | 133/312 [05:00<06:39,  2.23s/it] 43%|████▎     | 134/312 [05:02<06:37,  2.23s/it] 43%|████▎     | 135/312 [05:04<06:34,  2.23s/it] 44%|████▎     | 136/312 [05:06<06:33,  2.23s/it] 44%|████▍     | 137/312 [05:09<06:30,  2.23s/it] 44%|████▍     | 138/312 [05:11<06:28,  2.23s/it] 45%|████▍     | 139/312 [05:13<06:25,  2.23s/it] 45%|████▍     | 140/312 [05:15<06:23,  2.23s/it] 45%|████▌     | 141/312 [05:18<06:20,  2.23s/it] 46%|████▌     | 142/312 [05:20<06:19,  2.23s/it] 46%|████▌     | 143/312 [05:22<06:16,  2.23s/it] 46%|████▌     | 144/312 [05:24<06:14,  2.23s/it] 46%|████▋     | 145/312 [05:26<06:11,  2.23s/it] 47%|████▋     | 146/312 [05:29<06:10,  2.23s/it] 47%|████▋     | 147/312 [05:31<06:07,  2.23s/it] 47%|████▋     | 148/312 [05:33<06:05,  2.23s/it] 48%|████▊     | 149/312 [05:35<06:02,  2.23s/it] 48%|████▊     | 150/312 [05:38<06:01,  2.23s/it] 48%|████▊     | 151/312 [05:40<05:58,  2.23s/it] 49%|████▊     | 152/312 [05:42<05:57,  2.23s/it] 49%|████▉     | 153/312 [05:44<05:54,  2.23s/it] 49%|████▉     | 154/312 [05:47<05:52,  2.23s/it] 50%|████▉     | 155/312 [05:49<05:49,  2.23s/it] 50%|█████     | 156/312 [05:51<05:47,  2.23s/it] 50%|█████     | 157/312 [05:53<05:48,  2.25s/it] 51%|█████     | 158/312 [05:55<05:44,  2.24s/it] 51%|█████     | 159/312 [05:58<05:39,  2.22s/it] 51%|█████▏    | 160/312 [06:00<05:37,  2.22s/it] 52%|█████▏    | 161/312 [06:02<05:33,  2.21s/it] 52%|█████▏    | 162/312 [06:04<05:31,  2.21s/it] 52%|█████▏    | 163/312 [06:06<05:28,  2.20s/it] 53%|█████▎    | 164/312 [06:09<05:26,  2.20s/it] 53%|█████▎    | 165/312 [06:11<05:23,  2.20s/it] 53%|█████▎    | 166/312 [06:13<05:21,  2.20s/it] 54%|█████▎    | 167/312 [06:15<05:18,  2.20s/it] 54%|█████▍    | 168/312 [06:17<05:16,  2.20s/it] 54%|█████▍    | 169/312 [06:20<05:13,  2.20s/it] 54%|█████▍    | 170/312 [06:22<05:12,  2.20s/it] 55%|█████▍    | 171/312 [06:24<05:09,  2.19s/it] 55%|█████▌    | 172/312 [06:26<05:07,  2.20s/it] 55%|█████▌    | 173/312 [06:28<05:04,  2.19s/it] 56%|█████▌    | 174/312 [06:31<05:03,  2.20s/it] 56%|█████▌    | 175/312 [06:33<05:01,  2.20s/it] 56%|█████▋    | 176/312 [06:35<05:00,  2.21s/it] 57%|█████▋    | 177/312 [06:37<04:57,  2.20s/it] 57%|█████▋    | 178/312 [06:39<04:56,  2.21s/it] 57%|█████▋    | 179/312 [06:42<04:54,  2.21s/it] 58%|█████▊    | 180/312 [06:44<04:52,  2.22s/it] 58%|█████▊    | 181/312 [06:46<04:50,  2.21s/it] 58%|█████▊    | 182/312 [06:48<04:48,  2.22s/it] 59%|█████▊    | 183/312 [06:51<04:45,  2.22s/it] 59%|█████▉    | 184/312 [06:53<04:43,  2.22s/it] 59%|█████▉    | 185/312 [06:55<04:41,  2.21s/it] 60%|█████▉    | 186/312 [06:57<04:40,  2.22s/it] 60%|█████▉    | 187/312 [06:59<04:37,  2.22s/it] 60%|██████    | 188/312 [07:02<04:35,  2.22s/it] 61%|██████    | 189/312 [07:04<04:32,  2.22s/it] 61%|██████    | 190/312 [07:06<04:30,  2.22s/it] 61%|██████    | 191/312 [07:08<04:28,  2.22s/it] 62%|██████▏   | 192/312 [07:11<04:26,  2.22s/it] 62%|██████▏   | 193/312 [07:13<04:23,  2.22s/it] 62%|██████▏   | 194/312 [07:15<04:21,  2.22s/it] 62%|██████▎   | 195/312 [07:17<04:19,  2.21s/it] 63%|██████▎   | 196/312 [07:19<04:17,  2.22s/it] 63%|██████▎   | 197/312 [07:22<04:14,  2.21s/it] 63%|██████▎   | 198/312 [07:24<04:12,  2.22s/it] 64%|██████▍   | 199/312 [07:26<04:10,  2.21s/it] 64%|██████▍   | 200/312 [07:28<04:08,  2.22s/it] 64%|██████▍   | 201/312 [07:30<04:05,  2.21s/it] 65%|██████▍   | 202/312 [07:33<04:03,  2.22s/it] 65%|██████▌   | 203/312 [07:35<04:01,  2.21s/it] 65%|██████▌   | 204/312 [07:37<03:59,  2.22s/it] 66%|██████▌   | 205/312 [07:39<03:57,  2.22s/it] 66%|██████▌   | 206/312 [07:42<03:55,  2.23s/it] 66%|██████▋   | 207/312 [07:44<03:53,  2.22s/it] 67%|██████▋   | 208/312 [07:46<03:51,  2.22s/it] 67%|██████▋   | 209/312 [07:48<03:48,  2.22s/it] 67%|██████▋   | 210/312 [07:50<03:46,  2.22s/it] 68%|██████▊   | 211/312 [07:53<03:44,  2.22s/it] 68%|██████▊   | 212/312 [07:55<03:42,  2.22s/it] 68%|██████▊   | 213/312 [07:57<03:39,  2.22s/it] 69%|██████▊   | 214/312 [07:59<03:37,  2.22s/it] 69%|██████▉   | 215/312 [08:02<03:35,  2.22s/it] 69%|██████▉   | 216/312 [08:04<03:33,  2.22s/it] 70%|██████▉   | 217/312 [08:06<03:29,  2.20s/it] 70%|██████▉   | 218/312 [08:08<03:27,  2.21s/it] 70%|███████   | 219/312 [08:10<03:25,  2.21s/it] 71%|███████   | 220/312 [08:13<03:23,  2.21s/it] 71%|███████   | 221/312 [08:15<03:21,  2.21s/it] 71%|███████   | 222/312 [08:17<03:19,  2.22s/it] 71%|███████▏  | 223/312 [08:19<03:16,  2.21s/it] 72%|███████▏  | 224/312 [08:21<03:14,  2.21s/it] 72%|███████▏  | 225/312 [08:24<03:12,  2.21s/it] 72%|███████▏  | 226/312 [08:26<03:10,  2.22s/it] 73%|███████▎  | 227/312 [08:28<03:16,  2.31s/it] 73%|███████▎  | 228/312 [08:33<04:16,  3.05s/it] 73%|███████▎  | 229/312 [08:35<03:51,  2.79s/it] 74%|███████▎  | 230/312 [08:38<03:35,  2.62s/it] 74%|███████▍  | 231/312 [08:40<03:30,  2.60s/it] 74%|███████▍  | 232/312 [08:42<03:19,  2.49s/it] 75%|███████▍  | 233/312 [08:45<03:09,  2.40s/it] 75%|███████▌  | 234/312 [08:47<03:03,  2.36s/it] 75%|███████▌  | 235/312 [08:49<02:58,  2.32s/it] 76%|███████▌  | 236/312 [08:51<02:54,  2.30s/it] 76%|███████▌  | 237/312 [08:54<02:50,  2.28s/it] 76%|███████▋  | 238/312 [08:56<02:47,  2.27s/it] 77%|███████▋  | 239/312 [08:58<02:51,  2.35s/it] 77%|███████▋  | 240/312 [09:01<02:49,  2.35s/it] 77%|███████▋  | 241/312 [09:03<02:44,  2.31s/it] 78%|███████▊  | 242/312 [09:05<02:40,  2.29s/it] 78%|███████▊  | 243/312 [09:07<02:36,  2.27s/it] 78%|███████▊  | 244/312 [09:10<02:36,  2.30s/it] 79%|███████▊  | 245/312 [09:12<02:32,  2.27s/it] 79%|███████▉  | 246/312 [09:14<02:31,  2.29s/it] 79%|███████▉  | 247/312 [09:17<02:30,  2.31s/it] 79%|███████▉  | 248/312 [09:19<02:26,  2.29s/it] 80%|███████▉  | 249/312 [09:21<02:25,  2.30s/it] 80%|████████  | 250/312 [09:24<02:22,  2.30s/it] 80%|████████  | 251/312 [09:26<02:20,  2.30s/it] 81%|████████  | 252/312 [09:28<02:17,  2.29s/it] 81%|████████  | 253/312 [09:30<02:16,  2.31s/it] 81%|████████▏ | 254/312 [09:33<02:12,  2.29s/it] 82%|████████▏ | 255/312 [09:35<02:09,  2.27s/it] 82%|████████▏ | 256/312 [09:37<02:06,  2.26s/it] 82%|████████▏ | 257/312 [09:39<02:02,  2.23s/it] 83%|████████▎ | 258/312 [09:42<01:59,  2.22s/it] 83%|████████▎ | 259/312 [09:44<01:57,  2.22s/it] 83%|████████▎ | 260/312 [09:46<01:55,  2.22s/it] 84%|████████▎ | 261/312 [09:48<01:53,  2.22s/it] 84%|████████▍ | 262/312 [09:50<01:50,  2.20s/it] 84%|████████▍ | 263/312 [09:53<01:48,  2.20s/it] 85%|████████▍ | 264/312 [09:55<01:45,  2.19s/it] 85%|████████▍ | 265/312 [09:57<01:44,  2.23s/it] 85%|████████▌ | 266/312 [09:59<01:42,  2.23s/it] 86%|████████▌ | 267/312 [10:01<01:39,  2.22s/it] 86%|████████▌ | 268/312 [10:04<01:37,  2.22s/it] 86%|████████▌ | 269/312 [10:06<01:35,  2.22s/it] 87%|████████▋ | 270/312 [10:08<01:33,  2.22s/it] 87%|████████▋ | 271/312 [10:11<01:35,  2.33s/it] 87%|████████▋ | 272/312 [10:13<01:32,  2.31s/it] 88%|████████▊ | 273/312 [10:15<01:28,  2.28s/it] 88%|████████▊ | 274/312 [10:17<01:26,  2.27s/it] 88%|████████▊ | 275/312 [10:20<01:23,  2.25s/it] 88%|████████▊ | 276/312 [10:22<01:20,  2.24s/it] 89%|████████▉ | 277/312 [10:24<01:18,  2.23s/it] 89%|████████▉ | 278/312 [10:26<01:15,  2.23s/it] 89%|████████▉ | 279/312 [10:28<01:13,  2.22s/it] 90%|████████▉ | 280/312 [10:31<01:11,  2.22s/it] 90%|█████████ | 281/312 [10:33<01:08,  2.21s/it] 90%|█████████ | 282/312 [10:35<01:05,  2.20s/it] 91%|█████████ | 283/312 [10:37<01:03,  2.18s/it] 91%|█████████ | 284/312 [10:39<01:00,  2.18s/it] 91%|█████████▏| 285/312 [10:42<00:58,  2.17s/it] 92%|█████████▏| 286/312 [10:44<00:56,  2.18s/it] 92%|█████████▏| 287/312 [10:46<00:54,  2.18s/it] 92%|█████████▏| 288/312 [10:48<00:52,  2.18s/it] 93%|█████████▎| 289/312 [10:50<00:50,  2.18s/it] 93%|█████████▎| 290/312 [10:52<00:48,  2.19s/it] 93%|█████████▎| 291/312 [10:55<00:45,  2.19s/it] 94%|█████████▎| 292/312 [10:57<00:43,  2.19s/it] 94%|█████████▍| 293/312 [10:59<00:41,  2.19s/it] 94%|█████████▍| 294/312 [11:01<00:39,  2.19s/it] 95%|█████████▍| 295/312 [11:03<00:37,  2.19s/it] 95%|█████████▍| 296/312 [11:06<00:35,  2.19s/it] 95%|█████████▌| 297/312 [11:08<00:32,  2.19s/it] 96%|█████████▌| 298/312 [11:10<00:30,  2.19s/it] 96%|█████████▌| 299/312 [11:12<00:28,  2.19s/it] 96%|█████████▌| 300/312 [11:14<00:26,  2.20s/it] 96%|█████████▋| 301/312 [11:17<00:24,  2.20s/it] 97%|█████████▋| 302/312 [11:19<00:22,  2.20s/it] 97%|█████████▋| 303/312 [11:21<00:19,  2.20s/it] 97%|█████████▋| 304/312 [11:23<00:17,  2.20s/it] 98%|█████████▊| 305/312 [11:25<00:15,  2.19s/it] 98%|█████████▊| 306/312 [11:28<00:13,  2.20s/it] 98%|█████████▊| 307/312 [11:30<00:10,  2.19s/it] 99%|█████████▊| 308/312 [11:32<00:08,  2.20s/it] 99%|█████████▉| 309/312 [11:34<00:06,  2.19s/it] 99%|█████████▉| 310/312 [11:36<00:04,  2.20s/it]100%|█████████▉| 311/312 [11:39<00:02,  2.20s/it]100%|██████████| 312/312 [11:41<00:00,  2.20s/it]100%|██████████| 312/312 [11:41<00:00,  2.25s/it]
+/home/alz07xz/project/Cluster-based-Affine-Transformation/quant/quant_layer.py:172: UserWarning: _aminmax is deprecated as of PyTorch 1.11 and will be removed in a future release. Use aminmax instead. This warning will only appear once per process. (Triggered internally at /pytorch/aten/src/ATen/native/ReduceAllOps.cpp:71.)
+  x_min, x_max = torch._aminmax(x)
+Traceback (most recent call last):
+  File "/home/alz07xz/project/Cluster-based-Affine-Transformation/ablate_samples_no/../main_imagenet.py", line 260, in <module>
+    recon_model(qnn, fp_model)
+  File "/home/alz07xz/project/Cluster-based-Affine-Transformation/ablate_samples_no/../main_imagenet.py", line 258, in recon_model
+    recon_model(module, fp_module)
+  File "/home/alz07xz/project/Cluster-based-Affine-Transformation/ablate_samples_no/../main_imagenet.py", line 253, in recon_model
+    set_weight_act_quantize_params(module, fp_module)
+  File "/home/alz07xz/project/Cluster-based-Affine-Transformation/ablate_samples_no/../main_imagenet.py", line 241, in set_weight_act_quantize_params
+    layer_reconstruction(qnn, fp_model, module, fp_module, **kwargs)
+  File "/home/alz07xz/project/Cluster-based-Affine-Transformation/quant/layer_recon.py", line 61, in layer_reconstruction
+    set_act_quantize_params(layer, cali_data=cached_inps[:min(256, cached_inps.size(0))])
+  File "/home/alz07xz/project/Cluster-based-Affine-Transformation/quant/set_act_quantize_params.py", line 19, in set_act_quantize_params
+    module(cali_data[i * batch_size:(i + 1) * batch_size].cuda())
+  File "/home/alz07xz/project/PD-Quant/pd_quant/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1751, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/alz07xz/project/PD-Quant/pd_quant/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1762, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/alz07xz/project/Cluster-based-Affine-Transformation/quant/quant_layer.py", line 282, in forward
+    out = self.act_quantizer(out)
+          ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/alz07xz/project/PD-Quant/pd_quant/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1751, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/alz07xz/project/PD-Quant/pd_quant/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1762, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/alz07xz/project/Cluster-based-Affine-Transformation/quant/quant_layer.py", line 92, in forward
+    self.delta, self.zero_point = self.init_quantization_scale(x.clone().detach(), self.channel_wise)
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/alz07xz/project/Cluster-based-Affine-Transformation/quant/quant_layer.py", line 215, in init_quantization_scale
+    delta, zero_point = self.init_quantization_scale_channel(x_clone)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/alz07xz/project/Cluster-based-Affine-Transformation/quant/quant_layer.py", line 203, in init_quantization_scale_channel
+    x_min, x_max = self.get_x_min_x_max(x)
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/alz07xz/project/Cluster-based-Affine-Transformation/quant/quant_layer.py", line 195, in get_x_min_x_max
+    best_min, best_max = self.perform_1D_search(x)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/alz07xz/project/Cluster-based-Affine-Transformation/quant/quant_layer.py", line 182, in perform_1D_search
+    x_q = self.quantize(x, new_max, new_min)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/alz07xz/project/Cluster-based-Affine-Transformation/quant/quant_layer.py", line 133, in quantize
+    x_int = torch.round(x / delta)
+            ^^^^^^^^^^^^^^^^^^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 784.00 MiB. GPU 0 has a total capacity of 44.42 GiB of which 197.38 MiB is free. Including non-PyTorch memory, this process has 44.20 GiB memory in use. Of the allocated memory 43.67 GiB is allocated by PyTorch, and 32.54 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+Completed ResNet18 W4A2 with 10000 samples experiment at Tue Sep  9 02:46:10 AM CEST 2025
