@@ -223,7 +223,7 @@ if __name__ == '__main__':
     qnn.disable_network_output_quantization()
     print('the quantized model is below!')
     print(qnn)
-    cali_data, cali_target = get_train_samples(train_loader, num_samples=args.num_samples)
+    cali_data, cali_target = get_train_samples(train_loader, num_samples=1024)
     device = next(qnn.parameters()).device
 
     # Kwargs for weight rounding calibration
