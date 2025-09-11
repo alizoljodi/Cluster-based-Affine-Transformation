@@ -4,13 +4,37 @@ This folder contains shell scripts for running samples ablation experiments on R
 
 ## Sample Values Tested
 
-All scripts test the following sample counts: `[1000, 5000, 10000, 100000, 200000, 500000, 1000000]`
+All scripts test the following sample counts: `[10, 50, 100, 500, 1000, 5000, 10000, 100000, 200000, 500000, 1000000]`
 
 ## Available Scripts
 
 ### Individual Sample Count Scripts
 
 Each sample count has 4 scripts corresponding to different bitwidth combinations:
+
+#### 10 Samples
+- `samples_10_resnet18_w2a2.sh` - ResNet18 with 2-bit weights and activations
+- `samples_10_resnet18_w2a4.sh` - ResNet18 with 2-bit weights and 4-bit activations
+- `samples_10_resnet18_w4a2.sh` - ResNet18 with 4-bit weights and 2-bit activations
+- `samples_10_resnet18_w4a4.sh` - ResNet18 with 4-bit weights and activations
+
+#### 50 Samples
+- `samples_50_resnet18_w2a2.sh` - ResNet18 with 2-bit weights and activations
+- `samples_50_resnet18_w2a4.sh` - ResNet18 with 2-bit weights and 4-bit activations
+- `samples_50_resnet18_w4a2.sh` - ResNet18 with 4-bit weights and 2-bit activations
+- `samples_50_resnet18_w4a4.sh` - ResNet18 with 4-bit weights and activations
+
+#### 100 Samples
+- `samples_100_resnet18_w2a2.sh` - ResNet18 with 2-bit weights and activations
+- `samples_100_resnet18_w2a4.sh` - ResNet18 with 2-bit weights and 4-bit activations
+- `samples_100_resnet18_w4a2.sh` - ResNet18 with 4-bit weights and 2-bit activations
+- `samples_100_resnet18_w4a4.sh` - ResNet18 with 4-bit weights and activations
+
+#### 500 Samples
+- `samples_500_resnet18_w2a2.sh` - ResNet18 with 2-bit weights and activations
+- `samples_500_resnet18_w2a4.sh` - ResNet18 with 2-bit weights and 4-bit activations
+- `samples_500_resnet18_w4a2.sh` - ResNet18 with 4-bit weights and 2-bit activations
+- `samples_500_resnet18_w4a4.sh` - ResNet18 with 4-bit weights and activations
 
 #### 1000 Samples
 - `samples_1000_resnet18_w2a2.sh` - ResNet18 with 2-bit weights and activations
@@ -78,7 +102,7 @@ To run all sample ablation experiments at once:
 ./run_all_samples.sh
 ```
 
-This will submit all 28 scripts (7 sample counts × 4 bitwidth combinations) to the SLURM queue, with each script running 3 seeds for a total of 84 experiments.
+This will submit all 44 scripts (11 sample counts × 4 bitwidth combinations) to the SLURM queue, with each script running 3 seeds for a total of 132 experiments.
 
 ## Configuration
 
@@ -89,7 +113,7 @@ All scripts use the following configuration:
 - **Number of clusters**: 64
 - **PCA dimensions**: 50
 - **Data path**: /home/alz07xz/imagenet
-- **Sample counts**: 1000, 5000, 10000, 100000, 200000, 500000, 1000000
+- **Sample counts**: 10, 50, 100, 500, 1000, 5000, 10000, 100000, 200000, 500000, 1000000
 
 ## Expected Output
 
@@ -101,10 +125,10 @@ Each script will:
 
 ## Total Experiments
 
-- **Sample counts**: 7 different values
+- **Sample counts**: 11 different values
 - **Bitwidth combinations**: 4 different configurations per sample count
 - **Seeds**: 3 different seeds per configuration
-- **Total experiments**: 7 × 4 × 3 = 84 experiments
+- **Total experiments**: 11 × 4 × 3 = 132 experiments
 
 ## Monitoring Progress
 

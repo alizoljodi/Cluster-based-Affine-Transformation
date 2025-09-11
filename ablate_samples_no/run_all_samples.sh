@@ -1,14 +1,14 @@
 #!/bin/bash
 
 echo "Starting all ResNet18 samples ablation experiments at $(date)"
-echo "This will run experiments for sample counts: 1000, 5000, 10000, 100000, 200000, 500000, 1000000"
+echo "This will run experiments for sample counts: 10, 50, 100, 500"
 echo "Each sample count will be tested with 4 different bitwidth combinations: W2A2, W2A4, W4A2, W4A4"
 echo "Each configuration will be run with 3 different seeds: 1001, 1002, 1003"
-echo "Total experiments: 7 sample counts × 4 bitwidth combinations × 3 seeds = 84 experiments"
+echo "Total experiments: 4 sample counts × 4 bitwidth combinations × 3 seeds = 48 experiments"
 echo ""
 
 # Define sample values and bitwidth combinations
-sample_counts=(1000 5000 10000 100000 200000 500000 1000000)
+sample_counts=(10 50 100 500)
 bitwidth_combinations=("w2a2" "w2a4" "w4a2" "w4a4")
 
 # Counter for tracking progress
