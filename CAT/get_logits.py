@@ -44,6 +44,8 @@ class get_logits:
 
         with torch.no_grad():
             for i, (images, _) in enumerate(self.dataloader):
+                if i >= num_samples:
+                    break
                 images = images.to(device)
                 q_logits = q_model(images)
                 fp_logits = fp_model(images)
