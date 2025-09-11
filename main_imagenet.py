@@ -130,6 +130,87 @@ def validate_model(val_loader, model, device=None, print_freq=100):
 
     return top1.avg
 
+@torch.no_grad()
+def save_test_logits_to_csv(test_loader, model, device=None, filename=None):
+    """
+    Extract all logits from test_loader using the model and save to CSV format.
+    
+    Args:
+        test_loader: DataLoader for test data
+        model: The model to extract logits from
+        device: Device to run inference on
+        filename: Optional filename for CSV output
+    
+    Returns:
+        str: Path to the saved CSV file
+    """
+    if device is None:
+        device = next(model.parameters()).device
+    else:
+        model.to(device)
+    
+    # switch to evaluate mode
+    model.eval()
+    
+    all_logits = []
+    all_targets = []
+    all_batch_indices = []
+    
+    print(f"[save_test_logits] Extracting logits from test_loader...")
+    
+    for batch_idx, (images, targets) in enumerate(test_loader):
+        images = images.to(device)
+        targets = targets.to(device)
+        
+        # compute output (logits)
+        logits = model(images)
+        
+        # Move to CPU for saving
+        all_logits.append(logits.cpu().numpy())
+        all_targets.append(targets.cpu().numpy())
+        all_batch_indices.extend([batch_idx] * images.size(0))
+        
+        if batch_idx % 100 == 0:
+            print(f"[save_test_logits] Processed batch {batch_idx}/{len(test_loader)}")
+    
+    # Concatenate all logits and targets
+    all_logits = np.concatenate(all_logits, axis=0)  # Shape: [N, num_classes]
+    all_targets = np.concatenate(all_targets, axis=0)  # Shape: [N]
+    
+    print(f"[save_test_logits] Extracted logits shape: {all_logits.shape}")
+    print(f"[save_test_logits] Extracted targets shape: {all_targets.shape}")
+    
+    # Create DataFrame
+    num_classes = all_logits.shape[1]
+    
+    # Create column names for logits
+    logit_columns = [f'logit_class_{i}' for i in range(num_classes)]
+    
+    # Create DataFrame with logits, targets, and batch info
+    df_data = {
+        'batch_idx': all_batch_indices,
+        'sample_idx': range(len(all_targets)),
+        'target': all_targets
+    }
+    
+    # Add logit columns
+    for i, col in enumerate(logit_columns):
+        df_data[col] = all_logits[:, i]
+    
+    df = pd.DataFrame(df_data)
+    
+    # Generate filename if not provided
+    if filename is None:
+        import datetime
+        timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
+        filename = f"test_logits_{timestamp}.csv"
+    
+    # Save to CSV
+    df.to_csv(filename, index=False)
+    print(f"[save_test_logits] Logits saved to: {filename}")
+    
+    return filename
+
 def get_train_samples(train_loader, num_samples):
     train_data, target = [], []
     for batch in train_loader:
@@ -262,9 +343,17 @@ if __name__ == '__main__':
     qnn.set_quant_state(weight_quant=True, act_quant=True)
     baseline_acc = validate_model(test_loader, qnn)
     print('Full quantization (W{}A{}) accuracy: {}'.format(args.n_bits_w, args.n_bits_a, baseline_acc))
+    
+    # Save all test logits to CSV
+    print('\n[Saving test logits to CSV...]')
+    logits_filename = f"test_logits_{args.arch}_W{args.n_bits_w}A{args.n_bits_a}_seed{args.seed}.csv"
+    save_test_logits_to_csv(test_loader, qnn, device=device, filename=logits_filename)
+    print(f"[Main] Test logits saved to: {logits_filename}")
+    # Note: ImageNet has 1000 classes, so CSV will contain logit_class_0 to logit_class_999 columns
+    print(f"[Main] CSV contains: batch_idx, sample_idx, target, and logit_class_0 to logit_class_999 columns")
 
     # Extract logits from quantized and full-precision models using a seeded random subset of training data
-    extractor = get_logits(q_model=qnn, fp_model=fp_model, dataloader=train_loader, device=device,
+    '''extractor = get_logits(q_model=qnn, fp_model=fp_model, dataloader=train_loader, device=device,
                            num_samples=args.num_samples, seed=args.seed)
     print('[Main] Extracting logits from models...')
     all_q, all_fp = extractor()
@@ -357,4 +446,4 @@ if __name__ == '__main__':
         }).round(4)
         print(stats)
     
-    print("\n" + "="*80)
+    print("\n" + "="*80)'''
