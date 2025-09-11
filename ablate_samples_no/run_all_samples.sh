@@ -8,7 +8,7 @@ echo "Total experiments: 7 sample counts × 4 bitwidth combinations × 3 seeds =
 echo ""
 
 # Define sample values and bitwidth combinations
-sample_counts=(1000 5000 10000 100000 200000 500000 1000000)
+sample_counts=(10 50 100 500 )
 bitwidth_combinations=("w2a2" "w2a4" "w4a2" "w4a4")
 
 # Counter for tracking progress
