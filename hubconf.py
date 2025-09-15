@@ -21,6 +21,7 @@ model_path = {
     'reg3200m': '/home/alz07xz/project/cluster/kmeans/resnet50/clustering/regnet_3200m.pth.tar',
     'mnasnet': '/home/alz07xz/project/cluster/kmeans/resnet50/clustering/mnasnet.pth.tar',
 }
+#
 
 
 def resnet18(pretrained=False, **kwargs):
