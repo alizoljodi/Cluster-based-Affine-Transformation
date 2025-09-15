@@ -6,6 +6,12 @@ from models.mnasnet import mnasnet as _mnasnet
 from models.regnet import regnetx_600m as _regnetx_600m
 from models.regnet import regnetx_3200m as _regnetx_3200m
 import torch
+try:
+    import timm
+    TIMM_AVAILABLE = True
+except ImportError:
+    TIMM_AVAILABLE = False
+    print("Warning: timm not available. DeiT models will not work without timm installation.")
 dependencies = ['torch']
 model_path = {
     'resnet18': '/home/alz07xz/project/PD-Quant/pretrain/resnet18_imagenet.pth.tar',
@@ -68,4 +74,36 @@ def mnasnet(pretrained=False, **kwargs):
     if pretrained:
         checkpoint = torch.load(model_path['mnasnet'], map_location='cpu')
         model.load_state_dict(checkpoint)
+    return model
+
+
+def deit_tiny_patch16_224(pretrained=False, **kwargs):
+    # Use timm to create DeiT Tiny model
+    if not TIMM_AVAILABLE:
+        raise ImportError("timm is required for DeiT models. Please install it with: pip install timm")
+    model = timm.create_model('deit_tiny_patch16_224', pretrained=pretrained, **kwargs)
+    return model
+
+
+def deit_small_patch16_224(pretrained=False, **kwargs):
+    # Use timm to create DeiT Small model
+    if not TIMM_AVAILABLE:
+        raise ImportError("timm is required for DeiT models. Please install it with: pip install timm")
+    model = timm.create_model('deit_small_patch16_224', pretrained=pretrained, **kwargs)
+    return model
+
+
+def deit_base_patch16_224(pretrained=False, **kwargs):
+    # Use timm to create DeiT Base model
+    if not TIMM_AVAILABLE:
+        raise ImportError("timm is required for DeiT models. Please install it with: pip install timm")
+    model = timm.create_model('deit_base_patch16_224', pretrained=pretrained, **kwargs)
+    return model
+
+
+def deit_base_distilled_patch16_224(pretrained=False, **kwargs):
+    # Use timm to create DeiT Base Distilled model
+    if not TIMM_AVAILABLE:
+        raise ImportError("timm is required for DeiT models. Please install it with: pip install timm")
+    model = timm.create_model('deit_base_distilled_patch16_224', pretrained=pretrained, **kwargs)
     return model
