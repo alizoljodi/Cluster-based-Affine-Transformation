@@ -10,6 +10,7 @@ import copy
 import pandas as pd
 from CAT.get_logits import get_logits
 from CAT.cat import CAT
+from CAT.enhanced_cat import EnhancedCAT
 from quant import (
     block_reconstruction,
     layer_reconstruction,
@@ -130,6 +131,87 @@ def validate_model(val_loader, model, device=None, print_freq=100):
 
     return top1.avg
 
+@torch.no_grad()
+def save_test_logits_to_csv(test_loader, model, device=None, filename=None):
+    """
+    Extract all logits from test_loader using the model and save to CSV format.
+    
+    Args:
+        test_loader: DataLoader for test data
+        model: The model to extract logits from
+        device: Device to run inference on
+        filename: Optional filename for CSV output
+    
+    Returns:
+        str: Path to the saved CSV file
+    """
+    if device is None:
+        device = next(model.parameters()).device
+    else:
+        model.to(device)
+    
+    # switch to evaluate mode
+    model.eval()
+    
+    all_logits = []
+    all_targets = []
+    all_batch_indices = []
+    
+    print(f"[save_test_logits] Extracting logits from test_loader...")
+    
+    for batch_idx, (images, targets) in enumerate(test_loader):
+        images = images.to(device)
+        targets = targets.to(device)
+        
+        # compute output (logits)
+        logits = model(images)
+        
+        # Move to CPU for saving
+        all_logits.append(logits.cpu().numpy())
+        all_targets.append(targets.cpu().numpy())
+        all_batch_indices.extend([batch_idx] * images.size(0))
+        
+        if batch_idx % 100 == 0:
+            print(f"[save_test_logits] Processed batch {batch_idx}/{len(test_loader)}")
+    
+    # Concatenate all logits and targets
+    all_logits = np.concatenate(all_logits, axis=0)  # Shape: [N, num_classes]
+    all_targets = np.concatenate(all_targets, axis=0)  # Shape: [N]
+    
+    print(f"[save_test_logits] Extracted logits shape: {all_logits.shape}")
+    print(f"[save_test_logits] Extracted targets shape: {all_targets.shape}")
+    
+    # Create DataFrame
+    num_classes = all_logits.shape[1]
+    
+    # Create column names for logits
+    logit_columns = [f'logit_class_{i}' for i in range(num_classes)]
+    
+    # Create DataFrame with logits, targets, and batch info
+    df_data = {
+        'batch_idx': all_batch_indices,
+        'sample_idx': range(len(all_targets)),
+        'target': all_targets
+    }
+    
+    # Add logit columns
+    for i, col in enumerate(logit_columns):
+        df_data[col] = all_logits[:, i]
+    
+    df = pd.DataFrame(df_data)
+    
+    # Generate filename if not provided
+    if filename is None:
+        import datetime
+        timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
+        filename = f"test_logits_{timestamp}.csv"
+    
+    # Save to CSV
+    df.to_csv(filename, index=False)
+    print(f"[save_test_logits] Logits saved to: {filename}")
+    
+    return filename
+
 def get_train_samples(train_loader, num_samples):
     train_data, target = [], []
     for batch in train_loader:
@@ -147,7 +229,8 @@ if __name__ == '__main__':
     # general parameters for data and model
     parser.add_argument('--seed', default=1005, type=int, help='random seed for results reproduction')
     parser.add_argument('--arch', default='resnet18', type=str, help='model name',
-                        choices=['resnet18', 'resnet50', 'mobilenetv2', 'regnetx_600m', 'regnetx_3200m', 'mnasnet'])
+                        choices=['resnet18', 'resnet50', 'mobilenetv2', 'regnetx_600m', 'regnetx_3200m', 'mnasnet',
+                                'deit_tiny_patch16_224', 'deit_small_patch16_224', 'deit_base_patch16_224', 'deit_base_distilled_patch16_224'])
     parser.add_argument('--batch_size', default=64, type=int, help='mini-batch size for data loader')
     parser.add_argument('--workers', default=4, type=int, help='number of workers for data loader')
     parser.add_argument('--data_path', default='/datasets-to-imagenet', type=str, help='path to ImageNet data')
@@ -190,6 +273,28 @@ if __name__ == '__main__':
                         help='number of clusters value(s) for CAT LUT building')
     parser.add_argument('--pca_dim', default=[-1], type=int, nargs='+',
                         help='PCA dimension(s); use -1 to disable PCA')
+    
+    # Enhanced CAT parameters
+    parser.add_argument('--use_enhanced_cat', action='store_true',
+                        help='use enhanced CAT with advanced optimization')
+    parser.add_argument('--cat_steps', default=400, type=int,
+                        help='number of optimization steps for enhanced CAT')
+    parser.add_argument('--cat_lr', default=4e-4, type=float,
+                        help='learning rate for enhanced CAT optimization')
+    parser.add_argument('--cat_lam', default=0.3, type=float,
+                        help='center loss weight for enhanced CAT')
+    parser.add_argument('--cat_mu', default=0.3, type=float,
+                        help='separation loss weight for enhanced CAT')
+    parser.add_argument('--cat_tau', default=1.0, type=float,
+                        help='temperature for separation loss')
+    parser.add_argument('--cat_eps', default=0.01, type=float,
+                        help='trust region epsilon')
+    parser.add_argument('--cat_rho', default=1e-4, type=float,
+                        help='regularization weight')
+    parser.add_argument('--cat_beta_ema', default=0.9, type=float,
+                        help='EMA decay for centroids')
+    parser.add_argument('--cat_reassign_freq', default=10, type=int,
+                        help='cluster reassignment frequency')
     args = parser.parse_args()
 
     seed_all(args.seed)
@@ -223,7 +328,7 @@ if __name__ == '__main__':
     qnn.disable_network_output_quantization()
     print('the quantized model is below!')
     print(qnn)
-    cali_data, cali_target = get_train_samples(train_loader, num_samples=args.num_samples)
+    cali_data, cali_target = get_train_samples(train_loader, num_samples=1024)
     device = next(qnn.parameters()).device
 
     # Kwargs for weight rounding calibration
@@ -262,6 +367,14 @@ if __name__ == '__main__':
     qnn.set_quant_state(weight_quant=True, act_quant=True)
     baseline_acc = validate_model(test_loader, qnn)
     print('Full quantization (W{}A{}) accuracy: {}'.format(args.n_bits_w, args.n_bits_a, baseline_acc))
+    
+    # Save all test logits to CSV
+    print('\n[Saving test logits to CSV...]')
+    logits_filename = f"test_logits_{args.arch}_W{args.n_bits_w}A{args.n_bits_a}_seed{args.seed}.csv"
+    save_test_logits_to_csv(test_loader, qnn, device=device, filename=logits_filename)
+    print(f"[Main] Test logits saved to: {logits_filename}")
+    # Note: ImageNet has 1000 classes, so CSV will contain logit_class_0 to logit_class_999 columns
+    print(f"[Main] CSV contains: batch_idx, sample_idx, target, and logit_class_0 to logit_class_999 columns")
 
     # Extract logits from quantized and full-precision models using a seeded random subset of training data
     extractor = get_logits(q_model=qnn, fp_model=fp_model, dataloader=train_loader, device=device,
@@ -271,7 +384,13 @@ if __name__ == '__main__':
     print(f"[Main] Logits extracted. all_q shape: {tuple(all_q.shape)}, all_fp shape: {tuple(all_fp.shape)}")
 
     # Build and evaluate CAT cluster-affine corrections across provided configs
-    cat = CAT()
+    if args.use_enhanced_cat:
+        cat = EnhancedCAT()
+        print("[Main] Using Enhanced CAT with advanced optimization")
+    else:
+        cat = CAT()
+        print("[Main] Using standard CAT")
+        
     alphas = args.alpha if isinstance(args.alpha, list) else [args.alpha]
     cluster_list = args.num_clusters if isinstance(args.num_clusters, list) else [args.num_clusters]
     pca_dims = args.pca_dim if isinstance(args.pca_dim, list) else [args.pca_dim]
@@ -285,35 +404,70 @@ if __name__ == '__main__':
         'num_clusters': None,
         'pca_dim': None,
         'alpha': None,
-        'top1_acc': baseline_acc,
+        'top1_acc': baseline_acc.item(),
         'top5_acc': None,  # baseline doesn't report top5
         'seed': args.seed,
         'arch': args.arch,
         'w_bits': args.n_bits_w,
-        'a_bits': args.n_bits_a
+        'a_bits': args.n_bits_a,
+        'enhanced_cat': args.use_enhanced_cat
     })
 
     for num_clusters in cluster_list:
         for pca_dim in pca_dims:
             pca_opt = None if (pca_dim is None or int(pca_dim) < 0) else int(pca_dim)
             print(f"[Main] Building CAT with num_clusters={num_clusters}, pca_dim={pca_opt}")
-            cluster_model, gamma_dict, beta_dict, pca = cat.build_cluster_affine(
-                all_q, all_fp, num_clusters=int(num_clusters), pca_dim=pca_opt
-            )
+            
+            if args.use_enhanced_cat:
+                cluster_model, gamma_dict, beta_dict, pca, centroids = cat.build_cluster_affine_enhanced(
+                    all_q, all_fp, 
+                    num_clusters=int(num_clusters), 
+                    pca_dim=pca_opt,
+                    num_steps=args.cat_steps,
+                    lr=args.cat_lr,
+                    lam=args.cat_lam,
+                    mu=args.cat_mu,
+                    tau=args.cat_tau,
+                    eps=args.cat_eps,
+                    rho=args.cat_rho,
+                    beta_ema=args.cat_beta_ema,
+                    reassign_freq=args.cat_reassign_freq,
+                    device=device
+                )
+            else:
+                cluster_model, gamma_dict, beta_dict, pca = cat.build_cluster_affine(
+                    all_q, all_fp, num_clusters=int(num_clusters), pca_dim=pca_opt
+                )
+                
             for alpha in alphas:
                 print(f"[Main] Evaluating CAT with alpha={alpha}")
-                top1_acc, top5_acc, _, _, _, _ = cat.evaluate_cluster_affine_with_alpha(
-                    q_model=qnn,
-                    fp_model=fp_model,
-                    cluster_model=cluster_model,
-                    gamma_dict=gamma_dict,
-                    beta_dict=beta_dict,
-                    dataloader=test_loader,
-                    device=device,
-                    pca=pca,
-                    alpha=float(alpha),
-                    plot=False,
-                )
+                
+                if args.use_enhanced_cat:
+                    top1_acc, top5_acc, _, _, _, _ = cat.evaluate_cluster_affine_enhanced(
+                        q_model=qnn,
+                        fp_model=fp_model,
+                        cluster_model=cluster_model,
+                        gamma_dict=gamma_dict,
+                        beta_dict=beta_dict,
+                        dataloader=test_loader,
+                        device=device,
+                        pca=pca,
+                        alpha=float(alpha),
+                        plot=False,
+                    )
+                else:
+                    top1_acc, top5_acc, _, _, _, _ = cat.evaluate_cluster_affine_with_alpha(
+                        q_model=qnn,
+                        fp_model=fp_model,
+                        cluster_model=cluster_model,
+                        gamma_dict=gamma_dict,
+                        beta_dict=beta_dict,
+                        dataloader=test_loader,
+                        device=device,
+                        pca=pca,
+                        alpha=float(alpha),
+                        plot=False,
+                    )
                 
                 # Store result (restoration)
                 results.append({
@@ -326,8 +480,10 @@ if __name__ == '__main__':
                     'seed': args.seed,
                     'arch': args.arch,
                     'w_bits': args.n_bits_w,
-                    'a_bits': args.n_bits_a
+                    'a_bits': args.n_bits_a,
+                    'enhanced_cat': args.use_enhanced_cat
                 })
+                
 
     # Create DataFrame and print results
     df = pd.DataFrame(results)
