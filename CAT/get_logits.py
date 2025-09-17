@@ -44,6 +44,8 @@ class get_logits:
 
         with torch.no_grad():
             for i, (images, _) in enumerate(self.dataloader):
+                if i >= num_samples:
+                    break
                 images = images.to(device)
                 q_logits = q_model(images)
                 fp_logits = fp_model(images)
@@ -57,5 +59,6 @@ class get_logits:
         print(f"[get_logits] Extraction complete. Shapes -> all_q: {tuple(all_q.shape)}, all_fp: {tuple(all_fp.shape)}")
 
         return all_q, all_fp
+
 
 
