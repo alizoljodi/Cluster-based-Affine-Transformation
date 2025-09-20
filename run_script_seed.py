@@ -117,6 +117,9 @@ def run_one_seed(
     alpha: List[float],
     num_clusters: List[int],
     pca_dim: List[int],
+    init_wmode: str,
+    init_amode: str,
+    use_enhanced_cat: bool,
 ) -> Tuple[Optional[pd.DataFrame], int, str]:
     print(f"\n{'='*80}")
     print(f"STARTING SEED {seed} EXPERIMENT")
@@ -140,8 +143,13 @@ def run_one_seed(
     cmd = (
         f"python main_imagenet.py --data_path {data_path} --arch {arch} "
         f"--n_bits_w {w_bits} --n_bits_a {a_bits} --weight {weight} --T {T} --lamb_c {lamb_c} --seed {seed} "
-        f"--alpha {alpha_str} --num_clusters {clusters_str} --pca_dim {pca_str}"
+        f"--alpha {alpha_str} --num_clusters {clusters_str} --pca_dim {pca_str} "
+        f"--init_wmode {init_wmode} --init_amode {init_amode}"
     )
+    
+    # Add enhanced CAT flag if enabled
+    if use_enhanced_cat:
+        cmd += " --use_enhanced_cat"
     print(f"[Seed {seed}] Executing command:")
     print(f"  {cmd}")
     
@@ -390,6 +398,18 @@ if __name__ == "__main__":
     parser.add_argument("--pca_dim", type=int, nargs='+', default=[-1], 
                         help="PCA dimensions; use -1 to disable PCA")
     
+    # Quantization initialization parameters
+    parser.add_argument("--init_wmode", type=str, default="mse", 
+                        choices=['minmax', 'mse', 'minmax_scale'],
+                        help="Initialization mode for weight quantization")
+    parser.add_argument("--init_amode", type=str, default="mse", 
+                        choices=['minmax', 'mse', 'minmax_scale'],
+                        help="Initialization mode for activation quantization")
+    
+    # Enhanced CAT parameters
+    parser.add_argument("--use_enhanced_cat", action='store_true', default=False,
+                        help="Use enhanced CAT with advanced optimization")
+    
     args = parser.parse_args()
 
     print(f"🎯 Experiment Configuration:")
@@ -401,6 +421,9 @@ if __name__ == "__main__":
     print(f"  - Alpha values: {args.alpha}")
     print(f"  - Number of clusters: {args.num_clusters}")
     print(f"  - PCA dimensions: {args.pca_dim}")
+    print(f"  - Weight init mode: {args.init_wmode}")
+    print(f"  - Activation init mode: {args.init_amode}")
+    print(f"  - Enhanced CAT: {args.use_enhanced_cat}")
     
     total_configs = len(args.alpha) * len(args.num_clusters) * len(args.pca_dim)
     print(f"  - Total configurations to test: {total_configs}")
@@ -427,6 +450,9 @@ if __name__ == "__main__":
             alpha=args.alpha,
             num_clusters=args.num_clusters,
             pca_dim=args.pca_dim,
+            init_wmode=args.init_wmode,
+            init_amode=args.init_amode,
+            use_enhanced_cat=args.use_enhanced_cat,
         )
         dataframes.append(df)
     
