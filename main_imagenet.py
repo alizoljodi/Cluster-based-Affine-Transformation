@@ -275,7 +275,7 @@ if __name__ == '__main__':
                         help='PCA dimension(s); use -1 to disable PCA')
     
     # Enhanced CAT parameters
-    parser.add_argument('--use_enhanced_cat', action='store_true',
+    parser.add_argument('--use_enhanced_cat', action='store_true', default=True,
                         help='use enhanced CAT with advanced optimization')
     parser.add_argument('--cat_steps', default=400, type=int,
                         help='number of optimization steps for enhanced CAT')
