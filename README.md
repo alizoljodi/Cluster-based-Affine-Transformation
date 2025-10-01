@@ -1,10 +1,10 @@
 <div align="center">
 <h2>CAT</h2>
-<h4>CAT: POST-TRAINING QUANTIZATION ERROR RESTORATION VIA CLUSTER-BASED AFFINE TRANSFORMATION</h4>
+<h4>CAT: POST-TRAINING QUANTIZATION ERROR REDUCTION VIA CLUSTER-BASED AFFINE TRANSFORMATION</h4>
 </div>
 
 ## Overview
-CAT (Cluster-based Affine Transformation) is a post-training quantization error restoration method that improves the accuracy of quantized neural networks by applying cluster-specific affine transformations to the model outputs.
+CAT (Cluster-based Affine Transformation) is a post-training quantization error reduction method that improves the accuracy of quantized neural networks by applying cluster-specific affine transformations to the model outputs.
 
 ## Features
 - **Cluster-based Analysis**: Groups similar quantization errors using K-means clustering
