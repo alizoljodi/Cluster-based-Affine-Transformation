@@ -273,6 +273,9 @@ if __name__ == '__main__':
                         help='number of clusters value(s) for CAT LUT building')
     parser.add_argument('--pca_dim', default=[-1], type=int, nargs='+',
                         help='PCA dimension(s); use -1 to disable PCA')
+    parser.add_argument('--clustering_algorithm', default='kmeans', type=str,
+                        choices=['kmeans', 'minibatch_kmeans', 'gmm', 'dbscan', 'agglomerative', 'spectral'],
+                        help='clustering algorithm to use for CAT')
     
     # Enhanced CAT parameters
     parser.add_argument('--use_enhanced_cat', action='store_true', default=False,
@@ -404,6 +407,7 @@ if __name__ == '__main__':
         'num_clusters': None,
         'pca_dim': None,
         'alpha': None,
+        'algorithm': None,
         'top1_acc': baseline_acc.item(),
         'top5_acc': None,  # baseline doesn't report top5
         'seed': args.seed,
@@ -416,7 +420,8 @@ if __name__ == '__main__':
     for num_clusters in cluster_list:
         for pca_dim in pca_dims:
             pca_opt = None if (pca_dim is None or int(pca_dim) < 0) else int(pca_dim)
-            print(f"[Main] Building CAT with num_clusters={num_clusters}, pca_dim={pca_opt}")
+            algo_name = args.clustering_algorithm if not args.use_enhanced_cat else 'enhanced_kmeans'
+            print(f"[Main] Building CAT with algorithm={algo_name}, num_clusters={num_clusters}, pca_dim={pca_opt}")
             
             if args.use_enhanced_cat:
                 cluster_model, gamma_dict, beta_dict, pca, centroids = cat.build_cluster_affine_enhanced(
@@ -436,7 +441,10 @@ if __name__ == '__main__':
                 )
             else:
                 cluster_model, gamma_dict, beta_dict, pca = cat.build_cluster_affine(
-                    all_q, all_fp, num_clusters=int(num_clusters), pca_dim=pca_opt
+                    all_q, all_fp, 
+                    num_clusters=int(num_clusters), 
+                    pca_dim=pca_opt,
+                    algorithm=args.clustering_algorithm
                 )
                 
             for alpha in alphas:
@@ -467,6 +475,7 @@ if __name__ == '__main__':
                         pca=pca,
                         alpha=float(alpha),
                         plot=False,
+                        algorithm=args.clustering_algorithm,
                     )
                 
                 # Store result (restoration)
@@ -475,6 +484,7 @@ if __name__ == '__main__':
                     'num_clusters': int(num_clusters),
                     'pca_dim': pca_opt,
                     'alpha': float(alpha),
+                    'algorithm': args.clustering_algorithm if not args.use_enhanced_cat else 'enhanced_kmeans',
                     'top1_acc': top1_acc,
                     'top5_acc': top5_acc,
                     'seed': args.seed,
