@@ -120,6 +120,7 @@ def run_one_seed(
     init_wmode: str,
     init_amode: str,
     use_enhanced_cat: bool,
+    clustering_algorithm: str,
 ) -> Tuple[Optional[pd.DataFrame], int, str]:
     print(f"\n{'='*80}")
     print(f"STARTING SEED {seed} EXPERIMENT")
@@ -144,7 +145,8 @@ def run_one_seed(
         f"python main_imagenet.py --data_path {data_path} --arch {arch} "
         f"--n_bits_w {w_bits} --n_bits_a {a_bits} --weight {weight} --T {T} --lamb_c {lamb_c} --seed {seed} "
         f"--alpha {alpha_str} --num_clusters {clusters_str} --pca_dim {pca_str} "
-        f"--init_wmode {init_wmode} --init_amode {init_amode}"
+        f"--init_wmode {init_wmode} --init_amode {init_amode} "
+        f"--clustering_algorithm {clustering_algorithm}"
     )
     
     # Add enhanced CAT flag if enabled
@@ -410,6 +412,10 @@ if __name__ == "__main__":
     parser.add_argument("--use_enhanced_cat", action='store_true', default=False,
                         help="Use enhanced CAT with advanced optimization")
     
+    parser.add_argument("--clustering_algorithm", type=str, default="kmeans",
+                        choices=['kmeans', 'minibatch_kmeans', 'gmm', 'dbscan', 'agglomerative', 'spectral'],
+                        help="Clustering algorithm to use for CAT")
+    
     args = parser.parse_args()
 
     print(f"🎯 Experiment Configuration:")
@@ -424,6 +430,7 @@ if __name__ == "__main__":
     print(f"  - Weight init mode: {args.init_wmode}")
     print(f"  - Activation init mode: {args.init_amode}")
     print(f"  - Enhanced CAT: {args.use_enhanced_cat}")
+    print(f"  - Clustering algorithm: {args.clustering_algorithm}")
     
     total_configs = len(args.alpha) * len(args.num_clusters) * len(args.pca_dim)
     print(f"  - Total configurations to test: {total_configs}")
@@ -453,6 +460,7 @@ if __name__ == "__main__":
             init_wmode=args.init_wmode,
             init_amode=args.init_amode,
             use_enhanced_cat=args.use_enhanced_cat,
+            clustering_algorithm=args.clustering_algorithm,
         )
         dataframes.append(df)
     
