@@ -14,3 +14,5 @@ echo "Starting ResNet18 W2A4 ablation (init_wmode=minmax_scale, init_amode=minma
 python ../run_script_seed.py resnet18 --w_bits 2 --a_bits 4 --num_seeds 10 --start_seed 0 --sleep 0.5 --alpha 0.5 --num_clusters 56 --pca_dim 40 --init_wmode minmax_scale --init_amode minmax_scale
 echo "Completed ResNet18 W2A4 ablation (init_wmode=minmax_scale, init_amode=minmax_scale) at $(date)"
 
+
+
